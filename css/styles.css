@@ -74,3 +74,90 @@ footer{
     color: white;
     font-size: 25px;
 }
+.RectanguloAdmin{
+    display: block;
+    padding-left: 24px;
+}
+.ContenidoAdmin{
+    display: grid; 
+    grid-auto-rows: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "Logo productos categorias a"; 
+        margin-top: 40px;
+}
+.Productos { grid-area: productos; }
+.Categorias { grid-area: categorias; }
+.Categorias, .Productos {
+    position: relative;
+    text-align: center;
+    border: solid 1px black;
+    border-radius: 40px;
+    margin: 10px;
+}
+.Categorias h1, .Productos h1 {
+    position: absolute;
+    top: 7.5%;
+    left: 33%;
+    margin: 0;
+    color: white;
+}
+#mangaAdmn{
+    padding-left: 30px;
+}
+.container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 662px;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-image: url('../img/loginAdmin.jpg');
+}
+.container::before {
+    content: "";
+    position: absolute;
+    top: 110px;
+    left: 0;
+    width: 100%;
+    height: 662px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de opacidad */
+}
+.loginAdmin{
+    position: relative;
+    z-index: 1;
+    background-color: rgb(236, 236, 236);
+    border: solid 1px black;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    height: 300px;
+    color: black;
+
+}
+.loginAdmin h1 {
+    margin-top: 20px;
+}
+.loginAdmin p{
+    text-align: left;
+    padding-left: 15%;
+}
+.formularioAdmin {
+    margin-top: 10%;
+}
+.inputsAdmin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 1px black;
+    border-radius: 10px;
+    height: 28px;
+    width: 250px;
+    background-color: #D0CDCD;
+}
+#logearse{
+    background-color: black;
+    color: white;
+}
