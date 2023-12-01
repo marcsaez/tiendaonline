@@ -55,5 +55,6 @@ class productos extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
+    
 }
 ?>
