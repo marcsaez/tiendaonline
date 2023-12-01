@@ -14,6 +14,38 @@ header {
     background-color:#262525 ;
     height: 110px;
 }
+footer{
+    display: grid; 
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "Logo Barra-busqueda Iconos";
+    background-color: #605E5E;
+    height: 90px;
+    color: white;
+}
+.copy{
+    text-align: center;
+    font-size: 14px;
+}
+.chat{
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+.chat p{
+    font-size: 12px;
+    padding-left: 5px;
+}
+.RRSS{
+    margin-right:50px;
+   text-align: right;
+}
+.ImgPie{
+    width: 40px;
+}
 #logo{
     margin-left: 30px;
 }
