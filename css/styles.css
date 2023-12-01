@@ -67,3 +67,10 @@ footer{
     width: 35px;
     margin-left: 45px;
 }
+#accionesAdmin{
+    margin-left: 400px;
+}
+#ControlAdmin{
+    color: white;
+    font-size: 25px;
+}
