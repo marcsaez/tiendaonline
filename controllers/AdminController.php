@@ -45,7 +45,34 @@
             require_once "views/admin/añadirProductos.php";
         }
         public function paginaEditar(){
-            require_once "views/admin/editarProductos.php";
+            if (isset($_GET['id'])) {
+                require_once "models/productos.php";
+                $idProducto = $_GET['id'];
+                $producto = new productos();
+                $producto->conectar();
+                // Obtener los detalles del producto con la ID especificada
+                $productoDetalles = $producto->obtenerDetallesProducto($idProducto);
+                $productos = null;
+                foreach ($productoDetalles as $productos) {
+                    // Acceder a los campos del producto
+                    $idproduct = $productos['productid'];
+                    $nombre = $productos['productname'];
+                    $descripcion = $productos['productdescription'];
+                    $imagen = $productos['productimg'];
+                    $stock = $productos['productstock'];
+                    $destacado = $productos['productnoted'];
+                    $precio = $productos['productprice'];
+                    $categoria = $productos['fkcategories'];
+                    }
+                if ($producto) {
+                    // Renderizar la vista de edición con los detalles del producto
+                    require_once "views/admin/editarProductos.php";
+                } else {
+                    echo "Producto no encontrado.";
+                }
+            } else {
+                echo "ID del producto no especificada.";
+            }
         }
         public function editarProductos(){
             if(isset($_POST)){
@@ -59,7 +86,8 @@
                         alert("Producto editado correctamente");
                     </script>
                     <?php
-                    require_once "views/admin/listarProductos.php";
+                    header("Location: index.php?Controller=Admin&action=listarProductos");
+                    
                 } else{
                     ?>
                     <script>
@@ -70,5 +98,6 @@
                 }
             }
         }
+        
     }
 ?>

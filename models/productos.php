@@ -87,7 +87,7 @@ class productos extends database{
             // Recorrer los resultados con un foreach
             foreach ($resultados as $producto) {
                 // Acceder a los campos del producto
-                $idproduct = $producto['$productid'];
+                $idproduct = $producto['productid'];
                 $nombre = $producto['productname'];
                 $descripcion = $producto['productdescription'];
                 $imagen = $producto['productimg'];
@@ -97,7 +97,8 @@ class productos extends database{
                 $categoria = $producto['fkcategories'];
 
                 //FALTARA AÑADIR EL RESTO DE COSAS
-                echo "<p>$nombre, $descripcion <a href = index.php?Controller=Admin&action=paginaEditar&id=".$idproduct."'><img src='img/editar.png' alt='Editar'></a></p>";
+                echo "<p>$nombre, $descripcion <a href='index.php?Controller=Admin&action=paginaEditar&id=$idproduct'><img src='img/editar.png' alt='Editar'></a></p>";
+                echo "$idproduct";
             }
             }
             return true;
@@ -131,8 +132,15 @@ class productos extends database{
                 echo "Error al actualizar producto: " . $e->getMessage();
                 return false;
             }
-        
-        
     }
+    public function obtenerDetallesProducto($idProducto) {
+        $stmt = $this->db->prepare("SELECT * FROM products WHERE productid = :id");
+        $stmt->bindParam(':id', $idProducto);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultados;
+    }
+    
 }
 ?>
