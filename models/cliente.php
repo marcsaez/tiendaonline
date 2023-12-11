@@ -1,21 +1,18 @@
 <?php
 require_once("database.php");
 class Cliente extends database{
-    private $email;
+    private $emailCliente;
     private $telefono;
-
     private $Nombre;
-
     private $Apellido;
-
     private $Direccion;
     
     //GETTERS Y SETTERS
     function getNombre() {
         return $this->Nombre;
     }
-    function getEmail() {
-        return $this->email;
+    function getEmailCliente() {
+        return $this->emailCliente;
     }
     function getTelf() {
         return $this->telefono;
@@ -29,8 +26,8 @@ class Cliente extends database{
     function setNombre($nombre) {
         $this->Nombre = $nombre;
     }
-    function setEmail($email) {
-        $this->email = $email;
+    function setEmailCliente($emailCliente) {
+        $this->emailCliente = $emailCliente;
     }
     function setTelf($telf) {
         $this->telefono = $telf;
