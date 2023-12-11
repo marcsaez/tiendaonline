@@ -20,7 +20,7 @@ if (isset($_GET['controller'])){
 else{
     //Controlador per dedecte
     $nombreController = "AdminController";
-    require_once "views/admin/loginAdmin.php";
+    
 }
 if (class_exists($nombreController)){
     $controlador = new $nombreController(); 
@@ -28,6 +28,7 @@ if (class_exists($nombreController)){
         $action = $_GET['action'];
     }
     else{
+        require_once "views/admin/loginAdmin.php";
         $action ="mostrarTodos";
     }
     $controlador->$action();   

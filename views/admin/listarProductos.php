@@ -1,0 +1,1 @@
+<a href="index.php?Controller=Admin&action=paginaAñadirProductos"><img src="img/mas.png" alt="Añadir Producto"></a>
