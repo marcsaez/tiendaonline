@@ -11,15 +11,16 @@
 <body>
 <?php 
 require_once "autoload.php";
-require_once "views/general/header.php";
-require_once "views/general/menu.php";
+require_once "views/general/headeradmin.php";
+
 
 if (isset($_GET['controller'])){
     $nombreController = $_GET['controller']."Controller";
 }
 else{
     //Controlador per dedecte
-    $nombreController = "UsuarioController";
+    $nombreController = "AdminController";
+    require_once "views/admin/loginAdmin.php";
 }
 if (class_exists($nombreController)){
     $controlador = new $nombreController(); 

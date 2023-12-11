@@ -43,5 +43,23 @@ class Cliente extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
+    public function iniciarSesion($email, $contrasena) {
+        $stmt = $this->db->prepare("SELECT * FROM customers WHERE email = :email AND customerPassword  = :contrasena");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':contrasena', $contrasena);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            // Inicio de sesión exitoso
+            session_start();
+            $_SESSION['usuario_id'] = $usuario['email'];
+            // Puedes hacer otras acciones después del inicio de sesión
+            return true;
+        } else {
+            
+            return false;
+        }
+    }
+
 }
 ?>
