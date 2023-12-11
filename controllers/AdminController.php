@@ -30,7 +30,7 @@
                         alert("Producto creado correctamente");
                     </script>
                     <?php
-                    require_once "views/admin/listarProductos.php";
+                    header("Location: index.php?Controller=Admin&action=listarProductos");
                 } else{
                     ?>
                     <script>

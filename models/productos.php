@@ -98,7 +98,6 @@ class productos extends database{
 
                 //FALTARA AÑADIR EL RESTO DE COSAS
                 echo "<p>$nombre, $descripcion <a href='index.php?Controller=Admin&action=paginaEditar&id=$idproduct'><img src='img/editar.png' alt='Editar'></a></p>";
-                echo "$idproduct";
             }
             }
             return true;
