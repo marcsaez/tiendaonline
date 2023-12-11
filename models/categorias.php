@@ -2,20 +2,20 @@
 require_once("database.php");
 class cateoria extends database{
     private $nombre;
-    private $categoria;
+    private $categoriaPadre;
     
     //GETTERS Y SETTERS
     function getNombre(){
         return $this->nombre;
     }
-    function getCategoria(){
-        return $this ->categoria;
+    function getCategoriaPadre(){
+        return $this ->categoriaPadre;
     }
     function setNombre($nombre){
         $this->nombre = $nombre;
     }
-    function setCategoria($categoria){
-        $this->categoria = $categoria;
+    function setCategoriaPadre($categoriaPadre){
+        $this->categoriaPadre = $categoriaPadre;
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE

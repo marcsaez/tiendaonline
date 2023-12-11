@@ -3,7 +3,6 @@ require_once("database.php");
 class productos extends database{
     private $nombre;
     private $descripcion;
-
     private $Imagen;
     private $stock;
     private $destacado;
