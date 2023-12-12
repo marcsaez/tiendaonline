@@ -1,0 +1,1 @@
+<a href="index.php?Controller=Admin&action=paginaAnadirCategoria"><img src="img/mas.png" alt="Anadir Categoria"></a>

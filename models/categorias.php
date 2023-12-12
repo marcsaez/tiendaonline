@@ -1,6 +1,6 @@
 <?php
 require_once("database.php");
-class cateoria extends database{
+class categoria extends database{
     private $nombre;
     private $categoriaPadre;
     
@@ -19,5 +19,31 @@ class cateoria extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
+    public function anadir($nombre, $categoriaPadre){
+        try{
+        if ($categoriaPadre) {
+            $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
+    
+            
+            $stmt->bindParam(':nombreCategoria', $nombre);
+            $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
+            
+            $stmt->execute();
+            return true;
+        }else {
+            $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
+    
+            
+            $stmt->bindParam(':nombreCategoria', $nombre);
+            
+            $stmt->execute();
+            return true;
+        }
+        
+        } catch (Exception $e){
+            echo "error: $e";
+            return false;
+        }
+    }
 }
 ?>
