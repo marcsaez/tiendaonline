@@ -86,7 +86,7 @@
                         alert("Producto editado correctamente");
                     </script>
                     <?php
-                    header("Location: index.php?Controller=Admin&action=listarProductos");
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Admin&action=listarProductos'>";
                     
                 } else{
                     ?>
@@ -94,7 +94,7 @@
                         alert("Error en el editado de los datos");
                     </script>
                     <?php
-                    require_once "views/admin/editarProductos.php";
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Admin&action=listarProductos'>";
                 }
             }
         }
