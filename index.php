@@ -29,7 +29,7 @@ if (class_exists($nombreController)){
     }
     else{
         require_once "views/admin/loginAdmin.php";
-        $action ="mostrarTodos";
+        $action ="";
     }
     $controlador->$action();   
 }else{
