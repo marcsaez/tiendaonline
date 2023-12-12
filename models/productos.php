@@ -54,7 +54,7 @@ class productos extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
-    public function añadir($id,$nombre, $descripcion, $imagen, $stock, $destacado, $precio, $categoria){
+    public function anadir($id,$nombre, $descripcion, $imagen, $stock, $destacado, $precio, $categoria){
         try{    
         $stmt = $this->db->prepare("INSERT INTO products (productId, productName, productDescription, productImg, productStock, productNoted, productPrice, fkCategories) VALUES (:id, :nombre, :descripcion, :imagen, :stock, :destacado, :precio, :categoria)");
     
@@ -96,7 +96,7 @@ class productos extends database{
                 $precio = $producto['productprice'];
                 $categoria = $producto['fkcategories'];
 
-                //FALTARA AÑADIR EL RESTO DE COSAS
+                //FALTARA AnADIR EL RESTO DE COSAS
                 echo "<p>$nombre, $descripcion <a href='index.php?Controller=Admin&action=paginaEditar&id=$idproduct'><img src='img/editar.png' alt='Editar'></a></p>";
             }
             }

@@ -18,12 +18,12 @@
             $producto->conectar();
             $allproducts = $producto->listarTodosProductos();
         }
-        public function añadirProducto(){
+        public function anadirProducto(){
             if(isset($_POST)){
                 require_once "models/productos.php";
                 $producto = new productos();
                 $producto->conectar();
-                $allproducts = $producto->añadir($_POST['idProducto'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $allproducts = $producto->anadir($_POST['idProducto'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 if ($allproducts){
                     ?>
                     <script>
@@ -37,12 +37,12 @@
                         alert("Error en alguno de los datos");
                     </script>
                     <?php
-                    require_once "views/admin/añadirProductos.php";
+                    require_once "views/admin/anadirProductos.php";
                 }
             }
         }
-        public function paginaAñadirProductos(){
-            require_once "views/admin/añadirProductos.php";
+        public function paginaAnadirProductos(){
+            require_once "views/admin/anadirProductos.php";
         }
         public function paginaEditar(){
             if (isset($_GET['id'])) {
