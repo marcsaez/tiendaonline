@@ -89,11 +89,12 @@ class productos extends database{
             $stmt->bindParam(':precio', $this->precio);
             $stmt->bindParam(':categoria', $this->categoria);
             $stmt->execute();
-            return true;
+            $retorno = true;
         } catch (Exception $e){
             echo "error: $e";
-            return false;
+            $retorno = false;
         }
+        return $retorno;
     }
     public static function listarTodosProductos($db){
         try{
@@ -126,13 +127,14 @@ class productos extends database{
             $stmt->bindParam(':categoria', $this->categoria);
             $stmt->bindParam(':id', $this->idproducto);
             $stmt->execute();
-        
-            return true;
+            $retorno = true;
+            
             } catch (Exception $e) {
                 // Manejar la excepción (mostrar un mensaje de error, registrar, etc.)
                 echo "Error al actualizar producto: " . $e->getMessage();
-                return false;
+                $retorno = false;
             }
+            return $retorno;
     }
     public static function obtenerDetallesProducto($db,$idProducto) {
         $stmt = $db->prepare("SELECT * FROM products WHERE productid = :id");

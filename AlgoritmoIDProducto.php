@@ -4,6 +4,7 @@ function generarCodigoUnico($categoria, $nombre, $numero, $longitudCategoria = 2
     $codigoNumero = str_pad($numero, 3, '0', STR_PAD_LEFT);
     $codigoNombre = substr(strtoupper($nombre), 0, $longitudNombre);
     $codigoUnico = $codigoCategoria . $codigoNumero . '-' . $codigoNombre;
+    //funcion insertar 
     return $codigoUnico;
 }
 function obtenerSiguienteNumeroProducto() {
