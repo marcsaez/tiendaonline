@@ -71,6 +71,8 @@ class productos extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
+
+    // Insertar producto
     public function anadir(){
         try{    
         $stmt = $this->db->prepare("INSERT INTO products (productId, productName, productDescription, productImg, productStock, productNoted, productPrice, fkCategories) VALUES (:id, :nombre, :descripcion, :imagen, :stock, :destacado, :precio, :categoria)");
@@ -107,6 +109,8 @@ class productos extends database{
         }
         return $resultados;
     }
+
+    // Update Producte
     public function actualizarProducto() {
         try {
 
@@ -134,6 +138,8 @@ class productos extends database{
                 return false;
             }
     }
+
+    // Obtener productos
     public static function obtenerDetallesProducto($db,$idProducto) {
         $stmt = $db->prepare("SELECT * FROM products WHERE productid = :id");
         $stmt->bindParam(':id', $idProducto);

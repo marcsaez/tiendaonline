@@ -18,27 +18,29 @@ class categoria extends database{
         $this->categoriaPadre = $categoriaPadre;
     }
 
-    //FUNCIONES QUE EJECUTARA ESTA CLASE
+    // FUNCIONES QUE EJECUTARA ESTA CLASE
+
+    // Añadir categoria
     public function anadir($nombre, $categoriaPadre){
         try{
-        if ($categoriaPadre) {
-            $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
-    
-            
-            $stmt->bindParam(':nombreCategoria', $nombre);
-            $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
-            
-            $stmt->execute();
-            return true;
-        }else {
-            $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
-    
-            
-            $stmt->bindParam(':nombreCategoria', $nombre);
-            
-            $stmt->execute();
-            return true;
-        }
+            if ($categoriaPadre) {
+                $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
+        
+                
+                $stmt->bindParam(':nombreCategoria', $nombre);
+                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
+                
+                $stmt->execute();
+                return true;
+            }else {
+                $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
+        
+                
+                $stmt->bindParam(':nombreCategoria', $nombre);
+                
+                $stmt->execute();
+                return true;
+            }
         
         } catch (Exception $e){
             echo "error: $e";

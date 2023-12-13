@@ -40,6 +40,8 @@ class Cliente extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
+
+    // Iniciar sesion cliente
     public function iniciarSesion($email, $contrasena) {
         $stmt = $this->db->prepare("SELECT * FROM customers WHERE email = :email AND customerPassword  = :contrasena");
         $stmt->bindParam(':email', $email);

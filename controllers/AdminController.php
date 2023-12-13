@@ -1,5 +1,7 @@
 <?php
     class AdminController{
+
+        // Login para administrador
         public function Login(){
             if(isset($_POST)){
                 require_once "models/admin.php";
