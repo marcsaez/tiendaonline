@@ -1,6 +1,7 @@
 <?php
 require_once("database.php");
 class productos extends database{
+    private $idproducto;
     private $nombre;
     private $descripcion;
     private $Imagen;
@@ -9,9 +10,22 @@ class productos extends database{
     private $precio;
     private $categoria;
 
+    public function __construct($idProducto,$nombre, $descripcion, $imagen, $stock, $destacado, $precio, $categoria) {
+        $this->idproducto = $idProducto;
+        $this->nombre = $nombre;
+        $this->descripcion = $descripcion;
+        $this->imagen = $imagen;
+        $this->stock = $stock;
+        $this->destacado = $destacado;
+        $this->precio = $precio;
+        $this->categoria = $categoria;
+    }
     //GETTERS Y SETTERS
     function getNombre() {
         return $this->nombre;
+    }
+    function getID() {
+        return $this->idproducto;
     }
     function getDescripcion() {
         return $this->descripcion;
@@ -30,6 +44,9 @@ class productos extends database{
     }
     function getCategoria() {
         return $this->categoria;
+    }
+    function setID($id) {
+        $this->idproducto = $id;
     }
     function setNombre($nombre) {
         $this->nombre = $nombre;
@@ -54,23 +71,23 @@ class productos extends database{
     }
 
     //FUNCIONES QUE EJECUTARA ESTA CLASE
-    public function anadir($id,$nombre, $descripcion, $imagen, $stock, $destacado, $precio, $categoria){
+    public function anadir(){
         try{    
         $stmt = $this->db->prepare("INSERT INTO products (productId, productName, productDescription, productImg, productStock, productNoted, productPrice, fkCategories) VALUES (:id, :nombre, :descripcion, :imagen, :stock, :destacado, :precio, :categoria)");
     
-            if($destacado){
+            if($this->destacado){
                 $destacado1 = 1;
             }else{
                 $destacado1 = 0;
             }
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':descripcion', $descripcion);
-            $stmt->bindParam(':imagen', $imagen);
-            $stmt->bindParam(':stock', $stock);
-            $stmt->bindParam(':destacado', $destacado1);
-            $stmt->bindParam(':precio', $precio);
-            $stmt->bindParam(':categoria', $categoria);
+            $stmt->bindParam(':id', $this->idproducto);
+            $stmt->bindParam(':nombre', $this->nombre);
+            $stmt->bindParam(':descripcion', $this->descripcion);
+            $stmt->bindParam(':imagen', $this->Imagen);
+            $stmt->bindParam(':stock', $this->stock);
+            $stmt->bindParam(':destacado', $this->destacado);
+            $stmt->bindParam(':precio', $this->precio);
+            $stmt->bindParam(':categoria', $this->categoria);
             $stmt->execute();
             return true;
         } catch (Exception $e){
@@ -78,9 +95,9 @@ class productos extends database{
             return false;
         }
     }
-    public function listarTodosProductos(){
+    public static function listarTodosProductos($db){
         try{
-            $stmt = $this->db->prepare("SELECT * FROM products");
+            $stmt = $db->prepare("SELECT * FROM products");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -90,24 +107,24 @@ class productos extends database{
         }
         return $resultados;
     }
-    public function actualizarProducto($id, $nuevoNombre, $nuevaDescripcion, $nuevaImagen, $nuevoStock, $nuevoDestacado, $nuevoPrecio, $nuevaCategoria) {
+    public function actualizarProducto() {
         try {
 
             $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productImg = :imagen, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
-            if($nuevoDestacado){
+            if($this->destacado){
                 $destacado1 = 1;
             }else{
                 $destacado1 = 0;
             }   
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':nombre', $nuevoNombre);
-            $stmt->bindParam(':descripcion', $nuevaDescripcion);
-            $stmt->bindParam(':imagen', $nuevaImagen);
-            $stmt->bindParam(':stock', $nuevoStock);
+            $stmt->bindParam(':nombre', $this->nombre);
+            $stmt->bindParam(':descripcion', $this->descripcion);
+            $stmt->bindParam(':imagen', $this->Imagen);
+            $stmt->bindParam(':stock', $this->stock);
             $stmt->bindParam(':destacado', $destacado1);
-            $stmt->bindParam(':precio', $nuevoPrecio);
-            $stmt->bindParam(':categoria', $nuevaCategoria);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':precio', $this->precio);
+            $stmt->bindParam(':categoria', $this->categoria);
+            $stmt->bindParam(':id', $this->idproducto);
             $stmt->execute();
         
             return true;
@@ -117,8 +134,8 @@ class productos extends database{
                 return false;
             }
     }
-    public function obtenerDetallesProducto($idProducto) {
-        $stmt = $this->db->prepare("SELECT * FROM products WHERE productid = :id");
+    public static function obtenerDetallesProducto($db,$idProducto) {
+        $stmt = $db->prepare("SELECT * FROM products WHERE productid = :id");
         $stmt->bindParam(':id', $idProducto);
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);

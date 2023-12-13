@@ -2,17 +2,17 @@
     class ProductosController{
         public function listarProductos(){
             require_once "models/productos.php";
-            $producto = new productos();
-            $producto->conectar();
-            $allproducts = $producto->listarTodosProductos();
+            $db = Productos::staticConectar();
+            $allproducts = Productos::listarTodosProductos($db);
             include "views/admin/listarProductos.php";
         }
         public function anadirProducto(){
             if(isset($_POST)){
                 require_once "models/productos.php";
-                $producto = new productos();
+                $producto = new productos($_POST['idProducto'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
-                $allproducts = $producto->anadir($_POST['idProducto'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $allproducts = $producto->anadir();
+                //QUITAR LOS SCRIPTS
                 if ($allproducts){
                     ?>
                     <script>
@@ -36,9 +36,9 @@
         public function editarProductos(){
             if(isset($_POST)){
                 require_once "models/productos.php";
-                $producto = new productos();
+                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
-                $allproducts = $producto->actualizarProducto($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $allproducts = $producto->actualizarProducto();
                 if ($allproducts){
                     ?>
                     <script>
@@ -61,10 +61,9 @@
             if (isset($_GET['id'])) {
                 require_once "models/productos.php";
                 $idProducto = $_GET['id'];
-                $producto = new productos();
-                $producto->conectar();
+                $db = Productos::staticConectar();
                 // Obtener los detalles del producto con la ID especificada
-                $productoDetalles = $producto->obtenerDetallesProducto($idProducto);
+                $productoDetalles = Productos::obtenerDetallesProducto($db, $idProducto);
                 $productos = null;
                 if (!empty($productoDetalles)) {
                     $productoRetornado = $productoDetalles;
