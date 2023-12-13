@@ -14,8 +14,8 @@ require_once "autoload.php";
 require_once "views/general/headeradmin.php";
 
 
-if (isset($_GET['controller'])){
-    $nombreController = $_GET['controller']."Controller";
+if (isset($_GET['Controller'])){
+    $nombreController = $_GET['Controller']."Controller";
 }
 else{
     //Controlador per dedecte

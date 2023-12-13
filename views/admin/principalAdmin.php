@@ -1,7 +1,7 @@
 <div class = "ContenidoAdmin">
     
     <div class="Productos">
-    <a href="index.php?Controller=Admin&action=listarProductos">
+    <a href="index.php?Controller=Productos&action=listarProductos">
        <img src="img/rectangulo.png" alt="Rectangulo" class = "RectanguloAdmin">
         <h1>Productos</h1>
         <img src="img/productos.png" alt="Mangas" id="mangaAdmn">
