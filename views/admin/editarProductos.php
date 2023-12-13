@@ -1,6 +1,19 @@
+<?php
+    foreach ($productoDetalles as $productos) {
+            // Acceder a los campos del producto
+            $idproduct = $productos['productid'];
+            $nombre = $productos['productname'];
+            $descripcion = $productos['productdescription'];
+            $imagen = $productos['productimg'];
+            $stock = $productos['productstock'];
+            $destacado = $productos['productnoted'];
+            $precio = $productos['productprice'];
+            $categoria = $productos['fkcategories'];
+         }
+?>
 <h2>Editar Producto</h2>
 
-<form enctype="multipart/form-data" action="index.php?Controller=Admin&action=editarProductos" method="post">
+<form enctype="multipart/form-data" action="index.php?Controller=Productos&action=editarProductos" method="post">
     <!-- ID del producto (puedes ocultarlo si lo pasas por otro medio) -->
     <input type="text" id="id" name="id" value="<?php echo $idproduct; ?>" readonly>
 

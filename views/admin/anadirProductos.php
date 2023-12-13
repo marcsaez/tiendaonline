@@ -1,5 +1,5 @@
 <div>
-    <form enctype="multipart/form-data" action="index.php?Controller=Admin&action=anadirProducto" method="POST" class = "">
+    <form enctype="multipart/form-data" action="index.php?Controller=Productos&action=anadirProducto" method="POST" class = "">
     <h2>Añadir Producto</h2>
         <label for="nombre">ID del Producto:</label>
         <input type="text" id="id" name="idProducto" required>

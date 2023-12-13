@@ -84,26 +84,11 @@ class productos extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // Recorrer los resultados con un foreach
-            foreach ($resultados as $producto) {
-                // Acceder a los campos del producto
-                $idproduct = $producto['productid'];
-                $nombre = $producto['productname'];
-                $descripcion = $producto['productdescription'];
-                $imagen = $producto['productimg'];
-                $stock = $producto['productstock'];
-                $destacado = $producto['productnoted'];
-                $precio = $producto['productprice'];
-                $categoria = $producto['fkcategories'];
-
-                //FALTARA AnADIR EL RESTO DE COSAS
-                echo "<p>$nombre, $descripcion <a href='index.php?Controller=Admin&action=paginaEditar&id=$idproduct'><img src='img/editar.png' alt='Editar'></a></p>";
             }
-            }
-            return true;
         }catch (Exception $e){
-            return false;
+            $resultados = null;
         }
+        return $resultados;
     }
     public function actualizarProducto($id, $nuevoNombre, $nuevaDescripcion, $nuevaImagen, $nuevoStock, $nuevoDestacado, $nuevoPrecio, $nuevaCategoria) {
         try {
