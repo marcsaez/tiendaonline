@@ -11,17 +11,23 @@ class categoria extends database{
     function getCategoriaPadre(){
         return $this ->categoriaPadre;
     }
+    function getIDCategoria(){
+        return $this -> IDCategoria;
+    }
     function setNombre($nombre){
         $this->nombre = $nombre;
     }
     function setCategoriaPadre($categoriaPadre){
         $this->categoriaPadre = $categoriaPadre;
     }
+    function setIDCategoria($IDCategoria){
+        $this-> IDCategoria = $IDCategoria;
+    }
 
     // FUNCIONES QUE EJECUTARA ESTA CLASE
 
     // Añadir categoria
-    public function anadir($nombre, $categoriaPadre){
+    public function anadirCategoria($nombre, $categoriaPadre){
         try{
             if ($categoriaPadre) {
                 $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
@@ -43,8 +49,32 @@ class categoria extends database{
             }
         
         } catch (Exception $e){
-            echo "error: $e";
-            return false;
+            echo "error en la insercion de categorias: $e";
+        }
+    }
+    //Editar categoria
+    public function editarCategoria(){
+        try{
+            if ($categoriaPadre) {
+                $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE idCategoria = :idCategoria;");
+                
+                $stmt->bindParam(':nombreCategoria', $nombre);
+                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
+                $stmt->bindParam(':idCategoria', $IDCategoria);
+                
+                $stmt->execute();
+                return true;
+            }else {
+                $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE idCategoria= :idCategoria;");
+        
+                $stmt->bindParam(':nombreCategoria', $nombre);
+                $stmt->bindParam(':idCategoria', $IDCategoria);
+
+                $stmt->execute();
+                return true;
+            }
+        }catch(Exception $e){
+            echo "error en la edicion de categorias: $e";
         }
     }
 }
