@@ -63,16 +63,30 @@ class categoria extends database{
                 $stmt->bindParam(':idCategoria', $IDCategoria);
                 
                 $stmt->execute();
-                return true;
-            }else {
+                 
+            }else{
                 $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE idCategoria= :idCategoria;");
         
                 $stmt->bindParam(':nombreCategoria', $nombre);
                 $stmt->bindParam(':idCategoria', $IDCategoria);
 
                 $stmt->execute();
-                return true;
             }
+            return true;
+        }catch(Exception $e){
+            echo "error en la edicion de categorias: $e";
+        }
+    }
+    //Eliminar categoria
+    public function eliminarCategoria(){
+        try{
+            $stmt = $this->db->prepare("DELETE FROM categories WHERE idCategoria = :idCategoria; ");
+            
+            $stmt->bindParam(':idCategoria', $IDCategoria);
+            
+            $stmt->execute();
+            
+            return true;
         }catch(Exception $e){
             echo "error en la edicion de categorias: $e";
         }
