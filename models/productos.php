@@ -151,5 +151,17 @@ class productos extends database{
         return $resultados;
     }
     
+    //Obtener productos con la misma subcategoria para hacer display en la pagina de producto
+    public function masProductos($subcategoria){
+        try{
+            $stmt = $db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria ORDER BY random() LIMIT 6;");
+            $stmt->bindParam(':subcategoria', $subcategoria);
+            $stmt->execute();
+            $masProductos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $masProductos;
+        }catch (Excepction $e){
+            echo"Error en la obtencion de productos similares" . $e->getMessage();
+        }
+    }
 }
 ?>

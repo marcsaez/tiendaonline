@@ -32,7 +32,6 @@ class Admin extends database{
             return true;
         } else {
             
-            return false;
         }
     }
 

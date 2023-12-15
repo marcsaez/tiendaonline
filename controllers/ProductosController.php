@@ -57,6 +57,7 @@
                 }
             }
         }
+        
         public function paginaEditar(){
             if (isset($_GET['id'])) {
                 require_once "models/productos.php";
