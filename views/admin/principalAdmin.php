@@ -7,7 +7,7 @@
         <img src="img/productos.png" alt="Mangas" id="mangaAdmn">
     </div></a>
     <div class = "Categorias" class = "RectanguloAdmin">
-    <a href="index.php?Controller=Admin&action=listarCategorias">
+    <a href="index.php?Controller=Categorias&action=listarCategorias">
         <img src="img/rectangulo.png" alt="Rectangulo" class = "RectanguloAdmin">
         <h1>Categorias</h1>
         <img src="img/categoria.png" alt="Categoria">
