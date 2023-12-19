@@ -8,7 +8,7 @@
     <h2><?php echo $nombreProducto ?></h2>
     <p><?php echo ($precioProducto+1) ?></p>
     <h2><?php echo $precioProducto ?></h2>
-    <p><?php echo $codigoProducto ?></p>
+    <p>Ref: <?php echo $codigoProducto ?></p>
     <h1>Disponibilidad: </h1>
     <?php
     if($stockProducto>10){

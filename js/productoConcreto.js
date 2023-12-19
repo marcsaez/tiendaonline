@@ -16,7 +16,7 @@ function anadirCarrito() {
     let nombreProducto = 'Nombre del Producto';
     let cantidad = parseInt(inputCantidad.value);
     alert(`Añadir ${cantidad} ${nombreProducto}(s) al carrito`);
-    // Aqui ir la parte de codigo encargada de mandar la info al carrito
+    // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 }
 
 function mostrarOcultar(id) {
