@@ -21,7 +21,6 @@
                 $destacado = $producto['productnoted'];
                 $precio = $producto['productprice'];
                 $categoria = $producto['fkcategories'];
-                //FALTARA AnADIR EL RESTO DE COSAS
                 echo "<div>";
                     echo"<div>$idproduct</div>";
                     echo"<div><img src='$imagen' alt='Imagen de $nombre'></div>";
