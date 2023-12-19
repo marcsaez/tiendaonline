@@ -1,4 +1,19 @@
-<a href="index.php?Controller=Admin&action=paginaAnadirCategoria"><img src="img/mas.png" alt="Anadir Categoria"></a>
+<script src="../../js/productoConcreto.js"></script>
+<h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
+<div id="anadirCategoria" style="display:none;">
+    <h3>Añadir categoria: </h3>
+    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadir" method="POST" class = "">   
+        <label for="nombre">Nombre de la categoria:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="nombre">ID de la Categoria padre:</label>
+        <input type="text" id="categoriaPadre" name="categoriaPadre">
+
+        <button type="submit">Añadir Categoria</button>
+    </form>
+</div>
+
+<!-- Listar Categorias -->
 <?php
     if (isset($allcategories) && is_array($allcategories)) {
         foreach ($allcategories as $categoria) {
