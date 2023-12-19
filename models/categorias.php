@@ -35,7 +35,7 @@ class categoria extends database{
     // Listar categorias
     public static function listarTodasCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT * FROM categories");
+            $stmt = $db->prepare("SELECT * FROM categories WHERE active=1");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -117,22 +117,28 @@ class categoria extends database{
         }
     }
     //Eliminar categoria
-    public function eliminarCategoria(){
-        try{
-            $stmt = $this->db->prepare("DELETE FROM categories WHERE idCategoria = :idCategoria; ");
+    public function actualizarCategoria() {
+        if (isset($this->IDCategoria)) {
+            $sql = "UPDATE categories SET active = 0 WHERE id = :idCategoria";
             
+            $stmt = $this->db->prepare($sql);
+
             $stmt->bindParam(':idCategoria', $this->IDCategoria);
-            
+
             $stmt->execute();
-            
-            return true;
-        }catch(Exception $e){
-            echo "error en la edicion de categorias: $e";
+
+            if ($stmt->rowCount() > 0) {
+                echo "La categoría con ID {$this->IDCategoria} ha sido actualizada correctamente.";
+            } else {
+                echo "No se encontró ninguna categoría con el ID {$this->IDCategoria}.";
+            }
+        } else {
+            echo "IDCategoria no proporcionado.";
         }
     }
     public static function desplegableCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT categoryname FROM categories");
+            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
