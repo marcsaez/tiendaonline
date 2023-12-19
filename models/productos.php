@@ -74,24 +74,40 @@ class productos extends database{
 
     // Insertar producto
     public function anadir(){
-        try{    
-        $stmt = $this->db->prepare("INSERT INTO products (productId, productName, productDescription, productImg, productStock, productNoted, productPrice, fkCategories) VALUES (:id, :nombre, :descripcion, :imagen, :stock, :destacado, :precio, :categoria)");
+        try{
+            $categoria = $this->categoria;
+            if($categoria){
+                // Preparar la consulta con un marcador de posición (:categoria)
+                $stmt2 = $this->db->prepare("SELECT categoryid FROM categories WHERE categoryname = :categoria");
+
+                // Vincular el valor de $categoria al marcador de posición
+                $stmt2->bindParam(':categoria', $categoria, PDO::PARAM_STR);
+
+                // Ejecutar la consulta
+                $stmt2->execute();
+
+                // Obtener el resultado
+                $result = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                $stmt = $this->db->prepare("INSERT INTO products (productId, productName, productDescription, productImg, productStock, productNoted, productPrice, fkCategories) VALUES (:id, :nombre, :descripcion, :imagen, :stock, :destacado, :precio, :categoria)");
     
-            if($this->destacado){
-                $destacado1 = 1;
-            }else{
-                $destacado1 = 0;
-            }
-            $stmt->bindParam(':id', $this->idproducto);
-            $stmt->bindParam(':nombre', $this->nombre);
-            $stmt->bindParam(':descripcion', $this->descripcion);
-            $stmt->bindParam(':imagen', $this->Imagen);
-            $stmt->bindParam(':stock', $this->stock);
-            $stmt->bindParam(':destacado', $this->destacado);
-            $stmt->bindParam(':precio', $this->precio);
-            $stmt->bindParam(':categoria', $this->categoria);
-            $stmt->execute();
-            $retorno = true;
+                if($this->destacado){
+                    $destacado1 = 1;
+                }else{
+                    $destacado1 = 0;
+                }
+                $stmt->bindParam(':id', $this->idproducto);
+                $stmt->bindParam(':nombre', $this->nombre);
+                $stmt->bindParam(':descripcion', $this->descripcion);
+                $stmt->bindParam(':imagen', $this->Imagen);
+                $stmt->bindParam(':stock', $this->stock);
+                $stmt->bindParam(':destacado', $destacado1);
+                $stmt->bindParam(':precio', $this->precio);
+                $stmt->bindParam(':categoria', $result['categoryid']);
+                $stmt->execute();
+                $retorno = true;
+            }    
+        
         } catch (Exception $e){
             echo "error: $e";
             $retorno = false;
@@ -154,7 +170,7 @@ class productos extends database{
     //Obtener productos con la misma subcategoria para hacer display en la pagina de producto
     public function masProductos($subcategoria){
         try{
-            $stmt = $db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria ORDER BY random() LIMIT 6;");
+            $stmt = $this->db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria ORDER BY random() LIMIT 6;");
             $stmt->bindParam(':subcategoria', $subcategoria);
             $stmt->execute();
             $masProductos = $stmt->fetchAll(PDO::FETCH_ASSOC);

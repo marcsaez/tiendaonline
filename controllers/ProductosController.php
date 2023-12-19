@@ -31,7 +31,8 @@
             }
         }
         public function paginaAnadirProductos(){
-            require_once "views/admin/anadirProductos.php";
+            $desplegable = ProductosController::mostrarCategorias();
+            include "views/admin/anadirProductos.php";
         }
         public function editarProductos(){
             if(isset($_POST)){
@@ -78,6 +79,13 @@
     
             }
             
+        }
+
+        public function mostrarCategorias(){
+            require_once "models/categorias.php"; 
+            $db = categoria::staticConectar();
+            $desplegable = categoria::desplegableCategorias($db);
+            return $desplegable;
         }
     }
 ?>

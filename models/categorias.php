@@ -3,6 +3,7 @@ require_once("database.php");
 class categoria extends database{
     private $nombre;
     private $categoriaPadre;
+    private $IDCategoria;
 
     public function __construct($nombre, $categoriaPadre) {
         $this->nombre = $nombre;
@@ -93,20 +94,20 @@ class categoria extends database{
     //Editar categoria
     public function editarCategoria(){
         try{
-            if ($categoriaPadre) {
+            if ($this->categoriaPadre) {
                 $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE idCategoria = :idCategoria;");
                 
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
-                $stmt->bindParam(':idCategoria', $IDCategoria);
+                $stmt->bindParam(':nombreCategoria', $this->nombre);
+                $stmt->bindParam(':idCategoriaPadre', $this->categoriaPadre);
+                $stmt->bindParam(':idCategoria', $this->IDCategoria);
                 
                 $stmt->execute();
                  
             }else{
                 $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE idCategoria= :idCategoria;");
         
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                $stmt->bindParam(':idCategoria', $IDCategoria);
+                $stmt->bindParam(':nombreCategoria', $this->nombre);
+                $stmt->bindParam(':idCategoria', $this->IDCategoria);
 
                 $stmt->execute();
             }
@@ -120,7 +121,7 @@ class categoria extends database{
         try{
             $stmt = $this->db->prepare("DELETE FROM categories WHERE idCategoria = :idCategoria; ");
             
-            $stmt->bindParam(':idCategoria', $IDCategoria);
+            $stmt->bindParam(':idCategoria', $this->IDCategoria);
             
             $stmt->execute();
             
@@ -128,6 +129,18 @@ class categoria extends database{
         }catch(Exception $e){
             echo "error en la edicion de categorias: $e";
         }
+    }
+    public static function desplegableCategorias($db){
+        try{
+            $stmt = $db->prepare("SELECT categoryname FROM categories");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
     }
 }
 ?>

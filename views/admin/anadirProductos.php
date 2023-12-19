@@ -11,7 +11,7 @@
         <textarea id="descripcion" name="descripcion" required></textarea>
 
         <label for="imagen">URL de la Imagen:</label>
-        <input type="file" id="imagen" name="imagen" accept=".jpg, .png, .jpeg" required>
+        <input type="text" id="imagen" name="imagen"  required>
 
         <label for="stock">Stock:</label>
         <input type="number" id="stock" name="stock" required>
@@ -23,7 +23,14 @@
         <input type="number" id="precio" name="precio" step="0.01" required>
 
         <label for="categoria">Categoría:</label>
-        <input type="text" id="categoria" name="categoria" >
+        <select name="categoria" id="categorias">
+        <option value="" disabled selected>Selecciona</option>
+            <?php 
+                 foreach ($desplegable as $categoria) {
+                    echo "<option>" . $categoria['categoryname'] . "</option>";
+                 }
+            ?>
+        </select>
 
         <button type="submit">Añadir Producto</button>
 
