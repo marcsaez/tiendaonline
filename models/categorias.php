@@ -30,6 +30,8 @@ class categoria extends database{
     }
 
     // FUNCIONES QUE EJECUTARA ESTA CLASE
+
+    // Listar categorias
     public static function listarTodasCategorias($db){
         try{
             $stmt = $db->prepare("SELECT * FROM categories");
@@ -45,31 +47,49 @@ class categoria extends database{
 
 
     // Añadir categoria
-    public function anadirCategoria($nombre, $categoriaPadre){
-        try{
-            if ($categoriaPadre) {
-                $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
-        
-                
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
-                
-                $stmt->execute();
-                return true;
+    public function anadir(){
+        try{ 
+        $categoriaPadre = $this->categoriaPadre;
+            if($categoriaPadre){
+                $stmt = $this->db->prepare("INSERT INTO categories (categoryname, fkfathercategory) VALUES (:nombre, :categoriaPadre)");
+                $stmt->bindParam(':nombre', $this->nombre);
+                $stmt->bindParam(':categoriaPadre', $this->categoriaPadre);
             }else {
-                $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
-        
-                
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                
-                $stmt->execute();
-                return true;
+                $stmt = $this->db->prepare("INSERT INTO categories (categoryname) VALUES (:nombre)");
+                $stmt->bindParam(':nombre', $this->nombre);
             }
-        
+            $retorno = true;
         } catch (Exception $e){
-            echo "error en la insercion de categorias: $e";
+            echo "error: $e";
+            $retorno = false;
         }
+        return $retorno;
     }
+    // public function anadirCategoria($nombre, $categoriaPadre){
+    //     try{
+    //         if ($categoriaPadre) {
+    //             $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
+        
+                
+    //             $stmt->bindParam(':nombreCategoria', $nombre);
+    //             $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
+                
+    //             $stmt->execute();
+    //             return true;
+    //         }else {
+    //             $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
+        
+                
+    //             $stmt->bindParam(':nombreCategoria', $nombre);
+                
+    //             $stmt->execute();
+    //             return true;
+    //         }
+        
+    //     } catch (Exception $e){
+    //         echo "error en la insercion de categorias: $e";
+    //     }
+    // }
     //Editar categoria
     public function editarCategoria(){
         try{
