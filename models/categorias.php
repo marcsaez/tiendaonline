@@ -3,6 +3,11 @@ require_once("database.php");
 class categoria extends database{
     private $nombre;
     private $categoriaPadre;
+
+    public function __construct($nombre, $categoriaPadre) {
+        $this->nombre = $nombre;
+        $this->categoriaPadre = $categoriaPadre;
+    }
     
     //GETTERS Y SETTERS
     function getNombre(){
@@ -25,6 +30,19 @@ class categoria extends database{
     }
 
     // FUNCIONES QUE EJECUTARA ESTA CLASE
+    public static function listarTodasCategorias($db){
+        try{
+            $stmt = $db->prepare("SELECT * FROM categories");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
+
 
     // Añadir categoria
     public function anadirCategoria($nombre, $categoriaPadre){
