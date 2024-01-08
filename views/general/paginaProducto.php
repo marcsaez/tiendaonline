@@ -25,7 +25,7 @@
         <input type="text" id="cantidad" value="1" readonly>
         <button onclick="incrementarCantidad()">+</button>
     </div>
-    <button onclick="anadirCarrito()"><img src="../../img/carro.jpg" alt="Aqui va el carrito">Añadir</button>
+    <button onclick="anadirCarrito()"><img src="../../img/carrito.png" alt="Aqui va el carrito">Añadir</button>
     <h2>Descricpion</h2>
     <h2 onclick="mostrarOcultar('descripcionProd')">+</h2>
     <div id="descripcionProd" style="display:none;">

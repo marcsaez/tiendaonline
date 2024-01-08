@@ -6,7 +6,12 @@
             $allcategories = Categoria::listarTodasCategorias($db);
             require_once "views/admin/listarCategorias.php";
         }
-
+        public function menuCategorias(){
+            require_once "models/categorias.php";
+            $db = Categoria::staticConectar();
+            $allcategories = Categoria::listarTodasCategorias($db);
+            require_once "views/general/header.php";
+        }
         public function anadirProducto(){
             require_once "views/admin/anadirProductos.php";
             // if(isset($_POST)){
