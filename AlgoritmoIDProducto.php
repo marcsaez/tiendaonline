@@ -9,7 +9,7 @@ function generarCodigoUnico($categoria, $nombre, $numero, $longitudCategoria = 2
     //funcion insertar 
     return $codigoUnico;
 }
-//El paranetro numero de la funcion generar se crea con esta funcion de aqui,
+//El parametro numero de la funcion generar se crea con esta funcion de aqui,
 //por lo que en vez de pasarlo como parametro en la funcion de arriba se 
 //llamara a la funcion dentro y se le asignara la variable $numero
 function obtenerSiguienteNumeroProducto() {

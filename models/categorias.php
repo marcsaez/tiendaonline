@@ -3,6 +3,7 @@ require_once("database.php");
 class categoria extends database{
     private $nombre;
     private $categoriaPadre;
+    private $IDCategoria;
 
     public function __construct($nombre, $categoriaPadre) {
         $this->nombre = $nombre;
@@ -34,7 +35,7 @@ class categoria extends database{
     // Listar categorias
     public static function listarTodasCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT * FROM categories");
+            $stmt = $db->prepare("SELECT * FROM categories WHERE active=1");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -93,20 +94,20 @@ class categoria extends database{
     //Editar categoria
     public function editarCategoria(){
         try{
-            if ($categoriaPadre) {
+            if ($this->categoriaPadre) {
                 $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE idCategoria = :idCategoria;");
                 
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
-                $stmt->bindParam(':idCategoria', $IDCategoria);
+                $stmt->bindParam(':nombreCategoria', $this->nombre);
+                $stmt->bindParam(':idCategoriaPadre', $this->categoriaPadre);
+                $stmt->bindParam(':idCategoria', $this->IDCategoria);
                 
                 $stmt->execute();
                  
             }else{
                 $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE idCategoria= :idCategoria;");
         
-                $stmt->bindParam(':nombreCategoria', $nombre);
-                $stmt->bindParam(':idCategoria', $IDCategoria);
+                $stmt->bindParam(':nombreCategoria', $this->nombre);
+                $stmt->bindParam(':idCategoria', $this->IDCategoria);
 
                 $stmt->execute();
             }
@@ -116,18 +117,36 @@ class categoria extends database{
         }
     }
     //Eliminar categoria
-    public function eliminarCategoria(){
-        try{
-            $stmt = $this->db->prepare("DELETE FROM categories WHERE idCategoria = :idCategoria; ");
+    public function actualizarCategoria() {
+        if (isset($this->IDCategoria)) {
+            $sql = "UPDATE categories SET active = 0 WHERE id = :idCategoria";
             
-            $stmt->bindParam(':idCategoria', $IDCategoria);
-            
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->bindParam(':idCategoria', $this->IDCategoria);
+
             $stmt->execute();
-            
-            return true;
-        }catch(Exception $e){
-            echo "error en la edicion de categorias: $e";
+
+            if ($stmt->rowCount() > 0) {
+                echo "La categoría con ID {$this->IDCategoria} ha sido actualizada correctamente.";
+            } else {
+                echo "No se encontró ninguna categoría con el ID {$this->IDCategoria}.";
+            }
+        } else {
+            echo "IDCategoria no proporcionado.";
         }
+    }
+    public static function desplegableCategorias($db){
+        try{
+            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
     }
 }
 ?>
