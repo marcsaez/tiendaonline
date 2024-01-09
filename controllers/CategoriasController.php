@@ -21,7 +21,7 @@
                 $categoria = new categoria($_POST['nombre'],$_POST['categoriaPadre']);
                 $categoria->conectar();
                 $allcategories = $categoria->anadir();
-                if ($allproducts){
+                if ($allcategories){
                     ?>
                     <script>
                         alert("Producto creado correctamente");
