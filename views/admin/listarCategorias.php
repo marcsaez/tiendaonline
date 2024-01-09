@@ -2,7 +2,7 @@
 <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
 <div id="anadirCategoria" style="display:none;">
     <h3>Añadir categoria: </h3>
-    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadir" method="POST" class = "">   
+    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadirCategoria" method="POST" class = "">   
         <label for="nombre">Nombre de la categoria:</label>
         <input type="text" id="nombre" name="nombre" required>
 
