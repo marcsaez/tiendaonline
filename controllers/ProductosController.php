@@ -90,7 +90,8 @@
         public function mostrarPrincipal(){
             require_once "models/productos.php";
             require_once "models/categorias.php"; 
-            
+            $db = Productos::staticConectar();
+            $productosDestacados = Productos::productosDestacados();
         }
     }
 ?>

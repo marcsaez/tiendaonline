@@ -9,8 +9,8 @@
         public static function menuCategorias(){
             require_once "models/categorias.php";
             $db = Categoria::staticConectar();
-            $allcategories = Categoria::listarTodasCategorias($db);
-            require_once "views/general/headeradmin.php";
+            $totalCategorias = Categoria::navCategorias($db);
+            require_once "views/general/header.php";
         }
         public function anadirCategoria(){
             if(isset($_POST)){

@@ -179,5 +179,15 @@ class productos extends database{
             echo"Error en la obtencion de productos similares" . $e->getMessage();
         }
     }
+    public static function productosDestacados(){
+        try{
+            $stmt = $this->db->prepare("SELECT productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt->execute();
+            $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $productosDestacados;
+        }catch (Excepction $e){
+            echo"Error en la obtencion de productos similares" . $e->getMessage();
+        }
+    }
 }
 ?>
