@@ -51,13 +51,16 @@ class categoria extends database{
     public function anadir(){
         try{ 
         $categoriaPadre = $this->categoriaPadre;
+        $nombre = $this->nombre;
             if($categoriaPadre){
                 $stmt = $this->db->prepare("INSERT INTO categories (categoryname, fkfathercategory) VALUES (:nombre, :categoriaPadre)");
                 $stmt->bindParam(':nombre', $this->nombre);
                 $stmt->bindParam(':categoriaPadre', $this->categoriaPadre);
+                $stmt->execute();
             }else {
                 $stmt = $this->db->prepare("INSERT INTO categories (categoryname) VALUES (:nombre)");
                 $stmt->bindParam(':nombre', $this->nombre);
+                $stmt->execute();
             }
             $retorno = true;
         } catch (Exception $e){
