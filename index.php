@@ -11,8 +11,7 @@
 <body>
 <?php 
 require_once "autoload.php";
-require_once "views/general/headeradmin.php";
-
+CategoriasController::menuCategorias();
 
 if (isset($_GET['Controller'])){
     $nombreController = $_GET['Controller']."Controller";

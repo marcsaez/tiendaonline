@@ -78,7 +78,6 @@
                 $productoRetornado = null;
     
             }
-            
         }
 
         public function mostrarCategorias(){
@@ -86,6 +85,12 @@
             $db = categoria::staticConectar();
             $desplegable = categoria::desplegableCategorias($db);
             return $desplegable;
+        }
+
+        public function mostrarPrincipal(){
+            require_once "models/productos.php";
+            require_once "models/categorias.php"; 
+            
         }
     }
 ?>

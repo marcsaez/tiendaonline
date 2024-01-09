@@ -6,11 +6,11 @@
             $allcategories = categoria::listarTodasCategorias($db);
             require_once "views/admin/listarCategorias.php";
         }
-        public function menuCategorias(){
+        public static function menuCategorias(){
             require_once "models/categorias.php";
             $db = Categoria::staticConectar();
             $allcategories = Categoria::listarTodasCategorias($db);
-            require_once "views/general/header.php";
+            require_once "views/general/headeradmin.php";
         }
         public function anadirProducto(){
             require_once "views/admin/anadirProductos.php";
