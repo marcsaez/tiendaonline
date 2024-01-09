@@ -87,11 +87,12 @@
             return $desplegable;
         }
 
-        public function mostrarPrincipal(){
+        public static function mostrarPrincipal(){
             require_once "models/productos.php";
             require_once "models/categorias.php"; 
             $db = Productos::staticConectar();
-            $productosDestacados = Productos::productosDestacados();
+            $productosDestacados = Productos::productosDestacados($db);
+            require_once "views/general/paginaPrincipal.php";
         }
     }
 ?>

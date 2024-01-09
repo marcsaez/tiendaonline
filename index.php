@@ -27,13 +27,13 @@ if (class_exists($nombreController)){
         $action = $_GET['action'];
     }
     else{
-        require_once "views/admin/loginAdmin.php";
+        ProductosController::mostrarPrincipal();
         $action ="";
     }
     if (isset($action) && method_exists($controlador, $action)) {
         $controlador->$action();
     } else {
-        require_once "views/admin/loginAdmin.php";
+        ProductosController::mostrarPrincipal();
         $action = "";
     }  
 }else{

@@ -179,9 +179,9 @@ class productos extends database{
             echo"Error en la obtencion de productos similares" . $e->getMessage();
         }
     }
-    public static function productosDestacados(){
+    public static function productosDestacados($db){
         try{
-            $stmt = $this->db->prepare("SELECT productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt = $db->prepare("SELECT productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
             $stmt->execute();
             $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $productosDestacados;
