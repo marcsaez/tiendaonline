@@ -1,0 +1,41 @@
+header {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 7.813rem;
+}
+header > section {
+  width: 100%;
+  border: 1px solid red;
+  height: 5rem;
+}
+header > section:nth-child(2) {
+  height: 2.813rem;
+}
+header > section:nth-child(2) nav {
+  display: flex;
+  width: 100%;
+}
+header > section:nth-child(2) nav ul {
+  width: 100%;
+  height: 2.813rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+header > section:nth-child(2) nav ul li a {
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=main.css.map */

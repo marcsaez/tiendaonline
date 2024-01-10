@@ -11,8 +11,7 @@
 <body>
 <?php 
 require_once "autoload.php";
-require_once "views/general/headeradmin.php";
-
+CategoriasController::menuCategorias();
 
 if (isset($_GET['Controller'])){
     $nombreController = $_GET['Controller']."Controller";
@@ -28,10 +27,15 @@ if (class_exists($nombreController)){
         $action = $_GET['action'];
     }
     else{
-        require_once "views/admin/loginAdmin.php";
+        ProductosController::mostrarPrincipal();
         $action ="";
     }
-    $controlador->$action();   
+    if (isset($action) && method_exists($controlador, $action)) {
+        $controlador->$action();
+    } else {
+        ProductosController::mostrarPrincipal();
+        $action = "";
+    }  
 }else{
 
     echo "No existe el controlador";

@@ -122,18 +122,17 @@ class categoria extends database{
         
         
     }
-
-    public static function desplegableCategorias($db){
+    public static function navCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1");
+            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1 AND fkfathercategory is NULL");
             $stmt->execute();
             if($stmt->rowCount() > 0){
-                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }catch (Exception $e){
-            $resultados = null;
+            $totalCategorias = null;
         }
-        return $resultados;
+        return $totalCategorias;
     }
 }
 ?>

@@ -6,10 +6,10 @@
             $allcategories = categoria::listarTodasCategorias($db);
             require_once "views/admin/listarCategorias.php";
         }
-        public function menuCategorias(){
+        public static function menuCategorias(){
             require_once "models/categorias.php";
             $db = Categoria::staticConectar();
-            $allcategories = Categoria::listarTodasCategorias($db);
+            $totalCategorias = Categoria::navCategorias($db);
             require_once "views/general/header.php";
         }
         public function anadirCategoria(){
