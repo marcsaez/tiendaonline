@@ -1,27 +1,39 @@
-<div>
+<div id="slider"></div>     
+<main id="index-grid">
+    <div class="void"></div>
     <div>
-        <h2><img src="././img/trending.png" alt="fueguito">TOP TENDENCIAS DE ESTE MES</h2>
-        <div>
-            <?php
-            $vuelta=1;
-                foreach ($productosDestacados as $producto){
-                    echo"<div>";
-                        echo "<img src='".$producto['productimg']."' alt='Producto Destacado'>";
-                        echo "<h2>Top $vuelta </h2>";
-                        echo "<a href=''>".$producto['productname']."</a>";
-                        echo "<p>".$producto['productdescription']."</p>";
-                        echo "<button><img src='././img/carrito.png' alt='carro'>Añadir</button>";
-                    echo"</div>";
-                }
-            ?>
-        </div>
+        <section>
+            <h2><img src="././img/trending.png" alt="fueguito">TOP TENDENCIAS DE ESTE MES</h2>
+            <div class="warp">
+                <div class="top-card"></div>
+                <div class="top-card"></div>
+                <div class="top-card"></div>
+                <div class="top-card"></div>
+                <?php
+                $vuelta=1;
+                    foreach ($productosDestacados as $producto){
+                        echo"<div>";
+                            echo "<img src='".$producto['productimg']."' alt='Producto Destacado'>";
+                            echo "<h2>Top $vuelta </h2>";
+                            echo "<a href=''>".$producto['productname']."</a>";
+                            echo "<p>".$producto['productdescription']."</p>";
+                            echo "<button><img src='././img/carrito.png' alt='carro'>Añadir</button>";
+                        echo"</div>";
+                    }
+                ?>
+            </div>
+        </section>
+        <section>
+            <h2>ENCUENTRA LO QUE MÁS TE GUSTA</h2>
+
+            <div>
+                <a href="#"><img src="././img/grid-one-piece-2.jpg" alt="novedades"><span>novedades</span> </a>
+                <a href="#"><img src="././img/DBPanel.webp" alt="manga"><span>manga</span></a>
+                <a href="#"><img src="././img/solo-leveling.png" alt="manhwa"><span>manhwa</span></a>
+                <a href="#"><img src="././img/grid-juego.png" alt="juegos-de-mesa"><span>jugos de mesa</span></a>
+                <a href="#"><img src="././img/grid-merch.png" alt="merchandising"><span>merchandising</span></a>
+            </div>
+        </section>
     </div>
-    <div>
-        <h2>ENCUENTRA LO QUE MÁS TE GUSTA</h2>
-        <a href="#"><div>Novedades</div> </a>
-        <a href="#"><div>Manga</div></a>
-        <a href="#"><div>Manhwa</div></a>
-        <a href="#"><div>Merchandaising</div></a>
-        <a href="#"><div>Juegos de Mesa</div></a>
-    </div>
-</div>
+    <div class="void"></div>
+</main>
