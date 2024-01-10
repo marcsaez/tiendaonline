@@ -120,6 +120,14 @@
                 // No es necesario devolver nada aquí
             }
         }
-        
+        public static function productoConcreto(){
+            require_once "models/productos.php";
+            if(isset($_GET['productID'])){
+                $id=$_GET['productID'];
+                $db = Productos::staticConectar();
+                $productosDestacados = Productos::productoConcreto($db,$id);
+            }
+            require_once "views/general/paginaProducto.php";
+        }
     }
 ?>

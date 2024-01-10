@@ -191,7 +191,7 @@ class productos extends database{
     }
     public function productoConcreto($db, $idproducto){
         try{
-            $stmt = $db->prepare("SELECT * FROM products WHERE productid = :idproducto;");
+            $stmt = $this->$db->prepare("SELECT * FROM products WHERE productid = :idproducto;");
             $stmt->bindParam(':idproducto', $idproducto);
             $stmt->execute();
             if($stmt->rowCount() > 0){
