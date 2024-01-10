@@ -94,5 +94,22 @@
             $productosDestacados = Productos::productosDestacados($db);
             require_once "views/general/paginaPrincipal.php";
         }
+        public function buscar() {
+            require_once "models/productos.php";
+        
+            if (isset($_POST['termino'])) {
+                $termino_busqueda = $_POST['termino'];
+                $db = Productos::staticConectar();
+                $resultados = Productos::buscadorProductos($db, $termino_busqueda);
+                
+                // Establecer el encabezado para indicar que se está enviando JSON
+                header('Content-Type: application/json');
+        
+                // Imprimir la respuesta JSON
+                echo json_encode($resultados);
+                // No es necesario devolver nada aquí
+            }
+        }
+        
     }
 ?>

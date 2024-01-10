@@ -1,4 +1,14 @@
+<script src="js/buscadorAjax.js"></script>
+
 <a href="index.php?Controller=Productos&action=paginaAnadirProductos"><img src="img/mas.png" alt="Añadir Producto"></a>
+
+<div id="buscadorAJAX">
+    <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
+        <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
+    </form>
+
+    </div>
+<div id="resultadosDiv"></div>
 <?php
 // Suponiendo que estás creando una instancia de ProductosController
     echo "<div>";

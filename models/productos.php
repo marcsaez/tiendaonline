@@ -205,5 +205,18 @@ class productos extends database{
         }
         return $productoConcreto;
     }
+    public static function buscadorProductos($db, $termino_busqueda){
+        try{
+            $stmt = $db->prepare("SELECT * FROM products WHERE productname LIKE '%$termino_busqueda%'");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
+    
 }
 ?>
