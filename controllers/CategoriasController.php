@@ -38,6 +38,16 @@
             
         }
 
+        public function editarCategoria(){
+            if(isset($_POST)){
+                require_once "models/categorias.php";
+                $id=$_POST['id'];
+                $nombre=$_POST['nombre'];
+                $categoriaPadre=$_POST['categoriaPadre'];
+                echo $id, $nombre, $categoriaPadre;
+            }
+        }
+
         public function eliminar(){
             if (isset($_GET['IDCategoria'])) {
          

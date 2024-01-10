@@ -36,7 +36,7 @@ class categoria extends database{
     // Listar categorias
     public static function listarTodasCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT * FROM categories WHERE active=1");
+            $stmt = $db->prepare("SELECT * FROM categories WHERE active=1 ORDER BY categoryid");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
