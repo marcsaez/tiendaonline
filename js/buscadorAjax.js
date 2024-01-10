@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function mostrarResultados(resultados) {
         var html = '';
-        console.log("hi");
+        
         for (var i = 0; i < resultados.length; i++) {
-            html += '<p>' + resultados[i].productname + ' - ' + resultados[i].productdescription + ' - ' + resultados[i].productprice + '</p>';
+            html += '<p>' + resultados[i].productname + ' - ' + resultados[i].productdescription + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p>';
         }
 
         resultadosDiv.innerHTML = html;

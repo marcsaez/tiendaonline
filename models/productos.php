@@ -217,6 +217,21 @@ class productos extends database{
         }
         return $resultados;
     }
-    
+    public static function obtenerSiguienteNumeroProducto($db) {
+        try{
+            $stmt = $db->prepare("SELECT COUNT(*) as total FROM products");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $siguienteNumero = $stmt->fetchColumn();
+                if ($resultado) {
+                    $fila = pg_fetch_assoc($resultado);
+                    $siguienteNumero = $fila['total'] + 1;
+                }
+            }
+        }catch (Exception $e){
+            $siguienteNumero = 0;
+        }
+        return $siguienteNumero;
+    }
 }
 ?>

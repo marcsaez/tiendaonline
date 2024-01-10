@@ -7,9 +7,19 @@
             include "views/admin/listarProductos.php";
         }
         public function anadirProducto(){
+            require_once "models/productos.php";
             if(isset($_POST)){
-                require_once "models/productos.php";
-                $producto = new productos($_POST['idProducto'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $longitudCategoria = 2;
+                $longitudNombre = 2;
+                $db = Productos::staticConectar();
+                $numero = Productos::obtenerSiguienteNumeroProducto($db)+1;
+
+                $codigoCategoria = substr(strtoupper($_POST['categoria']), 0, $longitudCategoria);
+                $codigoNumero = str_pad($numero, 3, '0', STR_PAD_LEFT);
+                $codigoNombre = substr(strtoupper($_POST['nombre']), 0, $longitudNombre);
+                $codigoUnico = $codigoCategoria . $codigoNumero . '-' . $codigoNombre;
+
+                $producto = new productos($codigoUnico,$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->anadir();
                 //QUITAR LOS SCRIPTS
@@ -83,7 +93,7 @@
         public function mostrarCategorias(){
             require_once "models/categorias.php"; 
             $db = categoria::staticConectar();
-            $desplegable = categoria::desplegableCategorias($db);
+            $desplegable = categoria::navCategorias($db);
             return $desplegable;
         }
 
