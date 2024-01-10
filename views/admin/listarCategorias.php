@@ -12,6 +12,20 @@
         <button type="submit">Añadir Categoria</button>
     </form>
 </div>
+<!-- <div id="editarCategoria" style="display:none;">
+    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="nombre">Categoria padre:</label>
+        <input type="text" id="categoriaPadre" name="categoriaPadre">
+
+        <button type="submit">Editar Categoria</button>
+    </form>
+</div> -->
 
 <!-- Listar categorias -->
 <?php
@@ -22,9 +36,47 @@
                 $nombre = $categoria['categoryname'];
                 $categoriapadre = $categoria['fkfathercategory'];
                 if ($categoriapadre){
-                    echo "<p>$idcategoria, $nombre, $categoriapadre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
+
+                    echo "<p>$idcategoria, $nombre, $categoriapadre ";
+                    echo "<a href='#'><img onclick=\"mostrarOcultar('$idcategoria')\" src='img/editar.png' alt='Editar'></a>";
+                    echo "<a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'>";
+                    echo "<img src='img/borrar.png' alt='Eliminar'></a></p>";
+
+                    // FORMULARIO EDITAR CATEGORIA
+                    echo "<div id='$idcategoria' style='display:none;'>";
+                    echo "    <form enctype='multipart/form-data' action='index.php?Controller=Categorias&action=editarCategoria' method='POST' class=''>";
+                    echo "        <label for='id'>ID:</label>";
+                    echo "        <input type='text' id='id' name='id' value='$idcategoria' readonly required>";
+                    echo "";
+                    echo "        <label for='nombre'>Nombre:</label>";
+                    echo "        <input type='text' id='nombre' name='nombre' value='$nombre' required>";
+                    echo "";
+                    echo "        <label for='nombre'>Categoria padre:</label>";
+                    echo "        <input type='text' id='categoriaPadre' name='categoriaPadre' value='$categoriapadre' required>";
+                    echo "";
+                    echo "        <button type='submit'>Editar Categoria</button>";
+                    echo "    </form>";
+                    echo "</div>";
                 } else {
-                    echo "<p>$idcategoria, $nombre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
+                    echo "<p>$idcategoria, $nombre";
+                    echo "<a href='#'><img onclick=\"mostrarOcultar('$idcategoria')\" src='img/editar.png' alt='Editar'></a>";
+                    echo "<a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'>";
+                    echo "<img src='img/borrar.png' alt='Eliminar'></a></p>";
+
+                    // FORMULARIO EDITAR CATEGORIA
+                    echo "<div id='$idcategoria' style='display:none;'>";
+                    echo "    <form enctype='multipart/form-data' action='index.php?Controller=Categorias&action=editarCategoria' method='POST' class=''>";
+                    echo "        <label for='id'>ID:</label>";
+                    echo "        <input type='text' id='id' name='id' value='$idcategoria' readonly required>";
+                    echo "";
+                    echo "        <label for='nombre'>Nombre:</label>";
+                    echo "        <input type='text' id='nombre' name='nombre' value='$nombre' required>";
+                    echo "";
+                    echo "        <input type='hidden' id='categoriaPadre' name='categoriaPadre' value='null'>";
+                    echo "";
+                    echo "        <button type='submit'>Editar Categoria</button>";
+                    echo "    </form>";
+                    echo "</div>";
                 }
                 
         }
