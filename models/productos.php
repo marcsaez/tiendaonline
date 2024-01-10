@@ -189,5 +189,21 @@ class productos extends database{
             echo"Error en la obtencion de productos similares" . $e->getMessage();
         }
     }
+    public function productoConcreto($db, $idproducto){
+        try{
+            $stmt = $db->prepare("SELECT * FROM products WHERE productid = :idproducto;");
+            $stmt->bindParam(':idproducto', $idproducto);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $productoConcreto = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $productoConcreto = null;
+            }
+        }catch (Excepction $e){
+            echo"Error en la obtencion de productos similares" . $e->getMessage();
+            $productoConcreto = null;
+        }
+        return $productoConcreto;
+    }
 }
 ?>
