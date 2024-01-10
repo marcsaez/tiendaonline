@@ -22,9 +22,9 @@
                 $nombre = $categoria['categoryname'];
                 $categoriapadre = $categoria['fkfathercategory'];
                 if ($categoriapadre){
-                    echo "<p>$idcategoria, $nombre, $categoriapadre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&id=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
+                    echo "<p>$idcategoria, $nombre, $categoriapadre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
                 } else {
-                    echo "<p>$idcategoria, $nombre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&id=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
+                    echo "<p>$idcategoria, $nombre <a href='index.php?Controller=Categorias&action=paginaEditar&id=$idcategoria'><img src='img/editar.png' alt='Editar'></a><a href='index.php?Controller=Categorias&action=eliminar&IDCategoria=$idcategoria'><img src='img/borrar.png' alt='Eliminar'></a></p>";
                 }
                 
         }

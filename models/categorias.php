@@ -5,7 +5,8 @@ class categoria extends database{
     private $categoriaPadre;
     private $IDCategoria;
 
-    public function __construct($nombre, $categoriaPadre) {
+    public function __construct($id, $nombre, $categoriaPadre) {
+        $this->IDCategoria = $id;
         $this->nombre = $nombre;
         $this->categoriaPadre = $categoriaPadre;
     }
@@ -69,31 +70,7 @@ class categoria extends database{
         }
         return $retorno;
     }
-    // public function anadirCategoria($nombre, $categoriaPadre){
-    //     try{
-    //         if ($categoriaPadre) {
-    //             $stmt = $this->db->prepare("INSERT INTO categories (categoryName, fkFatherCategory) VALUES (:nombreCategoria, :idCategoriaPadre)");
-        
-                
-    //             $stmt->bindParam(':nombreCategoria', $nombre);
-    //             $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
-                
-    //             $stmt->execute();
-    //             return true;
-    //         }else {
-    //             $stmt = $this->db->prepare("INSERT INTO categories (categoryName) VALUES (:nombreCategoria)");
-        
-                
-    //             $stmt->bindParam(':nombreCategoria', $nombre);
-                
-    //             $stmt->execute();
-    //             return true;
-    //         }
-        
-    //     } catch (Exception $e){
-    //         echo "error en la insercion de categorias: $e";
-    //     }
-    // }
+    
     //Editar categoria
     public function editarCategoria(){
         try{
@@ -121,8 +98,11 @@ class categoria extends database{
     }
     //Eliminar categoria
     public function actualizarCategoria() {
-        if (isset($this->IDCategoria)) {
-            $sql = "UPDATE categories SET active = 0 WHERE id = :idCategoria";
+        
+        if ($this->IDCategoria) {
+            // $id = $this->IDCategoria;
+            
+            $sql = "UPDATE categories SET active = 0 WHERE categoryid = :idCategoria";
             
             $stmt = $this->db->prepare($sql);
 
@@ -132,13 +112,17 @@ class categoria extends database{
 
             if ($stmt->rowCount() > 0) {
                 echo "La categoría con ID {$this->IDCategoria} ha sido actualizada correctamente.";
+                return true;
             } else {
-                echo "No se encontró ninguna categoría con el ID {$this->IDCategoria}.";
+                return "No se encontró ninguna categoría con el ID {$this->IDCategoria}.";
             }
         } else {
             echo "IDCategoria no proporcionado.";
         }
+        
+        
     }
+
     public static function desplegableCategorias($db){
         try{
             $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1");

@@ -15,10 +15,7 @@
         public function anadirCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
-                // $padre=$_POST['categoriaPadre'];
-                // $nombre=$_POST['nombre'];
-                // echo $padre, $nombre;
-                $categoria = new categoria($_POST['nombre'],$_POST['categoriaPadre']);
+                $categoria = new categoria(null,$_POST['nombre'],$_POST['categoriaPadre']);
                 $categoria->conectar();
                 $allcategories = $categoria->anadir();
                 if ($allcategories){
@@ -42,15 +39,28 @@
         }
 
         public function eliminar(){
-            require_once "models/categorias.php";
-            if (isset($_GET['id'])) {
-
-                $idcategoria = $categoria->setIDCategoria($_GET['id']);
-                $categoria = categoria::actualizarCategoria($_GET['id']);
-            } else 
+            if (isset($_GET['IDCategoria'])) {
+         
+                require_once "models/categorias.php";
+                $id = $_GET['IDCategoria'];
+                // echo $id;
+                $categoria = new categoria($id, null, null);
+                $categoria->conectar();
+                // echo $categoria->IDCategoria;
+                $actualizada=$categoria->actualizarCategoria();
+                if($actualizada==true){
+                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                }else{
+                    echo $actualizada;
+                    sleep(5);
+                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                }
+                
+            } else {
                 // Si no se proporciona 'id' en la URL, muestra un mensaje de error o realiza otra acción
                 echo "Error: ID de categoría no proporcionado en la URL";
             }
         }
+    }
     
 ?>
