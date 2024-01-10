@@ -40,6 +40,8 @@ class categoria extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $resultados = null;
             }
         }catch (Exception $e){
             $resultados = null;
@@ -128,6 +130,8 @@ class categoria extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $totalCategorias = null;
             }
         }catch (Exception $e){
             $totalCategorias = null;
