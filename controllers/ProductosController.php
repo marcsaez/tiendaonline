@@ -4,7 +4,6 @@
             require_once "models/productos.php";
             $db = Productos::staticConectar();
             $allproducts = Productos::listarTodosProductos($db);
-            $nombreCategoria = Productos::nombreCategorias($db,$allproducts['fkcategories']);
             include "views/admin/listarProductos.php";
         }
         public function anadirProducto(){
