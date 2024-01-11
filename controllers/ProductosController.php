@@ -95,6 +95,27 @@
     
             }
         }
+        public function paginaEditarAjax(){
+            if (isset($_GET['id'])) {
+                require_once "models/productos.php";
+                $idProducto = $_GET['id'];
+                $db = Productos::staticConectar();
+                // Obtener los detalles del producto con la ID especificada
+                $productoDetalles = Productos::obtenerDetallesProducto($db, $idProducto);
+                $productos = null;
+                if (!empty($productoDetalles)) {
+                    $productoRetornado = $productoDetalles;
+                    $desplegable = ProductosController::mostrarCategorias();
+                    include "views/admin/editarProductos.php";
+    
+                } else {
+                    $productoRetornado = null;
+                }
+            } else {
+                $productoRetornado = null;
+    
+            }
+        }
 
         public function mostrarCategorias(){
             require_once "models/categorias.php"; 
