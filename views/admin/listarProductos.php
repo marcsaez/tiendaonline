@@ -36,6 +36,7 @@
                     echo"<div><img src='$imagen' alt='Imagen de $nombre'></div>";
                     echo"<div>$nombre</div>";
                     echo"<div>$categoria</div>";
+                    echo"<div>$nombreCategoria</div>";
                     echo"<div>$stock</div>";
                     echo"<div>$precio</div>";
                     if($destacado==0){
