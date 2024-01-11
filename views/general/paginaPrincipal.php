@@ -15,7 +15,7 @@
                         echo"<div>";
                             echo "<img src='".$producto['productimg']."' alt='Producto Destacado'>";
                             echo "<h2>Top $vuelta </h2>";
-                            echo "<a href=''>".$producto['productname']."</a>";
+                            echo "<a href='index.php?Controller=Productos&action=productoConcreto&productID=".$producto['productid']."'>".$producto['productname']."</a>";
                             echo "<p>".$producto['productdescription']."</p>";
                             echo "<button><img src='././img/carrito.png' alt='carro'>Añadir</button>";
                         echo"</div>";

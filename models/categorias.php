@@ -138,5 +138,6 @@ class categoria extends database{
         }
         return $totalCategorias;
     }
+  
 }
 ?>
