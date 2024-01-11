@@ -223,10 +223,6 @@ class productos extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $siguienteNumero = $stmt->fetchColumn();
-                if ($resultado) {
-                    $fila = pg_fetch_assoc($resultado);
-                    $siguienteNumero = $fila['total'] + 1;
-                }
             }
         }catch (Exception $e){
             $siguienteNumero = 0;
