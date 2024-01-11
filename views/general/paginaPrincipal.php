@@ -5,16 +5,16 @@
         <section>
             <h2><img src="././img/trending.png" alt="fueguito">TOP TENDENCIAS DE ESTE MES</h2>
             <div class="warp">
-                <div class="top-card"></div>
+                <!-- <div class="top-card"></div> -->
                 <div class="top-card"></div>
                 <div class="top-card"></div>
                 <div class="top-card"></div>
                 <?php
                 $vuelta=1;
                     foreach ($productosDestacados as $producto){
-                        echo"<div>";
-                            echo "<img src='".$producto['productimg']."' alt='Producto Destacado'>";
+                        echo"<div class='top-card'>";
                             echo "<h2>Top $vuelta </h2>";
+                            echo "<img src='".$producto['productimg']."' alt='Producto Destacado' width=60px height=60px>";
                             echo "<a href='index.php?Controller=Productos&action=productoConcreto&productID=".$producto['productid']."'>".$producto['productname']."</a>";
                             echo "<p>".$producto['productdescription']."</p>";
                             echo "<button><img src='././img/carrito.png' alt='carro'>Añadir</button>";

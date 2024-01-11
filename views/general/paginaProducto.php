@@ -1,6 +1,6 @@
 <div>
     <ul>
-        <li><a href="index.php?Controller=User&action=paginaInicio">Inicio</a></li>
+        <li><a href="index.php">Inicio</a></li>
     </ul>
 </div>
 <div>

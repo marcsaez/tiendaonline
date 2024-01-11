@@ -121,7 +121,7 @@ class Productos extends database{
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
                 for ($i=0; $i<count($resultados); $i++){
-                    $resultados[$i]['fkcategories']=self::nombreCategorias($db,$resultados[$i]['fkcategories']);
+                    $resultados[$i]['fkcategories']=Categoria::nombreCategorias($db,$resultados[$i]['fkcategories']);
                 }
             }
         }catch (Exception $e){
@@ -184,7 +184,7 @@ class Productos extends database{
     }
     public static function productosDestacados($db){
         try{
-            $stmt = $db->prepare("SELECT productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
             $stmt->execute();
             $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $productosDestacados;
