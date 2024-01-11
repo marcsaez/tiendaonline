@@ -9,10 +9,18 @@
                 $admin->conectar();
                 $todosLosAdmin = $admin->iniciarSesion($_POST['adminUser'], $_POST['passwordAdmin']);
                  if($todosLosAdmin == true){
+                    
+                    
                      require_once "views/admin/principalAdmin.php";
                  }
             }
         }
+
+        public function mostrarDashboard() {
+            require_once "views/admin/principalAdmin.php";
+        }
+
+
         
     }
 ?>

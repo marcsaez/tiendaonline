@@ -1,4 +1,4 @@
-<div class = "ContenidoAdmin">
+<!-- <div class = "ContenidoAdmin">
     
     <div class="Productos">
     <a href="index.php?Controller=Productos&action=listarProductos">
@@ -12,4 +12,7 @@
         <h1>Categorias</h1>
         <img src="img/categoria.png" alt="Categoria">
     </div></a>
-</div>
+</div> -->
+<main id="principal-admin" class="dashboard">
+
+</main>
