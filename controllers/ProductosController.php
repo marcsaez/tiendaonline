@@ -19,7 +19,12 @@
                 $codigoNombre = substr(strtoupper($_POST['nombre']), 0, $longitudNombre);
                 $codigoUnico = $codigoCategoria . $codigoNumero . '-' . $codigoNombre;
 
-                $producto = new productos($codigoUnico,$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $imagen_ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+                $imagen_path = 'img/productos/' . $codigoUnico .'.'. $imagen_ext;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
+                
+
+                $producto = new productos($codigoUnico,$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->anadir();
                 //QUITAR LOS SCRIPTS

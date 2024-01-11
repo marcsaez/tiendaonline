@@ -4,7 +4,7 @@ class productos extends database{
     private $idproducto;
     private $nombre;
     private $descripcion;
-    private $Imagen;
+    private $imagen;
     private $stock;
     private $destacado;
     private $precio;
@@ -31,7 +31,7 @@ class productos extends database{
         return $this->descripcion;
     }
     function getImg() {
-        return $this->Imagen;
+        return $this->imagen;
     }
     function getStock() {
         return $this->stock;
@@ -54,8 +54,8 @@ class productos extends database{
     function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
-    function setImg($Imagen) {
-        $this->Imagen = $Imagen;
+    function setImg($imagen) {
+        $this->imagen = $imagen;
     }
     function setStock($stock) {
         $this->stock = $stock;
@@ -99,7 +99,7 @@ class productos extends database{
                 $stmt->bindParam(':id', $this->idproducto);
                 $stmt->bindParam(':nombre', $this->nombre);
                 $stmt->bindParam(':descripcion', $this->descripcion);
-                $stmt->bindParam(':imagen', $this->Imagen);
+                $stmt->bindParam(':imagen', $this->imagen);
                 $stmt->bindParam(':stock', $this->stock);
                 $stmt->bindParam(':destacado', $destacado1);
                 $stmt->bindParam(':precio', $this->precio);
@@ -140,7 +140,7 @@ class productos extends database{
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':nombre', $this->nombre);
             $stmt->bindParam(':descripcion', $this->descripcion);
-            $stmt->bindParam(':imagen', $this->Imagen);
+            $stmt->bindParam(':imagen', $this->imagen);
             $stmt->bindParam(':stock', $this->stock);
             $stmt->bindParam(':destacado', $destacado1);
             $stmt->bindParam(':precio', $this->precio);
