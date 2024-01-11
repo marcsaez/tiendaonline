@@ -1,4 +1,4 @@
-<script src="js/productoConcreto.js"></script>
+<!-- <script src="js/productoConcreto.js"></script>
 <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
 <div id="anadirCategoria" style="display:none;">
     <h3>Añadir categoria: </h3>
@@ -11,7 +11,7 @@
 
         <button type="submit">Añadir Categoria</button>
     </form>
-</div>
+</div> -->
 <!-- <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
         <label for="id">ID:</label>
@@ -29,7 +29,7 @@
 
 <!-- Listar categorias -->
 <?php
-    if (isset($allcategories) && is_array($allcategories)) {
+   /* if (isset($allcategories) && is_array($allcategories)) {
         foreach ($allcategories as $categoria) {
                 // Acceder a los campos del categoria
                 $idcategoria = $categoria['categoryid'];
@@ -82,5 +82,21 @@
         }
     }else {
         echo "No hay productos para mostrar.";
-    }
+    }*/
 ?>
+
+<main class="dashboard" id="listar-categorias">
+    <section>
+        <h1>Categorias</h1>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+            Añadir
+        </button>
+    </section>
+    <section>
+
+    </section>
+</main>

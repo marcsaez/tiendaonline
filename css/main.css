@@ -305,4 +305,33 @@ main.dashboard {
   width: 100%;
   height: 100vh;
   background-color: #282828;
+  color: white;
+}
+
+main#listar-categorias section:first-child {
+  width: 100%;
+  height: 7.5rem;
+  border-bottom: 1px solid #3F3F3F;
+}
+main#listar-categorias section:first-child h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+main#listar-categorias section:first-child button {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  box-sizing: content-box;
+  background-color: #3F3F3F;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+main#listar-categorias section:first-child button svg {
+  width: 25px;
 }/*# sourceMappingURL=main.css.map */
