@@ -1,6 +1,6 @@
 <?php
 require_once("database.php");
-class productos extends database{
+class Productos extends database{
     private $idproducto;
     private $nombre;
     private $descripcion;
@@ -232,21 +232,6 @@ class productos extends database{
         }
         return $siguienteNumero;
     }
-    public static function nombreCategorias($db, $idcategoria){
-        try{
-            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idcategoria");
-            $stmt->bindParam(':idcategoria', $idcategoria);
-            $stmt->execute();
-            if($stmt->rowCount() > 0){
-                $nombreCategoria = $stmt->fetchColumn();
-            }else{
-                $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
-            }
-        }catch (Exception $e){
-            echo $e;
-            $nombreCategoria = $e;
-        }
-        return $nombreCategoria;
-    }
+  
 }
 ?>

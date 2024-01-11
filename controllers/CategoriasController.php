@@ -2,8 +2,8 @@
     class CategoriasController{
         public function listarCategorias(){
             require_once "models/categorias.php";
-            $db = categoria::staticConectar();
-            $allcategories = categoria::listarTodasCategorias($db);
+            $db = Categoria::staticConectar();
+            $allcategories = Categoria::listarTodasCategorias($db);
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){
