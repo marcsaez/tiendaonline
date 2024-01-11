@@ -35,8 +35,15 @@
     <label for="precio">Nuevo Precio:</label>
     <input type="number" id="precio" name="precio" step="0.01" value="<?php echo $precio; ?>" required>
 
-    <label for="categoria">Nueva Categoría:</label>
-    <input type="text" id="categoria" name="categoria" value="<?php echo  $categoria; ?>" required>
+    <label for="categoria">Categoría:</label>
+        <select name="categoria" id="categorias">
+        <option value="" disabled selected>Selecciona</option>
+            <?php 
+                 foreach ($desplegable as $categoria) {
+                    echo "<option>" . $categoria['categoryname'] . "</option>";
+                 }
+            ?>
+        </select>
 
     <button type="submit">Actualizar Producto</button>
 </form>

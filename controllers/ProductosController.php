@@ -84,6 +84,7 @@
                 $productos = null;
                 if (!empty($productoDetalles)) {
                     $productoRetornado = $productoDetalles;
+                    $desplegable = ProductosController::mostrarCategorias();
                     include "views/admin/editarProductos.php";
     
                 } else {
