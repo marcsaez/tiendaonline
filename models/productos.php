@@ -189,9 +189,9 @@ class productos extends database{
             echo"Error en la obtencion de productos similares" . $e->getMessage();
         }
     }
-    public function productoConcreto($db, $idproducto){
+    public static function productoConcreto($db, $idproducto){
         try{
-            $stmt = $this->$db->prepare("SELECT * FROM products WHERE productid = :idproducto;");
+            $stmt =$db->prepare("SELECT * FROM products WHERE productid = :idproducto;");
             $stmt->bindParam(':idproducto', $idproducto);
             $stmt->execute();
             if($stmt->rowCount() > 0){
@@ -232,6 +232,22 @@ class productos extends database{
             $siguienteNumero = 0;
         }
         return $siguienteNumero;
+    }
+    public static function nombreCategorias($db, $idcategoria){
+        try{
+            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idcategoria");
+            $stmt->bindParam(':idcategoria', $idcategoria);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $nombreCategoria = $stmt->fetchColumn();
+            }else{
+                $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
+            }
+        }catch (Exception $e){
+            echo $e;
+            $nombreCategoria = $e;
+        }
+        return $nombreCategoria;
     }
 }
 ?>

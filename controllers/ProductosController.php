@@ -122,10 +122,12 @@
         }
         public static function productoConcreto(){
             require_once "models/productos.php";
+            require_once "models/categorias.php"; 
             if(isset($_GET['productID'])){
                 $id=$_GET['productID'];
                 $db = Productos::staticConectar();
-                $productosDestacados = Productos::productoConcreto($db,$id);
+                $productoConcreto = Productos::productoConcreto($db,$id);
+                $nombreCategoria = Productos::nombreCategorias($db,$productoConcreto[0]['fkcategories']);
             }
             require_once "views/general/paginaProducto.php";
         }

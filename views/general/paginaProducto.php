@@ -4,18 +4,19 @@
     </ul>
 </div>
 <div>
-    <img src="<?php echo $imagen?>" alt="Foto del producto">
-    <h2><?php echo $nombreProducto ?></h2>
-    <p><?php echo ($precioProducto+1) ?></p>
-    <h2><?php echo $precioProducto ?></h2>
-    <p>Ref: <?php echo $codigoProducto ?></p>
+    <script src="js/productoConcreto.js"></script>
+    <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
+    <h2><?php echo $productoConcreto[0]['productname'];?></h2>
+    <p><?php echo ($productoConcreto[0]['productprice']+3); ?>€</p>
+    <h2><?php echo $productoConcreto[0]['productprice']; ?>€</h2>
+    <p>Ref: <?php echo $productoConcreto[0]['productid']; ?></p>
     <h1>Disponibilidad: </h1>
     <?php
-    if($stockProducto>10){
+    if($productoConcreto[0]['productstock']>10){
         echo"<p>En sotck</p>";//El css sera verde
-    }elseif($stockProducto<=10 && $stockProducto>0){
-        echo"<p>$stockProducto</p>";//El css en naranja
-    }elseif($sotckProducto==0){
+    }elseif($productoConcreto[0]['productstock']<=10 && $productoConcreto[0]['productstock']>0){
+        echo"<p>".$productoConcreto[0]['productstock']."</p>";//El css en naranja
+    }elseif($productoConcreto[0]['productstock']==0){
         echo"<p>Sin sotck</p>";//El css en rojo
     }   
     ?>
@@ -29,17 +30,20 @@
     <h2>Descricpion</h2>
     <h2 onclick="mostrarOcultar('descripcionProd')">+</h2>
     <div id="descripcionProd" style="display:none;">
-        <p><?php echo $descripcionProducto ?></p>
+        <p><?php echo $productoConcreto[0]['productdescription']; ?></p>
     </div>
     <h2>Mas info</h2>
     <h2 onclick="mostrarOcultar('masInfoProducto')">+</h2>
     <div id="masInfoProducto" style="display:none;">
         <h3>Categoria: </h3>
-        <p><?php echo $categoria ?></p>
-        <?php if(isset($subcategoria)){ ?>
-            <h3>Genero: </h3>
-            <p><?php echo $subcategoria ?></p>
-        <?php }?>
+        <p><?php echo $nombreCategoria?></p>
+        <?php 
+        // if(isset($subcategoria)){ ?>
+            <!-- <h3>Genero: </h3>
+            ?php echo $subcategoria ?>
+         <?php
+        // }
+        // ?>
     </div>
 </div>
 <div>

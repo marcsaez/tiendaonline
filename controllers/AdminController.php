@@ -4,6 +4,7 @@
         // Login para administrador
         public function Login(){
             if(isset($_POST)){
+                
                 require_once "models/admin.php";
                 $admin = new Admin();
                 $admin->conectar();

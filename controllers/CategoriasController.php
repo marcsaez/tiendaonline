@@ -33,11 +33,8 @@
                     <?php
                     header("Location: index.php?Controller=Categorias&action=listarCategorias");
                 }
-            }
-            
-            
+            }   
         }
-
         public function editarCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
@@ -47,10 +44,8 @@
                 echo $id, $nombre, $categoriaPadre;
             }
         }
-
         public function eliminar(){
             if (isset($_GET['IDCategoria'])) {
-         
                 require_once "models/categorias.php";
                 $id = $_GET['IDCategoria'];
                 // echo $id;
@@ -65,7 +60,6 @@
                     sleep(5);
                     header("Location: index.php?Controller=Categorias&action=listarCategorias");
                 }
-                
             } else {
                 // Si no se proporciona 'id' en la URL, muestra un mensaje de error o realiza otra acción
                 echo "Error: ID de categoría no proporcionado en la URL";
