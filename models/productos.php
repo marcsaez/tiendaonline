@@ -119,7 +119,10 @@ class productos extends database{
             $stmt = $db->prepare("SELECT * FROM products");
             $stmt->execute();
             if($stmt->rowCount() > 0){
-                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
+                for ($i=0; $i<count($resultados); $i++){
+                    $resultados[$i]['fkcategories']=self::nombreCategorias($db,$resultados[$i]['fkcategories']);
+                }
             }
         }catch (Exception $e){
             $resultados = null;
