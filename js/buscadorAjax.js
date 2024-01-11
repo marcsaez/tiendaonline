@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var html = '';
         
         for (var i = 0; i < resultados.length; i++) {
-            html += '<p>' + resultados[i].productname + ' - ' + resultados[i].productdescription + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p>';
+            html += '<a href= "index.php?Controller=Productos&action=paginaEditarAjax&id='+ resultados[i].productid+'"><p>'+ resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productdescription + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p></a>';
         }
 
         resultadosDiv.innerHTML = html;

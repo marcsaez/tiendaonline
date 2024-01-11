@@ -1,6 +1,6 @@
 <div>
     <ul>
-        <li><a href="index.php?Controller=User&action=paginaInicio">Inicio</a></li>
+        <li><a href="index.php">Inicio</a></li>
     </ul>
 </div>
 <div>
@@ -18,7 +18,7 @@
         echo"<p>".$productoConcreto[0]['productstock']."</p>";//El css en naranja
     }elseif($productoConcreto[0]['productstock']==0){
         echo"<p>Sin sotck</p>";//El css en rojo
-    }   
+    }
     ?>
     <h2>Cantidad</h2>
     <div class="containerCantidad">

@@ -19,7 +19,12 @@
                 $codigoNombre = substr(strtoupper($_POST['nombre']), 0, $longitudNombre);
                 $codigoUnico = $codigoCategoria . $codigoNumero . '-' . $codigoNombre;
 
-                $producto = new productos($codigoUnico,$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $imagen_ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+                $imagen_path = 'img/productos/' . $codigoUnico .'.'. $imagen_ext;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
+                
+
+                $producto = new productos($codigoUnico,$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->anadir();
                 //QUITAR LOS SCRIPTS
@@ -79,6 +84,28 @@
                 $productos = null;
                 if (!empty($productoDetalles)) {
                     $productoRetornado = $productoDetalles;
+                    $desplegable = ProductosController::mostrarCategorias();
+                    include "views/admin/editarProductos.php";
+    
+                } else {
+                    $productoRetornado = null;
+                }
+            } else {
+                $productoRetornado = null;
+    
+            }
+        }
+        public function paginaEditarAjax(){
+            if (isset($_GET['id'])) {
+                require_once "models/productos.php";
+                $idProducto = $_GET['id'];
+                $db = Productos::staticConectar();
+                // Obtener los detalles del producto con la ID especificada
+                $productoDetalles = Productos::obtenerDetallesProducto($db, $idProducto);
+                $productos = null;
+                if (!empty($productoDetalles)) {
+                    $productoRetornado = $productoDetalles;
+                    $desplegable = ProductosController::mostrarCategorias();
                     include "views/admin/editarProductos.php";
     
                 } else {
@@ -127,7 +154,7 @@
                 $id=$_GET['productID'];
                 $db = Productos::staticConectar();
                 $productoConcreto = Productos::productoConcreto($db,$id);
-                $nombreCategoria = Productos::nombreCategorias($db,$productoConcreto[0]['fkcategories']);
+                $nombreCategoria = categoria::nombreCategorias($db,$productoConcreto[0]['fkcategories']);
             }
             require_once "views/general/paginaProducto.php";
         }

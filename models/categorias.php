@@ -1,6 +1,6 @@
 <?php
 require_once("database.php");
-class categoria extends database{
+class Categoria extends database{
     private $nombre;
     private $categoriaPadre;
     private $IDCategoria;
@@ -138,6 +138,21 @@ class categoria extends database{
         }
         return $totalCategorias;
     }
-  
+    public static function nombreCategorias($db, $idcategoria){
+        try{
+            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idcategoria");
+            $stmt->bindParam(':idcategoria', $idcategoria);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $nombreCategoria = $stmt->fetchColumn();
+            }else{
+                $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
+            }
+        }catch (Exception $e){
+            echo $e;
+            $nombreCategoria = $e;
+        }
+        return $nombreCategoria;
+    }
 }
 ?>

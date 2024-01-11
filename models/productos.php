@@ -1,10 +1,10 @@
 <?php
 require_once("database.php");
-class productos extends database{
+class Productos extends database{
     private $idproducto;
     private $nombre;
     private $descripcion;
-    private $Imagen;
+    private $imagen;
     private $stock;
     private $destacado;
     private $precio;
@@ -31,7 +31,7 @@ class productos extends database{
         return $this->descripcion;
     }
     function getImg() {
-        return $this->Imagen;
+        return $this->imagen;
     }
     function getStock() {
         return $this->stock;
@@ -54,8 +54,8 @@ class productos extends database{
     function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
     }
-    function setImg($Imagen) {
-        $this->Imagen = $Imagen;
+    function setImg($imagen) {
+        $this->imagen = $imagen;
     }
     function setStock($stock) {
         $this->stock = $stock;
@@ -99,7 +99,7 @@ class productos extends database{
                 $stmt->bindParam(':id', $this->idproducto);
                 $stmt->bindParam(':nombre', $this->nombre);
                 $stmt->bindParam(':descripcion', $this->descripcion);
-                $stmt->bindParam(':imagen', $this->Imagen);
+                $stmt->bindParam(':imagen', $this->imagen);
                 $stmt->bindParam(':stock', $this->stock);
                 $stmt->bindParam(':destacado', $destacado1);
                 $stmt->bindParam(':precio', $this->precio);
@@ -121,7 +121,7 @@ class productos extends database{
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
                 for ($i=0; $i<count($resultados); $i++){
-                    $resultados[$i]['fkcategories']=self::nombreCategorias($db,$resultados[$i]['fkcategories']);
+                    $resultados[$i]['fkcategories']=Categoria::nombreCategorias($db,$resultados[$i]['fkcategories']);
                 }
             }
         }catch (Exception $e){
@@ -133,6 +133,20 @@ class productos extends database{
     // Update Producte
     public function actualizarProducto() {
         try {
+            $categoria = $this->categoria;
+            if($categoria){
+                // Preparar la consulta con un marcador de posición (:categoria)
+                $stmt2 = $this->db->prepare("SELECT categoryid FROM categories WHERE categoryname = :categoria");
+
+                // Vincular el valor de $categoria al marcador de posición
+                $stmt2->bindParam(':categoria', $categoria, PDO::PARAM_STR);
+
+                // Ejecutar la consulta
+                $stmt2->execute();
+
+                // Obtener el resultado
+                $result = $stmt2->fetch(PDO::FETCH_ASSOC);
+            }
 
             $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productImg = :imagen, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
             if($this->destacado){
@@ -143,11 +157,11 @@ class productos extends database{
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':nombre', $this->nombre);
             $stmt->bindParam(':descripcion', $this->descripcion);
-            $stmt->bindParam(':imagen', $this->Imagen);
+            $stmt->bindParam(':imagen', $this->imagen);
             $stmt->bindParam(':stock', $this->stock);
             $stmt->bindParam(':destacado', $destacado1);
             $stmt->bindParam(':precio', $this->precio);
-            $stmt->bindParam(':categoria', $this->categoria);
+            $stmt->bindParam(':categoria', $result['categoryid'] );
             $stmt->bindParam(':id', $this->idproducto);
             $stmt->execute();
             $retorno = true;
@@ -184,7 +198,7 @@ class productos extends database{
     }
     public static function productosDestacados($db){
         try{
-            $stmt = $db->prepare("SELECT productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
             $stmt->execute();
             $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $productosDestacados;
@@ -232,21 +246,6 @@ class productos extends database{
         }
         return $siguienteNumero;
     }
-    public static function nombreCategorias($db, $idcategoria){
-        try{
-            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idcategoria");
-            $stmt->bindParam(':idcategoria', $idcategoria);
-            $stmt->execute();
-            if($stmt->rowCount() > 0){
-                $nombreCategoria = $stmt->fetchColumn();
-            }else{
-                $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
-            }
-        }catch (Exception $e){
-            echo $e;
-            $nombreCategoria = $e;
-        }
-        return $nombreCategoria;
-    }
+  
 }
 ?>
