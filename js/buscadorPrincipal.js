@@ -4,8 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     terminoInput.addEventListener('keyup', function () {
        
-            var termino = terminoInput.value;
-            realizarBusqueda(termino);
+        
+
+        // Realizar la búsqueda inmediatamente
+        var termino = terminoInput.value;
+        realizarBusqueda(termino);
+
+        // Agregar un retraso después de 500 milisegundos para otra acción (por ejemplo, un console log)
+       
+        
         
     });
 
@@ -28,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             console.log("Esto es el data: ", data);
+            delayTimer = setTimeout(function() {
+                console.log('Pasaron 3000 milisegundos después de la última tecla presionada.');
+            }, 10000);
             mostrarResultados(data);
         })
         .catch(function (error) {
