@@ -148,6 +148,70 @@ footer {
   display: flex;
 }
 
+aside {
+  width: 16.25rem;
+  height: 100vh;
+  background-color: #3F3F3F;
+  display: block;
+  float: left;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+aside section:first-child {
+  display: flex;
+  align-items: center;
+}
+aside section:first-child img {
+  width: 50px;
+  margin-right: 5px;
+  border: 1px solid #CACACA;
+  border-radius: 50%;
+}
+aside section:first-child p {
+  display: flex;
+  flex-direction: column;
+}
+aside section:first-child p span {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+}
+aside section:first-child p span:last-child {
+  letter-spacing: 1.6px;
+}
+aside section:nth-child(2) {
+  margin-top: 6.5rem;
+}
+aside section article {
+  display: flex;
+  align-items: center;
+  padding: 0.688rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+aside section article:hover {
+  background-color: #282828;
+  cursor: pointer;
+}
+aside section article svg {
+  width: 20px;
+  margin-right: 10px;
+}
+aside section article a {
+  text-decoration: none;
+}
+aside section article span {
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -197,7 +261,6 @@ main#index-grid div:nth-child(2) section:nth-child(2) > div {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
-  border: 1px solid black;
   display: grid;
   -moz-column-gap: 10px;
        column-gap: 10px;
@@ -236,4 +299,93 @@ main#index-grid div:nth-child(2) section:nth-child(2) > div a span {
 }
 main#index-grid div:nth-child(2) section:nth-child(2) > div a:hover img {
   transform: scale(1.5);
+}
+
+main.dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  color: white;
+}
+
+main#listar-categorias div {
+  margin-left: 16.25rem;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+main#listar-categorias div section:first-child {
+  width: 100%;
+  height: 7rem;
+  border-bottom: 1px solid #3F3F3F;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main#listar-categorias div section:first-child h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+main#listar-categorias div section:first-child button {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  box-sizing: content-box;
+  background-color: #3F3F3F;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+main#listar-categorias div section:first-child button:hover {
+  background-color: #575757;
+}
+main#listar-categorias div section:first-child button svg {
+  width: 25px;
+}
+main#listar-categorias div section:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+main#listar-categorias div section:nth-child(2) input {
+  width: 21.063rem;
+  padding: 0.7rem 1rem;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: white;
+}
+main#listar-categorias div section:nth-child(3) table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+}
+main#listar-categorias div section:nth-child(3) table tr td {
+  padding: 1rem 0.5rem;
+}
+main#listar-categorias div section:nth-child(3) table tr td a {
+  text-decoration: none;
+}
+main#listar-categorias div section:nth-child(3) table tr td a#editar-categoria {
+  color: rgb(0, 49, 209);
+}
+main#listar-categorias div section:nth-child(3) table tr td a#eliminar-categoria {
+  color: rgb(202, 0, 0);
+}
+main#listar-categorias div section:nth-child(3) table tr th {
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+main#listar-categorias div section:nth-child(3) table tr:nth-child(even) {
+  background-color: #575757;
 }/*# sourceMappingURL=main.css.map */

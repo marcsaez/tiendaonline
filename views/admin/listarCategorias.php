@@ -1,4 +1,4 @@
-<script src="js/productoConcreto.js"></script>
+<!-- <script src="js/productoConcreto.js"></script>
 <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
 <div id="anadirCategoria" style="display:none;">
     <h3>Añadir categoria: </h3>
@@ -12,7 +12,7 @@
         <button type="submit">Añadir Categoria</button>
     </form>
 </div>
-<!-- <div id="editarCategoria" style="display:none;">
+ <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required>
@@ -27,9 +27,55 @@
     </form>
 </div> -->
 
+<main class="dashboard" id="listar-categorias">
+    <div>
+        <section>
+            <h1>Categorias</h1>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+    
+                Añadir
+            </button>
+        </section>
+        <section>
+            <input type="text" id="barraBusqueda" placeholder="Buscar por nombre">
+            <button onclick="buscarRegistros()">Buscar</button>
+        </section>
+        <section>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría Padre</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <?php 
+                    foreach ($allcategories as $categoria) {
+                        $idCategoria = $categoria['categoryid'];
+                        $nombreCategoria = $categoria['categoryname'];
+                        $categoriaPadre = $categoria['fkfathercategory'];
+
+                        $mostrarCategoriaPadre = ($categoriaPadre == null) ? "Sin Categoría" : $categoriaPadre;
+
+                        echo '
+                            <tr>
+                                <td>'.$idCategoria.'</td>
+                                <td>'.$nombreCategoria.'</td>
+                                <td>'.$mostrarCategoriaPadre.'</td>
+                                <td><a id="editar-categoria">Editar</a></td>
+                                <td><a id="eliminar-categoria" href="index.php?Controller=Categorias&action=eliminar&IDCategoria='.$idCategoria.'">Eliminar</a></td>
+                            </tr>
+                        ';
+                    }
+                ?>
+            </table>
+
 <!-- Listar categorias -->
 <?php
-    if (isset($allcategories) && is_array($allcategories)) {
+   if (isset($allcategories) && is_array($allcategories)) {
         foreach ($allcategories as $categoria) {
                 // Acceder a los campos del categoria
                 $idcategoria = $categoria['categoryid'];
@@ -84,3 +130,6 @@
         echo "No hay productos para mostrar.";
     }
 ?>
+        </section>
+    </div>
+</main>

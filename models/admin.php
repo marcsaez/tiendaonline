@@ -26,7 +26,7 @@ class Admin extends database{
         if ($stmt->rowCount() > 0) {
             $administartor = $stmt->fetch(PDO::FETCH_ASSOC);
             // Inicio de sesión exitoso
-            session_start();
+            
             $_SESSION['admin_id'] = $administartor['emailadmin'];
             // Puedes hacer otras acciones después del inicio de sesión
             return true;

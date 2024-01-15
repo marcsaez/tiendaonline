@@ -1,0 +1,63 @@
+aside {
+  width: 16.25rem;
+  height: 100vh;
+  background-color: #3F3F3F;
+  display: block;
+  float: left;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+aside section:first-child {
+  display: flex;
+  align-items: center;
+}
+aside section:first-child img {
+  width: 50px;
+  margin-right: 5px;
+  border: 1px solid #CACACA;
+  border-radius: 50%;
+}
+aside section:first-child p {
+  display: flex;
+  flex-direction: column;
+}
+aside section:first-child p span {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+}
+aside section:first-child p span:last-child {
+  letter-spacing: 1.6px;
+}
+aside section:nth-child(2) {
+  margin-top: 6.5rem;
+}
+aside section article {
+  display: flex;
+  align-items: center;
+  padding: 0.688rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+aside section article:hover {
+  background-color: #282828;
+  cursor: pointer;
+}
+aside section article svg {
+  width: 20px;
+  margin-right: 10px;
+}
+aside section article a {
+  text-decoration: none;
+}
+aside section article span {
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}/*# sourceMappingURL=navLateralAdmin.css.map */

@@ -19,6 +19,7 @@
                             echo "<p>".$producto['productdescription']."</p>";
                             echo "<button><img src='././img/carrito.png' alt='carro'>Añadir</button>";
                         echo"</div>";
+                        $vuelta=$vuelta+1;
                     }
                 ?>
             </div>

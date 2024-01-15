@@ -147,6 +147,7 @@
                 // No es necesario devolver nada aquí
             }
         }
+        
         public static function productoConcreto(){
             require_once "models/productos.php";
             require_once "models/categorias.php"; 
