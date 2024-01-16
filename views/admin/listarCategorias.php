@@ -98,7 +98,7 @@
                     echo "        <input type='text' id='nombre' name='nombre' value='$nombre' required>";
                     echo "";
                     echo "        <label for='nombre'>Categoria padre:</label>";
-                    echo "        <input type='text' id='categoriaPadre' name='categoriaPadre' value='$categoriapadre' required>";
+                    echo "        <input type='number' id='categoriaPadre' name='categoriaPadre' value='$categoriapadre' min='1' max='100000' required>";
                     echo "";
                     echo "        <button type='submit'>Editar Categoria</button>";
                     echo "    </form>";

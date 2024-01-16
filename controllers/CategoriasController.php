@@ -18,18 +18,18 @@
                 $categoria = new categoria(null,$_POST['nombre'],$_POST['categoriaPadre']);
                 $categoria->conectar();
                 $allcategories = $categoria->anadir();
-                if ($allcategories){
+                // if ($allcategories){
                     ?>
-                    <script>
+                    <!-- <script>
                         alert("Producto creado correctamente");
-                    </script>
+                    </script> -->
                     <?php
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
-                } else{
+                //     header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                // } else{
                     ?>
-                    <script>
+                    <!-- <script>
                         alert("Error en alguno de los datos");
-                    </script>
+                    </script> -->
                     <?php
                     header("Location: index.php?Controller=Categorias&action=listarCategorias");
                 }
@@ -38,10 +38,9 @@
         public function editarCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
-                $id=$_POST['id'];
-                $nombre=$_POST['nombre'];
-                $categoriaPadre=$_POST['categoriaPadre'];
-                echo $id, $nombre, $categoriaPadre;
+                $categoria = new categoria($_POST['id'], $_POST['nombre'], $_POST['categoriaPadre']);
+                $categoria -> conectar();
+                $editada = $categoria -> editar();
             }
         }
         public function eliminar(){
