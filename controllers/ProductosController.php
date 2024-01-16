@@ -2,6 +2,7 @@
     class ProductosController{
         public function listarProductos(){
             require_once "models/productos.php";
+            require_once "models/categorias.php"; 
             $db = Productos::staticConectar();
             $allproducts = Productos::listarTodosProductos($db);
             include "views/admin/listarProductos.php";

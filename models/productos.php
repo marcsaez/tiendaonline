@@ -115,13 +115,14 @@ class Productos extends database{
         return $retorno;
     }
     public static function listarTodosProductos($db){
+        
         try{
             $stmt = $db->prepare("SELECT * FROM products");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
                 for ($i=0; $i<count($resultados); $i++){
-                    $resultados[$i]['fkcategories']=Categoria::nombreCategorias($db,$resultados[$i]['fkcategories']);
+                    $resultados[$i]['fkcategories']= Categoria::nombreCategorias($db,$resultados[$i]['fkcategories']);
                 }
             }
         }catch (Exception $e){
@@ -246,6 +247,17 @@ class Productos extends database{
         }
         return $siguienteNumero;
     }
-  
+    public static function obtenerRutasImagenes($db) {
+        try{
+            $stmt = $db->prepare("SELECT ruteimage FROM sliderimages");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $rutasSlider = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $rutasSlider = 0;
+        }
+        return $rutasSlider;  
+    }
 }
 ?>
