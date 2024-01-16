@@ -2,8 +2,8 @@
     class CategoriasController{
         public function listarCategorias(){
             require_once "models/categorias.php";
-            $db = categoria::staticConectar();
-            $allcategories = categoria::listarTodasCategorias($db);
+            $db = Categoria::staticConectar();
+            $allcategories = Categoria::listarTodasCategorias($db);
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){
@@ -31,13 +31,10 @@
                         alert("Error en alguno de los datos");
                     </script> -->
                     <?php
-                    // header("Location: index.php?Controller=Categorias&action=listarCategorias");
-                // }
-            }
-            
-            
+                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                }
+            }   
         }
-
         public function editarCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
@@ -46,10 +43,8 @@
                 $editada = $categoria -> editar();
             }
         }
-
         public function eliminar(){
             if (isset($_GET['IDCategoria'])) {
-         
                 require_once "models/categorias.php";
                 $id = $_GET['IDCategoria'];
                 // echo $id;
@@ -64,7 +59,6 @@
                     sleep(5);
                     header("Location: index.php?Controller=Categorias&action=listarCategorias");
                 }
-                
             } else {
                 // Si no se proporciona 'id' en la URL, muestra un mensaje de error o realiza otra acción
                 echo "Error: ID de categoría no proporcionado en la URL";

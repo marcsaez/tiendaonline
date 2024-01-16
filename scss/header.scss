@@ -1,33 +1,173 @@
 @import 'mixin.scss';
+@import 'variables.scss';
 
 header {
-    border: 1px solid black;
     @include flex(column, center, center);
     width: 100%;
     height: 7.813rem;
+    background-color: $header-bg;
 
     > section{
         width: 100%;
-        border: 1px solid red;
         height: 5rem;
+        &:first-child {
+            border-bottom: 1px solid $border-color;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            > div {
+
+                // Header parte logo
+                &:first-child {
+                    margin-left: 7.625rem;
+                    display: flex;
+                    align-items: center;
+                    #logo {
+                        width: 3.125rem;
+                        border: 1px solid $border-color;
+                        border-radius: 50%;
+                    }
+                    p {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 0.5rem;
+                        span {
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            letter-spacing: 0.32px;
+
+                            &:last-child{
+                                letter-spacing: 1.6px;
+                            }
+                        }
+                    }
+                }
+
+                // Header parte barra de búsqueda, carrito y usuario
+
+                &:nth-child(2){
+                    margin-right: 7.625rem;
+                    display: flex;
+                    align-items: center;
+
+                    form[name="busqueda"] {
+                        margin-right: 2rem;
+                        display: flex;
+                        align-items: center;
+                        width: 12.5rem;
+                        position: relative;
+
+                        input {
+                            border: 1px solid $border-color;
+                            border-radius: 5px;
+                            height: 1.938rem;
+                            width: 12.313rem;
+                            padding: 6px 14px;
+                            box-sizing: border-box;
+                            outline: none;
+                        }
+
+                        svg {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            position: absolute;
+                            right: 0.5rem;
+                        }
+                    }
+                    
+                    ul {
+                        display: flex;
+                        align-items: center;
+                        list-style-type: none;
+
+                        li {
+
+                            svg{
+                                width: 2rem;
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        // Categorias
         &:nth-child(2){
             height: 2.813rem;
+            box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center; 
+            justify-content: center;
             
             nav {
                 display: flex;
-                width: 100%;
+                width: calc(100% - 15.25rem);
                 
-                ul {
+                
+                >ul {
                     width: 100%;
                     height: 2.813rem;
                     @include flex(row, center, space-around);
                     list-style-type: none;
-                    li {
-                        
-                        a {
+                    > li {
+                        &:first-child {
+                            a {
+                                position: relative;
+                                text-decoration: none;
+                                color: $color-danger;
+                                transition: color 0.3s ease-in-out;
+                                
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    left: 50%;
+                                    bottom: 0;
+                                    width: 0;
+                                    height: 2px;
+                                    background-color: $color-danger;
+                                    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+                                }
+                                
+                                &:hover {
+                                    color: $color-danger;
+                                
+                                    &::after {
+                                    width: 100%;
+                                    left: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        > a {
+
                             font-weight: 600;
                             text-decoration: none;
                             color: black;
+                            position: relative;
+                            transition: color 0.3s ease-in-out;
+                            
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                left: 50%;
+                                bottom: 0;
+                                width: 0;
+                                height: 2px;
+                                background-color: black;
+                                transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+                            }
+                            
+                            &:hover {
+                                color: black;
+                            
+                                &::after {
+                                width: 100%;
+                                left: 0;
+                                }
+                            }
                         }
                     }
                 }

@@ -1,17 +1,14 @@
 <div>
     <form enctype="multipart/form-data" action="index.php?Controller=Productos&action=anadirProducto" method="POST" class = "">
     <h2>Añadir Producto</h2>
-        <label for="nombre">ID del Producto:</label>
-        <input type="text" id="id" name="idProducto" required>
-        
         <label for="nombre">Nombre del Producto:</label>
         <input type="text" id="nombre" name="nombre" required>
 
         <label for="descripcion">Descripción del Producto:</label>
         <textarea id="descripcion" name="descripcion" required></textarea>
 
-        <label for="imagen">URL de la Imagen:</label>
-        <input type="text" id="imagen" name="imagen"  required>
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen"  required>
 
         <label for="stock">Stock:</label>
         <input type="number" id="stock" name="stock" required>
