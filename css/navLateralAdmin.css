@@ -8,6 +8,7 @@ aside {
   border-bottom-right-radius: 15px;
   padding: 2.5rem 2rem;
   box-sizing: border-box;
+  position: relative;
 }
 aside section:first-child {
   display: flex;
@@ -36,6 +37,11 @@ aside section:first-child p span:last-child {
 aside section:nth-child(2) {
   margin-top: 6.5rem;
 }
+aside section:nth-child(3) {
+  border-top: 1px solid #CACACA;
+  position: absolute;
+  bottom: 2.5rem;
+}
 aside section article {
   display: flex;
   align-items: center;
@@ -53,6 +59,7 @@ aside section article svg {
 }
 aside section article a {
   text-decoration: none;
+  color: white;
 }
 aside section article span {
   text-transform: uppercase;

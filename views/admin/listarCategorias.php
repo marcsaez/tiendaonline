@@ -1,3 +1,4 @@
+<?php include "views/admin/navLateral.php"; ?>
 <!-- <script src="js/productoConcreto.js"></script>
 <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
 <div id="anadirCategoria" style="display:none;">
@@ -27,7 +28,7 @@
     </form>
 </div> -->
 
-<main class="dashboard" id="listar-categorias">
+<main class="dashboard listar" id="listar-categorias">
     <div>
         <section>
             <h1>Categorias</h1>

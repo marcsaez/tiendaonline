@@ -3,6 +3,7 @@
 @import 'variables.scss';
 @import 'mixin.scss';
 @import 'navLateralAdmin.scss';
+@import 'login.scss';
 
 * {
     font-family: 'Inter', sans-serif;
@@ -69,7 +70,7 @@ main#index-grid {
                         
                         a {
                             overflow: hidden;
-                            background-color: rgba(41, 41, 41, 0.70);;
+                            background-color: rgba(41, 41, 41, 0.70);
                             position: relative;
 
                             &:first-child {
@@ -118,7 +119,7 @@ main.dashboard {
     color: white;
 }
 
-main#listar-categorias {
+main.listar {
     
     div {
         margin-left: 16.25rem;
@@ -170,7 +171,7 @@ main#listar-categorias {
             &:nth-child(2) {
                 display: flex;
                 align-items: center;
-                justify-content: end;
+                justify-content: flex-end;
 
                 input {
                     width: 21.063rem;
