@@ -40,6 +40,12 @@ class categoria extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                // foreach ($resultados as &$categoria) {
+                //     $idPadre = $categoria['fkfathercategory'];
+                //     $nombrePadre = self::obtenerNombreCategoriaPorID($db, $idPadre);
+                //     $categoria['nombrePadre'] = $nombrePadre;
+                // }
             }else{
                 $resultados = null;
             }
@@ -49,6 +55,24 @@ class categoria extends database{
         return $resultados;
     }
 
+    //Sustituir ID Padre por nombre
+    // public static function obtenerNombreCategoriaPorID($db, $idCategoria){
+    //     try {
+    //         $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idCategoria");
+    //         $stmt->bindParam(':idCategoria', $idCategoria);
+    //         $stmt->execute();
+    
+    //         if ($stmt->rowCount() > 0) {
+    //             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    //             return $resultado['categoryname'];
+    //         } else {
+    //             return null;
+    //         }
+    //     } catch (Exception $e) {
+    //         return null;
+    //     }
+    // }
+
 
     // Añadir categoria
     public function anadir(){
@@ -56,10 +80,19 @@ class categoria extends database{
         $categoriaPadre = $this->categoriaPadre;
         $nombre = $this->nombre;
             if($categoriaPadre){
-                $stmt = $this->db->prepare("INSERT INTO categories (categoryname, fkfathercategory) VALUES (:nombre, :categoriaPadre)");
-                $stmt->bindParam(':nombre', $this->nombre);
-                $stmt->bindParam(':categoriaPadre', $this->categoriaPadre);
+                $sql = "SELECT categoryname FROM categories WHERE categoryid = :idCategoriaPadre";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
                 $stmt->execute();
+                $rowcount= $stmt->rowCount();
+                if ($rowcount>0){
+                    $stmt = $this->db->prepare("INSERT INTO categories (categoryname, fkfathercategory) VALUES (:nombre, :categoriaPadre)");
+                    $stmt->bindParam(':nombre', $this->nombre);
+                    $stmt->bindParam(':categoriaPadre', $this->categoriaPadre);
+                    $stmt->execute();
+                } else {
+                    echo "<script>alert('No existe un registro con el ID de categoriaPadre.');</script>";
+                }
             }else {
                 $stmt = $this->db->prepare("INSERT INTO categories (categoryname) VALUES (:nombre)");
                 $stmt->bindParam(':nombre', $this->nombre);
@@ -74,24 +107,47 @@ class categoria extends database{
     }
     
     //Editar categoria
-    public function editarCategoria(){
+    public function editar(){
         try{
-            if ($this->categoriaPadre) {
-                $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE idCategoria = :idCategoria;");
+            $id = $this->IDCategoria;
+            $categoriaPadre = $this->categoriaPadre;
+            $nombre = $this->nombre;
+            // echo $id, $nombre, $categoriaPadre;
+            if ($categoriaPadre!='null') {
                 
-                $stmt->bindParam(':nombreCategoria', $this->nombre);
-                $stmt->bindParam(':idCategoriaPadre', $this->categoriaPadre);
-                $stmt->bindParam(':idCategoria', $this->IDCategoria);
-                
+                $sql = "SELECT categoryname FROM categories WHERE categoryid = :idCategoriaPadre";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':idCategoriaPadre', $categoriaPadre);
                 $stmt->execute();
+                $rowcount= $stmt->rowCount();
+                if ($rowcount>0){
+                    $stmt1 = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE categoryid = :idCategoria;");
+                
+                    $stmt1->bindParam(':nombreCategoria', $nombre);
+                    $stmt1->bindParam(':idCategoriaPadre', $categoriaPadre);
+                    $stmt1->bindParam(':idCategoria', $id);
+                    
+                    $stmt1->execute();
+                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                } else {
+                    echo "<script>alert('No existe ninguna categoria con el siguient ID: $categoriaPadre');</script>";
+                    echo "<script>window.location.href = 'index.php?Controller=Categorias&action=listarCategorias';</script>";
+                }
+
+                // $stmt1 = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria, fkFatherCategory = :idCategoriaPadre WHERE idCategoria = :idCategoria;");
+                
+                // $stmt1->bindParam(':nombreCategoria', $this->nombre);
+                // $stmt1->bindParam(':idCategoriaPadre', $this->categoriaPadre);
+                // $stmt1->bindParam(':idCategoria', $this->IDCategoria);
+                
+                // $stmt1->execute();
                  
             }else{
-                $stmt = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE idCategoria= :idCategoria;");
-        
-                $stmt->bindParam(':nombreCategoria', $this->nombre);
-                $stmt->bindParam(':idCategoria', $this->IDCategoria);
-
-                $stmt->execute();
+                $stmt1 = $this->db->prepare("UPDATE categories SET categoryName = :nombreCategoria WHERE categoryid = :idCategoria;");
+                $stmt1->bindParam(':nombreCategoria', $nombre);
+                $stmt1->bindParam(':idCategoria', $id);
+                $stmt1->execute();
+                header("Location: index.php?Controller=Categorias&action=listarCategorias");
             }
             return true;
         }catch(Exception $e){

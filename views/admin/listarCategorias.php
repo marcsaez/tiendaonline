@@ -12,20 +12,6 @@
         <button type="submit">Añadir Categoria</button>
     </form>
 </div>
-<!-- <div id="editarCategoria" style="display:none;">
-    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
-
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="nombre">Categoria padre:</label>
-        <input type="text" id="categoriaPadre" name="categoriaPadre">
-
-        <button type="submit">Editar Categoria</button>
-    </form>
-</div> -->
 
 <!-- Listar categorias -->
 <?php
@@ -52,7 +38,7 @@
                     echo "        <input type='text' id='nombre' name='nombre' value='$nombre' required>";
                     echo "";
                     echo "        <label for='nombre'>Categoria padre:</label>";
-                    echo "        <input type='text' id='categoriaPadre' name='categoriaPadre' value='$categoriapadre' required>";
+                    echo "        <input type='number' id='categoriaPadre' name='categoriaPadre' value='$categoriapadre' min='1' max='100000' required>";
                     echo "";
                     echo "        <button type='submit'>Editar Categoria</button>";
                     echo "    </form>";
