@@ -11,6 +11,7 @@ aside {
     border-bottom-right-radius: 15px;
     padding: 2.5rem 2rem;
     box-sizing: border-box;
+    position: relative;
 
     section {
         &:first-child {
@@ -46,6 +47,13 @@ aside {
             margin-top: 6.5rem;
         }
 
+        &:nth-child(3){
+            border-top: 1px solid $border-color;
+            position: absolute;
+            bottom: 2.5rem;
+
+        }
+
         article {
             display: flex;
             align-items: center;
@@ -65,6 +73,7 @@ aside {
 
             a {
                 text-decoration: none;
+                color: white;
             }
 
             span {
@@ -75,5 +84,7 @@ aside {
                 letter-spacing: 1.4px; 
             }
         }
+
+
     }
 }

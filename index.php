@@ -16,11 +16,9 @@
 session_start();
 require_once "autoload.php";
 
-if(isset($_SESSION['admin_id'])){
-    require_once 'views/admin/navLateral.php';
-} else {
+if(!isset($_SESSION['admin_id'])){
     CategoriasController::menuCategorias();
-}
+} 
 
 if (isset($_GET['Controller'])){
     $nombreController = $_GET['Controller']."Controller";
