@@ -234,7 +234,7 @@ class Categoria extends database{
                 $subcat = null;
             }
             // Productos asociados a categoria
-            $stmt = $db->prepare("SELECT * FROM products WHERE fkcategories = :id");
+            $stmt = $db->prepare("SELECT * FROM products WHERE fkcategories = :id AND active = 1");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             if($stmt->rowCount() > 0){

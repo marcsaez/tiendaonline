@@ -5,11 +5,15 @@ echo '
 </div>
 
 ';
+// SUBCATEGORIAS si existen
 if (isset($subcat) && is_array($subcat)){
+    // echo '<select id="subcategorias" name="subcategorias">';
+    // echo '<option value="" disabled selected>Subcategorias</option>';
     foreach ($subcat as $sub) {
         $subid = $sub['categoryid'];
         $subname = $sub['categoryname'];
         $subfather = $sub['fkfathercategory'];
+        // echo '<option value="'.$subid.'">'.$subname.'</option>';
         echo '
         <div id="'.$subname.'">
             <a id="'.$subname.'" href="index.php?Controller=Categorias&action=filtrar&categoria='.$subid.'&nombre='.$subname.'">'.$subname.'</a>
@@ -17,8 +21,30 @@ if (isset($subcat) && is_array($subcat)){
         ';
 
     }
+    // echo '</select>';
 }
 
+// PRODUCTOS
+if (isset($products) && is_array($products)){
+    foreach ($products as $prod){
+        $prodid = $prod['productid'];
+        $prodname = $prod['productname'];
+        $proddescription = $prod['productdescription'];
+        $prodimg = $prod['productimg'];
+        $prodstock = $prod['productstock'];
+        $prodnoted = $prod['productnoted'];
+        $prodprice = $prod['productprice'];
+        $prodcat = $prod['fkcategories'];
 
+        echo '
+        <div class="productinfo "id="'.$prodname.'">
+            <a href="#">
+                <img src="'.$prodimg.'" alt="'.$proddescription.'" width=100px height=100px>
+                <h2>'.$prodname.'</h2>
+            </a>
+        </div>
+        ';
+    }
+}
 
 ?>
