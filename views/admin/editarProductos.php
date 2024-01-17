@@ -30,8 +30,8 @@
                 <label for="descripcion">Nueva Descripción:</label>
                 <textarea id="descripcion" name="descripcion" required><?php echo $descripcion; ?></textarea>
             
-                <label for="imagen">Nueva Imagen (URL):</label>
-                <input type="text" id="imagen" name="imagen" value="<?php echo $imagen; ?>" required>
+                <label for="imagen">Nueva Imagen:</label>
+                <input type="file" id="imagen" name="imagen">
             
                 <label for="stock">Nuevo Stock:</label>
                 <input type="number" id="stock" name="stock" value="<?php echo $stock; ?>" required>
