@@ -65,7 +65,7 @@
                 <?php
                     foreach($totalCategorias as $categoria){
                         $categoriaNameUpperCase = strtoupper($categoria['categoryname']);
-                        echo "<li><a href='".$categoria['categoryname']."'>".$categoriaNameUpperCase."</a></li>";
+                        echo "<li><a href='index.php?Controller=Categorias&action=filtrar&categoria=".$categoria['categoryid']."&nombre=".$categoria['categoryname']."'>".$categoriaNameUpperCase."</a></li>";
                     }
                 ?>
             </ul>
