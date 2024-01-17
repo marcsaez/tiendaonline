@@ -9,6 +9,7 @@ echo '
 if (isset($subcat) && is_array($subcat)){
     // echo '<select id="subcategorias" name="subcategorias">';
     // echo '<option value="" disabled selected>Subcategorias</option>';
+    echo '<div class="subcategorias">';
     foreach ($subcat as $sub) {
         $subid = $sub['categoryid'];
         $subname = $sub['categoryname'];
@@ -21,11 +22,12 @@ if (isset($subcat) && is_array($subcat)){
         ';
 
     }
-    // echo '</select>';
+    echo '</div>';
 }
 
 // PRODUCTOS
 if (isset($products) && is_array($products)){
+    echo '<div class="productos">';
     foreach ($products as $prod){
         $prodid = $prod['productid'];
         $prodname = $prod['productname'];
@@ -37,7 +39,7 @@ if (isset($products) && is_array($products)){
         $prodcat = $prod['fkcategories'];
 
         echo '
-        <div class="productinfo "id="'.$prodname.'">
+        <div class="'.$prodname.'">
             <a href="#">
                 <img src="'.$prodimg.'" alt="'.$proddescription.'" width=100px height=100px>
                 <h2>'.$prodname.'</h2>
@@ -45,6 +47,7 @@ if (isset($products) && is_array($products)){
         </div>
         ';
     }
+    echo '</div>';
 }
 
 ?>
