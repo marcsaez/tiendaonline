@@ -32,8 +32,8 @@
                     </script> -->
                     <?php
                     header("Location: index.php?Controller=Categorias&action=listarCategorias");
-                }
-            }   
+            }
+        }   
         public function editarCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
