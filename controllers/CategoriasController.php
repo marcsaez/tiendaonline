@@ -63,6 +63,21 @@
                 echo "Error: ID de categoría no proporcionado en la URL";
             }
         }
+
+        public function filtrar(){
+            if (isset($_GET['categoria'])){
+                $id = $_GET['categoria'];
+                $nombre = $_GET['nombre'];
+                require_once "models/categorias.php";
+                $db = Categoria::staticConectar();
+                $result = Categoria::filtroCategorias($db,$id);
+                $subcat = $result[0];
+                $productsCategory = $result[1];
+                require_once "views/general/filtroCategorias.php";
+                
+            }
+        }
+
     }
     
 ?>
