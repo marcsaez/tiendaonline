@@ -225,7 +225,21 @@ class Productos extends database{
     }
     public static function buscadorProductos($db, $termino_busqueda){
         try{
-            $stmt = $db->prepare("SELECT * FROM products WHERE productname LIKE '%$termino_busqueda%'");
+            $stmt = $db->prepare("SELECT * FROM products WHERE LOWER(productname) LIKE LOWER(:termino_busqueda)");
+            $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
+    public static function buscadorProductosPrincipal($db, $termino_busqueda){
+        try{
+            $stmt = $db->prepare("SELECT * FROM products WHERE LOWER(productname) LIKE LOWER(:termino_busqueda) AND active = 1");
+            $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -2,16 +2,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var terminoInput = document.getElementById('busqueda');
     var resultadosDiv = document.getElementById('resultadosDiv');
 
-    terminoInput.addEventListener('keyup', function () {
-       
-        
-        // Realizar la búsqueda inmediatamente
-        var termino = terminoInput.value;
+    terminoInput.addEventListener('input', function () {
+        var termino = terminoInput.value.trim();
         realizarBusqueda(termino);
+    });
 
-        // Agregar un retraso después de 500 milisegundos para otra acción (por ejemplo, un console log)
-       
-        
+    terminoInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evitar la acción predeterminada (como enviar el formulario)
+
+            var termino = terminoInput.value.trim();
+            realizarBusqueda(termino);
+        }
         
     });
 
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var data = new URLSearchParams();
         data.append('termino', termino);
 
-        fetch('indexAjax.php?Controller=Productos&action=buscar', {
+        fetch('indexAjax.php?Controller=Productos&action=buscarPrincipal', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
