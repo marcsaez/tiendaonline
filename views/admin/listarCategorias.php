@@ -1,5 +1,5 @@
 <?php include "views/admin/navLateral.php"; ?>
-<!-- <script src="js/productoConcreto.js"></script>
+ <script src="js/productoConcreto.js"></script>
 <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
 <div id="anadirCategoria" style="display:none;">
     <h3>Añadir categoria: </h3>
@@ -26,7 +26,7 @@
 
         <button type="submit">Editar Categoria</button>
     </form>
-</div> -->
+</div> 
 
 <main class="dashboard listar" id="listar-categorias">
     <div>
