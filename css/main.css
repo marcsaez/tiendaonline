@@ -229,6 +229,10 @@ main#loginAdmin {
   padding: 0;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 #slider {
   width: 100%;
   height: 300px;
@@ -319,27 +323,28 @@ main.dashboard {
   color: white;
 }
 
-main.listar div {
+main.listar > div {
   margin-left: 16.25rem;
   height: 100vh;
   box-sizing: border-box;
   padding: 0 2rem;
 }
-main.listar div section:first-child {
+main.listar > div section:first-child {
   width: 100%;
   height: 7rem;
   border-bottom: 1px solid #3F3F3F;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
-main.listar div section:first-child h1 {
+main.listar > div section:first-child h1 {
   font-size: 40px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-main.listar div section:first-child a {
+main.listar > div section:first-child a, main.listar > div section:first-child button {
   display: flex;
   align-items: center;
   padding: 12px;
@@ -353,18 +358,18 @@ main.listar div section:first-child a {
   letter-spacing: 1px;
   text-decoration: none;
 }
-main.listar div section:first-child a:hover {
+main.listar > div section:first-child a:hover, main.listar > div section:first-child button:hover {
   background-color: #575757;
 }
-main.listar div section:first-child a svg {
+main.listar > div section:first-child a svg, main.listar > div section:first-child button svg {
   width: 25px;
 }
-main.listar div section:nth-child(2) {
+main.listar > div section:nth-child(2) {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-main.listar div section:nth-child(2) input {
+main.listar > div section:nth-child(2) input {
   width: 21.063rem;
   padding: 0.7rem 1rem;
   background-color: #3F3F3F;
@@ -373,29 +378,29 @@ main.listar div section:nth-child(2) input {
   outline: none;
   color: white;
 }
-main.listar div section:nth-child(3) table {
+main.listar > div section:nth-child(3) table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   background-color: #3F3F3F;
   border-radius: 10px;
 }
-main.listar div section:nth-child(3) table tr td {
+main.listar > div section:nth-child(3) table tr td {
   padding: 1rem 0.5rem;
   text-transform: capitalize;
 }
-main.listar div section:nth-child(3) table tr td a {
+main.listar > div section:nth-child(3) table tr td a {
   text-decoration: none;
   display: flex;
   align-items: center;
 }
-main.listar div section:nth-child(3) table tr td a.editar {
+main.listar > div section:nth-child(3) table tr td a.editar {
   color: #3b82f6;
 }
-main.listar div section:nth-child(3) table tr td a.eliminar {
+main.listar > div section:nth-child(3) table tr td a.eliminar {
   color: rgb(202, 0, 0);
 }
-main.listar div section:nth-child(3) table tr td span {
+main.listar > div section:nth-child(3) table tr td span {
   display: flex;
   align-items: center;
   background-color: #228b22;
@@ -404,23 +409,39 @@ main.listar div section:nth-child(3) table tr td span {
   padding: 0.2rem 1rem;
   border-radius: 20px;
 }
-main.listar div section:nth-child(3) table tr td svg {
+main.listar > div section:nth-child(3) table tr td svg {
   width: 1.5rem;
   height: 1.5rem;
 }
-main.listar div section:nth-child(3) table tr th {
+main.listar > div section:nth-child(3) table tr th {
   text-align: left;
   padding: 0.5rem 0.5rem;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-main.listar div section:nth-child(3) table tr:nth-child(even) {
+main.listar > div section:nth-child(3) table tr:nth-child(even) {
   background-color: #575757;
 }
-main.listar div fieldset {
+main.listar > div fieldset {
   border-radius: 10px;
   margin: 2rem 4rem;
   border: 2px solid #3F3F3F;
   padding: 1rem;
   box-sizing: border-box;
+}
+
+#anadirCategoria {
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  background-color: #575757;
+  border-radius: 10px;
+}
+#anadirCategoria fieldset {
+  margin: 1rem;
+}
+#anadirCategoria fieldset form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
 }/*# sourceMappingURL=main.css.map */
