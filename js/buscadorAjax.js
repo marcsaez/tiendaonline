@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
             html += '<td>' + resultados[i].productstock + '</td>';
             html += '<td>' + resultados[i].productprice + '</td>';
             html += '<td>' + resultados[i].productnoted + '</td>';
-            html += '<td>' + resultados[i].active + '</td>';
-            html += '<td><a href="index.php?Controller=Productos&action=paginaEditarAjax&id=' + resultados[i].productid + '">Editar</a></td>';
-            html += '<td><a href="index.php?Controller=Productos&action=paginaEliminar&id=$idproduct"><img src="img/borrar.png" alt="Eliminar"></a></td>';
+            html += resultados[i].destacado_html;
+            html += resultados[i].activo_html;
+            html += resultados[i].editar_html;
             html += '</tr>';
         }
         resultadosDiv.innerHTML = html;
