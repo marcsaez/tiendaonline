@@ -1,3 +1,4 @@
+<?php include "views/admin/navLateral.php"; ?>
 <div>
     <form enctype="multipart/form-data" action="index.php?Controller=Productos&action=anadirProducto" method="POST" class = "">
     <h2>Añadir Producto</h2>

@@ -5,13 +5,13 @@
     <div>
         <section>
             <h1>Productos</h1>
-            <button>
+            <a href="index.php?Controller=Productos&action=paginaAnadirProductos">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
     
                 Añadir
-            </button>
+            </a>
         </section>
         <section>
         <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
@@ -86,15 +86,14 @@
                 echo "</tr>";
         }
     }else {
-        echo "No hay productos para mostrar.";
+        echo "
+            <tr>
+                <td colspan='6'>No hay productos para mostrar.</td>
+            </tr>
+        ";
     }
 ?>
             </table>
         </section>
     </div>
-    
-    <a href="index.php?Controller=Productos&action=paginaAnadirProductos"><img src="img/mas.png" alt="Añadir Producto"></a>
-    
-    
-    
 </main>

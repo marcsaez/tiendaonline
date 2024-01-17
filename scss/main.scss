@@ -145,7 +145,7 @@ main.listar {
                     text-transform: uppercase;
                 }
     
-                button {
+                a {
                     display: flex;
                     align-items: center;
                     padding: 12px;
@@ -157,6 +157,7 @@ main.listar {
                     cursor: pointer;
                     font-size: 18px;
                     letter-spacing: 1px;
+                    text-decoration: none;
 
                     &:hover {
                         background-color: #575757;

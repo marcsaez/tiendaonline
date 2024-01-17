@@ -339,7 +339,7 @@ main.listar div section:first-child h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-main.listar div section:first-child button {
+main.listar div section:first-child a {
   display: flex;
   align-items: center;
   padding: 12px;
@@ -351,11 +351,12 @@ main.listar div section:first-child button {
   cursor: pointer;
   font-size: 18px;
   letter-spacing: 1px;
+  text-decoration: none;
 }
-main.listar div section:first-child button:hover {
+main.listar div section:first-child a:hover {
   background-color: #575757;
 }
-main.listar div section:first-child button svg {
+main.listar div section:first-child a svg {
   width: 25px;
 }
 main.listar div section:nth-child(2) {
