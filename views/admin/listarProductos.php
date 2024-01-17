@@ -14,11 +14,12 @@
             </button>
         </section>
         <section>
-            <input type="text" id="barraBusqueda" placeholder="Buscar por nombre">
-            <button onclick="buscarRegistros()">Buscar</button>
+        <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
+            <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
+        </form>
         </section>
         <section>
-            <table>
+            <table id = "resultadosDivAdmin">
                 <tr>
                     <th>ID</th>
                     <th>Foto</th>
@@ -30,7 +31,7 @@
                     <th>Activo</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
-                </tr>
+                </tr>            
     <?php
     if (isset($allproducts) && is_array($allproducts)) {
         foreach ($allproducts as $producto) {
@@ -88,19 +89,12 @@
         echo "No hay productos para mostrar.";
     }
 ?>
-                
             </table>
         </section>
     </div>
     
     <a href="index.php?Controller=Productos&action=paginaAnadirProductos"><img src="img/mas.png" alt="Añadir Producto"></a>
     
-    <div id="buscadorAJAX">
-        <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
-            <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
-        </form>
-    º
-        </div>
-    <div id="resultadosDiv"></div>
+    
     
 </main>

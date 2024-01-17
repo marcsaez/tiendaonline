@@ -158,15 +158,26 @@ class Categoria extends database{
     public function actualizarCategoria() {
         
         if ($this->IDCategoria) {
-            // $id = $this->IDCategoria;
-            
             $sql = "UPDATE categories SET active = 0 WHERE categoryid = :idCategoria";
-            
             $stmt = $this->db->prepare($sql);
-
             $stmt->bindParam(':idCategoria', $this->IDCategoria);
-
             $stmt->execute();
+            
+            // $sqlcomprobar = "SELECT * FROM categories WHERE fkfathercategory = :idCategoria";
+            // $stmtcomprobar = $this->db->prepare($sqlcomprobar);
+            // $stmtcomprobar->bindParam(':idCategoria', $this->IDCategoria);
+            // $stmtcomprobar->execute();
+            // if ($stmtcomprobar->rowCount() > 0) {
+            //     echo "hola";
+            // } 
+            //UPDATE de CATEGORIAS HIJO ACTIVE = 0
+            $sqlcascade = "UPDATE categories set active = 0 WHERE fkfathercategory = :idCategoria";
+
+            $stmtcascade = $this->db->prepare($sqlcascade);
+
+            $stmtcascade->bindParam(':idCategoria', $this->IDCategoria);
+
+            $stmtcascade->execute();
 
             if ($stmt->rowCount() > 0) {
                 echo "La categoría con ID {$this->IDCategoria} ha sido actualizada correctamente.";
@@ -182,7 +193,7 @@ class Categoria extends database{
     }
     public static function navCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT categoryname FROM categories WHERE active=1 AND fkfathercategory is NULL");
+            $stmt = $db->prepare("SELECT categoryid,categoryname FROM categories WHERE active=1 AND fkfathercategory is NULL");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -209,6 +220,34 @@ class Categoria extends database{
             $nombreCategoria = $e;
         }
         return $nombreCategoria;
+    }
+
+    public static function filtroCategorias($db, $id){
+        try{
+            //Subcategorias
+            $stmtsubcat = $db->prepare("SELECT * FROM categories WHERE fkfathercategory = :id AND active = 1");
+            $stmtsubcat->bindParam(':id', $id);
+            $stmtsubcat->execute();
+            if($stmtsubcat->rowCount() > 0){
+                $subcat = $stmtsubcat->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $subcat = null;
+            }
+            // Productos asociados a categoria
+            $stmt = $db->prepare("SELECT * FROM products WHERE fkcategories = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $productosCategoria = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $productosCategoria = null;
+            }
+        }catch (Exception $e){
+            echo $e;
+            $productosCategoria = $e;
+        }
+        $resultado = array($subcat, $productosCategoria);
+        return $resultado;
     }
 }
 ?>
