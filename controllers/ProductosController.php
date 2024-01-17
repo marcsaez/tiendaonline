@@ -160,5 +160,18 @@
             }
             require_once "views/general/paginaProducto.php";
         }
+        public static function paginaEliminar(){
+            require_once "models/productos.php";
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $db = Productos::staticConectar();
+                $productoBorrar = Productos::eliminarProducto($db,$id);
+                if($productoBorrar == false){
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
+                }
+                
+
+            }
+        }
     }
 ?>

@@ -72,7 +72,7 @@
                 $db = Categoria::staticConectar();
                 $result = Categoria::filtroCategorias($db,$id);
                 $subcat = $result[0];
-                $productsCategory = $result[1];
+                $products = $result[1];
                 require_once "views/general/filtroCategorias.php";
                 
             }

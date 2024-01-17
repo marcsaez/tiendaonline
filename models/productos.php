@@ -259,5 +259,16 @@ class Productos extends database{
         }
         return $rutasSlider;  
     }
+    public static function eliminarProducto($db,$id){
+        try{
+            $stmt =$db->prepare("UPDATE products SET active = 0 WHERE productid = :idproducto;");
+            $stmt->bindParam(':idproducto', $id);
+            $stmt->execute();
+            $error = false;
+        } catch(Exception $e){
+            $error = true;
+        }
+        return $error;
+    }
 }
 ?>
