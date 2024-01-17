@@ -66,8 +66,8 @@
                                 <td>'.$idCategoria.'</td>
                                 <td>'.$nombreCategoria.'</td>
                                 <td>'.$mostrarCategoriaPadre.'</td>
-                                <td><a id="editar-categoria">Editar</a></td>
-                                <td><a id="eliminar-categoria" href="index.php?Controller=Categorias&action=eliminar&IDCategoria='.$idCategoria.'">Eliminar</a></td>
+                                <td><a class="editar">Editar</a></td>
+                                <td><a class="eliminar" href="index.php?Controller=Categorias&action=eliminar&IDCategoria='.$idCategoria.'">Eliminar</a></td>
                             </tr>
                         ';
                     }
