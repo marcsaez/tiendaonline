@@ -4,7 +4,7 @@
     </ul>
 </div>
 <div>
-    <script src="js/productoConcreto.js"></script>
+    <input type="hidden" name="stockMaximo" id="stockMaximo" value="<?php echo $productoConcreto[0]['productstock']; ?>">
     <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
     <h2><?php echo $productoConcreto[0]['productname'];?></h2>
     <p><?php echo ($productoConcreto[0]['productprice']+3); ?>€</p>
@@ -38,28 +38,30 @@
         <h3>Categoria: </h3>
         <p><?php echo $nombreCategoria?></p>
         <?php 
-        // if(isset($subcategoria)){ ?>
-            <!-- <h3>Genero: </h3>
-            ?php echo $subcategoria ?>
-         <?php
+        // if(isset($subcategoria)){
+            //<h3>Genero: </h3>
+            //echo $subcategoria
+        
         // }
-        // ?>
+        // 
+        ?>
     </div>
 </div>
 <div>
-    <h2>Mas <?php echo $subcategoria?></h2>
+    <h2>Mas <?php //echo $subcategoria?></h2>
     <?php
-        if(isset($masProductos) && is_array($masProductos)){
-            foreach ($masProductos as $producto){
-                echo"<div>";
-                // echo"<img src='$producto['productimg']' alt='producto relacionado'>"; 
-                // echo"<p>$producto['productname']</p>";
-                // echo"<p>$producto['productprice']</p>";
-                //Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
-                echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
-                echo"</div>";
-            }
-        }
+        // if(isset($masProductos) && is_array($masProductos)){
+        //     foreach ($masProductos as $producto){
+        //         echo"<div>";
+        //         echo"<img src='$producto['productimg']' alt='producto relacionado'>"; 
+        //         echo"<p>$producto['productname']</p>";
+        //         echo"<p>$producto['productprice']</p>";
+        //         Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
+        //         echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
+        //         echo"</div>";
+        //     }
+        // }
     ?>
 </div>
-<script src="../../js/productoConcreto.js"></script>
+<!-- <script src="../../js/productoConcreto.js"></script> -->
+<script src="./js/productoConcreto.js"></script>

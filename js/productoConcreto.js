@@ -1,5 +1,6 @@
 let inputCantidad = document.getElementById('cantidad');
-
+let stockTotal = document.getElementById('stockMaximo')
+console.log(stockTotal.value);
 function incrementarCantidad() {
     let cantidadActual = parseInt(inputCantidad.value);
     inputCantidad.value = cantidadActual + 1;
