@@ -27,4 +27,4 @@ function mostrarOcultar(id) {
     } else {
       elemento.style.display = 'none';
     }
-  }
+}

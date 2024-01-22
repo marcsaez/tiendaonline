@@ -17,7 +17,7 @@
             <!-- BUSCADOR AJAX (SOLO CAMBIAR ID'S Y LLAMADA A FUNCION) -->
         <div id="buscadorAJAX">
         <script src="js/buscadorPrincipal.js"></script>
-            <form action="index.php?Controller=Productos&action=buscar" method="post" name="busqueda">
+            <form action="index.php?Controller=Productos&action=buscarPrincipal" method="post" name="busqueda">
                 <input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
                 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#cacaca">

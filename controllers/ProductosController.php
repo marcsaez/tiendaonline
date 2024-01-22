@@ -53,7 +53,11 @@
         public function editarProductos(){
             if(isset($_POST)){
                 require_once "models/productos.php";
-                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $imagen_ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+                $imagen_path = 'img/productos/' . $codigoUnico .'.'. $imagen_ext;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
+
+                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->actualizarProducto();
                 if ($allproducts){
@@ -148,6 +152,22 @@
                 // No es necesario devolver nada aquí
             }
         }
+        public function buscarPrincipal() {
+            require_once "models/productos.php";
+        
+            if (isset($_POST['termino'])) {
+                $termino_busqueda = $_POST['termino'];
+                $db = Productos::staticConectar();
+                $resultados = Productos::buscadorProductosPrincipal($db, $termino_busqueda);
+                
+                // Establecer el encabezado para indicar que se está enviando JSON
+                header('Content-Type: application/json');
+        
+                // Imprimir la respuesta JSON
+                echo json_encode($resultados);
+                // No es necesario devolver nada aquí
+            }
+        }
         
         public static function productoConcreto(){
             require_once "models/productos.php";
@@ -159,6 +179,19 @@
                 $nombreCategoria = categoria::nombreCategorias($db,$productoConcreto[0]['fkcategories']);
             }
             require_once "views/general/paginaProducto.php";
+        }
+        public static function paginaEliminar(){
+            require_once "models/productos.php";
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                $db = Productos::staticConectar();
+                $productoBorrar = Productos::eliminarProducto($db,$id);
+                if($productoBorrar == false){
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
+                }
+                
+
+            }
         }
     }
 ?>
