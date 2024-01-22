@@ -3,7 +3,7 @@
 <header>
     <section>
         <div>
-            <img src='./img/Logo.png' alt='MangaHouse' id='logo'>
+            <a href="index.php"><img src='./img/Logo.png' alt='MangaHouse' id='logo'></a>
             <p>
                 <span>manga</span>
                 <span>house</span>
