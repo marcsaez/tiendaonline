@@ -38,14 +38,10 @@ if (isset($products) && is_array($products)){
         $prodprice = $prod['productprice'];
         $prodcat = $prod['fkcategories'];
 
-        echo '
-        <div class="'.$prodname.'">
-            <a href="#">
-                <img src="'.$prodimg.'" alt="'.$proddescription.'" width=100px height=100px>
-                <h2>'.$prodname.'</h2>
-            </a>
-        </div>
-        ';
+        echo '<div class="'.$prodname.'">';
+        echo '<img src="'.$prodimg.'" alt="'.$proddescription.'" width=100px height=100px>';
+        echo "<a href='index.php?Controller=Productos&action=productoConcreto&productID=".$prod['productid']."'>".$prod['productname']."</a>";
+        echo '</div>';
     }
     echo '</div>';
 }

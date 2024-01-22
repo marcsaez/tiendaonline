@@ -1,25 +1,7 @@
 <?php include "views/admin/navLateral.php"; ?>
-<<<<<<< HEAD
-<script src="js/productoConcreto.js"></script>
-<h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2>
-<div id="anadirCategoria" style="display:none;">
-    <h3>Añadir categoria: </h3>
-    <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadirCategoria" method="POST" class = "">   
-        <label for="nombre">Nombre de la categoria:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="nombre">ID de la Categoria padre:</label>
-        <input type="text" id="categoriaPadre" name="categoriaPadre">
-
-        <button type="submit">Añadir Categoria</button>
-    </form>
-</div>
- <div id="editarCategoria" style="display:none;">
-=======
  <script src="js/productoConcreto.js"></script>
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
 <div id="editarCategoria" style="display:none;">
->>>>>>> 0a8137c80e306649fbb9d9a50a9057383f2016c7
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required>
