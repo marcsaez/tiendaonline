@@ -5,6 +5,7 @@
 </div>
 <div>
     <input type="hidden" name="stockMaximo" id="stockMaximo" value="<?php echo $productoConcreto[0]['productstock']; ?>">
+    <input type="hidden" name="nombreProd" id="nombreProd" value="<?php  echo $productoConcreto[0]['productname'];?>">
     <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
     <h2><?php echo $productoConcreto[0]['productname'];?></h2>
     <p><?php echo ($productoConcreto[0]['productprice']+3); ?>€</p>

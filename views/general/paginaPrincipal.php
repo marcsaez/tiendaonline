@@ -6,9 +6,6 @@
             <h2><img src="././img/trending.png" alt="fueguito">TOP TENDENCIAS DE ESTE MES</h2>
             <div class="warp">
                 <!-- <div class="top-card"></div> -->
-                <div class="top-card"></div>
-                <div class="top-card"></div>
-                <div class="top-card"></div>
                 <?php
                 $vuelta=1;
                     foreach ($productosDestacados as $producto){
@@ -22,6 +19,9 @@
                         $vuelta=$vuelta+1;
                     }
                 ?>
+                <div class="top-card"></div>
+                <div class="top-card"></div>
+                <div class="top-card"></div>
             </div>
         </section>
         <section>

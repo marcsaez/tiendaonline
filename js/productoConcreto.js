@@ -1,9 +1,11 @@
 let inputCantidad = document.getElementById('cantidad');
 let stockTotal = document.getElementById('stockMaximo')
-console.log(stockTotal.value);
 function incrementarCantidad() {
     let cantidadActual = parseInt(inputCantidad.value);
-    inputCantidad.value = cantidadActual + 1;
+    let stockMax = parseInt(stockTotal.value);
+    if (cantidadActual < stockMax) {
+        inputCantidad.value = cantidadActual + 1;
+    }
 }
 
 function disminuirCantidad() {
@@ -14,7 +16,8 @@ function disminuirCantidad() {
 }
 
 function anadirCarrito() {
-    let nombreProducto = 'Nombre del Producto';
+    let temp = document.getElementById('nombreProd');
+    let nombreProducto =  temp.value;
     let cantidad = parseInt(inputCantidad.value);
     alert(`Añadir ${cantidad} ${nombreProducto}(s) al carrito`);
     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
