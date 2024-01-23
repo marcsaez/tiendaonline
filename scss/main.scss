@@ -233,6 +233,10 @@ main.listar {
                                 height: 1.5rem;
 
                             }
+
+                            img {
+                                width: 2rem;
+                            }
                         }
 
                         th {
@@ -256,6 +260,32 @@ main.listar {
             border: 2px solid #3F3F3F;
             padding: 1rem;
             box-sizing: border-box;
+
+            form[name="anadir-producto"]{
+                width: 45rem;
+                //border: 1px solid red;
+                $cuadricula: 
+                    (1, 1, 2, 2),
+                    (2, 1, 3, 2),
+                    (1, 2, 2, 3),
+                    (2, 2, 3, 3),
+                    (3, 1, 4, 2),
+                    (4, 1, 5, 2),
+                    (3, 2, 4, 3),
+                    (4, 2, 5, 3),
+                    (5, 1, 6, 2),
+                    (6, 1, 7, 2),
+                    (5, 2, 6, 3),
+                    (6, 2, 7, 3),
+                    (7, 1, 8, 3),
+                    (8, 1, 9, 3),
+                    (9, 1, 10, 3);
+                     
+                @include grid(repeat(2, 1fr), repeat(9, auto));
+                @include generateGridArea(div, $cuadricula);
+
+
+            }
         }
     }
 }

@@ -4,3 +4,18 @@
     align-items: $align;
     justify-content: $justify;
 }
+
+@mixin generateGridArea($selector, $areasCuadricula){
+    @each $area in $areasCuadricula {
+        $i: index($areasCuadricula, $area);
+        #{$selector}:nth-child(#{$i}) {
+            grid-area: #{nth($area, 1)} / #{nth($area, 2)} / #{nth($area, 3)} / #{nth($area, 4)};
+        }
+    }
+}
+
+@mixin grid($gridColums, $gridRows){
+    display: grid;
+    grid-template-columns: $gridColums;
+    grid-template-rows: $gridRows;
+}
