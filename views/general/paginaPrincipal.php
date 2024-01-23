@@ -1,5 +1,5 @@
 <div id="slider"></div>     
-<main id="index-grid">
+<main class="page-grid" id="index">
     <div class="void"></div>
     <div>
         <section>
@@ -19,9 +19,7 @@
                         $vuelta=$vuelta+1;
                     }
                 ?>
-                <div class="top-card"></div>
-                <div class="top-card"></div>
-                <div class="top-card"></div>
+                
             </div>
         </section>
         <section>

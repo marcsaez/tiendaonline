@@ -21,11 +21,13 @@ body {
     border: 1px solid black;
 }
 
-main#index-grid {
+.page-grid {
     display: grid;
     grid-template-columns: 7.625rem auto 7.625rem;
-    height: 100vh;
+    min-height: 100vh;
+}
 
+main#index {
 
     .top-card {
         width: 18rem;
@@ -305,5 +307,135 @@ main.listar {
             grid-template-rows: repeat(5, auto);
         }
         
+    }
+}
+
+.pagina-producto {
+    margin-top: 2.375rem;
+    $cuadricula: (
+        (1, 1, 2, 3),
+        (2, 1, 3, 2),
+        (2, 2, 3, 3),
+        (3, 1, 4, 3)
+    );
+
+    @include grid(auto 1fr, 3rem 2fr 1fr);
+    @include generateGridArea(section, $cuadricula);
+   
+
+    section {
+        &:nth-child(1){
+            ul {
+                list-style-type: none;
+            }
+        }
+
+        &:nth-child(2) {
+            img {
+                width: 19.688rem;
+                border: 1px solid $border-color;
+            }
+        }
+
+        &:nth-child(3) {
+            margin-left: 3rem;
+            > div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                h1 {
+                    font-weight: 700;
+                    font-size: 2.5rem; 
+                }
+
+                span {
+                    text-decoration: line-through;
+                    color: #696969;
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                }
+            }
+
+            section {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                
+                div {
+                    &:first-child{
+                        > span {
+                            color: #848484;
+                            font-size: 1rem;
+                            font-weight: 500;
+                            margin-bottom: 0.688rem;
+                        }
+                        
+                        p {
+                            font-size: 1.25rem;
+                            font-weight: 700;
+
+                            #si-stock {
+                                color: #469E00;
+                            }
+                            #no-stock {
+                                color: #950000;
+                            }
+                            
+                        }
+                    }
+                }
+                
+            }
+
+            article {
+                margin: 1.563rem 0;
+                h2 {
+                    font-size: 1.125rem;
+                    font-weight: 700;
+                }
+
+                span { cursor: pointer; }
+
+                .containerCantidad {
+                    border: 0.5px solid black;
+                    width: 8.5rem;
+                    height: 1.875rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-radius: 5px;
+                    padding: 0.5rem;
+                    box-sizing: border-box;
+
+                    input {
+                        width: 1rem;
+                        text-align: center;
+                        border: none;
+                    }
+
+                    button {
+                        background-color: transparent;
+                        outline: none;
+                        border: none;
+                        cursor: pointer;
+
+                        svg {
+                            width: 1.2rem;
+                        }
+                    }
+                }
+
+                .producto-info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 1px solid black;
+                }
+            }
+        }
     }
 }
