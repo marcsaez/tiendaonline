@@ -138,6 +138,7 @@
         }
         public function buscar() {
             require_once "models/productos.php";
+            require_once "models/categorias.php";
         
             if (isset($_POST['termino'])) {
                 $termino_busqueda = $_POST['termino'];
