@@ -217,7 +217,7 @@ class Categoria extends database{
             }
         }catch (Exception $e){
             echo $e;
-            $nombreCategoria = $e;
+            $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
         }
         return $nombreCategoria;
     }

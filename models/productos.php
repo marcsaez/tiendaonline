@@ -228,8 +228,14 @@ class Productos extends database{
             $stmt = $db->prepare("SELECT * FROM products WHERE LOWER(productname) LIKE LOWER(:termino_busqueda)");
             $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
             $stmt->execute();
+           
             if($stmt->rowCount() > 0){
-                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
+                foreach ($resultados as &$fila) {
+                    $fila['fkcategories'] = Categoria::nombreCategorias($db, $fila['fkcategories']);
+                }
+                
+            
             }
         }catch (Exception $e){
             $resultados = null;
