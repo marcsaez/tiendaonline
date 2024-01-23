@@ -413,6 +413,9 @@ main.listar > div section:nth-child(3) table tr td svg {
   width: 1.5rem;
   height: 1.5rem;
 }
+main.listar > div section:nth-child(3) table tr td img {
+  width: 2rem;
+}
 main.listar > div section:nth-child(3) table tr th {
   text-align: left;
   padding: 0.5rem 0.5rem;
@@ -428,6 +431,57 @@ main.listar > div fieldset {
   border: 2px solid #3F3F3F;
   padding: 1rem;
   box-sizing: border-box;
+}
+main.listar > div fieldset form[name=anadir-producto] {
+  width: 45rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(9, auto);
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(1) {
+  grid-area: 1/1/2/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(3) {
+  grid-area: 1/2/2/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(4) {
+  grid-area: 2/2/3/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(5) {
+  grid-area: 3/1/4/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(6) {
+  grid-area: 4/1/5/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(7) {
+  grid-area: 3/2/4/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(8) {
+  grid-area: 4/2/5/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(9) {
+  grid-area: 5/1/6/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(10) {
+  grid-area: 6/1/7/2;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(11) {
+  grid-area: 5/2/6/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(12) {
+  grid-area: 6/2/7/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(13) {
+  grid-area: 7/1/8/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(14) {
+  grid-area: 8/1/9/3;
+}
+main.listar > div fieldset form[name=anadir-producto] div:nth-child(15) {
+  grid-area: 9/1/10/3;
 }
 
 #anadirCategoria {
