@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  apache:
+    container_name: apache
+    build:
+    # Dockerfile path
+      context: ./apache/
+      dockerfile: Dockerfile  
+    volumes:
+      - ./apache/app/:/var/www/html 
+    ports:
+      - 8000:80
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16.0
+    environment:
+      POSTGRES_DB: mangahouse
+      POSTGRES_USER: postgresql
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+volumes:
+  pg_data:

@@ -4,6 +4,13 @@
             require_once "models/categorias.php";
             $db = Categoria::staticConectar();
             $allcategories = Categoria::listarTodasCategorias($db);
+            $padres = array();
+            foreach ($allcategories as $category) {
+                if (empty($category['fkfathercategory'])) {
+                    $padres[] = $category;
+                }
+            }
+            print_r($padres);
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){
@@ -31,8 +38,8 @@
                         alert("Error en alguno de los datos");
                     </script> -->
                     <?php
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
-            }
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
+                }
         }   
         public function editarCategoria(){
             if(isset($_POST)){
@@ -52,11 +59,11 @@
                 // echo $categoria->IDCategoria;
                 $actualizada=$categoria->actualizarCategoria();
                 if($actualizada==true){
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
                 }else{
                     echo $actualizada;
                     sleep(5);
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
                 }
             } else {
                 // Si no se proporciona 'id' en la URL, muestra un mensaje de error o realiza otra acción
