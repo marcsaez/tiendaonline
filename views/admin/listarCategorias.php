@@ -34,8 +34,17 @@
                         <label for="nombre">Nombre de la categoria:</label>
                         <input type="text" id="nombre" name="nombre" required>
                 
-                        <label for="nombre">ID de la Categoria padre:</label>
-                        <input type="text" id="categoriaPadre" name="categoriaPadre">
+                        <?php
+                        echo '<label for="nombre">ID de la Categoria padre:</label>';
+                        echo '<select id="categoriaPadre" name="categoriaPadre">';
+                        echo '<option value="" selected>Sin categoria padre</option>';
+                        
+                        foreach ($padres as $category) {
+                            echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
+                        }
+                        
+                        echo '</select>';
+                        ?>
                 
                         <button type="submit">Añadir Categoria</button>
                     </form>
