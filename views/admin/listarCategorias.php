@@ -1,5 +1,6 @@
 <?php include "views/admin/navLateral.php"; ?>
  <script src="js/productoConcreto.js"></script>
+ <script src="js/buscadorCategoria.js"></script>
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
 <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
@@ -34,8 +35,17 @@
                         <label for="nombre">Nombre de la categoria:</label>
                         <input type="text" id="nombre" name="nombre" required>
                 
-                        <label for="nombre">ID de la Categoria padre:</label>
-                        <input type="text" id="categoriaPadre" name="categoriaPadre">
+                        <?php
+                        echo '<label for="nombre">ID de la Categoria padre:</label>';
+                        echo '<select id="categoriaPadre" name="categoriaPadre">';
+                        echo '<option value="" selected>Sin categoria padre</option>';
+                        
+                        foreach ($padres as $category) {
+                            echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
+                        }
+                        
+                        echo '</select>';
+                        ?>
                 
                         <button type="submit">Añadir Categoria</button>
                     </form>
@@ -43,10 +53,12 @@
             </div>
         </section>
         <section>
-            <input type="text" id="barraBusqueda" placeholder="Buscar por nombre">
-            <button onclick="buscarRegistros()">Buscar</button>
+        <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">
+            <input type="text" id="termino" name="termino" placeholder="Indique el nombre de la categoria a buscar">
+        </form>
         </section>
         <section>
+<<<<<<< HEAD
             <table>
                 <thead>
                     <tr>
@@ -58,6 +70,16 @@
                     </tr>
                 </thead>
                 <tbody>
+=======
+            <table id ="resultadosDivAdmin">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría Padre</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+>>>>>>> 73bdc44c31fb1ebd2f5b6be8e1bcd356cba7f764
                 <?php 
                     foreach ($allcategories as $categoria) {
                         $idCategoria = $categoria['categoryid'];

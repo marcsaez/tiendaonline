@@ -4,6 +4,12 @@
             require_once "models/categorias.php";
             $db = Categoria::staticConectar();
             $allcategories = Categoria::listarTodasCategorias($db);
+            $padres = array();
+            foreach ($allcategories as $category) {
+                if (empty($category['fkfathercategory'])) {
+                    $padres[] = $category;
+                }
+            }
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){
@@ -31,8 +37,8 @@
                         alert("Error en alguno de los datos");
                     </script> -->
                     <?php
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
-            }
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
+                }
         }   
         public function editarCategoria(){
             if(isset($_POST)){
@@ -52,11 +58,11 @@
                 // echo $categoria->IDCategoria;
                 $actualizada=$categoria->actualizarCategoria();
                 if($actualizada==true){
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
                 }else{
                     echo $actualizada;
                     sleep(5);
-                    header("Location: index.php?Controller=Categorias&action=listarCategorias");
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Categorias&action=listarCategorias">';
                 }
             } else {
                 // Si no se proporciona 'id' en la URL, muestra un mensaje de error o realiza otra acción
@@ -75,6 +81,21 @@
                 $products = $result[1];
                 require_once "views/general/filtroCategorias.php";
                 
+            }
+        }
+        public function buscar() {
+            require_once "models/categorias.php";
+            if (isset($_POST['termino'])) {
+                $termino_busqueda = $_POST['termino'];
+                $db = Categoria::staticConectar();
+                $resultados = Categoria::buscadorCategorias($db, $termino_busqueda);
+                
+                // Establecer el encabezado para indicar que se está enviando JSON
+                header('Content-Type: application/json');
+        
+                // Imprimir la respuesta JSON
+                echo json_encode($resultados);
+                // No es necesario devolver nada aquí
             }
         }
 
