@@ -10,7 +10,6 @@
                     $padres[] = $category;
                 }
             }
-            print_r($padres);
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){
