@@ -1,9 +1,9 @@
 <?php
 class database{
     public function conectar(){
-        $host = 'postgres';
+        $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
+        $user = 'postgres';
         $password = 'password';
 
 
@@ -13,9 +13,9 @@ class database{
     }
 
     public static function staticConectar(){
-        $host = 'postgres';
+        $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
+        $user = 'postgres';
         $password = 'password';
 
 

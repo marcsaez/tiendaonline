@@ -83,6 +83,21 @@
                 
             }
         }
+        public function buscar() {
+            require_once "models/categorias.php";
+            if (isset($_POST['termino'])) {
+                $termino_busqueda = $_POST['termino'];
+                $db = Categoria::staticConectar();
+                $resultados = Categoria::buscadorCategorias($db, $termino_busqueda);
+                
+                // Establecer el encabezado para indicar que se está enviando JSON
+                header('Content-Type: application/json');
+        
+                // Imprimir la respuesta JSON
+                echo json_encode($resultados);
+                // No es necesario devolver nada aquí
+            }
+        }
 
     }
     

@@ -1,5 +1,6 @@
 <?php include "views/admin/navLateral.php"; ?>
  <script src="js/productoConcreto.js"></script>
+ <script src="js/buscadorCategoria.js"></script>
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
 <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
@@ -52,11 +53,12 @@
             </div>
         </section>
         <section>
-            <input type="text" id="barraBusqueda" placeholder="Buscar por nombre">
-            <button onclick="buscarRegistros()">Buscar</button>
+        <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">
+            <input type="text" id="termino" name="termino" placeholder="Indique el nombre de la categoria a buscar">
+        </form>
         </section>
         <section>
-            <table>
+            <table id ="resultadosDivAdmin">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
