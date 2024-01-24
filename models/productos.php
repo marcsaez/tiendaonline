@@ -199,7 +199,7 @@ class Productos extends database{
     }
     public static function productosDestacados($db){
         try{
-            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 AND active = 1 LIMIT 3;");
             $stmt->execute();
             $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $productosDestacados;

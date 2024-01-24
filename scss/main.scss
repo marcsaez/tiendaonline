@@ -7,6 +7,7 @@
 @import 'components/plus-minus.scss';
 @import 'components/products/description-list.scss';
 @import 'components/products/page.scss';
+@import 'components/products/top-products.scss';
 
 * {
     font-family: 'Inter', sans-serif;
@@ -32,38 +33,11 @@ body {
 
 main#index {
 
-    .top-card {
-        width: 18rem;
-        height: 18.75rem;
-        border: 1px solid #cacaca98;
-        border-radius: 10px;
-        background: $header-bg;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    }
-    .warp {
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 10px;
-    }
-
+    
+    
     div {
         &:nth-child(2) {
             section {
-                &:first-child {
-                    h2 {
-                        display: flex;
-                        align-items: center;
-                        margin-top: 4rem;
-                        margin-bottom: 2rem;
-                        color: $color-danger;
-
-                        img {
-                            width: 32px;
-                            height: 32px;
-                        }
-                    }
-                }
-
                 &:nth-child(2) {
                     margin-top: 2rem;
 
@@ -213,7 +187,7 @@ main.listar {
                                 text-decoration: none;
                                 display: flex;
                                 align-items: center;
-
+                                cursor: pointer;
                                 &.editar {
                                     color: #3b82f6;
                                 }
@@ -316,28 +290,9 @@ main.listar {
 
 
 .btn-primary {
-    background-color: black;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
+    @include btn-primary;
     width: 10rem;
     height: 2.5rem;
 
-    &:hover {
-        background-color: #3F3F3F;
-    }
-
-    svg {
-        width: 1.2rem;
-        margin-right: 0.2rem;
-    }
 
 }

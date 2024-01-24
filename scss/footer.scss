@@ -1,4 +1,13 @@
 footer {
-    display: flex;
-    
+    display: grid;
+    grid-template-columns: 12.5rem auto 12.5rem;
+    background-color: #252525;
+    color: white;
+    margin-top: 1rem;
+
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
