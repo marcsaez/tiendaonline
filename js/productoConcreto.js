@@ -31,3 +31,18 @@ function mostrarOcultar(id) {
       elemento.style.display = 'none';
     }
 }
+
+const plusMinusButtons = document.querySelectorAll('.plusminus');
+
+plusMinusButtons.forEach(plusMinusButton => {
+    plusMinusButton.addEventListener('click', (e) => {
+        const descripcionProd = plusMinusButton.closest('article').querySelector('.descripcionProd');
+        e.target.classList.toggle('active');
+        if (descripcionProd) {
+            //descripcionProd.style.display = (descripcionProd.style.display === 'none' || descripcionProd.style.display === '') ? 'block' : 'none';
+            descripcionProd.classList.toggle('active');
+        }
+    });
+});
+
+
