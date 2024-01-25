@@ -1,68 +1,119 @@
-<div>
-    <ul>
-        <li><a href="index.php">Inicio</a></li>
-    </ul>
-</div>
-<div>
-    <input type="hidden" name="stockMaximo" id="stockMaximo" value="<?php echo $productoConcreto[0]['productstock']; ?>">
-    <input type="hidden" name="nombreProd" id="nombreProd" value="<?php  echo $productoConcreto[0]['productname'];?>">
-    <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
-    <h2><?php echo $productoConcreto[0]['productname'];?></h2>
-    <p><?php echo ($productoConcreto[0]['productprice']+3); ?>€</p>
-    <h2><?php echo $productoConcreto[0]['productprice']; ?>€</h2>
-    <p>Ref: <?php echo $productoConcreto[0]['productid']; ?></p>
-    <h1>Disponibilidad: </h1>
-    <?php
-    if($productoConcreto[0]['productstock']>10){
-        echo"<p>En sotck</p>";//El css sera verde
-    }elseif($productoConcreto[0]['productstock']<=10 && $productoConcreto[0]['productstock']>0){
-        echo"<p>".$productoConcreto[0]['productstock']."</p>";//El css en naranja
-    }elseif($productoConcreto[0]['productstock']==0){
-        echo"<p>Sin sotck</p>";//El css en rojo
-    }
-    ?>
-    <h2>Cantidad</h2>
-    <div class="containerCantidad">
-        <button onclick="disminuirCantidad()">-</button>
-        <input type="text" id="cantidad" value="1" readonly>
-        <button onclick="incrementarCantidad()">+</button>
-    </div>
-    <button onclick="anadirCarrito()"><img src="../../img/carrito.png" alt="Aqui va el carrito">Añadir</button>
-    <h2>Descricpion</h2>
-    <h2 onclick="mostrarOcultar('descripcionProd')">+</h2>
-    <div id="descripcionProd" style="display:none;">
-        <p><?php echo $productoConcreto[0]['productdescription']; ?></p>
-    </div>
-    <h2>Mas info</h2>
-    <h2 onclick="mostrarOcultar('masInfoProducto')">+</h2>
-    <div id="masInfoProducto" style="display:none;">
-        <h3>Categoria: </h3>
-        <p><?php echo $nombreCategoria?></p>
-        <?php 
-        // if(isset($subcategoria)){
-            //<h3>Genero: </h3>
-            //echo $subcategoria
-        
-        // }
-        // 
-        ?>
-    </div>
-</div>
-<div>
-    <h2>Mas <?php //echo $subcategoria?></h2>
-    <?php
-        // if(isset($masProductos) && is_array($masProductos)){
-        //     foreach ($masProductos as $producto){
-        //         echo"<div>";
-        //         echo"<img src='$producto['productimg']' alt='producto relacionado'>"; 
-        //         echo"<p>$producto['productname']</p>";
-        //         echo"<p>$producto['productprice']</p>";
-        //         Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
-        //         echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
-        //         echo"</div>";
-        //     }
-        // }
-    ?>
-</div>
-<!-- <script src="../../js/productoConcreto.js"></script> -->
+<main class="page-grid">
+    <section class="void"></section>
+    <section class="pagina-producto">
+
+        <section>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+            </ul>
+        </section>
+        <section>
+            <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
+        </section>
+        <section>
+            <input type="hidden" name="stockMaximo" id="stockMaximo" value="<?php echo $productoConcreto[0]['productstock']; ?>">
+            <input type="hidden" name="nombreProd" id="nombreProd" value="<?php  echo $productoConcreto[0]['productname'];?>">
+            <div>
+                <h1><?php echo $productoConcreto[0]['productname'];?></h1>
+                <div>
+                    <span><?php echo ($productoConcreto[0]['productprice']+3); ?>€</span>
+                    <h1><?php echo $productoConcreto[0]['productprice']; ?>€</h1>
+                </div>
+            </div>
+            <section>
+                <div>
+                    <span>Ref: <?php echo $productoConcreto[0]['productid']; ?></span>
+                    <p>Disponibilidad:
+                    <?php
+                        if($productoConcreto[0]['productstock']>0){
+                            echo"<span id='si-stock'>En sotck</span>";//El css sera verde
+                        }
+                        else{
+                            echo"<span id='no-stock'>Sin sotck</span>";//El css en rojo
+                        }
+                    ?> </p>
+                </div>
+                
+                <button class="btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg>
+
+                Comprar ya</button>
+            </section>
+            <article>
+                <h2>Cantidad</h2>
+                <div id="container-cantidad">
+                    <div class="containerCantidad">
+                        <button onclick="disminuirCantidad()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                            </svg>
+                        </button>
+                        <input type="text" id="cantidad" value="1" readonly>
+                        <button onclick="incrementarCantidad()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+    
+                        </button>
+                    </div>
+                    <button onclick="anadirCarrito()" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>
+
+                        Añadir
+                    </button>
+                </div>
+            </article>
+            <article>
+                <div class="producto-info">
+                    <h2>Sinopsis</h2>
+                    <!-- <span onclick="mostrarOcultar('descripcionProd')">+</span> -->
+                    <span class="plusminus"></span>
+                </div>
+                <div class="descripcionProd">
+                    <p><?php echo $productoConcreto[0]['productdescription']; ?></p>
+                </div>
+            </article>
+            <article>
+                <div class="producto-info">
+                    <h2>Mas información</h2>
+                    <span class="plusminus"></span>
+                </div>
+                <div class="descripcionProd">
+                    <h3>Categoria: <span><?php echo $nombreCategoria?></span> </h3>
+                    
+                    <?php 
+                    // if(isset($subcategoria)){
+                        //<h3>Genero: </h3>
+                        //echo $subcategoria
+                    
+                    // }
+                    // 
+                    ?>
+                </div>
+            </article>
+        </section>
+        <section>
+            <h2>Mas <?php //echo $subcategoria?></h2>
+            <?php
+                // if(isset($masProductos) && is_array($masProductos)){
+                //     foreach ($masProductos as $producto){
+                //         echo"<div>";
+                //         echo"<img src='$producto['productimg']' alt='producto relacionado'>"; 
+                //         echo"<p>$producto['productname']</p>";
+                //         echo"<p>$producto['productprice']</p>";
+                //         Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
+                //         echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
+                //         echo"</div>";
+                //     }
+                // }
+            ?>
+        </section>
+        <!-- <script src="../../js/productoConcreto.js"></script> -->
+    </section>
+    <section class="void"></section>
+</main>
 <script src="./js/productoConcreto.js"></script>

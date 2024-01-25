@@ -199,7 +199,7 @@ class Productos extends database{
     }
     public static function productosDestacados($db){
         try{
-            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 LIMIT 4;");
+            $stmt = $db->prepare("SELECT productid, productname, productimg, productprice, productdescription FROM products WHERE productnoted = 1 AND active = 1 LIMIT 3;");
             $stmt->execute();
             $productosDestacados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $productosDestacados;
@@ -228,8 +228,14 @@ class Productos extends database{
             $stmt = $db->prepare("SELECT * FROM products WHERE LOWER(productname) LIKE LOWER(:termino_busqueda)");
             $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
             $stmt->execute();
+           
             if($stmt->rowCount() > 0){
-                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
+                foreach ($resultados as &$fila) {
+                    $fila['fkcategories'] = Categoria::nombreCategorias($db, $fila['fkcategories']);
+                }
+                
+            
             }
         }catch (Exception $e){
             $resultados = null;

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   display: flex;
   flex-direction: column;
@@ -145,7 +146,16 @@ header > section:nth-child(2) nav > ul > li > a:hover::after {
 }
 
 footer {
+  display: grid;
+  grid-template-columns: 12.5rem auto 12.5rem;
+  background-color: #252525;
+  color: white;
+  margin-top: 1rem;
+}
+footer section {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 aside {
@@ -223,6 +233,302 @@ main#loginAdmin {
   background-color: black;
 }
 
+.plusminus {
+  position: relative;
+  width: 1rem;
+  cursor: pointer;
+}
+.plusminus.active:before {
+  transform: translatey(-50%) rotate(-90deg);
+  opacity: 0;
+}
+.plusminus.active:after {
+  transform: translatey(-50%) rotate(0);
+}
+.plusminus:before, .plusminus:after {
+  content: "";
+  display: block;
+  background-color: #333;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transition: 0.35s;
+  width: 100%;
+  height: 0.2rem;
+}
+.plusminus:before {
+  transform: translatey(-50%);
+}
+.plusminus:after {
+  transform: translatey(-50%) rotate(90deg);
+}
+
+.producto-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  width: 50rem;
+}
+
+.descripcionProd {
+  max-height: 0; /* Inicialmente oculto */
+  max-width: 50rem;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out; /* Transición de 0.5 segundos con efecto ease-in-out */
+}
+.descripcionProd h3 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-top: 0.2rem;
+}
+.descripcionProd h3 span {
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.descripcionProd p {
+  text-align: justify;
+}
+
+.descripcionProd.active {
+  max-height: 200px; /* O ajusta a la altura máxima que desees */
+}
+
+.pagina-producto {
+  margin-top: 2.375rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 3rem 2fr 1fr;
+}
+.pagina-producto section:nth-child(1) {
+  grid-area: 1/1/2/3;
+}
+.pagina-producto section:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+.pagina-producto section:nth-child(3) {
+  grid-area: 2/2/3/3;
+}
+.pagina-producto section:nth-child(4) {
+  grid-area: 3/1/4/3;
+}
+.pagina-producto section:nth-child(1) ul {
+  list-style-type: none;
+}
+.pagina-producto section:nth-child(2) img {
+  width: 19.688rem;
+  border: 1px solid #CACACA;
+}
+.pagina-producto section:nth-child(3) {
+  margin-left: 3rem;
+  margin-top: -1.5rem;
+}
+.pagina-producto section:nth-child(3) > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.pagina-producto section:nth-child(3) > div h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.pagina-producto section:nth-child(3) > div span {
+  text-decoration: line-through;
+  color: #696969;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+.pagina-producto section:nth-child(3) section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+.pagina-producto section:nth-child(3) section div:first-child {
+  height: 3rem;
+}
+.pagina-producto section:nth-child(3) section div:first-child > span {
+  color: #848484;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.pagina-producto section:nth-child(3) section div:first-child p {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+.pagina-producto section:nth-child(3) section div:first-child p #si-stock {
+  color: #469E00;
+}
+.pagina-producto section:nth-child(3) section div:first-child p #no-stock {
+  color: #950000;
+}
+.pagina-producto section:nth-child(3) article {
+  margin: 1.563rem 0;
+}
+.pagina-producto section:nth-child(3) article h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.pagina-producto section:nth-child(3) article span {
+  cursor: pointer;
+}
+.pagina-producto section:nth-child(3) article #container-cantidad {
+  display: flex;
+}
+.pagina-producto section:nth-child(3) article .containerCantidad {
+  border: 0.5px solid black;
+  width: 8.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-right: 0.9rem;
+}
+.pagina-producto section:nth-child(3) article .containerCantidad input {
+  width: 1rem;
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+}
+.pagina-producto section:nth-child(3) article .containerCantidad button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.pagina-producto section:nth-child(3) article .containerCantidad button svg {
+  width: 1.2rem;
+}
+
+.tendencias {
+  border: none;
+  border-top: 1px solid black;
+}
+.tendencias h2 {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+.tendencias h2 > img {
+  width: 32px;
+  height: 32px;
+}
+.tendencias legend {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+
+.warp {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+
+.top-card {
+  width: 26rem;
+  height: 15rem;
+  border: 1px solid rgba(202, 202, 202, 0.5960784314);
+  border-radius: 10px;
+  background: #F7F7F7;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: grid;
+  grid-template-columns: 10.25rem auto;
+  grid-template-rows: 1.875rem repeat(2, auto);
+  gap: 0.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.5s ease-in-out;
+}
+.top-card div:nth-child(1) {
+  grid-area: 1/1/4/2;
+}
+.top-card div:nth-child(2) {
+  grid-area: 1/2/2/3;
+}
+.top-card div:nth-child(3) {
+  grid-area: 2/2/3/3;
+}
+.top-card div:nth-child(4) {
+  grid-area: 3/2/4/3;
+}
+.top-card:hover {
+  transform: translateY(-0.4rem);
+}
+.top-card p {
+  font-size: 0.7rem;
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+.top-card img {
+  width: 9.5rem;
+  height: 100%;
+  max-height: 13.1rem;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+}
+.top-card h3 {
+  color: #B82626;
+  display: flex;
+  align-items: center;
+}
+.top-card h3 svg {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+.top-card a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+}
+.top-card button {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.top-card button:hover {
+  background-color: #3F3F3F;
+}
+.top-card button svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+.top-card div:nth-child(2) {
+  display: flex;
+  align-items: last baseline;
+  justify-content: space-between;
+}
+
+#visit-page {
+  width: 1.3rem;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -239,40 +545,16 @@ body {
   border: 1px solid black;
 }
 
-main#index-grid {
+.page-grid {
   display: grid;
-  grid-template-columns: 7.625rem auto 7.625rem;
-  height: 100vh;
+  grid-template-columns: 12.5rem auto 12.5rem;
+  min-height: 100vh;
 }
-main#index-grid .top-card {
-  width: 18rem;
-  height: 18.75rem;
-  border: 1px solid rgba(202, 202, 202, 0.5960784314);
-  border-radius: 10px;
-  background: #F7F7F7;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-main#index-grid .warp {
-  display: flex;
-  flex-wrap: wrap;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
-}
-main#index-grid div:nth-child(2) section:first-child h2 {
-  display: flex;
-  align-items: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  color: #B82626;
-}
-main#index-grid div:nth-child(2) section:first-child h2 img {
-  width: 32px;
-  height: 32px;
-}
-main#index-grid div:nth-child(2) section:nth-child(2) {
+
+main#index div:nth-child(2) section:nth-child(2) {
   margin-top: 2rem;
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div {
+main#index div:nth-child(2) section:nth-child(2) > div {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
@@ -284,16 +566,16 @@ main#index-grid div:nth-child(2) section:nth-child(2) > div {
   grid-template-rows: repeat(3, 11rem);
   overflow: hidden;
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div a {
+main#index div:nth-child(2) section:nth-child(2) > div a {
   overflow: hidden;
   background-color: rgba(41, 41, 41, 0.7);
   position: relative;
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div a:first-child {
+main#index div:nth-child(2) section:nth-child(2) > div a:first-child {
   grid-column: 1/2;
   grid-row: 1/3;
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div a img {
+main#index div:nth-child(2) section:nth-child(2) > div a img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -301,7 +583,7 @@ main#index-grid div:nth-child(2) section:nth-child(2) > div a img {
   mix-blend-mode: darken;
   transition: transform 0.3s ease-in-out;
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div a span {
+main#index div:nth-child(2) section:nth-child(2) > div a span {
   text-transform: uppercase;
   color: white;
   font-size: 36px;
@@ -312,7 +594,7 @@ main#index-grid div:nth-child(2) section:nth-child(2) > div a span {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-main#index-grid div:nth-child(2) section:nth-child(2) > div a:hover img {
+main#index div:nth-child(2) section:nth-child(2) > div a:hover img {
   transform: scale(1.5);
 }
 
@@ -393,6 +675,7 @@ main.listar > div section:nth-child(3) table tr td a {
   text-decoration: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 main.listar > div section:nth-child(3) table tr td a.editar {
   color: #3b82f6;
@@ -498,4 +781,28 @@ main.listar > div fieldset form[name=anadir-producto] div:nth-child(15) {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, auto);
+}
+
+.btn-primary {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 2.5rem;
+}
+.btn-primary:hover {
+  background-color: #3F3F3F;
+}
+.btn-primary svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
 }/*# sourceMappingURL=main.css.map */

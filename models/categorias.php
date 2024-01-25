@@ -40,12 +40,9 @@ class Categoria extends database{
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                
-                // foreach ($resultados as &$categoria) {
-                //     $idPadre = $categoria['fkfathercategory'];
-                //     $nombrePadre = self::obtenerNombreCategoriaPorID($db, $idPadre);
-                //     $categoria['nombrePadre'] = $nombrePadre;
-                // }
+                for ($i=0; $i<count($resultados); $i++){
+                    $resultados[$i]['fkfathercategory']= Categoria::nombreCategorias($db,$resultados[$i]['fkfathercategory']);
+                }
             }else{
                 $resultados = null;
             }
@@ -213,11 +210,11 @@ class Categoria extends database{
             if($stmt->rowCount() > 0){
                 $nombreCategoria = $stmt->fetchColumn();
             }else{
-                $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
+                $nombreCategoria = "Sin categoría";
             }
         }catch (Exception $e){
             echo $e;
-            $nombreCategoria = $e;
+            $nombreCategoria = "Error,el id de la categoria no corresponde a ningun nombre";
         }
         return $nombreCategoria;
     }
@@ -248,6 +245,23 @@ class Categoria extends database{
         }
         $resultado = array($subcat, $productosCategoria);
         return $resultado;
+    }
+    public static function buscadorCategorias($db, $termino_busqueda){
+        try{
+            $stmt = $db->prepare("SELECT * FROM categories WHERE LOWER(categoryname) LIKE LOWER(:termino_busqueda)");
+            $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
+            $stmt->execute();
+           
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_BOTH);
+                foreach ($resultados as &$fila) {
+                    $fila['fkfathercategory'] = Categoria::nombreCategorias($db, $fila['fkfathercategory']);
+                }
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
     }
 }
 ?>

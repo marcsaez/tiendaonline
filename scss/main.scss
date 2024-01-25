@@ -4,6 +4,10 @@
 @import 'mixin.scss';
 @import 'navLateralAdmin.scss';
 @import 'login.scss';
+@import 'components/plus-minus.scss';
+@import 'components/products/description-list.scss';
+@import 'components/products/page.scss';
+@import 'components/products/top-products.scss';
 
 * {
     font-family: 'Inter', sans-serif;
@@ -21,44 +25,19 @@ body {
     border: 1px solid black;
 }
 
-main#index-grid {
+.page-grid {
     display: grid;
-    grid-template-columns: 7.625rem auto 7.625rem;
-    height: 100vh;
+    grid-template-columns: 12.5rem auto 12.5rem;
+    min-height: 100vh;
+}
 
+main#index {
 
-    .top-card {
-        width: 18rem;
-        height: 18.75rem;
-        border: 1px solid #cacaca98;
-        border-radius: 10px;
-        background: $header-bg;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    }
-    .warp {
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 10px;
-    }
-
+    
+    
     div {
         &:nth-child(2) {
             section {
-                &:first-child {
-                    h2 {
-                        display: flex;
-                        align-items: center;
-                        margin-top: 4rem;
-                        margin-bottom: 2rem;
-                        color: $color-danger;
-
-                        img {
-                            width: 32px;
-                            height: 32px;
-                        }
-                    }
-                }
-
                 &:nth-child(2) {
                     margin-top: 2rem;
 
@@ -208,7 +187,7 @@ main.listar {
                                 text-decoration: none;
                                 display: flex;
                                 align-items: center;
-
+                                cursor: pointer;
                                 &.editar {
                                     color: #3b82f6;
                                 }
@@ -306,4 +285,14 @@ main.listar {
         }
         
     }
+}
+
+
+
+.btn-primary {
+    @include btn-primary;
+    width: 10rem;
+    height: 2.5rem;
+
+
 }
