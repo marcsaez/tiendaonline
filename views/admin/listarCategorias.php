@@ -58,7 +58,6 @@
         </form>
         </section>
         <section>
-<<<<<<< HEAD
             <table>
                 <thead>
                     <tr>
@@ -70,16 +69,6 @@
                     </tr>
                 </thead>
                 <tbody>
-=======
-            <table id ="resultadosDivAdmin">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Categoría Padre</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
->>>>>>> 73bdc44c31fb1ebd2f5b6be8e1bcd356cba7f764
                 <?php 
                     foreach ($allcategories as $categoria) {
                         $idCategoria = $categoria['categoryid'];
