@@ -19,9 +19,6 @@
                         $vuelta=$vuelta+1;
                     }
                 ?>
-                <div class="top-card"></div>
-                <div class="top-card"></div>
-                <div class="top-card"></div>
             </div>
         </section>
         <section>
