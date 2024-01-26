@@ -85,7 +85,6 @@
                                 <td>
                                     <select name="categoriaPadre" id="categoriaPadre">
                                         <option value='.$categoriaPadre.'>'.$mostrarCategoriaPadre.'</option>
-
                                     </select>
                                 </td>
                                 <td>
