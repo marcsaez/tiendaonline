@@ -190,7 +190,7 @@ class Categoria extends database{
     }
     public static function navCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT categoryid,categoryname FROM categories WHERE active=1 AND fkfathercategory is NULL");
+            $stmt = $db->prepare("SELECT categoryid,categoryname FROM categories WHERE active=1");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -248,7 +248,7 @@ class Categoria extends database{
     }
     public static function buscadorCategorias($db, $termino_busqueda){
         try{
-            $stmt = $db->prepare("SELECT * FROM categories WHERE LOWER(categoryname) LIKE LOWER(:termino_busqueda)");
+            $stmt = $db->prepare("SELECT * FROM categories WHERE LOWER(categoryname) LIKE LOWER(:termino_busqueda) AND active = 1");
             $stmt->bindValue(':termino_busqueda', '%' . $termino_busqueda . '%', PDO::PARAM_STR);
             $stmt->execute();
            

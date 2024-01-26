@@ -58,7 +58,7 @@
         </form>
         </section>
         <section>
-            <table>
+            <table id="">
                 <thead>
                     <tr>
                         <th>ID</th>
