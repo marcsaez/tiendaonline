@@ -20,17 +20,12 @@ class Producto {
                 cantidad: product.cantidad,
                 precioTotal: product.precioTotal
             };
-   
-        
         // Crear una instancia de XMLHttpRequest
         var xhr = new XMLHttpRequest();
-
         // Configurar la solicitud POST a process.php
         xhr.open("POST", "./controllers/CarritoController.php", true);
-
         // Configurar el encabezado para indicar que se está enviando un JSON
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
         // Configurar la función de devolución de llamada cuando la solicitud esté completa
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {

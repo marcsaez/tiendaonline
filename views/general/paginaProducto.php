@@ -55,7 +55,6 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-    
                         </button>
                     </div>
                     <button class="btn-primary" id="btnAnadir">
@@ -86,30 +85,29 @@
                     <h3>Categoria: <span><?php echo $nombreCategoria?></span> </h3>
                     
                     <?php 
-                    // if(isset($subcategoria)){
-                        //<h3>Genero: </h3>
-                        //echo $subcategoria
-                    
-                    // }
-                    // 
+                    if(isset($masProds)){
+                        echo"<h3>Genero: </h3>";
+                        echo $nombreCategoria;
+                    }
+                     
                     ?>
                 </div>
             </article>
         </section>
         <section>
-            <h2>Mas <?php //echo $subcategoria?></h2>
+            <h2>Mas <?php echo $nombreCategoria?></h2>
             <?php
-                // if(isset($masProductos) && is_array($masProductos)){
-                //     foreach ($masProductos as $producto){
-                //         echo"<div>";
-                //         echo"<img src='$producto['productimg']' alt='producto relacionado'>"; 
-                //         echo"<p>$producto['productname']</p>";
-                //         echo"<p>$producto['productprice']</p>";
-                //         Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
-                //         echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
-                //         echo"</div>";
-                //     }
-                // }
+                if(isset($masProds) && is_array($masProds)){
+                    foreach ($masProds as $producto){
+                        echo"<div>";
+                        echo"<img src='".$producto['productimg']."' alt='producto relacionado'>"; 
+                        echo"<p>".$producto['productname']."</p>";
+                        echo"<p>".$producto['productprice']."</p>";
+                        //Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
+                        echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
+                        echo"</div>";
+                     }
+                }
             ?>
         </section>
         <!-- <script src="../../js/productoConcreto.js"></script> -->

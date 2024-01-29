@@ -178,6 +178,7 @@
                 $db = Productos::staticConectar();
                 $productoConcreto = Productos::productoConcreto($db,$id);
                 $nombreCategoria = categoria::nombreCategorias($db,$productoConcreto[0]['fkcategories']);
+                $masProds = Productos::masProductos($db,$productoConcreto[0]['fkcategories']);
             }
             require_once "views/general/paginaProducto.php";
         }

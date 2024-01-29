@@ -1,5 +1,11 @@
 import Producto from './producto.js';
 
+const btnAnadirCarrito = document.getElementById('btnAnadir');
+let inputCantidad = document.getElementById('cantidad');
+let nombreProducto = document.getElementById('nombreProd');
+let precioProducto = document.getElementById('precioProducto');
+let productoID = document.getElementById('productId');
+let stockTotal = document.getElementById('stockMaximo');
 
 // function incrementarCantidad(){
 //     let cantidadActual = parseInt(inputCantidad.value);
@@ -46,11 +52,7 @@ plusMinusButtons.forEach(plusMinusButton => {
     });
 });
 
-const btnAnadirCarrito = document.getElementById('btnAnadir');
-let inputCantidad = document.getElementById('cantidad');
-let nombreProducto = document.getElementById('nombreProd');
-let precioProducto = document.getElementById('precioProducto');
-let productoID = document.getElementById('productId');
+
 btnAnadirCarrito.addEventListener('click',function(){
     sessionStorage.setItem('nombreProducto', nombreProducto.value);
     precioProducto=parseFloat(precioProducto.value);
