@@ -156,7 +156,7 @@ main.listar {
                 align-items: center;
                 justify-content: flex-end;
 
-                input {
+                > form > input {
                     width: 21.063rem;
                     padding: 0.7rem 1rem;
                     background-color: #3F3F3F;
@@ -290,6 +290,5 @@ main.listar {
     @include btn-primary;
     width: 10rem;
     height: 2.5rem;
-
 
 }

@@ -909,7 +909,7 @@ main.listar > div section:nth-child(2) {
   align-items: center;
   justify-content: flex-end;
 }
-main.listar > div section:nth-child(2) input {
+main.listar > div section:nth-child(2) > form > input {
   width: 21.063rem;
   padding: 0.7rem 1rem;
   background-color: #3F3F3F;
