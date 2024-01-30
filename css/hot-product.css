@@ -1,0 +1,14 @@
+.tendencia {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #950000;
+  color: white;
+  display: flex;
+  padding: 0.2rem 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+}
+.tendencia svg {
+  width: 1rem;
+}/*# sourceMappingURL=hot-product.css.map */

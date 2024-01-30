@@ -9,6 +9,9 @@
 @import 'components/products/page.scss';
 @import 'components/products/top-products.scss';
 @import 'components/slider/slider.scss';
+@import 'components/categories/show-category-products.scss';
+@import 'components/breadcrumbs.scss';
+@import 'components/hot-product.scss';
 
 * {
     font-family: 'Inter', sans-serif;
@@ -29,8 +32,6 @@ body {
 
 main#index {
 
-    
-    
     div {
         &:nth-child(2) {
             section {

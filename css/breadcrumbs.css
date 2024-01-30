@@ -1,0 +1,13 @@
+.breadcrumbs {
+  list-style-type: none;
+  display: flex;
+}
+.breadcrumbs a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+}
+.breadcrumbs a svg {
+  width: 1.2rem;
+  margin-right: 0.3rem;
+}/*# sourceMappingURL=breadcrumbs.css.map */
