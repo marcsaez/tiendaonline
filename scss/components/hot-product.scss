@@ -1,0 +1,17 @@
+@import '../variables.scss';
+
+.tendencia {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: $tendencia;
+    color: white;
+    display: flex;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+    font-size: 1rem;
+
+    svg {
+        width: 1rem;
+    }
+}

@@ -669,6 +669,130 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
     transform: translate3d(-400%, 0, 0);
   }
 }
+.list-categories-products-header {
+  margin-top: 2.8rem;
+  margin-bottom: 3.625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.list-categories-products-header h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.product-filters {
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+.product-filters svg {
+  width: 1.5rem;
+}
+.product-filters span {
+  display: flex;
+  align-items: center;
+}
+
+.list-categories-products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-productos {
+  max-width: 14rem;
+  display: grid;
+  grid-template-columns: auto 5rem;
+  grid-template-rows: auto auto 2.4rem;
+  row-gap: 0.5rem;
+  margin: 1rem;
+  box-sizing: border-box;
+}
+.grid-productos div:nth-child(1) {
+  grid-area: 1/1/2/3;
+}
+.grid-productos div:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+.grid-productos div:nth-child(3) {
+  grid-area: 2/2/3/3;
+}
+.grid-productos div:nth-child(4) {
+  grid-area: 3/1/4/3;
+}
+.grid-productos div:first-child {
+  position: relative;
+}
+.grid-productos img {
+  width: 100%;
+  border: 0.5px solid #dddddd;
+}
+.grid-productos button {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  height: 2.4rem;
+  min-height: 2.4rem;
+  max-width: 14rem;
+}
+.grid-productos button:hover {
+  background-color: #3F3F3F;
+}
+.grid-productos button svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+.grid-productos a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.grid-productos span:not(.tendencia) {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.breadcrumbs {
+  list-style-type: none;
+  display: flex;
+}
+.breadcrumbs a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+}
+.breadcrumbs a svg {
+  width: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.tendencia {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #950000;
+  color: white;
+  display: flex;
+  padding: 0.2rem 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+}
+.tendencia svg {
+  width: 1rem;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
