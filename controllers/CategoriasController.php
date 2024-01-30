@@ -5,7 +5,7 @@
             $db = Categoria::staticConectar();
             $allcategories = Categoria::listarTodasCategorias($db);
             $padres = array();
-            foreach ($allcategories as $category) {
+            foreach ($allcategories as &$category) {
                 if (empty($category['fkfathercategory'])) {
                     $padres[] = $category;
                 }

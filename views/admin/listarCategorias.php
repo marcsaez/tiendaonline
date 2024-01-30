@@ -58,7 +58,7 @@
         </form>
         </section>
         <section>
-            <table>
+            <table id="">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -85,7 +85,6 @@
                                 <td>
                                     <select name="categoriaPadre" id="categoriaPadre">
                                         <option value='.$categoriaPadre.'>'.$mostrarCategoriaPadre.'</option>
-
                                     </select>
                                 </td>
                                 <td>
