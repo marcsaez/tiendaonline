@@ -186,10 +186,11 @@ class Productos extends database{
     }
     
     //Obtener productos con la misma subcategoria para hacer display en la pagina de producto
-    public static function masProductos($db,$subcategoria){
+    public static function masProductos($db,$subcategoria,$idProducto){
         try{
-            $stmt = $db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria AND active = 1 ORDER BY random() LIMIT 6;");
-            $stmt->bindParam(':subcategoria', $subcategoria);
+            $stmt = $db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria AND active = 1 AND productid != :idproducto ORDER BY random() LIMIT 6;");
+            $stmt->bindParam(':subcategoria',  $subcategoria);
+            $stmt->bindParam(':idproducto',$idProducto);
             $stmt->execute();
             $masProductos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $masProductos;
