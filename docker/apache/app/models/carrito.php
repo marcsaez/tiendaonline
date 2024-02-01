@@ -78,7 +78,25 @@ class Carrito extends database{
         }
         return $retorno;
     }
-    
+    public static function productosDelCarrito($db, $diccionario){
+        $arrayJson = json_decode($diccionario, true);
+        $arrayIds = [];
+        foreach($arrayJson as $producto => $info){
+            $arrayIds[]=$info['id'];
+        }
+        $productosEnCarrito = [];
+        foreach($arrayIds as $idProducto){
+            $stmt = $db -> prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid: idProducto");
+            $stmt->bindParam(':idProducto', $idProducto);
+            $stmt->execute();
+
+            $productoInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($productoInfo) {
+                $productosEnCarrito[] = $productoInfo;
+            }
+        }
+        return $productosEnCarrito;
+    }
     
 }
 ?>
