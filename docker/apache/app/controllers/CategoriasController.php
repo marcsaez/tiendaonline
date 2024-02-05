@@ -43,7 +43,7 @@
         public function editarCategoria(){
             if(isset($_POST)){
                 require_once "models/categorias.php";
-                $categoria = new categoria($_POST['id'], $_POST['nombre'], $_POST['categoriaPadre']);
+                $categoria = new categoria($_POST['id-editar'], $_POST['nombre-editar'], $_POST['categoriaPadre-editar']);
                 $categoria -> conectar();
                 $editada = $categoria -> editar();
             }

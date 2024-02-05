@@ -33,11 +33,11 @@
                     <legend>Añadir Categoria</legend>
                     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadirCategoria" method="POST" >   
                         <label for="nombre">Nombre de la categoria:</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" class="input" required>
                 
                         <?php
                         echo '<label for="nombre">ID de la Categoria padre:</label>';
-                        echo '<select id="categoriaPadre" name="categoriaPadre">';
+                        echo '<select id="categoriaPadre" name="categoriaPadre" class="input">';
                         echo '<option value="" selected>Sin categoria padre</option>';
                         
                         foreach ($padres as $category) {
@@ -47,7 +47,7 @@
                         echo '</select>';
                         ?>
                 
-                        <button type="submit">Añadir Categoria</button>
+                        <button type="submit" class="btn-submit">Añadir Categoria</button>
                     </form>
                 </fieldset>
             </div>
@@ -57,13 +57,13 @@
                 <legend>Editar Categoria</legend>
                 <form action="index.php?Controller=Categorias&action=editarCategoria" method="POST" name="editarCategoria" >
                     <label for="id">ID:</label>
-                    <input type="text" name="id-editar" id="id-editar" readonly>
+                    <input type="text" name="id-editar" id="id-editar" class="input" readonly>
                     <label for="nombre-editar">Nombre:</label>
-                    <input type="text" name="nombre-editar" id="nombre-editar" required>
+                    <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
                     <label for="categoriaPadre">Categoria Padre:</label>
-                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" required>
-                    <button id="cancelar-edit-categoria">Cancelar</button>
-                    <input type="submit" value="Guardar">
+                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input">
+                    <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
+                    <input type="submit" class="btn-submit" value="Guardar">
                 </form>
             </fieldset>
             <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">

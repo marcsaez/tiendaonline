@@ -1,0 +1,13 @@
+.input {
+  background-color: #3F3F3F;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 0.7rem 0rem;
+}
+
+option {
+  text-transform: capitalize;
+}/*# sourceMappingURL=form.css.map */
