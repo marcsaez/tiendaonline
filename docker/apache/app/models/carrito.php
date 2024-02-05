@@ -80,21 +80,22 @@ class Carrito extends database{
     }
     public static function productosDelCarrito($db, $diccionario){
         $arrayJson = json_decode($diccionario, true);
+        print_r($arrayJson);
         $arrayIds = [];
         foreach($arrayJson as $producto => $info){
             $arrayIds[]=$info['id'];
         }
         $productosEnCarrito = [];
         foreach($arrayIds as $idProducto){
-            $stmt = $db -> prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid: idProducto");
+            $stmt = $db -> prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid = :idProducto");
             $stmt->bindParam(':idProducto', $idProducto);
             $stmt->execute();
-
             $productoInfo = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($productoInfo) {
                 $productosEnCarrito[] = $productoInfo;
             }
         }
+        print_r($productosEnCarrito);
         return $productosEnCarrito;
     }
     

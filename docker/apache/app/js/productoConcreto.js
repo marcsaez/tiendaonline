@@ -58,9 +58,11 @@ carrito = carrito ? JSON.parse(carrito) : {};
 btnAnadirCarrito.addEventListener('click', function () {
     // Obtener los valores de los elementos
     let nombreProductoValue = nombreProducto.value;
-    let precioProductoValue = parseFloat(precioProducto.value);
     let inputCantidadValue = parseInt(inputCantidad.value);
     let productoIDValue = productoID.value;
+    // Obtener el carrito del sessionStorage
+    let carrito = sessionStorage.getItem('carrito');
+    carrito = carrito ? JSON.parse(carrito) : {};
     // Verificar si ya existe el producto en el carrito
     if (carrito.hasOwnProperty(nombreProductoValue)) {
         // Si existe, agregar la cantidad
@@ -72,9 +74,8 @@ btnAnadirCarrito.addEventListener('click', function () {
             cantidad: inputCantidadValue
         };
     }
-    // Convertir el carrito a una cadena JSON y almacenarlo en sessionStorage
-    let carritoJSON = JSON.stringify(carrito);
-    sessionStorage.setItem('carrito', carritoJSON);
+    // Almacenar el carrito en el sessionStorage
+    sessionStorage.setItem('carrito', JSON.stringify(carrito));
     let obtenerCarrito = sessionStorage.getItem('carrito');
     carrito = new Carrito(obtenerCarrito);
     carrito.ajaxCosas();
