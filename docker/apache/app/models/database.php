@@ -4,11 +4,7 @@ class database{
         $host = 'localhost';
         $dbname = 'mangahouse';
         $user = 'postgres';
-<<<<<<< HEAD
         $password = 'root';
-=======
-        $password = 'password';
->>>>>>> e6adcbc9809e65aa58ed0df530e00a3ee91d8360
 
 
             $this->db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
@@ -20,11 +16,7 @@ class database{
         $host = 'localhost';
         $dbname = 'mangahouse';
         $user = 'postgres';
-<<<<<<< HEAD
         $password = 'root';
-=======
-        $password = 'password';
->>>>>>> e6adcbc9809e65aa58ed0df530e00a3ee91d8360
 
 
             $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);

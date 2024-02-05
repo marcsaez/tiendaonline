@@ -13,6 +13,11 @@
 @import 'components/breadcrumbs.scss';
 @import 'components/hot-product.scss';
 @import 'components/admin/form.scss';
+@import 'components/popup/popup.scss';
+@import 'components/popup/separator.scss';
+@import 'components/users/login.scss';
+@import 'components/users/register.scss';
+@import 'components/search/searchResults.scss';
 
 * {
     font-family: 'Inter', sans-serif;
@@ -38,6 +43,11 @@ main#index {
             section {
                 &:nth-child(2) {
                     margin-top: 2rem;
+
+                    h2 {
+                        margin: 1rem auto;
+                        font-weight: 600;
+                    }
 
                     > div {
                         width: 100%;
@@ -70,7 +80,7 @@ main#index {
                             span {
                                 text-transform: uppercase;
                                 color: white;
-                                font-size: 36px;
+                                font-size: 2rem;
                                 font-weight: 700;
                                 letter-spacing: 3.6px;
                                 position: absolute;

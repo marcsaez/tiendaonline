@@ -38,7 +38,6 @@ aside section:nth-child(2) {
   margin-top: 6.5rem;
 }
 aside section:nth-child(3) {
-  border-top: 1px solid #CACACA;
   position: absolute;
   bottom: 2.5rem;
 }
@@ -49,7 +48,12 @@ aside section article {
   box-sizing: border-box;
   border-radius: 5px;
 }
-aside section article:hover {
+aside section article:first-child {
+  border-bottom: 1px solid #dddddd;
+  border-radius: 0px;
+  color: white;
+}
+aside section article:hover:not(aside section article:first-child) {
   background-color: #282828;
   cursor: pointer;
 }
@@ -60,6 +64,8 @@ aside section article svg {
 aside section article a {
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
 }
 aside section article span {
   text-transform: uppercase;

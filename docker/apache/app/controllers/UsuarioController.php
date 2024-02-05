@@ -25,7 +25,7 @@ class UsuarioController{
     }
 
     public function iniciarSesionAbrir(){
-        require_once "views/general/iniciarSesionUsuario.php";
+        require_once "views/general/popup.php";
     }
     public function registrarseAbrir(){
         require_once "views/general/registrarUsuario.php";
