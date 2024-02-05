@@ -86,3 +86,8 @@ buttonComprarYa.addEventListener('click', function(){
     carrito = new Carrito(obtenerCarrito);
     carrito.ajaxCosas();
 });
+
+const comprarNotLoged = document.getElementById('comprarYaNoLogeado');
+comprarNotLoged.addEventListener('click', function() {
+    window.location.href = 'index.php?Controller=Usuario&action=iniciarSesionAbrir';
+});
