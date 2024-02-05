@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 console.log("d")
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -50,3 +51,5 @@ document.addEventListener('DOMContentLoaded', function () {
         editarCategoriaForm.style.display = 'none';
     });
 });
+=======
+>>>>>>> e6adcbc9809e65aa58ed0df530e00a3ee91d8360

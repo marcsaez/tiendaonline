@@ -8,7 +8,18 @@
                 <span>manga</span>
                 <span>house</span>
             </p>
-        </div>
+            <?php
+            if(isset($_SESSION['userType']) && $_SESSION['userType']=="usuario"){
+                echo"<a href='index.php?Controller=Usuario&action=logOutUsuario'>Cerrar Sesion</a>";
+            }else{
+            ?>
+                <a href="index.php?Controller=Usuario&action=iniciarSesionAbrir">Iniciar Sesion</a>
+                <a href="index.php?Controller=Usuario&action=registrarseAbrir">Registrarse</a>
+            <?php
+            }
+            ?>
+            
+            </div>
         <div>
             <!-- PLACEHOLDER, HAY QUE HACERLO CON AJAX -->
             <!-- <div id = 'busqueda'>
