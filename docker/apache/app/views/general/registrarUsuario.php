@@ -1,5 +1,5 @@
 <div>
-    <form action="index.php?controller=Usuario&action=registrarUsuario" method="post">
+    <form action="index.php?Controller=Usuario&action=registrarUsuario" method="post">
         <label for="usuarioEmail">Correo: *</label>
         <input type="text" name="usuarioEmail" id="usuarioEmail" required>
         <label for="usuarioTelefono">Telefono: *</label>
