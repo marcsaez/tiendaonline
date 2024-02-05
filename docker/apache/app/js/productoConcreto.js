@@ -1,4 +1,5 @@
 import Carrito from './carrito.js';
+import Carrito2 from './carrito.js';
 
 const btnAnadirCarrito = document.getElementById('btnAnadir');
 let inputCantidad = document.getElementById('cantidad');

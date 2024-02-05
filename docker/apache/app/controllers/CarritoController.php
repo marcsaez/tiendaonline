@@ -1,11 +1,10 @@
 <?php
+ require_once "../models/carrito.php";
     class CarritoController{
         public function insertarProductos(){
-            require_once "models/carrito.php";
             $db = Carrito::staticConectar();
         }
-        public function obtenerDatosProductosCarrito($data){
-            require_once "models/carrito.php";
+        public function obtenerDatosProductosCarrito($data){  
             $db = Carrito::staticConectar();
             $productos = Carrito::productosDelCarrito($db, $data);
             require_once "../views/general/carrito.php";
@@ -20,5 +19,4 @@
     } else {
         echo json_encode(array("error" => "Solicitud no válida"));
     }
-
 ?>

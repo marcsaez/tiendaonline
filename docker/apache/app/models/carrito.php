@@ -1,5 +1,5 @@
 <?php
-require_once("databse.php");
+require_once("database.php");
 class Carrito extends database{
     private $codigoCompra;
     private $producto;
