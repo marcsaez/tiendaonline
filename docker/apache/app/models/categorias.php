@@ -36,7 +36,7 @@ class Categoria extends database{
     // Listar categorias
     public static function listarTodasCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT * FROM categories WHERE active=1 ORDER BY categoryid");
+            $stmt = $db->prepare("SELECT * FROM categories WHERE active = 1 ORDER BY categoryid");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -47,6 +47,22 @@ class Categoria extends database{
                 $resultados = null;
             }
         }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
+    //Guarda las categorias activas para poder usarlas más adelante
+    public static function todasCategorias($db){
+        try {
+            $stmt = $db->prepare("SELECT categoryid FROM categories WHERE active = 1");
+            $stmt->execute();
+    
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+            } else {
+                $resultados = null;
+            }
+        } catch (Exception $e){
             $resultados = null;
         }
         return $resultados;
@@ -264,4 +280,5 @@ class Categoria extends database{
         return $resultados;
     }
 }
+
 ?>

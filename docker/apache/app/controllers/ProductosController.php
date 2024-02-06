@@ -195,5 +195,22 @@
 
             }
         }
+        public static function contadoresProducts(){
+            require_once "models/productos.php";
+            require_once "models/categorias.php";
+            $db = Productos::staticConectar();
+            $categoriasActivas = Categoria::todasCategorias($db);
+            $datos = [];
+            foreach ($categoriasActivas as $categoria) {
+                $contadorProduct = Productos::contadorProductosPorCategoria($db, $categoria);
+                $nombreCategoria = Categoria::nombreCategorias($db,$categoria); // Asegúrate de usar el nombre de la clase con mayúscula inicial
+                $datos[] = ['y' => $contadorProduct, 'label' => $nombreCategoria];
+            }
+            return $datos; // Devuelve los datos recopilados
+        }
+        
+       
+        
+        
     }
 ?>

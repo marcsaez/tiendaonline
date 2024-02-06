@@ -18,7 +18,10 @@
         
         public function mostrarDashboard() {
             require_once "views/admin/navLateral.php";
-            require_once "views/admin/principalAdmin.php";
+            require_once "./controllers/ProductosController.php";
+            $datos = ProductosController::contadoresProducts();
+            print_r($datos);
+            require_once "views/admin/principalAdmin.php"; // Incluye la vista y pasa los datos a la vista
         }
 
         public function logOut() {
