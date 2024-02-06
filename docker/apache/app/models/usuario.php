@@ -93,7 +93,7 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
         }
         return $success;
     }
-    public static function iniciarSesion($db, $password, $correo){
+    public static function iniciarSesion($db, $correo, $password){
         $success = false;
         try {
             $hashedPassword = hash('sha256', $password);

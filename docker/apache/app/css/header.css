@@ -121,6 +121,9 @@ header > section:nth-child(2) nav > ul > li:first-child a:hover::after {
   width: 100%;
   left: 0;
 }
+header > section:nth-child(2) nav > ul > li:last-child {
+  position: relative;
+}
 header > section:nth-child(2) nav > ul > li > a {
   font-weight: 600;
   text-decoration: none;
@@ -165,4 +168,29 @@ header > section:nth-child(2) nav > ul > li > a:hover::after {
   #nav-inferior {
     width: 100%;
   }
+}
+.opciones-usuario {
+  position: absolute;
+  background-color: #F7F7F7;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  z-index: 960;
+  margin-left: -8rem;
+  display: flex;
+  flex-direction: column;
+}
+.opciones-usuario li {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+}
+.opciones-usuario li a {
+  text-decoration: none;
+  color: black;
+}
+.opciones-usuario li a:hover {
+  text-decoration: underline;
+}
+.opciones-usuario li:hover {
+  background-color: #CACACA;
 }/*# sourceMappingURL=header.css.map */

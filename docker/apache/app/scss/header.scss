@@ -113,6 +113,7 @@ header {
                     height: 2.813rem;
                     @include flex(row, center, space-around);
                     list-style-type: none;
+
                     > li {
                         &:first-child {
                             a {
@@ -141,6 +142,10 @@ header {
                                     }
                                 }
                             }
+                        }
+
+                        &:last-child {
+                            position: relative;
                         }
 
                         > a {
@@ -199,5 +204,36 @@ header {
     }
 
     #nav-inferior { width: 100%; }
+    
+}
+
+.opciones-usuario {
+    position: absolute;
+    background-color: $header-bg;
+    border: 1px solid $border-thin-color;
+    border-radius: 5px;
+    z-index: 960;
+    margin-left: -8rem;
+    display: flex;
+    flex-direction: column;
+    
+    li {
+        box-sizing: border-box;
+        padding: 0.5rem;
+        width: 100%;
+
+        a {
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &:hover {
+            background-color: $border-color;
+        }
+    }
     
 }
