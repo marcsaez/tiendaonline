@@ -1,13 +1,11 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0/fabric.min.js"></script>
-<canvas id="lienzo" width="400" height="400" style="border:1px solid #ccc;"></canvas>
-<button id="toggleBtn">Modo dibujando</button>
-<button id="guardarBtn">Guardar Imagen</button>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
 <main id="principal-admin" class="dashboard">
   <canvas id="lienzo" width="400" height="400" style="border:1px solid #ccc;"></canvas>
   <button id="toggleBtn">Modo dibujando</button>
   <button id="guardarBtn">Guardar Imagen</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0/fabric.min.js"></script>
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </main>
 
 <script>
