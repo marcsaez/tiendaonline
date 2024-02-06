@@ -36,7 +36,7 @@
                 <section class="warp">
                     
                     <?php
-                    $vuelta=1;
+                        $vuelta=1;
                         foreach ($productosDestacados as $producto){
                             echo"<article class='top-card'>";
                                 echo "<div><img src='".$producto['productimg']."' alt='Producto Destacado' width=60px height=60px></div>";

@@ -1,3 +1,4 @@
+<script type="module" src="./js/productoConcreto.js"></script>
 <main class="page-grid">
     <section class="void"></section>
     <section class="pagina-producto">
@@ -48,13 +49,7 @@
                     </svg>
 
                 Comprar ya
-            <?php
-                if(isset($_SESSION['userType'])&&$_SESSION['userType']=="usuario"){
-
-                }else{
-                    
-                }
-            ?></button>
+            </button>
             </section>
             <article>
                 <h2>Cantidad</h2>
@@ -158,4 +153,5 @@
     </section>
     <section class="void"></section>
 </main>
-<script type="module" src="./js/productoConcreto.js"></script>
+
+

@@ -17,10 +17,9 @@ class UsuarioController{
         $db = Usuario::staticConectar();
         $usuario=Usuario::iniciarSesion($db,$_POST['correoUsuario'], $_POST['passUsuario']);
         if($usuario==true){
-            echo '<meta http-equiv="refresh" content="10;url=index.php">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }elseif($usuario==false){
-            echo"MAL";
-            echo '<meta http-equiv="refresh" content="10;url=index.php?Controller=Usuario&action=iniciarSesionAbrir">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }
     }
 
@@ -35,4 +34,5 @@ class UsuarioController{
         echo '<meta http-equiv="refresh" content="0;url=index.php">';
     }
 }
+
 ?>

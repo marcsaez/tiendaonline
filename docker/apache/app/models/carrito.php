@@ -80,7 +80,6 @@ class Carrito extends database{
     }
     public static function productosDelCarrito($db, $diccionario){
         $arrayJson = json_decode($diccionario, true);
-        print_r($arrayJson);
         $arrayIds = [];
         foreach($arrayJson as $producto => $info){
             $arrayIds[]=$info['id'];
