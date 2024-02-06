@@ -93,7 +93,7 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
         }
         return $success;
     }
-    public static function iniciarSesion($db, $password, $correo){
+    public static function iniciarSesion($db, $correo,$password){
         try {
             $hashedPassword = hash('sha256', $password);
             $stmt = $db->prepare("SELECT * FROM customers WHERE email = :email and customerpassword = :pass;");
@@ -104,8 +104,8 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
     
             if ($datosCorrectos !== false) {
                 // Eliminar sesión 'loginMal' si existe
-                if (isset( $_SESSON['loginError'])) {
-                    unset( $_SESSON['loginError']);
+                if (isset( $_SESSION['loginError'])) {
+                    unset( $_SESSOIN['loginError']);
                 }
                 if(isset($_SESSION['carrito'])){
                     $_SESSION['carritoLogeado']=$_SESSION['carrito'];
@@ -123,6 +123,8 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
                 $success = false;
             }
         } catch (PDOException $e) {
+            $_SESSON['loginError']= "Error, correo o contraseña incorrectos";
+            $success = false;
             echo "Error en el inicio de sesión: " . $e->getMessage();
         }
     

@@ -30,9 +30,6 @@ function disminuirCantidad() {
 //     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 // }
 
-<<<<<<< HEAD
-
-=======
 function mostrarOcultar(id) {
     var elemento = document.getElementById(id);
     if (elemento.style.display === 'none') {
@@ -41,7 +38,6 @@ function mostrarOcultar(id) {
       elemento.style.display = 'none';
     }
 }
->>>>>>> 82546475aa67c575b050c280d8dd9356a6b5ac1c
 
 const plusMinusButtons = document.querySelectorAll('.plusminus');
 
@@ -79,11 +75,10 @@ btnAnadirCarrito.addEventListener('click', function () {
     }
     // Almacenar el carrito en el sessionStorage
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
-    let obtenerCarrito = sessionStorage.getItem('carrito');
-    carrito = new Carrito(obtenerCarrito);
-    carrito.ajaxCosas();
+    // let obtenerCarrito = sessionStorage.getItem('carrito');
+    // carrito = new Carrito(obtenerCarrito);
+    // carrito.ajaxCosas();
 });
-
 document.addEventListener('DOMContentLoaded', function(){
     const buttonComprarYa = document.getElementById('comprarYa');
     if(buttonComprarYa != null){

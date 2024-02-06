@@ -37,7 +37,6 @@ class Carrito extends database{
     function setPrecioTotal($total) {
         $this->preciototal = $total;
     }
-
     //FUNCIONES QUE EJECUTARA ESTA CLASE
     //Funcion que obtiene el id de la compra que ejecutará el usuario. Es provisonal y requerira de cambios.
     //Para ello, habrá que crear una entrada vacia que guarde el id del usuario que va a realizar la compra y genere la id de la compra para poder ir guardando los productos. 
@@ -94,7 +93,6 @@ class Carrito extends database{
                 $productosEnCarrito[] = $productoInfo;
             }
         }
-        print_r($productosEnCarrito);
         return $productosEnCarrito;
     }
     
