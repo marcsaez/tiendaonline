@@ -162,7 +162,7 @@
                 $resultados = Productos::buscadorProductosPrincipal($db, $termino_busqueda);
                 
                 // Establecer el encabezado para indicar que se está enviando JSON
-                header('Content-Type: application/json');
+                echo '<meta http-equiv="Content-Type" content="application/json">';
         
                 // Imprimir la respuesta JSON
                 echo json_encode($resultados);

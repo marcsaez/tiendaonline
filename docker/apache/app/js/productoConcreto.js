@@ -31,6 +31,9 @@ function disminuirCantidad() {
 //     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 // }
 
+<<<<<<< HEAD
+
+=======
 function mostrarOcultar(id) {
     var elemento = document.getElementById(id);
     if (elemento.style.display === 'none') {
@@ -39,6 +42,7 @@ function mostrarOcultar(id) {
       elemento.style.display = 'none';
     }
 }
+>>>>>>> 82546475aa67c575b050c280d8dd9356a6b5ac1c
 
 const plusMinusButtons = document.querySelectorAll('.plusminus');
 
@@ -85,4 +89,9 @@ buttonComprarYa.addEventListener('click', function(){
     let obtenerCarrito = sessionStorage.getItem('carrito');
     carrito = new Carrito(obtenerCarrito);
     carrito.ajaxCosas();
+});
+
+const comprarNotLoged = document.getElementById('comprarYaNoLogeado');
+comprarNotLoged.addEventListener('click', function() {
+    window.location.href = 'index.php?Controller=Usuario&action=iniciarSesionAbrir';
 });

@@ -93,30 +93,37 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
         }
         return $success;
     }
-    public static function iniciarSesion($db){
-        try{
-            //Hashea la pass para realizar la busqueda
-            $hashedPassword = hash('sha256', $this->password);
-            $stmt = $db->prepare("SELECT * FROM users WHERE email = :email and customerpassword = :pass;");
-            $stmt->bindParam(':email', $this->correo);
+    public static function iniciarSesion($db, $password, $correo){
+        $success = false;
+        try {
+            $hashedPassword = hash('sha256', $password);
+            $stmt = $db->prepare("SELECT * FROM customers WHERE email = :email and customerpassword = :pass;");
+            $stmt->bindParam(':email', $correo);
             $stmt->bindParam(':pass', $hashedPassword);
             $stmt->execute();
             $datosCorrectos = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($datosCorrectos === true){
-                //Guardar los datos en la sesion
-                $_SESSION['userType']="usuario";
-                $_SESSION['userMail']=$datosCorrectos[0]['email'];
-                $_SESSION['userNombre']= $datosCorrectos[0]['customername'];
-                $_SESSION['userApellido']=  $datosCorrectos[0]['customersurname'];
-                $_SESSION['userDireccion']= $datosCorrectos[0]['customeraddress'];
-                $succes=true;
-            }else{
-                $succes=false;
+    
+            if ($datosCorrectos !== false) {
+                // Eliminar sesión 'loginMal' si existe
+                if (isset($_SESSION['loginMal'])) {
+                    unset($_SESSION['loginMal']);
+                }
+    
+                // Almacenar datos en la sesión
+                $_SESSION['userType'] = "usuario";
+                $_SESSION['userMail'] = $datosCorrectos['email'];
+                $_SESSION['userNombre'] = $datosCorrectos['customername'];
+                $_SESSION['userApellido'] = $datosCorrectos['customersurname'];
+                $_SESSION['userDireccion'] = $datosCorrectos['customeraddress'];
+                $success = true;
+            } else {
+                $_SESSION['loginMal'] = 1;
             }
-        }catch(Exception $e){
-            echo "Error en el inicio de sesion". $e->getMessage();
+        } catch (PDOException $e) {
+            echo "Error en el inicio de sesión: " . $e->getMessage();
         }
-        return $succes;
+    
+        return $success;
     }
-}
+}    
 ?>

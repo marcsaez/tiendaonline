@@ -50,7 +50,9 @@ if (class_exists($nombreController)){
 ?>
 
 <?php 
+if(!isset($_SESSION['admin_id'])){
 require_once "views/general/pies.php";
+}
 ?>
 </body>
 </html>

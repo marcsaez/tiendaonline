@@ -1,0 +1,18 @@
+#buscadorAJAX { position: relative; }
+
+#resultadosDiv {
+    position: absolute;
+    width: 40rem;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 901;
+
+    a {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            background-color: $border-thin-color;
+        }
+    }
+}

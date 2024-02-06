@@ -1,3 +1,11 @@
-main#loginAdmin {
-  background-color: black;
+form[name=iniciar-sesion] {
+  max-width: 20rem;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(5, auto);
+}
+form[name=iniciar-sesion] label {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.9rem;
 }/*# sourceMappingURL=login.css.map */
