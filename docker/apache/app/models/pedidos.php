@@ -63,6 +63,21 @@ class Pedido extends database{
         return $resultados;
     }
 
+    public static function listarPedidosFinalizados($db){
+        try{
+            $stmt = $db->prepare("SELECT * FROM purchases WHERE status=1 ORDER BY purchaseid");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $resultados = null;
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
+
 }
 
 ?>
