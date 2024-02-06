@@ -30,14 +30,7 @@ let stockTotal = document.getElementById('stockMaximo');
 //     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 // }
 
-// function mostrarOcultar(id) {
-//     var elemento = document.getElementById(id);
-//     if (elemento.style.display === 'none') {
-//       elemento.style.display = 'block';
-//     } else {
-//       elemento.style.display = 'none';
-//     }
-// }
+
 
 const plusMinusButtons = document.querySelectorAll('.plusminus');
 
