@@ -162,7 +162,7 @@
                 $resultados = Productos::buscadorProductosPrincipal($db, $termino_busqueda);
                 
                 // Establecer el encabezado para indicar que se está enviando JSON
-                header('Content-Type: application/json');
+                echo '<meta http-equiv="Content-Type" content="application/json">';
         
                 // Imprimir la respuesta JSON
                 echo json_encode($resultados);
@@ -195,5 +195,22 @@
 
             }
         }
+        public static function contadoresProducts(){
+            require_once "models/productos.php";
+            require_once "models/categorias.php";
+            $db = Productos::staticConectar();
+            $categoriasActivas = Categoria::todasCategorias($db);
+            $datos = [];
+            foreach ($categoriasActivas as $categoria) {
+                $contadorProduct = Productos::contadorProductosPorCategoria($db, $categoria);
+                $nombreCategoria = Categoria::nombreCategorias($db,$categoria); // Asegúrate de usar el nombre de la clase con mayúscula inicial
+                $datos[] = ['y' => $contadorProduct, 'label' => $nombreCategoria];
+            }
+            return $datos; // Devuelve los datos recopilados
+        }
+        
+       
+        
+        
     }
 ?>

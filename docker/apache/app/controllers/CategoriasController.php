@@ -6,7 +6,7 @@
             $allcategories = Categoria::listarTodasCategorias($db);
             $padres = array();
             foreach ($allcategories as &$category) {
-                if (empty($category['fkfathercategory'])) {
+                if ($category['fkfathercategory']== "Sin categoría") {
                     $padres[] = $category;
                 }
             }
