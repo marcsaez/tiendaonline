@@ -8,5 +8,5 @@
         <!-- Lista generada de productos con cantidad + precio en orden "CantidadXNombrePrecio" -->
     </ul>
     <p>Total : <span id="id">0</span></p>
-    <p><?php echo $data; ?></p>
+    <p><?php echo $_SESSION['carrito']; ?></p>
 </div>

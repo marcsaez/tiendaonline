@@ -1,5 +1,4 @@
 import Carrito from './carrito.js';
-import Carrito2 from './carrito.js';
 
 const btnAnadirCarrito = document.getElementById('btnAnadir');
 let inputCantidad = document.getElementById('cantidad');
@@ -77,18 +76,29 @@ btnAnadirCarrito.addEventListener('click', function () {
     }
     // Almacenar el carrito en el sessionStorage
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
-    let obtenerCarrito = sessionStorage.getItem('carrito');
-    carrito = new Carrito(obtenerCarrito);
-    carrito.ajaxCosas();
+    // let obtenerCarrito = sessionStorage.getItem('carrito');
+    // carrito = new Carrito(obtenerCarrito);
+    // carrito.ajaxCosas();
 });
-const buttonComprarYa = document.getElementById('comprarYa');
-buttonComprarYa.addEventListener('click', function(){
-    let obtenerCarrito = sessionStorage.getItem('carrito');
-    carrito = new Carrito(obtenerCarrito);
-    carrito.ajaxCosas();
-});
-
-const comprarNotLoged = document.getElementById('comprarYaNoLogeado');
-comprarNotLoged.addEventListener('click', function() {
-    window.location.href = 'index.php?Controller=Usuario&action=iniciarSesionAbrir';
+document.addEventListener('DOMContentLoaded', function(){
+    const buttonComprarYa = document.getElementById('comprarYa');
+    if(buttonComprarYa != null){
+    buttonComprarYa.addEventListener('click', function(){
+        let obtenerCarrito = sessionStorage.getItem('carrito');
+        carrito = new Carrito(obtenerCarrito);
+        carrito.ajaxCosas();
+        });
+    }
+    const userBtn = document.getElementById('comprarYaNoLogeado');
+    if(userBtn!=null){
+        const popUpContainer = document.getElementById('popup-container');
+        userBtn.addEventListener('click', function(){
+            popUpContainer.style.display = 'block';
+        });
+        popUpContainer.addEventListener('click', function(event){
+            if(event.target === popUpContainer){
+                popUpContainer.style.display = 'none';
+            }
+        });
+    }
 });
