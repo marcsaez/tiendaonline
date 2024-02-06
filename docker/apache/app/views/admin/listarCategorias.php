@@ -1,7 +1,6 @@
 <?php include "views/admin/navLateral.php"; ?>
- <script src="js/admin.js"></script>
- <script src="./js/productoConcreto.js"></script>
- <script src="./js/buscadorCategoria.js"></script>
+ <script src="js/ocultar.js"></script>
+ <script src="js/buscadorCategoria.js"></script>
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
 <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   

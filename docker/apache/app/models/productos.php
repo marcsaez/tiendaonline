@@ -291,5 +291,19 @@ class Productos extends database{
         }
         return $error;
     }
+    public static function contadorProductosPorCategoria($db, $categoria){
+        try{
+            $stmt =$db->prepare("SELECT COUNT(*) FROM products WHERE fkcategories = :categoria ");
+            $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $count = $stmt->fetchColumn();
+            
+        } catch (Exception $e){
+            $count = true;
+        }
+        return $count;
+
+    }
 }
 ?>
