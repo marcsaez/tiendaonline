@@ -105,10 +105,13 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
     
             if ($datosCorrectos !== false) {
                 // Eliminar sesión 'loginMal' si existe
-                if (isset($_SESSION['loginMal'])) {
-                    unset($_SESSION['loginMal']);
+                if (isset( $_SESSION['loginError'])) {
+                    unset( $_SESSOIN['loginError']);
                 }
-    
+                if(isset($_SESSION['carrito'])){
+                    $_SESSION['carritoLogeado']=$_SESSION['carrito'];
+                    unset($_SESSION['carrito']);
+                }
                 // Almacenar datos en la sesión
                 $_SESSION['userType'] = "usuario";
                 $_SESSION['userMail'] = $datosCorrectos['email'];
@@ -117,9 +120,12 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
                 $_SESSION['userDireccion'] = $datosCorrectos['customeraddress'];
                 $success = true;
             } else {
-                $_SESSION['loginMal'] = 1;
+                $_SESSON['loginError']= "Error, correo o contraseña incorrectos";
+                $success = false;
             }
         } catch (PDOException $e) {
+            $_SESSON['loginError']= "Error, correo o contraseña incorrectos";
+            $success = false;
             echo "Error en el inicio de sesión: " . $e->getMessage();
         }
     

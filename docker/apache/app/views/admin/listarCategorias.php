@@ -71,7 +71,7 @@
             </form>
         </section>
         <section>
-            <table>
+            <table id="resultadosDivAdmin">
                 <thead>
                     <tr>
                         <th>ID</th>

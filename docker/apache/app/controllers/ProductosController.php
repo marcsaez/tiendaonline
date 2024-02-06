@@ -155,6 +155,7 @@
         }
         public function buscarPrincipal() {
             require_once "models/productos.php";
+            require_once "models/categorias.php";
         
             if (isset($_POST['termino'])) {
                 $termino_busqueda = $_POST['termino'];
@@ -162,7 +163,7 @@
                 $resultados = Productos::buscadorProductosPrincipal($db, $termino_busqueda);
                 
                 // Establecer el encabezado para indicar que se está enviando JSON
-                echo '<meta http-equiv="Content-Type" content="application/json">';
+                header('Content-Type: application/json');
         
                 // Imprimir la respuesta JSON
                 echo json_encode($resultados);
