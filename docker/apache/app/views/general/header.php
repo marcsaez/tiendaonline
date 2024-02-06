@@ -66,7 +66,7 @@
                             echo '
                                 <ul class="opciones-usuario" id="desplegable-usuario">
                                     <li>'.$_SESSION['userMail'].'</li>
-                                    <li><a href="index.php?Controller=Usuario&action=mostrarPerfil">Mi Perfil</a></li>
+                                    <li><a href="index.php?Controller=Usuario&action=mostrarPerfil">Mis Pedidos</a></li>
                                     <li><a href="index.php?Controller=Usuario&action=logOutUsuario">Cerrar Sesión</a></li>
                                 </ul>
                             ';

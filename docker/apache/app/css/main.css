@@ -286,10 +286,6 @@ aside section article span {
   letter-spacing: 1.4px;
 }
 
-main#loginAdmin {
-  background-color: black;
-}
-
 .plusminus {
   position: relative;
   width: 1rem;
@@ -1248,6 +1244,87 @@ form[name=registrarse] input[type=submit]:hover {
 }
 #resultadosDiv a:hover {
   background-color: #dddddd;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#loginAdmin {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loginAdmin div {
+  background-color: #3F3F3F;
+  padding: 1.5rem;
+  width: 25rem;
+  height: 27rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+#loginAdmin div form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 8rem 1.5rem 3rem 1.5rem 3rem 4rem;
+  align-items: center;
+  width: 20rem;
+}
+#loginAdmin div form h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+#loginAdmin div form label {
+  color: white;
+  font-weight: 600;
+}
+#loginAdmin div form input[type=text], #loginAdmin div form input[type=password] {
+  width: 100%;
+  background-color: #575757;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 0.7rem auto;
+  box-sizing: border-box;
+}
+#loginAdmin div form input[type=text]:focus, #loginAdmin div form input[type=password]:focus {
+  background-color: #616161;
+}
+#loginAdmin div form input[type=submit] {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 2.2rem;
+}
+#loginAdmin div form input[type=submit]:hover {
+  background-color: #3F3F3F;
+}
+#loginAdmin div form input[type=submit] svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+#loginAdmin div form input[type=submit]:hover {
+  background-color: rgb(31, 31, 31);
 }
 
 * {

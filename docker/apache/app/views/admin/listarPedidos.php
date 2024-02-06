@@ -14,9 +14,9 @@
             </a> -->
         </section>
         <section>
-        <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
-            <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
-        </form>
+            <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
+                <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
+            </form>
         </section>
         <section>
             <table id="resultadosDivAdmin">
