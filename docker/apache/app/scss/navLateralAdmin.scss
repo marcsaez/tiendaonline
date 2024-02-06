@@ -48,7 +48,7 @@ aside {
         }
 
         &:nth-child(3){
-            border-top: 1px solid $border-color;
+            
             position: absolute;
             bottom: 2.5rem;
 
@@ -61,7 +61,13 @@ aside {
             box-sizing: border-box;
             border-radius: 5px;
 
-            &:hover {
+            &:first-child {
+                border-bottom: 1px solid $border-thin-color;
+                border-radius: 0px;
+                color: white;
+            }
+
+            &:hover:not(&:first-child) {
                 background-color: #282828;
                 cursor: pointer;
             }
@@ -74,6 +80,8 @@ aside {
             a {
                 text-decoration: none;
                 color: white;
+                display: flex;
+                align-items: center;
             }
 
             span {

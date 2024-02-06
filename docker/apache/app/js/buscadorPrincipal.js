@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             console.log("Esto es el data: ", data);
-            BucleEterno();
+            //BucleEterno();
             mostrarResultados(data);
         })
         .catch(function (error) {
@@ -48,17 +48,17 @@ document.addEventListener('DOMContentLoaded', function () {
         var html = '';
         
         for (var i = 0; i < resultados.length; i++) {
-            html += '<a href= "index.php?Controller=Productos&action=productoConcreto&productID='+ resultados[i].productid+'"><p>'+ resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productdescription + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p></a>';
+            html += '<a href= "index.php?Controller=Productos&action=productoConcreto&productID='+ resultados[i].productid+'"><p>'+ resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p></a>';
         }
-        console.log("hola");
+        
         resultadosDiv.innerHTML = html;
     }
-    function BucleEterno(){
-        var time;
-        for (var i = 0; i < 10000; i++) {
-            time = i;
-          console.log(time)
-        }
-        console.log("Terminé");
-    }
+    // function BucleEterno(){
+    //     var time;
+    //     for (var i = 0; i < 10000; i++) {
+    //         time = i;
+    //       console.log(time)
+    //     }
+    //     console.log("Terminé");
+    // }
 });

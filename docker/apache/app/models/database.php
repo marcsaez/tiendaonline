@@ -1,10 +1,10 @@
 <?php
 class database{
     public function conectar(){
-        $host = 'postgres';
+        $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
-        $password = 'password';
+        $user = 'postgres';
+        $password = 'root';
 
 
             $this->db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
@@ -13,10 +13,10 @@ class database{
     }
 
     public static function staticConectar(){
-        $host = 'postgres';
+        $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
-        $password = 'password';
+        $user = 'postgres';
+        $password = 'root';
 
 
             $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);

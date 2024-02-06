@@ -7,6 +7,8 @@ header {
   width: 100%;
   height: 7.813rem;
   background-color: #F7F7F7;
+  position: relative;
+  z-index: 900;
 }
 header > section {
   width: 100%;
@@ -50,14 +52,14 @@ header > section:first-child > div:nth-child(2) form[name=busqueda] {
   margin-right: 2rem;
   display: flex;
   align-items: center;
-  width: 12.5rem;
+  width: 20rem;
   position: relative;
 }
 header > section:first-child > div:nth-child(2) form[name=busqueda] input {
   border: 1px solid #CACACA;
   border-radius: 5px;
   height: 1.938rem;
-  width: 12.313rem;
+  width: 100%;
   padding: 6px 14px;
   box-sizing: border-box;
   outline: none;
@@ -198,7 +200,6 @@ aside section:nth-child(2) {
   margin-top: 6.5rem;
 }
 aside section:nth-child(3) {
-  border-top: 1px solid #CACACA;
   position: absolute;
   bottom: 2.5rem;
 }
@@ -209,7 +210,12 @@ aside section article {
   box-sizing: border-box;
   border-radius: 5px;
 }
-aside section article:hover {
+aside section article:first-child {
+  border-bottom: 1px solid #dddddd;
+  border-radius: 0px;
+  color: white;
+}
+aside section article:hover:not(aside section article:first-child) {
   background-color: #282828;
   cursor: pointer;
 }
@@ -220,6 +226,8 @@ aside section article svg {
 aside section article a {
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
 }
 aside section article span {
   text-transform: uppercase;
@@ -411,6 +419,7 @@ main#loginAdmin {
 .tendencias {
   border: none;
   border-top: 1px solid black;
+  margin-top: 1rem;
 }
 .tendencias h2 {
   display: flex;
@@ -703,23 +712,10 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
 .grid-productos {
   max-width: 14rem;
   display: grid;
-  grid-template-columns: auto 5rem;
-  grid-template-rows: auto auto 2.4rem;
-  row-gap: 0.5rem;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto 2.4rem;
   margin: 1rem;
   box-sizing: border-box;
-}
-.grid-productos div:nth-child(1) {
-  grid-area: 1/1/2/3;
-}
-.grid-productos div:nth-child(2) {
-  grid-area: 2/1/3/2;
-}
-.grid-productos div:nth-child(3) {
-  grid-area: 2/2/3/3;
-}
-.grid-productos div:nth-child(4) {
-  grid-area: 3/1/4/3;
 }
 .grid-productos div:first-child {
   position: relative;
@@ -745,6 +741,7 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   height: 2.4rem;
   min-height: 2.4rem;
   max-width: 14rem;
+  margin-top: 0.5rem;
 }
 .grid-productos button:hover {
   background-color: #3F3F3F;
@@ -760,8 +757,8 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   font-size: 1.2rem;
 }
 .grid-productos span:not(.tendencia) {
-  font-weight: 700;
-  font-size: 1.3rem;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 .breadcrumbs {
@@ -793,6 +790,333 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   width: 1rem;
 }
 
+.input {
+  width: 100%;
+  background-color: #3F3F3F;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 0.7rem auto;
+  box-sizing: border-box;
+}
+.input:focus {
+  background-color: #575757;
+}
+
+option {
+  text-transform: capitalize;
+}
+
+.form-products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(9, auto);
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+.form-products div:nth-child(1) {
+  grid-area: 1/1/2/2;
+}
+.form-products div:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+.form-products div:nth-child(3) {
+  grid-area: 1/2/2/3;
+}
+.form-products div:nth-child(4) {
+  grid-area: 2/2/3/3;
+}
+.form-products div:nth-child(5) {
+  grid-area: 3/1/4/2;
+}
+.form-products div:nth-child(6) {
+  grid-area: 4/1/5/2;
+}
+.form-products div:nth-child(7) {
+  grid-area: 3/2/4/3;
+}
+.form-products div:nth-child(8) {
+  grid-area: 4/2/5/3;
+}
+.form-products div:nth-child(9) {
+  grid-area: 5/1/6/2;
+}
+.form-products div:nth-child(10) {
+  grid-area: 6/1/7/2;
+}
+.form-products div:nth-child(11) {
+  grid-area: 5/2/6/3;
+}
+.form-products div:nth-child(12) {
+  grid-area: 6/2/7/3;
+}
+.form-products div:nth-child(13) {
+  grid-area: 7/1/8/3;
+}
+.form-products div:nth-child(14) {
+  grid-area: 8/1/9/3;
+}
+.form-products div:nth-child(15) {
+  grid-area: 9/1/10/3;
+}
+.form-products div:last-child {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-submit {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border: 0.5px solid #525252;
+  border-radius: 5px;
+  background-color: #3F3F3F;
+  color: white;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  background-color: #575757;
+}
+.btn-submit svg {
+  width: 1.2rem;
+}
+
+.btn-cancelar {
+  border: none;
+  background-color: transparent;
+  color: white;
+  margin-right: 1rem;
+}
+
+.popup-container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 998;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  width: 100%;
+  max-width: 60rem;
+  height: 32rem;
+  background-color: #F7F7F7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 999;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.popup h1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.popup span {
+  color: gray;
+  margin-bottom: 2rem;
+  font-size: small;
+}
+
+#iniciar-sesion {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  box-sizing: border-box;
+}
+#iniciar-sesion h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+#iniciar-sesion span {
+  color: gray;
+  margin-bottom: 2rem;
+  font-size: small;
+}
+
+#registrarse {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  box-sizing: border-box;
+}
+
+.separator {
+  height: 100%;
+  max-height: 28rem;
+  width: 2px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+form[name=iniciar-sesion] {
+  max-width: 15rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(5, auto);
+  row-gap: 5px;
+}
+form[name=iniciar-sesion] label {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+form[name=iniciar-sesion] input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 1.9rem;
+  outline: none;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+  background-color: #dddddd;
+  padding-left: 0.7rem;
+}
+form[name=iniciar-sesion] input:focus {
+  background-color: #ececec;
+}
+form[name=iniciar-sesion] input[type=submit] {
+  margin-top: 1rem;
+  padding-left: 0px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+form[name=iniciar-sesion] input[type=submit]:hover {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  transition: background-color 0.5s ease-in-out;
+}
+
+form[name=registrarse] {
+  width: 100%;
+  max-width: 27rem;
+  max-height: 20rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+form[name=registrarse] div:nth-child(1) {
+  grid-area: 1/1/2/2;
+}
+form[name=registrarse] div:nth-child(2) {
+  grid-area: 1/2/2/3;
+}
+form[name=registrarse] div:nth-child(3) {
+  grid-area: 2/1/3/2;
+}
+form[name=registrarse] div:nth-child(4) {
+  grid-area: 2/2/3/3;
+}
+form[name=registrarse] div:nth-child(5) {
+  grid-area: 3/1/4/3;
+}
+form[name=registrarse] div:nth-child(6) {
+  grid-area: 4/1/5/3;
+}
+form[name=registrarse] div:nth-child(7) {
+  grid-area: 5/1/6/3;
+}
+form[name=registrarse] div:nth-child(8) {
+  grid-area: 6/1/7/3;
+}
+form[name=registrarse] div:nth-child(9) {
+  grid-area: 7/1/8/3;
+}
+form[name=registrarse] div:nth-child(10) {
+  grid-area: 8/1/9/3;
+}
+form[name=registrarse] div:nth-child(11) {
+  grid-area: 9/1/10/2;
+}
+form[name=registrarse] div:nth-child(12) {
+  grid-area: 9/2/10/3;
+}
+form[name=registrarse] div:nth-child(13) {
+  grid-area: 10/1/11/2;
+}
+form[name=registrarse] div:nth-child(14) {
+  grid-area: 10/2/11/3;
+}
+form[name=registrarse] div:nth-child(15) {
+  grid-area: 11/1/12/3;
+}
+form[name=registrarse] label {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+form[name=registrarse] label::after {
+  content: "*";
+  color: #B82626;
+  margin-left: 2px;
+}
+form[name=registrarse] input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 1.9rem;
+  outline: none;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+  background-color: #dddddd;
+  padding-left: 0.7rem;
+}
+form[name=registrarse] input:focus {
+  background-color: #ececec;
+}
+form[name=registrarse] input[type=submit] {
+  margin-top: 1rem;
+  padding-left: 0px;
+  background-color: transparent;
+  border: 1px solid black;
+  font-weight: 600;
+}
+form[name=registrarse] input[type=submit]:hover {
+  background-color: black;
+  color: white;
+  transition: background-color 0.5s ease-in;
+}
+
+#buscadorAJAX {
+  position: relative;
+}
+
+#resultadosDiv {
+  position: absolute;
+  width: 40rem;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 901;
+}
+#resultadosDiv a {
+  text-decoration: none;
+  color: black;
+}
+#resultadosDiv a:hover {
+  background-color: #dddddd;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -811,6 +1135,10 @@ body {
 
 main#index div:nth-child(2) section:nth-child(2) {
   margin-top: 2rem;
+}
+main#index div:nth-child(2) section:nth-child(2) h2 {
+  margin: 1rem auto;
+  font-weight: 600;
 }
 main#index div:nth-child(2) section:nth-child(2) > div {
   width: 100%;
@@ -844,7 +1172,7 @@ main#index div:nth-child(2) section:nth-child(2) > div a img {
 main#index div:nth-child(2) section:nth-child(2) > div a span {
   text-transform: uppercase;
   color: white;
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 3.6px;
   position: absolute;
@@ -909,7 +1237,7 @@ main.listar > div section:nth-child(2) {
   align-items: center;
   justify-content: flex-end;
 }
-main.listar > div section:nth-child(2) input {
+main.listar > div section:nth-child(2) > form > input {
   width: 21.063rem;
   padding: 0.7rem 1rem;
   background-color: #3F3F3F;
@@ -973,57 +1301,6 @@ main.listar > div fieldset {
   padding: 1rem;
   box-sizing: border-box;
 }
-main.listar > div fieldset form[name=anadir-producto] {
-  width: 45rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(9, auto);
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(1) {
-  grid-area: 1/1/2/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(2) {
-  grid-area: 2/1/3/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(3) {
-  grid-area: 1/2/2/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(4) {
-  grid-area: 2/2/3/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(5) {
-  grid-area: 3/1/4/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(6) {
-  grid-area: 4/1/5/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(7) {
-  grid-area: 3/2/4/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(8) {
-  grid-area: 4/2/5/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(9) {
-  grid-area: 5/1/6/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(10) {
-  grid-area: 6/1/7/2;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(11) {
-  grid-area: 5/2/6/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(12) {
-  grid-area: 6/2/7/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(13) {
-  grid-area: 7/1/8/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(14) {
-  grid-area: 8/1/9/3;
-}
-main.listar > div fieldset form[name=anadir-producto] div:nth-child(15) {
-  grid-area: 9/1/10/3;
-}
 
 #anadirCategoria {
   position: absolute;
@@ -1056,6 +1333,7 @@ main.listar > div fieldset form[name=anadir-producto] div:nth-child(15) {
   cursor: pointer;
   width: 10rem;
   height: 2.5rem;
+  max-height: 1.75rem;
 }
 .btn-primary:hover {
   background-color: #3F3F3F;
@@ -1063,4 +1341,10 @@ main.listar > div fieldset form[name=anadir-producto] div:nth-child(15) {
 .btn-primary svg {
   width: 1.2rem;
   margin-right: 0.2rem;
+}
+
+@media (max-width: 1024px) {
+  .page-grid {
+    grid-template-columns: auto;
+  }
 }/*# sourceMappingURL=main.css.map */

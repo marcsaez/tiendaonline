@@ -1,6 +1,12 @@
 <?php include "views/admin/navLateral.php"; ?>
+<<<<<<< HEAD
  <script src="js/ocultar.js"></script>
  <script src="js/buscadorCategoria.js"></script>
+=======
+ <script src="js/admin.js"></script>
+ <script src="./js/productoConcreto.js"></script>
+ <script src="./js/buscadorCategoria.js"></script>
+>>>>>>> 82546475aa67c575b050c280d8dd9356a6b5ac1c
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
 <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
@@ -21,7 +27,7 @@
     <div>
         <section>
             <h1>Categorias</h1>
-            <button onclick="mostrarOcultar('anadirCategoria')">
+            <button id="btn-mostrarCategoria">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
@@ -33,11 +39,11 @@
                     <legend>Añadir Categoria</legend>
                     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadirCategoria" method="POST" >   
                         <label for="nombre">Nombre de la categoria:</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" class="input" required>
                 
                         <?php
                         echo '<label for="nombre">ID de la Categoria padre:</label>';
-                        echo '<select id="categoriaPadre" name="categoriaPadre">';
+                        echo '<select id="categoriaPadre" name="categoriaPadre" class="input">';
                         echo '<option value="" selected>Sin categoria padre</option>';
                         
                         foreach ($padres as $category) {
@@ -47,18 +53,31 @@
                         echo '</select>';
                         ?>
                 
-                        <button type="submit">Añadir Categoria</button>
+                        <button type="submit" class="btn-submit">Añadir Categoria</button>
                     </form>
                 </fieldset>
             </div>
         </section>
         <section>
-        <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">
-            <input type="text" id="termino" name="termino" placeholder="Indique el nombre de la categoria a buscar">
-        </form>
+            <fieldset id="editar-categoria" style="display: none;">
+                <legend>Editar Categoria</legend>
+                <form action="index.php?Controller=Categorias&action=editarCategoria" method="POST" name="editarCategoria" >
+                    <label for="id">ID:</label>
+                    <input type="text" name="id-editar" id="id-editar" class="input" readonly>
+                    <label for="nombre-editar">Nombre:</label>
+                    <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
+                    <label for="categoriaPadre">Categoria Padre:</label>
+                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input">
+                    <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
+                    <input type="submit" class="btn-submit" value="Guardar">
+                </form>
+            </fieldset>
+            <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">
+                <input type="text" id="termino" name="termino" placeholder="Indique el nombre de la categoria a buscar">
+            </form>
         </section>
         <section>
-            <table id="">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -78,25 +97,20 @@
                         $mostrarCategoriaPadre = ($categoriaPadre == null) ? "Sin Categoría" : $categoriaPadre;
 
                         echo '
-                            <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST">
+                            
                             <tr>
-                                <td><input type="text" id="id" name="id" value='.$idCategoria.' readonly></td>
-                                <td><input type="text" id="nombre" name="nombre" value='.$nombreCategoria.'></td>
+                                <td>'.$idCategoria.'</td>
+                                <td>'.$nombreCategoria.'</td>
+                                <td>'.$categoriaPadre.'</td>
                                 <td>
-                                    <select name="categoriaPadre" id="categoriaPadre">
-                                        <option value='.$categoriaPadre.'>'.$mostrarCategoriaPadre.'</option>
-                                    </select>
-                                </td>
-                                <td>
-                                <button type="submit">Editar Categoria</button>
-                                <a class="editar" onClick="editarFila(this)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <a class="editar btn-categoria-editar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                 </svg>Editar</a></td>
                                 <td><a class="eliminar" href="index.php?Controller=Categorias&action=eliminar&IDCategoria='.$idCategoria.'"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                                 </svg>Eliminar</a></td>
                             </tr>
-                            </form>
+                            
                         ';
                     }
                 ?>
