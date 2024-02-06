@@ -1,1 +1,1 @@
-{"version":3,"sources":["../scss/components/popup/separator.scss","separator.css"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,iBAAA;EACA,UAAA;EACA,uBAAA;EACA,kBAAA;ACCJ","file":"separator.css"}
+{"version":3,"sources":["../scss/components/popup/separator.scss","separator.css"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,iBAAA;EACA,UAAA;EACA,uBAAA;EACA,kBAAA;ACCJ;;ADEA;EACI;IACI,WAAA;IACA,WAAA;ECCN;AACF","file":"separator.css"}

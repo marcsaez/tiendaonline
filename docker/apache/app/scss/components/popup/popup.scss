@@ -68,3 +68,17 @@
     margin: 1rem;
     box-sizing: border-box;
 }
+
+@media (max-width: 1024px){
+    .popup {
+        width: 100%;
+        max-width: 32rem;
+        height: 60rem;
+        flex-direction: column;
+    }
+
+    #iniciar-sesion, #registrarse {
+        width: 100%;
+    }
+
+}

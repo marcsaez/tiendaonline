@@ -16,7 +16,7 @@
 </div>
 <header id="header">
     <section>
-        <div>
+        <div id="header-logo">
             <a href="index.php"><img src='./img/Logo.png' alt='MangaHouse' id='logo'></a>
             <p>
                 <span>manga</span>
@@ -34,7 +34,7 @@
             ?>
             
         </div>
-        <div>
+        <div id="header-user">
             <!-- PLACEHOLDER, HAY QUE HACERLO CON AJAX -->
             <!-- <div id = 'busqueda'>
                 <input type='text' placeholder='Indique lo que desea buscar...' id ='navegacion'>
@@ -81,7 +81,7 @@
         </div>
     </section>
     <section>
-        <nav>
+        <nav id="nav-inferior">
             <ul>
                 <li><a href="#">NOVEDADES</a></li>
                 <?php

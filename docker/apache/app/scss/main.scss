@@ -282,6 +282,6 @@ main.listar {
 
 @media (max-width: 1024px) {
     .page-grid {
-        grid-template-columns: auto;
+        grid-template-columns: 1rem auto 1rem;
     }
 }
