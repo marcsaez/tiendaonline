@@ -188,7 +188,7 @@ class Productos extends database{
     //Obtener productos con la misma subcategoria para hacer display en la pagina de producto
     public static function masProductos($db,$subcategoria,$idProducto){
         try{
-            $stmt = $db->prepare("SELECT productname, productimg, productprice FROM products WHERE fkcategories = :subcategoria AND active = 1 AND productid != :idproducto ORDER BY random() LIMIT 6;");
+            $stmt = $db->prepare("SELECT * FROM products WHERE fkcategories = :subcategoria AND active = 1 AND productid != :idproducto ORDER BY random() LIMIT 6;");
             $stmt->bindParam(':subcategoria',  $subcategoria);
             $stmt->bindParam(':idproducto',$idProducto);
             $stmt->execute();
@@ -290,6 +290,20 @@ class Productos extends database{
             $error = true;
         }
         return $error;
+    }
+    public static function contadorProductosPorCategoria($db, $categoria){
+        try{
+            $stmt =$db->prepare("SELECT COUNT(*) FROM products WHERE fkcategories = :categoria ");
+            $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $count = $stmt->fetchColumn();
+            
+        } catch (Exception $e){
+            $count = true;
+        }
+        return $count;
+
     }
 }
 ?>

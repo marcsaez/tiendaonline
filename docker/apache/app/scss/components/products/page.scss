@@ -10,9 +10,9 @@
         (3, 1, 4, 3)
     );
 
-    @include grid(auto 1fr, 3rem 2fr 1fr);
+    @include grid(auto 1fr, 3rem auto 1fr);
     @include generateGridArea(section, $cuadricula);
-   
+    row-gap: 1rem;
 
     section {
         &:nth-child(1){
@@ -52,7 +52,6 @@
 
             section {
                 display: flex;
-                flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
                 margin-top: 0.7rem;
@@ -136,5 +135,36 @@
                 
             }
         }
+    }
+}
+
+.mas-productos-container {
+    h2 {
+        font-size: 2rem;
+
+        span {
+            text-transform: capitalize;
+        }
+    }
+}
+
+.mas-productos {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+
+#btnAnadir, .btn-comprar {
+    @include btn-primary;
+    width: 10rem;
+    max-height: 2.5rem;
+    height: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+    .reference-product {
+        flex-direction: column;
     }
 }

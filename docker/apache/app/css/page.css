@@ -2,7 +2,8 @@
   margin-top: 2.375rem;
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: 3rem 2fr 1fr;
+  grid-template-rows: 3rem auto 1fr;
+  row-gap: 1rem;
 }
 .pagina-producto section:nth-child(1) {
   grid-area: 1/1/2/3;
@@ -45,7 +46,6 @@
 }
 .pagina-producto section:nth-child(3) section {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-top: 0.7rem;
@@ -110,4 +110,47 @@
 }
 .pagina-producto section:nth-child(3) article .containerCantidad button svg {
   width: 1.2rem;
+}
+
+.mas-productos-container h2 {
+  font-size: 2rem;
+}
+.mas-productos-container h2 span {
+  text-transform: capitalize;
+}
+
+.mas-productos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#btnAnadir, .btn-comprar {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 10rem;
+  max-height: 2.5rem;
+  height: 2.5rem;
+}
+#btnAnadir:hover, .btn-comprar:hover {
+  background-color: #3F3F3F;
+}
+#btnAnadir svg, .btn-comprar svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+
+@media (max-width: 1024px) {
+  .reference-product {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=page.css.map */
