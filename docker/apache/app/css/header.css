@@ -144,4 +144,25 @@ header > section:nth-child(2) nav > ul > li > a:hover {
 header > section:nth-child(2) nav > ul > li > a:hover::after {
   width: 100%;
   left: 0;
+}
+
+@media (max-width: 1024px) {
+  #header-logo {
+    margin-left: 3rem;
+  }
+  #header-user {
+    margin-right: 3rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+  #header-user form[name=busqueda] {
+    width: 100%;
+  }
+  #buscadorAJAX {
+    width: 100%;
+    margin: 0 1rem;
+  }
+  #nav-inferior {
+    width: 100%;
+  }
 }/*# sourceMappingURL=header.css.map */

@@ -54,7 +54,7 @@ class Categoria extends database{
     //Guarda las categorias activas para poder usarlas más adelante
     public static function todasCategorias($db){
         try {
-            $stmt = $db->prepare("SELECT categoryid FROM categories WHERE active = 1");
+            $stmt = $db->prepare("SELECT categoryid FROM categories WHERE active = 1 AND fkfathercategory IS NULL");
             $stmt->execute();
     
             if($stmt->rowCount() > 0){
