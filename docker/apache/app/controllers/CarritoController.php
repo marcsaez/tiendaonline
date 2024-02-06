@@ -8,7 +8,7 @@
         public function obtenerDatosProductosCarrito($data){  
             $db = Carrito::staticConectar();
             $productos = Carrito::productosDelCarrito($db, $data);
-            require_once "../views/general/carrito.php";
+            require_once "views/general/carrito.php";
         }
         public function getCarrito(){
             

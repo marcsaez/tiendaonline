@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Puedes utilizar URLSearchParams para construir los datos de formulario
         var data = new URLSearchParams();
         data.append('termino', termino);
-
+        if(termino == ""){
+            resultadosDiv.style.display = "none";
+        } else{
+            resultadosDiv.style.display = "block";
         fetch('indexAjax.php?Controller=Productos&action=buscarPrincipal', {
             method: 'POST',
             headers: {
@@ -41,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(function (error) {
             console.error('Error en la solicitud Ajax:', error);
-        });
+        })};
+    
     }
 
     function mostrarResultados(resultados) {
