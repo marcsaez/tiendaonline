@@ -8,11 +8,12 @@
             ob_clean();
             header("Content-Type: application/json");
             $_SESSION['carrito'] = json_decode(file_get_contents("php://input"), true);
-
             print_r($_SESSION); 
             $db = Carrito::staticConectar();
             $productos = Carrito::productosDelCarrito($db, $_SESSION['carrito']);
-            require_once 'views/general/carrito.php';
+            echo json_encode (['succes' => true, 'info' => $_SESSION['carrito']]);
+            exit;
+            //require_once 'views/general/carrito.php';
         }
         public function abrirCarrito(){
             require_once './views/general/carrito.php';

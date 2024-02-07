@@ -2,34 +2,32 @@ class Carrito {
     constructor(diccionario) {
         this.diccionario = diccionario;
     }
-    ajaxCosas() {
-        console.log(this.diccionario);
-        var xhr = new XMLHttpRequest();
-        // Configurar la solicitud POST a process.php
-        xhr.open("POST", "index.php?Controller=Carrito&action=obtenerDatosProductosCarrito", true);
-        // Configurar el encabezado para indicar que se está enviando un JSON
-        xhr.setRequestHeader("Content-Type", "application/json");
-        // Configurar la función de devolución de llamada cuando la solicitud esté completa
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    try {
-                        var responseData = JSON.parse(xhr.responseText); // Aquí se utiliza xhr.responseText
-                        console.log(responseData);
-                    } catch (error) {
-                        console.error("Error al analizar la respuesta JSON: " + error.message);
-                        console.log(xhr.responseText);
+    $(document).ready(function () {
+        ajaxCosas() {
+            let datos = sessionStorage.getItem('carrito');
+            $.ajax({
+                url: 'index.php?Controller=Carrito&action=obtenerDatosProductosCarrito',
+                type: 'POST',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({ carrito: datos }),
+                success: function (data) {
+                    // Maneja la respuesta del servidor
+                    if (data.success) {
+                    console.log('Okay');
+                        console.log(data);
+                    } else {
+                        console.error('Error en la solicitud:', data.message);
                     }
-                } else {
-                    // Manejar errores si la solicitud no fue exitosa
-                    console.error("Error en la solicitud: " + xhr.status);
-                    console.log(xhr.responseText);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Maneja el error
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    console.error('Estado de la respuesta:', xhr.status);
+                    console.error('Respuesta del servidor:', xhr.responseText);
                 }
-            }
-        };
-        // Convertir los datos a JSON y enviar la solicitud
-        xhr.send(JSON.stringify(this.diccionario));
-    }
+            });
+        }
+    });
     guardarCarritoEnPHP() {
         // Obtén el contenido de sessionStorage
         var carrito = sessionStorage.getItem('carrito');
@@ -55,3 +53,29 @@ class Carrito {
 }
 
 export default Carrito;
+        // console.log(this.diccionario);
+            // var xhr = new XMLHttpRequest();
+            // // Configurar la solicitud POST a process.php
+            // xhr.open("POST", "index.php?Controller=Carrito&action=obtenerDatosProductosCarrito", true);
+            // // Configurar el encabezado para indicar que se está enviando un JSON
+            // xhr.setRequestHeader("Content-Type", "application/json");
+            // // Configurar la función de devolución de llamada cuando la solicitud esté completa
+            // xhr.onreadystatechange = function () {
+            //     if (xhr.readyState == 4) {
+            //         if (xhr.status == 200) {
+            //             try {
+            //                 var responseData = JSON.parse(xhr.responseText); // Aquí se utiliza xhr.responseText
+            //                 console.log(responseData);
+            //             } catch (error) {
+            //                 // console.error("Error al analizar la respuesta JSON: " + error.message);
+            //                 console.log(xhr.responseText);
+            //             }
+            //         } else {
+            //             // Manejar errores si la solicitud no fue exitosa
+            //             console.error("Error en la solicitud: " + xhr.status);
+            //             console.log(xhr.responseText);
+            //         }
+            //     }
+            // };
+            // // Convertir los datos a JSON y enviar la solicitud
+            // xhr.send(JSON.stringify(this.diccionario));
