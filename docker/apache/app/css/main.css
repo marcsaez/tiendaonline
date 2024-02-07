@@ -1371,7 +1371,7 @@ option {
   padding: 0 2rem;
 }
 
-canvas {
+#lienzo {
   width: 40rem;
   height: 20rem;
   border: 1px solid white;
