@@ -1,4 +1,20 @@
 .page-title {
     font-weight: bold;
     font-size: 3rem;
+    margin: 2rem 0rem;
+}
+
+#orders-table {
+    width: 100%;
+
+    tbody {
+       td {
+        &:first-child{
+            width: 20rem;
+            svg {
+                width: 1.5rem;
+            }
+        }
+       } 
+    }
 }

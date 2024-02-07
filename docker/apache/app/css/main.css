@@ -1149,6 +1149,17 @@ form[name=registrarse] input[type=submit]:hover {
 .page-title {
   font-weight: bold;
   font-size: 3rem;
+  margin: 2rem 0rem;
+}
+
+#orders-table {
+  width: 100%;
+}
+#orders-table tbody td:first-child {
+  width: 20rem;
+}
+#orders-table tbody td:first-child svg {
+  width: 1.5rem;
 }
 
 .input {
