@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 require_once("database.php");
 class Carrito extends database{
     private $codigoCompra;
@@ -65,8 +65,9 @@ class Carrito extends database{
     }
     public function anadirPedido(){
         try{
-            $cartID=obtenerSiguienteCartId();
+            $cartID=$this->obtenerSiguienteCartId();
             $stmt = $this->db->prepare("INSERT INTO cart(cartid,fkpurchase, fkproduct, amount, totalprice) VALUES (:cartid, :codigoCompra, :producto, :cantidad, :precioTotal)");
+            $stmt->bindParam(':cartid',$cartID);
             $stmt->bindParam(':codigoCompra',$this->codigoCompra);
             $stmt->bindParam(':producto',$this->producto);
             $stmt->bindParam(':cantidad',$this->cantidad);
