@@ -93,7 +93,8 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
         }
         return $success;
     }
-    public static function iniciarSesion($db, $correo,$password){
+    public static function iniciarSesion($db, $correo, $password){
+        $success = false;
         try {
             $hashedPassword = hash('sha256', $password);
             $stmt = $db->prepare("SELECT * FROM customers WHERE email = :email and customerpassword = :pass;");

@@ -1,3 +1,11 @@
-main#loginAdmin {
-  background-color: black;
+#loginAdmin {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loginAdmin div {
+  background-color: #3F3F3F;
 }/*# sourceMappingURL=login.css.map */

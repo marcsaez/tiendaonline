@@ -122,6 +122,9 @@ header > section:nth-child(2) nav > ul > li:first-child a:hover::after {
   width: 100%;
   left: 0;
 }
+header > section:nth-child(2) nav > ul > li:last-child {
+  position: relative;
+}
 header > section:nth-child(2) nav > ul > li > a {
   font-weight: 600;
   text-decoration: none;
@@ -167,6 +170,32 @@ header > section:nth-child(2) nav > ul > li > a:hover::after {
     width: 100%;
   }
 }
+.opciones-usuario {
+  position: absolute;
+  background-color: #F7F7F7;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  z-index: 960;
+  margin-left: -8rem;
+  display: flex;
+  flex-direction: column;
+}
+.opciones-usuario li {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+}
+.opciones-usuario li a {
+  text-decoration: none;
+  color: black;
+}
+.opciones-usuario li a:hover {
+  text-decoration: underline;
+}
+.opciones-usuario li:hover {
+  background-color: #CACACA;
+}
+
 footer {
   display: grid;
   grid-template-columns: 12.5rem auto 12.5rem;
@@ -255,10 +284,6 @@ aside section article span {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.4px;
-}
-
-main#loginAdmin {
-  background-color: black;
 }
 
 .plusminus {
@@ -774,6 +799,17 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
 .product-filters span {
   display: flex;
   align-items: center;
+  font-weight: 600;
+}
+.product-filters span:first-child {
+  margin-right: 1rem;
+}
+.product-filters span:nth-child(2) {
+  flex-grow: 1;
+}
+.product-filters span:last-child {
+  color: gray;
+  font-weight: normal;
 }
 
 .list-categories-products {
@@ -788,6 +824,7 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   grid-template-rows: auto auto auto 2.4rem;
   margin: 1rem;
   box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
 }
 .grid-productos div:first-child {
   position: relative;
@@ -831,6 +868,9 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
 .grid-productos span:not(.tendencia) {
   font-weight: 400;
   font-size: 1rem;
+}
+.grid-productos:hover {
+  transform: translateY(-0.3rem);
 }
 
 .breadcrumbs {
@@ -1204,6 +1244,87 @@ form[name=registrarse] input[type=submit]:hover {
 }
 #resultadosDiv a:hover {
   background-color: #dddddd;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#loginAdmin {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loginAdmin div {
+  background-color: #3F3F3F;
+  padding: 1.5rem;
+  width: 25rem;
+  height: 27rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+#loginAdmin div form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 8rem 1.5rem 3rem 1.5rem 3rem 4rem;
+  align-items: center;
+  width: 20rem;
+}
+#loginAdmin div form h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+#loginAdmin div form label {
+  color: white;
+  font-weight: 600;
+}
+#loginAdmin div form input[type=text], #loginAdmin div form input[type=password] {
+  width: 100%;
+  background-color: #575757;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 0.7rem auto;
+  box-sizing: border-box;
+}
+#loginAdmin div form input[type=text]:focus, #loginAdmin div form input[type=password]:focus {
+  background-color: #616161;
+}
+#loginAdmin div form input[type=submit] {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 2.2rem;
+}
+#loginAdmin div form input[type=submit]:hover {
+  background-color: #3F3F3F;
+}
+#loginAdmin div form input[type=submit] svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+#loginAdmin div form input[type=submit]:hover {
+  background-color: rgb(31, 31, 31);
 }
 
 * {

@@ -19,7 +19,8 @@ class UsuarioController{
         if($usuario==true){
             echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }elseif($usuario==false){
-            echo '<meta http-equiv="refresh" content="0;url=index.php">';
+            echo"MAL";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Usuario&action=iniciarSesionAbrir">';
         }
     }
 
@@ -32,6 +33,10 @@ class UsuarioController{
     public function logOutUsuario() {
         session_destroy();
         echo '<meta http-equiv="refresh" content="0;url=index.php">';
+    }
+
+    public function mostrarPerfil(){
+        require "views/general/perfil.php";
     }
 }
 

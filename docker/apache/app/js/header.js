@@ -48,4 +48,21 @@ document.addEventListener('DOMContentLoaded', function(){
             header.style.position = 'relative';
         }
     });
+
+    
+    document.getElementById('usuarioPassword').addEventListener('keyup', validarPassword);
+    document.getElementById('usuarioPasswordRepeat').addEventListener('keyup', validarPassword);
+
 });
+
+function validarPassword(){
+    const usuarioPassword = document.getElementById('usuarioPassword');
+    const usuarioPasswordRepeat = document.getElementById('usuarioPasswordRepeat');
+
+    if (usuarioPassword.value === usuarioPasswordRepeat.value) {
+        usuarioPasswordRepeat.style.borderColor = 'green';
+    } else {
+        usuarioPasswordRepeat.style.borderColor = 'red';
+    }
+}
+
