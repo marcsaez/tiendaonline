@@ -217,7 +217,7 @@ aside {
   float: left;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 1.6rem;
   box-sizing: border-box;
   position: relative;
 }
@@ -252,38 +252,39 @@ aside section:nth-child(3) {
   position: absolute;
   bottom: 2.5rem;
 }
-aside section article {
+aside section > article {
   display: flex;
   align-items: center;
   padding: 0.688rem;
   box-sizing: border-box;
   border-radius: 5px;
+  margin: 0.7rem auto;
 }
-aside section article:first-child {
-  border-bottom: 1px solid #dddddd;
-  border-radius: 0px;
-  color: white;
-}
-aside section article:hover:not(aside section article:first-child) {
+aside section > article:hover:not(#adminUser) {
   background-color: #282828;
   cursor: pointer;
 }
-aside section article svg {
+aside section > article svg {
   width: 20px;
   margin-right: 10px;
 }
-aside section article a {
+aside section > article a {
   text-decoration: none;
   color: white;
   display: flex;
   align-items: center;
 }
-aside section article span {
+aside section > article span {
   text-transform: uppercase;
   color: white;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.4px;
+}
+
+#adminUser {
+  color: white;
+  border-bottom: 1px solid white;
 }
 
 .plusminus {
@@ -902,107 +903,6 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   width: 1rem;
 }
 
-.input {
-  width: 100%;
-  background-color: #3F3F3F;
-  border: none;
-  outline: none;
-  padding: 0.5rem 1rem;
-  color: white;
-  border-radius: 5px;
-  margin: 0.7rem auto;
-  box-sizing: border-box;
-}
-.input:focus {
-  background-color: #575757;
-}
-
-option {
-  text-transform: capitalize;
-}
-
-.form-products {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  grid-template-rows: repeat(9, auto);
-  gap: 0.5rem;
-  box-sizing: border-box;
-}
-.form-products div:nth-child(1) {
-  grid-area: 1/1/2/2;
-}
-.form-products div:nth-child(2) {
-  grid-area: 2/1/3/2;
-}
-.form-products div:nth-child(3) {
-  grid-area: 1/2/2/3;
-}
-.form-products div:nth-child(4) {
-  grid-area: 2/2/3/3;
-}
-.form-products div:nth-child(5) {
-  grid-area: 3/1/4/2;
-}
-.form-products div:nth-child(6) {
-  grid-area: 4/1/5/2;
-}
-.form-products div:nth-child(7) {
-  grid-area: 3/2/4/3;
-}
-.form-products div:nth-child(8) {
-  grid-area: 4/2/5/3;
-}
-.form-products div:nth-child(9) {
-  grid-area: 5/1/6/2;
-}
-.form-products div:nth-child(10) {
-  grid-area: 6/1/7/2;
-}
-.form-products div:nth-child(11) {
-  grid-area: 5/2/6/3;
-}
-.form-products div:nth-child(12) {
-  grid-area: 6/2/7/3;
-}
-.form-products div:nth-child(13) {
-  grid-area: 7/1/8/3;
-}
-.form-products div:nth-child(14) {
-  grid-area: 8/1/9/3;
-}
-.form-products div:nth-child(15) {
-  grid-area: 9/1/10/3;
-}
-.form-products div:last-child {
-  display: flex;
-  justify-content: end;
-}
-
-.btn-submit {
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  border: 0.5px solid #525252;
-  border-radius: 5px;
-  background-color: #3F3F3F;
-  color: white;
-  cursor: pointer;
-}
-.btn-submit:hover {
-  background-color: #575757;
-}
-.btn-submit svg {
-  width: 1.2rem;
-}
-
-.btn-cancelar {
-  border: none;
-  background-color: transparent;
-  color: white;
-  margin-right: 1rem;
-}
-
 .popup-container {
   display: none;
   width: 100%;
@@ -1251,6 +1151,107 @@ form[name=registrarse] input[type=submit]:hover {
   font-size: 3rem;
 }
 
+.input {
+  width: 100%;
+  background-color: #3F3F3F;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  margin: 0.7rem auto;
+  box-sizing: border-box;
+}
+.input:focus {
+  background-color: #575757;
+}
+
+option {
+  text-transform: capitalize;
+}
+
+.form-products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(9, auto);
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+.form-products div:nth-child(1) {
+  grid-area: 1/1/2/2;
+}
+.form-products div:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+.form-products div:nth-child(3) {
+  grid-area: 1/2/2/3;
+}
+.form-products div:nth-child(4) {
+  grid-area: 2/2/3/3;
+}
+.form-products div:nth-child(5) {
+  grid-area: 3/1/4/2;
+}
+.form-products div:nth-child(6) {
+  grid-area: 4/1/5/2;
+}
+.form-products div:nth-child(7) {
+  grid-area: 3/2/4/3;
+}
+.form-products div:nth-child(8) {
+  grid-area: 4/2/5/3;
+}
+.form-products div:nth-child(9) {
+  grid-area: 5/1/6/2;
+}
+.form-products div:nth-child(10) {
+  grid-area: 6/1/7/2;
+}
+.form-products div:nth-child(11) {
+  grid-area: 5/2/6/3;
+}
+.form-products div:nth-child(12) {
+  grid-area: 6/2/7/3;
+}
+.form-products div:nth-child(13) {
+  grid-area: 7/1/8/3;
+}
+.form-products div:nth-child(14) {
+  grid-area: 8/1/9/3;
+}
+.form-products div:nth-child(15) {
+  grid-area: 9/1/10/3;
+}
+.form-products div:last-child {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-submit {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border: 0.5px solid #525252;
+  border-radius: 5px;
+  background-color: #3F3F3F;
+  color: white;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  background-color: #575757;
+}
+.btn-submit svg {
+  width: 1.2rem;
+}
+
+.btn-cancelar {
+  border: none;
+  background-color: transparent;
+  color: white;
+  margin-right: 1rem;
+}
+
 #loginAdmin {
   width: 100%;
   height: 100vh;
@@ -1325,6 +1326,103 @@ form[name=registrarse] input[type=submit]:hover {
 }
 #loginAdmin div form input[type=submit]:hover {
   background-color: rgb(31, 31, 31);
+}
+
+.admin-headers {
+  width: 100%;
+  height: 7rem;
+  border-bottom: 1px solid #3F3F3F;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.admin-headers h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.admin-headers a, .admin-headers button {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  box-sizing: content-box;
+  background-color: #3F3F3F;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.admin-headers a:hover, .admin-headers button:hover {
+  background-color: #575757;
+}
+.admin-headers a svg, .admin-headers button svg {
+  width: 25px;
+}
+
+.admin-content {
+  margin-left: 16.25rem;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+canvas {
+  width: 40rem;
+  height: 20rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #F7F7F7;
+}
+
+#toggleBtn, #guardarBtn {
+  width: 10rem;
+  height: 3rem;
+  background-color: #575757;
+  border: 0.5px solid #616161;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+#toggleBtn:hover:not(#guardarBtn), #guardarBtn:hover:not(#guardarBtn) {
+  background-color: #616161;
+}
+#toggleBtn svg, #guardarBtn svg {
+  width: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+#icon-borrar {
+  display: none;
+}
+
+#guardarBtn {
+  background-color: #228b22;
+}
+#guardarBtn:hover {
+  background-color: #269926;
+}
+
+#canvas-btn-container {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 7rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#canvas-container {
+  display: flex;
+  margin-top: 3rem;
 }
 
 * {
@@ -1516,7 +1614,7 @@ main.listar > div fieldset {
   position: absolute;
   right: 0;
   top: 5rem;
-  background-color: #575757;
+  background-color: #3F3F3F;
   border-radius: 10px;
 }
 #anadirCategoria fieldset {
