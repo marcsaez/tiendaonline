@@ -1364,11 +1364,100 @@ option {
   width: 25px;
 }
 
+main.dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  color: white;
+}
+
 .admin-content {
   margin-left: 16.25rem;
   height: 100vh;
   box-sizing: border-box;
   padding: 0 2rem;
+}
+.admin-content fieldset {
+  border-radius: 10px;
+  margin: 2rem 4rem;
+  border: 2px solid #3F3F3F;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.admin-busqueda {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.admin-busqueda > form {
+  margin: 1.5rem 0rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.admin-busqueda > form svg {
+  width: 1.5rem;
+  position: absolute;
+  right: 0.7rem;
+}
+.admin-busqueda > form > input {
+  width: 21.063rem;
+  padding: 0.7rem 1rem;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+table.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+}
+table.admin-table tr td {
+  padding: 1rem 0.5rem;
+  text-transform: capitalize;
+}
+table.admin-table tr td a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+table.admin-table tr td a.editar {
+  color: #3b82f6;
+}
+table.admin-table tr td a.eliminar {
+  color: rgb(202, 0, 0);
+}
+table.admin-table tr td span {
+  display: flex;
+  align-items: center;
+  background-color: #228b22;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+}
+table.admin-table tr td svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+table.admin-table tr td img {
+  width: 2rem;
+}
+table.admin-table tr th {
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+table.admin-table tr:nth-child(even) {
+  background-color: #575757;
 }
 
 #lienzo {
@@ -1490,124 +1579,6 @@ main#index div:nth-child(2) section:nth-child(2) > div a span {
 }
 main#index div:nth-child(2) section:nth-child(2) > div a:hover img {
   transform: scale(1.5);
-}
-
-main.dashboard {
-  width: 100%;
-  height: 100vh;
-  background-color: #282828;
-  color: white;
-}
-
-main.listar > div {
-  margin-left: 16.25rem;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 0 2rem;
-}
-main.listar > div section:first-child {
-  width: 100%;
-  height: 7rem;
-  border-bottom: 1px solid #3F3F3F;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-main.listar > div section:first-child h1 {
-  font-size: 40px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-main.listar > div section:first-child a, main.listar > div section:first-child button {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  box-sizing: content-box;
-  background-color: #3F3F3F;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-decoration: none;
-}
-main.listar > div section:first-child a:hover, main.listar > div section:first-child button:hover {
-  background-color: #575757;
-}
-main.listar > div section:first-child a svg, main.listar > div section:first-child button svg {
-  width: 25px;
-}
-main.listar > div section:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-main.listar > div section:nth-child(2) > form > input {
-  width: 21.063rem;
-  padding: 0.7rem 1rem;
-  background-color: #3F3F3F;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  color: white;
-}
-main.listar > div section:nth-child(3) table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #3F3F3F;
-  border-radius: 10px;
-}
-main.listar > div section:nth-child(3) table tr td {
-  padding: 1rem 0.5rem;
-  text-transform: capitalize;
-}
-main.listar > div section:nth-child(3) table tr td a {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-main.listar > div section:nth-child(3) table tr td a.editar {
-  color: #3b82f6;
-}
-main.listar > div section:nth-child(3) table tr td a.eliminar {
-  color: rgb(202, 0, 0);
-}
-main.listar > div section:nth-child(3) table tr td span {
-  display: flex;
-  align-items: center;
-  background-color: #228b22;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.2rem 1rem;
-  border-radius: 20px;
-}
-main.listar > div section:nth-child(3) table tr td svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-main.listar > div section:nth-child(3) table tr td img {
-  width: 2rem;
-}
-main.listar > div section:nth-child(3) table tr th {
-  text-align: left;
-  padding: 0.5rem 0.5rem;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-main.listar > div section:nth-child(3) table tr:nth-child(even) {
-  background-color: #575757;
-}
-main.listar > div fieldset {
-  border-radius: 10px;
-  margin: 2rem 4rem;
-  border: 2px solid #3F3F3F;
-  padding: 1rem;
-  box-sizing: border-box;
 }
 
 #anadirCategoria {
