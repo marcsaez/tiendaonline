@@ -30,7 +30,6 @@ function disminuirCantidad() {
 //     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 // }
 
-
 function mostrarOcultar(id) {
     var elemento = document.getElementById(id);
     if (elemento.style.display === 'none') {
@@ -76,9 +75,9 @@ btnAnadirCarrito.addEventListener('click', function () {
     }
     // Almacenar el carrito en el sessionStorage
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
-    // let obtenerCarrito = sessionStorage.getItem('carrito');
-    // carrito = new Carrito(obtenerCarrito);
-    // carrito.ajaxCosas();
+    let obtenerCarrito = sessionStorage.getItem('carrito');
+    carrito = new Carrito(obtenerCarrito);
+    carrito.ajaxCosas();
 });
 document.addEventListener('DOMContentLoaded', function(){
     const buttonComprarYa = document.getElementById('comprarYa');

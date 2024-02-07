@@ -31,11 +31,6 @@
             
         </div>
         <div id="header-user">
-            <!-- PLACEHOLDER, HAY QUE HACERLO CON AJAX -->
-            <!-- <div id = 'busqueda'>
-                <input type='text' placeholder='Indique lo que desea buscar...' id ='navegacion'>
-            </div> -->
-            <!-- BUSCADOR AJAX (SOLO CAMBIAR ID'S Y LLAMADA A FUNCION) -->
             <div id="buscadorAJAX">
                 <script src="js/buscadorPrincipal.js"></script>
                 <form action="index.php?Controller=Productos&action=buscarPrincipal" method="post" name="busqueda">
@@ -77,17 +72,6 @@
 
                 </li>
             </ul>
-            
-            <!-- <div id="desplegable" style="display:none;">
-                <form action="">
-                    <label for="user">Usuario: </label>
-                    <input type="text" name="User" id="User">
-                    <label for="pass">Contraseña: </label>
-                    <input type="password" name="Pass" id="Pass">
-                </form>
-                <a href="#">Ha olvidado su contraseña?</a>
-                <a href="#">No tiene cuena aun? Registrese aqui </a>
-            </div> -->
         </div>
     </section>
     <section>

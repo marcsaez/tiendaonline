@@ -35,7 +35,7 @@
                     <p>Disponibilidad:
                     <?php
                         if($productoConcreto[0]['productstock']>0){
-                            print_r($_SESSION);
+                           
                             echo"<span id='si-stock'>En stock</span>";//El css sera verde
                         }
                         else{

@@ -1,6 +1,7 @@
-<!-- <div class="miCarrito">
-    <h2>Mi carrito</h2>
-</div> -->
+<?php
+session_start();
+?>
+
 <!-- aqui se mostraran los productos generados mediante js para poder aumentar y disminuir la cantidad de forma dinamica-->
 <!-- Lista generada de productos con cantidad + precio en orden "CantidadXNombrePrecio" -->
 <!-- <div class="resuemn">
