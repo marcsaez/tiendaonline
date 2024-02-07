@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!--Controlador frontal: fichero que se encarga de cargarlo absolutamente todo -->
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +11,13 @@
     <link rel='stylesheet' type='text/css' href='css/main.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>MangaHouse</title>
 </head>
 <body>
 <?php 
-session_start();
+
 require_once "autoload.php";
 
 if(!isset($_SESSION['admin_id'])){

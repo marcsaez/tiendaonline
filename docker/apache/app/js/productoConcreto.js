@@ -30,7 +30,6 @@ function disminuirCantidad() {
 //     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
 // }
 
-
 function mostrarOcultar(id) {
     var elemento = document.getElementById(id);
     if (elemento.style.display === 'none') {
