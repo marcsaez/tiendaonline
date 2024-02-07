@@ -101,7 +101,6 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
             $stmt->bindParam(':pass', $hashedPassword);
             $stmt->execute();
             $datosCorrectos = $stmt->fetch(PDO::FETCH_ASSOC);
-    
             if ($datosCorrectos !== false) {
                 // Eliminar sesión 'loginMal' si existe
                 if (isset( $_SESSION['loginError'])) {
@@ -127,7 +126,6 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
             $success = false;
             echo "Error en el inicio de sesión: " . $e->getMessage();
         }
-    
         return $success;
     }
 }    

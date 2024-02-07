@@ -6,7 +6,7 @@ class Carrito {
         console.log(this.diccionario);
         var xhr = new XMLHttpRequest();
         // Configurar la solicitud POST a process.php
-        xhr.open("POST", "./controllers/CarritoController.php", true);
+        xhr.open("POST", "index.php?Controller=Carrito&action=obtenerDatosProductosCarrito", true);
         // Configurar el encabezado para indicar que se está enviando un JSON
         xhr.setRequestHeader("Content-Type", "application/json");
         // Configurar la función de devolución de llamada cuando la solicitud esté completa

@@ -75,9 +75,9 @@ btnAnadirCarrito.addEventListener('click', function () {
     }
     // Almacenar el carrito en el sessionStorage
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
-    // let obtenerCarrito = sessionStorage.getItem('carrito');
-    // carrito = new Carrito(obtenerCarrito);
-    // carrito.ajaxCosas();
+    let obtenerCarrito = sessionStorage.getItem('carrito');
+    carrito = new Carrito(obtenerCarrito);
+    carrito.ajaxCosas();
 });
 document.addEventListener('DOMContentLoaded', function(){
     const buttonComprarYa = document.getElementById('comprarYa');
