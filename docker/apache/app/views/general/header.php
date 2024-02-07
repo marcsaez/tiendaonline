@@ -1,4 +1,7 @@
 <script src="./js/header.js"></script>
+<?php 
+    if (!isset($_SESSION['userType'])){
+?>
 <div class="popup-container" id="popup-container">
     <main class="popup">
         <section id="iniciar-sesion">
@@ -14,6 +17,9 @@
         </section>
     </main>
 </div>
+        
+<?php } ?>
+
 <header id="header">
     <section>
         <div id="header-logo">
@@ -22,16 +28,6 @@
                 <span>manga</span>
                 <span>house</span>
             </p>
-            <?php
-            if(isset($_SESSION['userType']) && $_SESSION['userType']=="usuario"){
-                echo"<a href='index.php?Controller=Usuario&action=logOutUsuario'>Cerrar Sesion</a>";
-            }else{
-            ?>
-                <!-- <a href="index.php?Controller=Usuario&action=iniciarSesionAbrir">Iniciar Sesion</a>
-                <a href="index.php?Controller=Usuario&action=registrarseAbrir">Registrarse</a> -->
-            <?php
-            }
-            ?>
             
         </div>
         <div id="header-user">
@@ -65,6 +61,18 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="user-btn">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
+                    <?php 
+                        if (isset($_SESSION['userType']) && $_SESSION['userType'] == 'usuario'){
+                            echo '
+                                <ul class="opciones-usuario" id="desplegable-usuario">
+                                    <li>'.$_SESSION['userMail'].'</li>
+                                    <li><a href="index.php?Controller=Usuario&action=mostrarPerfil">Mis Pedidos</a></li>
+                                    <li><a href="index.php?Controller=Usuario&action=logOutUsuario">Cerrar Sesión</a></li>
+                                </ul>
+                            ';
+                        }
+                    ?>
+
                 </li>
             </ul>
             

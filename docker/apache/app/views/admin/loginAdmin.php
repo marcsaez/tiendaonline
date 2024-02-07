@@ -1,17 +1,24 @@
-
-<main id="loginAdmin">
-    <!-- <img src="../../img/grid-one-piece-2.jpg" alt="fondo-administrador"> -->
-    <div class = "container">
-        <div class="loginAdmin">
-            <h1>ADMIN</h1>
-        <form enctype="multipart/form-data" action="../../index.php?Controller=Admin&action=Login" method="POST" class = "formularioAdmin">
-            <p>Usuario</p>
-            <input type="text" maxlength="255" name="adminUser" class="inputsAdmin" required> 
-            <p>Contraseña</p>
-            <input type="password" maxlength="255" name="passwordAdmin" class="inputsAdmin" required><br>
-            <input type="submit" name="Login" value="Iniciar Sesion" class = "inputsAdmin" id="logearse">
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <main id="loginAdmin">
+        <div>
+            <form enctype="multipart/form-data" action="../../index.php?Controller=Admin&action=Login" method="POST" class = "formularioAdmin">
+                <h1>Admin</h1>
+                <label for="adminUser">Usuario</label>
+                <input type="text" maxlength="255" name="adminUser" required> 
+                <label for="passwordAdmin">Contraseña</label>
+                <input type="password" maxlength="255" name="passwordAdmin" required>
+                <input type="submit" name="Login" value="Iniciar Sesion" id="logearse">
+            </form>
         </div>
-    </div>
-
-</main>
+    
+    </main>
+</body>
+</html>

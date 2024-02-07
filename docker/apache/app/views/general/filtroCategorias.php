@@ -22,11 +22,17 @@
                 </svg>
                 Filtros:
             </span>
-            <span>Ordenar por 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <span>
+                <select name="orderby" id="orderby">
+                    <option value="none" default>Order by</option>
+                    <option value="asc">Ascendente</option>
+                    <option value="des">Descendente</option>
+                </select> 
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                </svg>
+                </svg> -->
             </span>
+            <span>Mostrando X articulos de XXXX</span>
         </section>
             <?php
             
@@ -77,7 +83,7 @@
                     echo '
                         <div>
                             '.$tendencia.'
-                            <img src='.$prodimg.' alt="imagen">
+                            <a href="index.php?Controller=Productos&action=productoConcreto&productID='.$prodid.'" id="prod-img-link"><img src='.$prodimg.' alt="imagen"></a>
                         </div>
                         <div>
                             <a href="index.php?Controller=Productos&action=productoConcreto&productID='.$prodid.'">'.$prodname.'</a>

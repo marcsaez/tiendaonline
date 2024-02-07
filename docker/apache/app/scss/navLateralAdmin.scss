@@ -9,7 +9,7 @@ aside {
     float: left;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 1.6rem;
     box-sizing: border-box;
     position: relative;
 
@@ -54,20 +54,16 @@ aside {
 
         }
 
-        article {
+        > article {
             display: flex;
             align-items: center;
             padding: 0.688rem;
             box-sizing: border-box;
             border-radius: 5px;
+            margin: 0.7rem auto;
 
-            &:first-child {
-                border-bottom: 1px solid $border-thin-color;
-                border-radius: 0px;
-                color: white;
-            }
 
-            &:hover:not(&:first-child) {
+            &:hover:not(#adminUser) {
                 background-color: #282828;
                 cursor: pointer;
             }
@@ -95,4 +91,9 @@ aside {
 
 
     }
+}
+
+#adminUser {
+    color: white;
+    border-bottom: 1px solid white;
 }
