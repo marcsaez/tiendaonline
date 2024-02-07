@@ -8,8 +8,18 @@
     <p>></p>
 </div> -->
 <main class="page-grid">
-    <h1 class="page-title">Mi Carrito (X)</h1>
-    <p>
-        <?php print_r($_SESSION); ?>
-    </p>
+    <div></div>
+    <section>
+        <h1 class="page-title">Mi Carrito (X)</h1>
+        <p>
+            <?php
+                if (isset($_SESSION['carrito'])){
+                    print_r($_SESSION['carrito']);
+                } else {
+                    echo "No hay productos en el carrito.";
+                }
+            ?>
+        </p>
+    </section>
+    <div></div>
 </main>
