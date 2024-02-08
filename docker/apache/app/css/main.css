@@ -1564,6 +1564,10 @@ table.admin-table tr:nth-child(even) {
   margin-top: 3rem;
 }
 
+#chartContainer {
+  background-color: #575757;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;

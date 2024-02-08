@@ -14,14 +14,15 @@
 ?>
 
 <main class="dashboard listar">
-    <div>
-        <section>
+    <div class="admin-content">
+        <section class="admin-headers">
             <h1>Productos</h1>
         </section>
         <fieldset>
             <legend>Editar Producto</legend>
             <form enctype="multipart/form-data" action="index.php?Controller=Productos&action=editarProductos" method="post" name="editar-producto" class="form-products">
                 <!-- ID del producto (puedes ocultarlo si lo pasas por otro medio) -->
+                <input type="hidden" id="product-id" name="product-id" value="<?php echo $idproduct; ?>">
                 <div>
                     <label for="nombre">Nuevo Nombre:</label>
                 </div>
@@ -33,11 +34,11 @@
                     <label for="categoria">Categoría:</label>
                 </div>
                 <div>
-                    <select name="categoria" id="categorias" class="input">
-                    <option value="" disabled selected>Selecciona</option>
+                    <select name="categoria" id="categoria" class="input">
+                    <option value="<?php echo "pa";?>" selected>Selecciona</option>
                         <?php 
                              foreach ($desplegable as $categoria) {
-                                echo "<option>" . $categoria['categoryname'] . "</option>";
+                                echo "<option value=".$categoria['categoryid'].">" . $categoria['categoryname'] . "</option>";
                              }
                         ?>
                     </select>

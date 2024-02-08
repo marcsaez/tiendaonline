@@ -31,6 +31,8 @@
             }]
         });
 
+        chart.options.backgroundColor = "#575757";
+
         chart.render();
     }
 
