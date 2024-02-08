@@ -90,7 +90,6 @@
                 $productos = null;
                 if (!empty($productoDetalles)) {
                     $categoryname = categoria::nombreCategorias($db, $productoDetalles[0]['fkcategories']);
-                    
                     $productoRetornado = $productoDetalles;
                     $desplegable = ProductosController::mostrarCategorias();
                     include "views/admin/editarProductos.php";

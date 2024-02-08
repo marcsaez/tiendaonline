@@ -162,7 +162,7 @@ class Productos extends database{
             $stmt->bindParam(':stock', $this->stock);
             $stmt->bindParam(':destacado', $destacado1);
             $stmt->bindParam(':precio', $this->precio);
-            $stmt->bindParam(':categoria', $result['categoryid'] );
+            $stmt->bindParam(':categoria', $this->categoria);
             $stmt->bindParam(':id', $this->idproducto);
             $stmt->execute();
             $retorno = true;

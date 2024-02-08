@@ -26,7 +26,7 @@
                     <label for="nombre">Nuevo Nombre:</label>
                 </div>
                 <div>
-                    <!-- <input type="text" id="id" name="id" value="<?php echo $idproduct; ?>" readonly> -->
+                    <input type="text" id="id" name="id" value="<?php echo $idproduct; ?>" readonly>
                     <input type="text" id="nombre" name="nombre" class="input" value="<?php echo $nombre; ?>" required>
                 </div>
                 <div>
@@ -37,7 +37,8 @@
                     <option value=""><?php echo $categoryname;?></option>
                     <?php 
                              foreach ($desplegable as $categoria) {
-                                echo "<option>" . $categoria['categoryname'] . "</option>";
+                                
+                               echo "<option value='" . $categoria['categoryid'] . "'>" .$categoria['categoryname'] . "</option>";
                              }
                         ?>
                     </select>
