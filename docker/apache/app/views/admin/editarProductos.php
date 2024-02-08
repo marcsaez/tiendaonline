@@ -34,8 +34,8 @@
                 </div>
                 <div>
                     <select name="categoria" id="categorias" class="input">
-                    <option value="" disabled selected>Selecciona</option>
-                        <?php 
+                    <option value=""><?php echo $categoryname;?></option>
+                    <?php 
                              foreach ($desplegable as $categoria) {
                                 echo "<option>" . $categoria['categoryname'] . "</option>";
                              }

@@ -23,4 +23,6 @@
     } else {
         echo json_encode(array("error" => "Solicitud no válida"));
     }
+    
+     //FUNCION PARA CREAR UN PEDIDO DESPUES DE EJECUTAR COMPRA
 ?>
