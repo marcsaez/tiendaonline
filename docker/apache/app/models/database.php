@@ -25,12 +25,5 @@ class database{
     }
 }
 
-// INSERT INTO customers (email, customerphone, customername, customersurname, customeraddress, customerpassword)
-// VALUES ('msaez@email.com', '1234567890', 'Marc', 'Saez', '123 Calypso', '123');
 
-// INSERT INTO purchases (purchaseid, customeremail, status, totalcost, creationdate, senddate)
-// VALUES (1, 'msaez@email.com', 0, NULL, CURRENT_DATE, NULL);
-
-// INSERT INTO cart (cartid, fkpurchase, fkproduct, amount, totalprice)
-// VALUES (1, 1, 'MA001-ON', 3, 30);
 
