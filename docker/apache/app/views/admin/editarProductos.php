@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <select name="categoria" id="categorias" class="input">
-                    <option value=""><?php echo $categoryname;?></option>
+                    <option value="<?php echo $categoria;?>"><?php echo $categoryname;?></option>
                     <?php 
                              foreach ($desplegable as $categoria) {
                                 
