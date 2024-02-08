@@ -57,7 +57,7 @@
                 $imagen_path = 'img/productos/' . $_POST['id'] .'.'. $imagen_ext;
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
 
-                $producto = new productos($_POST['product-id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->actualizarProducto();
                 if ($allproducts){
