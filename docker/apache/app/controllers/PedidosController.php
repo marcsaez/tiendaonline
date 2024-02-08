@@ -16,6 +16,7 @@
                 $db = Pedido::staticConectar();
                 $result = Pedido::listarDetallesPedido($db,$id);
                 $productsInfo = Pedido::listarDetallesProductos($db, $result);
+                print_r($result);
                 print_r($productsInfo);
                 require_once "views/admin/listarDetallesPedidos.php";
 

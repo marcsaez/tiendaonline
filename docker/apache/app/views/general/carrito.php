@@ -13,6 +13,7 @@
         <h1 class="page-title">Mi Carrito (X)</h1>
         <p>
             <?php
+            //La info debera venir de la bdd en lugar del SESSION, ya que puedes tener compras no terminadas
                 if (isset($_SESSION['carrito'])){
                     print_r($_SESSION['carrito']);
                 } else {
