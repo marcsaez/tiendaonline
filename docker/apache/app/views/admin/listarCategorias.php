@@ -18,8 +18,8 @@
 </div>
 
 <main class="dashboard listar" id="listar-categorias">
-    <div>
-        <section>
+    <div class="admin-content">
+        <section class="admin-headers">
             <h1>Categorias</h1>
             <button id="btn-mostrarCategoria">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
@@ -52,7 +52,7 @@
                 </fieldset>
             </div>
         </section>
-        <section>
+        <section class="admin-busqueda">
             <fieldset id="editar-categoria" style="display: none;">
                 <legend>Editar Categoria</legend>
                 <form action="index.php?Controller=Categorias&action=editarCategoria" method="POST" name="editarCategoria" >
@@ -60,18 +60,32 @@
                     <input type="text" name="id-editar" id="id-editar" class="input" readonly>
                     <label for="nombre-editar">Nombre:</label>
                     <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
-                    <label for="categoriaPadre">Categoria Padre:</label>
-                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input">
+                    <!-- <label for="categoriaPadre">Categoria Padre:</label>
+                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input"> -->
+                    <?php
+                        echo '<label for="categoriaPadre-editar">ID de la Categoria padre:</label>';
+                        echo '<select id="categoriaPadre-editar" name="categoriaPadre-editar" class="input">';
+                        echo '<option value="" selected>Sin categoria padre</option>';
+                        
+                        foreach ($padres as $category) {
+                            echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
+                        }
+                        
+                        echo '</select>';
+                        ?>
                     <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
                     <input type="submit" class="btn-submit" value="Guardar">
                 </form>
             </fieldset>
             <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">
                 <input type="text" id="termino" name="termino" placeholder="Indique el nombre de la categoria a buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="search-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
             </form>
         </section>
         <section>
-            <table id="resultadosDivAdmin">
+            <table id="resultadosDivAdmin" class="admin-table">
                 <thead>
                     <tr>
                         <th>ID</th>

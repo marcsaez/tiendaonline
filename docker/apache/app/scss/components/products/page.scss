@@ -154,7 +154,9 @@
 
 }
 
-
+.btn-comprar {
+    @include btn-primary;
+}
 
 #btnAnadir, .btn-comprar {
     @include btn-primary;
@@ -162,6 +164,25 @@
     max-height: 2.5rem;
     height: 2.5rem;
 }
+
+.imagen-container {
+    overflow: hidden;
+    position: relative;
+
+    img {
+        transition: transform 0.3s ease;
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    img:focus{ cursor: move; }
+
+    &.zoomed img {
+        transform: scale(1.5);
+    }
+}
+
 
 @media (max-width: 1024px) {
     .reference-product {

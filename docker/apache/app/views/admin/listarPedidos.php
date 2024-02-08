@@ -2,24 +2,20 @@
 <script src="js/buscadorAjax.js"></script>
 
 <main class="dashboard listar" id="listar-productos">
-    <div>
-        <section>
+    <div class="admin-content">
+        <section class="admin-headers">
             <h1>Pedidos</h1>
-            <!-- <a href="index.php?Controller=Productos&action=paginaAnadirProductos">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-    
-                Añadir
-            </a> -->
         </section>
-        <section>
+        <section class="admin-busqueda">
             <form id="buscador" action="index.php?Controller=Productos&action=buscar" method="POST">
-                <input type="text" id="termino" name="termino" placeholder="Indique el nombre del producto a buscar">
+                <input type="text" id="termino" name="termino" placeholder="Indique el nombre del pedido a buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="search-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
             </form>
         </section>
         <section>
-            <table id="resultadosDivAdmin">
+            <table id="resultadosDivAdmin" class="admin-table">
                 <tr>
                     <th>ID</th>
                     <th>Cliente</th>
