@@ -12,4 +12,11 @@
 }
 #orders-table tbody td:first-child svg {
   width: 1.5rem;
+}
+
+.item-carrito {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 30rem;
 }/*# sourceMappingURL=orders.css.map */

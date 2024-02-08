@@ -18,3 +18,97 @@
        } 
     }
 }
+
+#resumen-compra {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+
+    section {
+        &:first-child {
+            width: calc(100% - 30rem);
+        }
+        &:last-child {
+            border: 1px solid $border-color;
+            border-radius: 5px;
+            width: 20rem;
+            background-color: $header-bg;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 1rem;
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.item-carrito {
+    display: grid;
+    grid-template-columns: 9rem repeat(2, 1fr) auto;
+    grid-template-rows: repeat(2, 6rem);
+    width: 100%;
+    max-height: 12rem;
+    column-gap: 10px;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid black;
+
+    $cuadricula: (
+        (1, 1, 4, 2),
+        (1, 2, 2, 4),
+        (1, 4, 2, 5),
+        (2, 2, 3, 5)
+    );
+
+    @include generateGridArea(div, $cuadricula);
+
+    div {
+        position: relative;
+
+        img {
+            width: 100%;
+            
+    
+            border: 1px solid $border-thin-color;
+        }
+    
+        h3 {
+            font-size: 1.8rem;
+        }
+    
+        svg {
+            width: 1rem;
+        }
+    
+        button.action-eliminar {
+            width: 8rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: none;
+            border-radius: 5px;
+            @include btn-primary;
+            background-color: $color-danger;
+        }
+        
+        span.price-detail {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        &.grid-area-cantidad {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+    }
+
+
+}

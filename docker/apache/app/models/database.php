@@ -3,7 +3,7 @@ class database{
     public function conectar(){
         $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
+        $user = 'postgres';
         $password = 'password';
 
 
@@ -15,8 +15,8 @@ class database{
     public static function staticConectar(){
         $host = 'localhost';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
-        $password = 'password';
+        $user = 'postgres';
+        $password = 'root';
 
 
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
