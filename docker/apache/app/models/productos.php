@@ -134,20 +134,6 @@ class Productos extends database{
     // Update Producte
     public function actualizarProducto() {
         try {
-            $categoria = $this->categoria;
-            if($categoria){
-                // Preparar la consulta con un marcador de posición (:categoria)
-                $stmt2 = $this->db->prepare("SELECT categoryid FROM categories WHERE categoryname = :categoria");
-
-                // Vincular el valor de $categoria al marcador de posición
-                $stmt2->bindParam(':categoria', $categoria, PDO::PARAM_STR);
-
-                // Ejecutar la consulta
-                $stmt2->execute();
-
-                // Obtener el resultado
-                $result = $stmt2->fetch(PDO::FETCH_ASSOC);
-            }
 
             $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productImg = :imagen, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
             if($this->destacado){
@@ -162,7 +148,7 @@ class Productos extends database{
             $stmt->bindParam(':stock', $this->stock);
             $stmt->bindParam(':destacado', $destacado1);
             $stmt->bindParam(':precio', $this->precio);
-            $stmt->bindParam(':categoria', $result['categoryid'] );
+            $stmt->bindParam(':categoria', $this->categoria);
             $stmt->bindParam(':id', $this->idproducto);
             $stmt->execute();
             $retorno = true;

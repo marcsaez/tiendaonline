@@ -14,19 +14,20 @@
 ?>
 
 <main class="dashboard listar">
-    <div>
-        <section>
+    <div class="admin-content">
+        <section class="admin-headers">
             <h1>Productos</h1>
         </section>
         <fieldset>
             <legend>Editar Producto</legend>
             <form enctype="multipart/form-data" action="index.php?Controller=Productos&action=editarProductos" method="post" name="editar-producto" class="form-products">
                 <!-- ID del producto (puedes ocultarlo si lo pasas por otro medio) -->
+                <input type="hidden" id="product-id" name="product-id" value="<?php echo $idproduct; ?>">
                 <div>
                     <label for="nombre">Nuevo Nombre:</label>
                 </div>
                 <div>
-                    <!-- <input type="text" id="id" name="id" value="<?php echo $idproduct; ?>" readonly> -->
+                    <input type="text" id="id" name="id" value="<?php echo $idproduct; ?>" readonly>
                     <input type="text" id="nombre" name="nombre" class="input" value="<?php echo $nombre; ?>" required>
                 </div>
                 <div>
@@ -34,10 +35,11 @@
                 </div>
                 <div>
                     <select name="categoria" id="categorias" class="input">
-                    <option value="" disabled selected>Selecciona</option>
-                        <?php 
+                    <option value="<?php echo $categoria;?>"><?php echo $categoryname;?></option>
+                    <?php 
                              foreach ($desplegable as $categoria) {
-                                echo "<option>" . $categoria['categoryname'] . "</option>";
+                                
+                               echo "<option value='" . $categoria['categoryid'] . "'>" .$categoria['categoryname'] . "</option>";
                              }
                         ?>
                     </select>

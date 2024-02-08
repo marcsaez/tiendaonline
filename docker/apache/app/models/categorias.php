@@ -206,7 +206,7 @@ class Categoria extends database{
     }
     public static function navCategorias($db){
         try{
-            $stmt = $db->prepare("SELECT categoryid,categoryname FROM categories WHERE active=1");
+            $stmt = $db->prepare("SELECT categoryid , categoryname FROM categories WHERE active=1");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);

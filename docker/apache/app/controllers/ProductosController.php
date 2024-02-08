@@ -54,7 +54,7 @@
             if(isset($_POST)){
                 require_once "models/productos.php";
                 $imagen_ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
-                $imagen_path = 'img/productos/' . $codigoUnico .'.'. $imagen_ext;
+                $imagen_path = 'img/productos/' . $_POST['id'] .'.'. $imagen_ext;
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
 
                 $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
@@ -82,12 +82,14 @@
         public function paginaEditar(){
             if (isset($_GET['id'])) {
                 require_once "models/productos.php";
+                require_once "models/categorias.php";
                 $idProducto = $_GET['id'];
                 $db = Productos::staticConectar();
                 // Obtener los detalles del producto con la ID especificada
                 $productoDetalles = Productos::obtenerDetallesProducto($db, $idProducto);
                 $productos = null;
                 if (!empty($productoDetalles)) {
+                    $categoryname = categoria::nombreCategorias($db, $productoDetalles[0]['fkcategories']);
                     $productoRetornado = $productoDetalles;
                     $desplegable = ProductosController::mostrarCategorias();
                     include "views/admin/editarProductos.php";
