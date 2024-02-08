@@ -23,6 +23,10 @@
             require_once "views/admin/principalAdmin.php"; // Incluye la vista y pasa los datos a la vista
         }
 
+        public function mostrarFirma(){
+            require_once 'views/admin/firmaAdministrador.php';
+        }
+
         public function logOut() {
             session_destroy();
             echo '<meta http-equiv="refresh" content="0;url=index.php">';

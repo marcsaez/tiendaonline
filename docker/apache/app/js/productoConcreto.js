@@ -1,5 +1,4 @@
 import Carrito from './carrito.js';
-import Carrito2 from './carrito.js';
 
 const btnAnadirCarrito = document.getElementById('btnAnadir');
 let inputCantidad = document.getElementById('cantidad');
@@ -8,20 +7,75 @@ let precioProducto = document.getElementById('precioProducto');
 let productoID = document.getElementById('idDelProducto');
 let stockTotal = document.getElementById('stockMaximo');
 
-function incrementarCantidad(){
+
+let intervalId; // Variable global para almacenar el ID del intervalo
+
+function ajustarCantidad(incremento) {
     let cantidadActual = parseInt(inputCantidad.value);
     let stockMax = parseInt(stockTotal.value);
-    if (cantidadActual < stockMax) {
-        inputCantidad.value = cantidadActual + 1;
-    }
-}
 
-function disminuirCantidad() {
-    let cantidadActual = parseInt(inputCantidad.value);
-    if (cantidadActual > 1) {
+    if (incremento && cantidadActual < stockMax) {
+        inputCantidad.value = cantidadActual + 1;
+    } else if (!incremento && cantidadActual > 1) {
         inputCantidad.value = cantidadActual - 1;
     }
 }
+
+const restarCantidadBtn = document.getElementById('restar-cantidad');
+const sumarCantidadBtn = document.getElementById('sumar-cantidad');
+
+restarCantidadBtn.addEventListener('click', () => ajustarCantidad(false));
+sumarCantidadBtn.addEventListener('click', () => ajustarCantidad(true));
+
+restarCantidadBtn.addEventListener('mousedown', () => {
+    intervalId = setInterval(() => ajustarCantidad(false), 200); // Llama a ajustarCantidad(false) cada 200 ms
+});
+
+sumarCantidadBtn.addEventListener('mousedown', () => {
+    intervalId = setInterval(() => ajustarCantidad(true), 200); // Llama a ajustarCantidad(true) cada 200 ms
+});
+
+// Detener la acción cuando se suelta el botón
+document.addEventListener('mouseup', () => {
+    clearInterval(intervalId); // Detiene la repetición cuando se suelta el botón
+});
+
+
+const imagenContainer = document.querySelector('.imagen-container');
+const imagen = document.querySelector('.imagen-container img');
+let isDragging = false;
+let startCoords = { x: 0, y: 0 };
+let startOffset = { x: 0, y: 0 };
+
+imagenContainer.addEventListener('mousemove', e => {
+    if (isDragging) {
+        const offsetX = e.clientX - startCoords.x;
+        const offsetY = e.clientY - startCoords.y;
+        const newOffsetX = startOffset.x + offsetX;
+        const newOffsetY = startOffset.y + offsetY;
+
+        imagen.style.transform = `translate(${newOffsetX}px, ${newOffsetY}px)`;
+    }
+});
+
+imagenContainer.addEventListener('mousedown', e => {
+    isDragging = true;
+    startCoords = { x: e.clientX, y: e.clientY };
+    startOffset = { x: imagen.offsetLeft, y: imagen.offsetTop };
+});
+
+imagenContainer.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+imagenContainer.addEventListener('mouseleave', () => {
+    isDragging = false;
+    imagen.style.transform = 'none'; // Restablecer la transformación
+});
+
+
+
+
 
 // function anadirCarrito() {
 //     let temp = document.getElementById('nombreProd');
@@ -47,7 +101,6 @@ plusMinusButtons.forEach(plusMinusButton => {
         const descripcionProd = plusMinusButton.closest('article').querySelector('.descripcionProd');
         e.target.classList.toggle('active');
         if (descripcionProd) {
-            //descripcionProd.style.display = (descripcionProd.style.display === 'none' || descripcionProd.style.display === '') ? 'block' : 'none';
             descripcionProd.classList.toggle('active');
         }
     });
@@ -80,14 +133,25 @@ btnAnadirCarrito.addEventListener('click', function () {
     carrito = new Carrito(obtenerCarrito);
     carrito.ajaxCosas();
 });
-const buttonComprarYa = document.getElementById('comprarYa');
-buttonComprarYa.addEventListener('click', function(){
-    let obtenerCarrito = sessionStorage.getItem('carrito');
-    carrito = new Carrito(obtenerCarrito);
-    carrito.ajaxCosas();
-});
-
-const comprarNotLoged = document.getElementById('comprarYaNoLogeado');
-comprarNotLoged.addEventListener('click', function() {
-    window.location.href = 'index.php?Controller=Usuario&action=iniciarSesionAbrir';
+document.addEventListener('DOMContentLoaded', function(){
+    const buttonComprarYa = document.getElementById('comprarYa');
+    if(buttonComprarYa != null){
+    buttonComprarYa.addEventListener('click', function(){
+        let obtenerCarrito = sessionStorage.getItem('carrito');
+        carrito = new Carrito(obtenerCarrito);
+        carrito.ajaxCosas();
+        });
+    }
+    const userBtn = document.getElementById('comprarYaNoLogeado');
+    if(userBtn!=null){
+        const popUpContainer = document.getElementById('popup-container');
+        userBtn.addEventListener('click', function(){
+            popUpContainer.style.display = 'block';
+        });
+        popUpContainer.addEventListener('click', function(event){
+            if(event.target === popUpContainer){
+                popUpContainer.style.display = 'none';
+            }
+        });
+    }
 });

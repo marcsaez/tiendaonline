@@ -1,0 +1,21 @@
+.admin-content {
+  margin-left: 16.25rem;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+.admin-busqueda {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.admin-busqueda > form > input {
+  width: 21.063rem;
+  padding: 0.7rem 1rem;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: white;
+}/*# sourceMappingURL=content.css.map */
