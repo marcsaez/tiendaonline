@@ -78,6 +78,39 @@ class Pedido extends database{
         return $resultados;
     }
 
+    public static function listarDetallesPedido($db,$id){
+        try{
+            $stmt = $db->prepare("SELECT * FROM cart WHERE fkpurchase=$id ORDER BY cartid");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            }else{
+                $resultados = null;
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        
+        return $resultados;
+    }
+
+    public static function listarDetallesProductos($db, $carts){
+        try{
+            foreach ($carts as $value){
+                $product = $value['fkproduct'];
+                $stmt = $db->prepare("SELECT * FROM products WHERE productid = :productid");
+                $stmt->bindParam(':productid', $product, PDO::PARAM_INT);
+                $stmt->execute();
+                $productosInfo[] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+        }catch (Exception $e){
+            $productosInfo = null;
+        }
+        return $productosInfo;
+    }
+    
+
 }
 
 ?>
