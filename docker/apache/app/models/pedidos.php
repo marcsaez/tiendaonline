@@ -77,7 +77,7 @@ class Pedido extends database{
         }
         return $resultados;
     }
-
+    
 }
 
 ?>

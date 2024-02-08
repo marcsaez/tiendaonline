@@ -11,9 +11,10 @@
             $datos=implode(" ",$datos);
             $db = Carrito::staticConectar();
             $_SESSION['carrito'] = Carrito::productosDelCarrito($db, $datos);
+            
             echo json_encode(['succes' => true, 'info' => $datos]);
             exit;
-            require_once 'views/general/carrito.php';
+
         }
         public function insertarPedidos(){
             

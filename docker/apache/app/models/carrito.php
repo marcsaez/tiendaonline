@@ -65,9 +65,7 @@ class Carrito extends database{
     }
     public function anadirPedido(){
         try{
-            $cartID=$this->obtenerSiguienteCartId();
-            $stmt = $this->db->prepare("INSERT INTO cart(cartid,fkpurchase, fkproduct, amount, totalprice) VALUES (:cartid, :codigoCompra, :producto, :cantidad, :precioTotal)");
-            $stmt->bindParam(':cartid',$cartID);
+            $stmt = $this->db->prepare("INSERT INTO cart(fkpurchase, fkproduct, amount, totalprice) VALUES ( :codigoCompra, :producto, :cantidad, :precioTotal)");
             $stmt->bindParam(':codigoCompra',$this->codigoCompra);
             $stmt->bindParam(':producto',$this->producto);
             $stmt->bindParam(':cantidad',$this->cantidad);
@@ -80,69 +78,56 @@ class Carrito extends database{
         }
         return $retorno;
     }
-    public function obtenerSiguienteCartId() {
-        // Consulta para obtener el valor de la última entrada de la tabla cart
-        try{
-            $stmt = $this->db->prepare("SELECT cartid FROM cart ORDER BY cartid DESC LIMIT 1");
-            $stmt->execute();
-            $siguienteCartID=0;
-            if ($stmt->rowCount() > 0) {
-                // Obtener el valor de la última entrada
-                $fila = $stmt->fetch(PDO::FETCH_ASSOC);
-                $ultimoCartId = intval($fila['cartid']);
-                // Devolver el siguiente valor de cartid sumando 1
-                $siguienteCartID = $ultimoCartId + 1;
-            } else {
-                // Si la tabla está vacía, devolver 1 como el primer valor de cartid
-                $siguienteCartID = 1;
-            }
-        } catch (PDOException $e) {
-            // Manejar excepciones
-            echo "Error al obtener el siguiente cartid: " . $e->getMessage();
-        }
-        return $siguienteCartID;
-    }
-
-    public function obtenerSiguientePurchaseId($db) {
-        try{
-            $stmt = $this->db->prepare("SELECT purchaseid FROM purchases ORDER BY purchaseid DESC LIMIT 1");
-            $stmt->execute();
-            $siguientePurchaseID=0;
-            if ($stmt->rowCount() > 0) {
-                // Obtener el valor de la última entrada
-                $fila = $stmt->fetch(PDO::FETCH_ASSOC);
-                $ultimoPurchasetId = intval($fila['purchaseid']);
-                // Devolver el siguiente valor de cartid sumando 1
-                $siguientePurchaseID = $ultimoPurchasetId + 1;
-            } else {
-                // Si la tabla está vacía, devolver 1 como el primer valor de cartid
-                $siguientePurchaseID = 1;
-            }
-        } catch (PDOException $e) {
-            // Manejar excepciones
-            echo "Error al obtener el siguiente purchaseid: " . $e->getMessage();
-        }
-        return $siguientePurchaseID;
-    }
     public static function productosDelCarrito($db, $diccionario){
         $arrayJson = json_decode($diccionario, true);
-        $arrayIds = [];
-        foreach($arrayJson as $producto => $info){
-            $arrayIds[]=$info['id'];
-        }
         $productosEnCarrito = [];
-        foreach($arrayIds as $idProducto){
-            $stmt = $db -> prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid = :idProducto");
+    
+        foreach($arrayJson as $producto => $info){
+            $idProducto = $info['id'];
+            $cantidad = $info['cantidad'];
+    
+            $stmt = $db->prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid = :idProducto");
             $stmt->bindParam(':idProducto', $idProducto);
             $stmt->execute();
             $productoInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    
             if ($productoInfo) {
+                // Agregar la cantidad al array de información del producto
+                $productoInfo['cantidad'] = $cantidad;
                 $productosEnCarrito[] = $productoInfo;
             }
         }
-        print_r($_SESSION);
-        print_r($productosEnCarrito);
         return $productosEnCarrito;
     }
+    public static function comprobarPurchasesCliente($db, $userMail){
+        try {
+            $stmt = $db->prepare("SELECT purchaseid FROM purchases WHERE customeremail = :mail AND status = 0");
+            $stmt->bindParam(':mail', $userMail);
+            $stmt->execute();
+            // Verificar si hay compras pendientes para el cliente
+            if ($stmt->rowCount() == 0) {
+                // No hay compras pendientes, realizar la inserción
+                $fechaHoy = date("d-m-Y");
+                $insertStmt = $db->prepare("INSERT INTO purchases (customeremail, creationdate) VALUES (:mail, :dia)");
+                $insertStmt->bindParam(':mail', $userMail);
+                $insertStmt->bindParam(':dia', $fechaHoy);
+                $insertStmt->execute();
+            }
+            $succes=true;
+        } catch (Exception $e) {
+            echo "Error en la búsqueda de purchases: $e";
+            $succes = false;
+        }
+        return $succes;
+    }
+    public static function insertarPedido($db,$userMail){
+        try{
+
+        }catch(Exception $e){
+            echo "Error en la insercion del pedido: $e";
+        }
+
+    }
+    
 }
 ?>
