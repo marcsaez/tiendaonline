@@ -107,10 +107,6 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
                 if (isset( $_SESSION['loginError'])) {
                     unset( $_SESSOIN['loginError']);
                 }
-                if(isset($_SESSION['carrito'])){
-                    $_SESSION['carritoLogeado']=$_SESSION['carrito'];
-                    unset($_SESSION['carrito']);
-                }
                 // Almacenar datos en la sesión
                 $_SESSION['userType'] = "usuario";
                 $_SESSION['userMail'] = $datosCorrectos['email'];

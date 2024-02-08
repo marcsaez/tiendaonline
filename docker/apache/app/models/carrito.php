@@ -86,7 +86,7 @@ class Carrito extends database{
             $idProducto = $info['id'];
             $cantidad = $info['cantidad'];
     
-            $stmt = $db->prepare("SELECT productname, productimg, productstock, productprice FROM products WHERE productid = :idProducto");
+            $stmt = $db->prepare("SELECT productid, productname, productimg, productstock, productprice FROM products WHERE productid = :idProducto");
             $stmt->bindParam(':idProducto', $idProducto);
             $stmt->execute();
             $productoInfo = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -112,17 +112,31 @@ class Carrito extends database{
                 $insertStmt->bindParam(':mail', $userMail);
                 $insertStmt->bindParam(':dia', $fechaHoy);
                 $insertStmt->execute();
+                $purchaseId = $db->lastInsertId();
+            }else{
+                $purchaseID = $stmt->fetch(PDO::FETCH_ASSOC);
+                $purchaseID = $purchaseID['purchaseid'];
             }
-            $succes=true;
         } catch (Exception $e) {
             echo "Error en la búsqueda de purchases: $e";
-            $succes = false;
         }
-        return $succes;
+        return $purchaseID;
     }
-    public static function insertarPedido($db,$userMail){
+    public static function insertarPedido($db,$userMail,$pedidos,$idPurchase){
         try{
+            
+           // dd("HOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
 
+            foreach($pedidos as $pedido){
+                $precioConjunto=$pedido['productprice']*$pedido['cantidad'];
+        
+                $stmt= $db->prepare("INSERT INTO cart (fkpurchase, fkproduct, amount, totalprice) VALUES (:idPurchase, :productID, :cantidad, :precioTotal)");
+                $stmt->bindParam(':idPurchase', $idPurchase);
+                $stmt->bindParam(':productID', $pedido['productid']);
+                $stmt->bindParam(':cantidad', $pedido['cantidad']);
+                $stmt->bindParam(':precioTotal', $precioConjunto);
+                $stmt->execute();
+            }
         }catch(Exception $e){
             echo "Error en la insercion del pedido: $e";
         }
