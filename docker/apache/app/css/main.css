@@ -202,13 +202,34 @@ footer {
   background-color: #252525;
   color: white;
   margin-top: 1rem;
+  padding: 1rem;
 }
 footer section {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+footer section div:first-child {
+  display: flex;
+  align-items: center;
+}
+footer section div:first-child p {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+footer section div:nth-child(2) p {
+  text-align: center;
+}
 
+@media (max-width: 1024px) {
+  footer {
+    grid-template-columns: 1rem auto 1rem;
+  }
+  footer > section > div:nth-child(2) p {
+    font-size: small;
+  }
+}
 aside {
   width: 16.25rem;
   height: 100vh;
@@ -1508,6 +1529,12 @@ table.admin-table tr th {
 }
 table.admin-table tr:nth-child(even) {
   background-color: #575757;
+}
+
+form[name=editarCategoria] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
 }
 
 #lienzo {
