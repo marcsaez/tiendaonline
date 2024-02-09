@@ -23,6 +23,9 @@ class UsuarioController{
             echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Usuario&action=iniciarSesionAbrir">';
         }
     }
+    public function datosUser(){
+        
+    }
 
     public function iniciarSesionAbrir(){
         require_once "views/general/popup.php";

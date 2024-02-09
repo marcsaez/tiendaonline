@@ -9,6 +9,7 @@
         }
         public function detallePedido(){
             require_once "models/pedidos.php";
+            require_once "models/usuario.php";
             if(isset($_GET)){
                 $id = $_GET['idpedido'];
                 $email = $_GET['email'];
@@ -16,8 +17,7 @@
                 $db = Pedido::staticConectar();
                 $result = Pedido::listarDetallesPedido($db,$id);
                 $productsInfo = Pedido::listarDetallesProductos($db, $result);
-                print_r($result);
-                print_r($productsInfo);
+                $datosCustomer = Usuario::detallesUser($db, $email);
                 require_once "views/admin/listarDetallesPedidos.php";
 
             }

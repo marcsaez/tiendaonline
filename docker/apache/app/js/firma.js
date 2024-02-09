@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
 
     var canvas = document.getElementById('lienzo');
+    // Obtén el elemento HTML que contiene el atributo de datos personalizado
+    var customerEmailElement = document.getElementById("customer-email");
+
+    // Accede al valor del atributo de datos personalizado
+    var email = customerEmailElement.dataset.email;
     var ctx = canvas.getContext('2d');
     
     var mouseX, mouseY;
@@ -61,19 +66,26 @@ document.addEventListener('DOMContentLoaded', function(){
     
     var guardarBtn = document.getElementById('guardarBtn');
     guardarBtn.addEventListener('click', function() {
+      // Obtén el elemento HTML que contiene el atributo de datos personalizado
+      var customerEmailElement = document.getElementById("customer-email");
+
+      // Accede al valor del atributo de datos personalizado
+      var email = customerEmailElement.dataset.email;
+
       var dataURL = canvas.toDataURL(); // No es necesario especificar 'img/firmas'
       
       // Enviar la imagen al servidor
       var xhr = new XMLHttpRequest();
       xhr.open('POST', './views/admin/guardar_imagen_canvas.php', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      
+      // Crea el cuerpo de la solicitud con el correo electrónico y la imagen codificados
+      var params = 'email=' + encodeURIComponent(email) + '&imagen=' + encodeURIComponent(dataURL);
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.responseText);
         }
       };
     
-      xhr.send('imagen=' + encodeURIComponent(dataURL));
+      xhr.send(params);
     });
 });

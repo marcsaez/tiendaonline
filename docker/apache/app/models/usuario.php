@@ -125,5 +125,17 @@ public function __construct($correo, $telefono, $nombre, $apellido, $direccion, 
         }
         return $success;
     }
+    public static function detallesUser($db, $email){
+        try{
+            $stmt = $db->prepare("SELECT * FROM customers WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $datosCorrectos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch(Exception $e){
+            $datosCorrectos = false;
+        }
+       return $datosCorrectos;
+    }
 }    
 ?>
