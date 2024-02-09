@@ -56,25 +56,33 @@
             <fieldset id="editar-categoria" style="display: none;">
                 <legend>Editar Categoria</legend>
                 <form action="index.php?Controller=Categorias&action=editarCategoria" method="POST" name="editarCategoria" >
-                    <label for="id">ID:</label>
-                    <input type="text" name="id-editar" id="id-editar" class="input" readonly>
-                    <label for="nombre-editar">Nombre:</label>
-                    <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
+                    <div>
+                        <label for="id">ID</label>
+                        <input type="text" name="id-editar" id="id-editar" class="input" readonly>
+                    </div>
+                    <div>
+                        <label for="nombre-editar">Nombre</label>
+                        <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
+                    </div>
                     <!-- <label for="categoriaPadre">Categoria Padre:</label>
                     <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input"> -->
-                    <?php
-                        echo '<label for="categoriaPadre-editar">ID de la Categoria padre:</label>';
-                        echo '<select id="categoriaPadre-editar" name="categoriaPadre-editar" class="input">';
-                        echo '<option value="" selected>Sin categoria padre</option>';
-                        
-                        foreach ($padres as $category) {
-                            echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
-                        }
-                        
-                        echo '</select>';
+                    <div>
+                        <?php
+                            echo '<label for="categoriaPadre-editar">ID de la Categoria padre</label>';
+                            echo '<select id="categoriaPadre-editar" name="categoriaPadre-editar" class="input">';
+                            echo '<option value="" selected>Sin categoria padre</option>';
+                            
+                            foreach ($padres as $category) {
+                                echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
+                            }
+                            
+                            echo '</select>';
                         ?>
-                    <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
-                    <input type="submit" class="btn-submit" value="Guardar">
+                    </div>
+                    <div>
+                        <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
+                        <input type="submit" class="btn-submit" value="Guardar">
+                    </div>
                 </form>
             </fieldset>
             <form id="buscador" action="index.php?Controller=Categorias&action=buscar" method="POST">

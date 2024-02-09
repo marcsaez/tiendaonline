@@ -189,8 +189,9 @@
             require_once "models/productos.php";
             if(isset($_GET['id'])){
                 $id=$_GET['id'];
+                $activo = $_GET['activo'];
                 $db = Productos::staticConectar();
-                $productoBorrar = Productos::eliminarProducto($db,$id);
+                $productoBorrar = Productos::eliminarProducto($db,$id,$activo);
                 if($productoBorrar == false){
                     echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
                 }

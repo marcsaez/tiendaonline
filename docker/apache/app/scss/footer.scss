@@ -4,10 +4,44 @@ footer {
     background-color: #252525;
     color: white;
     margin-top: 1rem;
+    padding: 1rem;
 
     section {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        div{
+            &:first-child {
+                display: flex;
+                align-items: center;
+                p {
+                    margin-left: 1rem;
+                    display: flex;
+                    flex-direction: column;
+
+                }
+            }
+
+            &:nth-child(2) {
+                p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    footer {
+        grid-template-columns: 1rem auto 1rem;
+
+        > section {
+            > div {
+                &:nth-child(2) {
+                    p { font-size: small; }
+                }
+            }
+        }
     }
 }

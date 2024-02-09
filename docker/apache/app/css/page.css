@@ -83,34 +83,6 @@
 .pagina-producto section:nth-child(3) article #container-cantidad {
   display: flex;
 }
-.pagina-producto section:nth-child(3) article .containerCantidad {
-  border: 0.5px solid black;
-  width: 8.5rem;
-  height: 2.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 5px;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  margin-right: 0.9rem;
-}
-.pagina-producto section:nth-child(3) article .containerCantidad input {
-  width: 1rem;
-  text-align: center;
-  border: none;
-  font-size: 1rem;
-}
-.pagina-producto section:nth-child(3) article .containerCantidad button {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-.pagina-producto section:nth-child(3) article .containerCantidad button svg {
-  width: 1.2rem;
-}
 
 .mas-productos-container h2 {
   font-size: 2rem;
@@ -186,6 +158,35 @@
 }
 .imagen-container.zoomed img {
   transform: scale(1.5);
+}
+
+.containerCantidad {
+  border: 0.5px solid black;
+  width: 8.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-right: 0.9rem;
+}
+.containerCantidad input {
+  width: 1rem;
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+}
+.containerCantidad button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.containerCantidad button svg {
+  width: 1.2rem;
 }
 
 @media (max-width: 1024px) {
