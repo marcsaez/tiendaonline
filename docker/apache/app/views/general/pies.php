@@ -2,7 +2,11 @@
     <div></div>
     <section>
         <div>
-            <img src = './img/chat.png' alt = 'Chat' class = 'ImgPie'><p>Contacta<br> con nosotros</p>
+            <img src = './img/chat.png' alt = 'Chat' class = 'ImgPie'>
+            <p>
+                <span>Contacta</span>
+                <span>con nosotros</span>    
+            </p>
         </div>
         <div>
             <p>© 2023 Manga House. Todos los derechos reservados.</p>

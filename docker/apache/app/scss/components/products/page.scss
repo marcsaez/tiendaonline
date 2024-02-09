@@ -100,37 +100,7 @@
                     display: flex;
                 }
 
-                .containerCantidad {
-                    border: 0.5px solid black;
-                    width: 8.5rem;
-                    height: 2.5rem;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    border-radius: 5px;
-                    padding: 0.5rem;
-                    box-sizing: border-box;
-                    margin-right: 0.9rem;
-
-                    input {
-                        width: 1rem;
-                        text-align: center;
-                        border: none;
-                        font-size: 1rem;
-                    }
-
-                    button {
-                        background-color: transparent;
-                        outline: none;
-                        border: none;
-                        cursor: pointer;
-
-                        svg {
-                            width: 1.2rem;
-                        }
-                    }
-                }
+                
 
                 
             }
@@ -180,6 +150,38 @@
 
     &.zoomed img {
         transform: scale(1.5);
+    }
+}
+
+.containerCantidad {
+    border: 0.5px solid black;
+    width: 8.5rem;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin-right: 0.9rem;
+
+    input {
+        width: 1rem;
+        text-align: center;
+        border: none;
+        font-size: 1rem;
+    }
+
+    button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: 1.2rem;
+        }
     }
 }
 

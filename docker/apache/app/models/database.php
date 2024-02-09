@@ -7,9 +7,9 @@ class database{
         $password = 'password';
 
 
-            $this->db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->db;    
+        $this->db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $this->db;    
     }
 
     public static function staticConectar(){
@@ -19,9 +19,9 @@ class database{
         $password = 'password';
 
 
-            $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $db;    
+        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;    
     }
 }
 

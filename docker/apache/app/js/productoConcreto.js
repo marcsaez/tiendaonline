@@ -117,7 +117,7 @@ btnAnadirCarrito.addEventListener('click', function () {
     let carrito = sessionStorage.getItem('carrito');
     carrito = carrito ? JSON.parse(carrito) : {};
     // Verificar si ya existe el producto en el carrito
-    if (carrito.hasOwnProperty(nombreProductoValue)) {
+    if(carrito.hasOwnProperty(nombreProductoValue)) {
         // Si existe, agregar la cantidad
         carrito[nombreProductoValue].cantidad += inputCantidadValue;
     } else {
