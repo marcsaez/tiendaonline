@@ -266,15 +266,27 @@ class Productos extends database{
         }
         return $rutasSlider;  
     }
-    public static function eliminarProducto($db,$id){
-        try{
-            $stmt =$db->prepare("UPDATE products SET active = 0 WHERE productid = :idproducto;");
-            $stmt->bindParam(':idproducto', $id);
-            $stmt->execute();
-            $error = false;
-        } catch(Exception $e){
-            $error = true;
+    public static function eliminarProducto($db,$id,$activo){
+        if($activo == 1){
+            try{
+                $stmt =$db->prepare("UPDATE products SET active = 0 WHERE productid = :idproducto;");
+                $stmt->bindParam(':idproducto', $id);
+                $stmt->execute();
+                $error = false;
+            } catch(Exception $e){
+                $error = true;
+            }
+        } else{
+            try{
+                $stmt =$db->prepare("UPDATE products SET active = 1 WHERE productid = :idproducto;");
+                $stmt->bindParam(':idproducto', $id);
+                $stmt->execute();
+                $error = false;
+            } catch(Exception $e){
+                $error = true;
+            }
         }
+        
         return $error;
     }
     public static function contadorProductosPorCategoria($db, $categoria){
