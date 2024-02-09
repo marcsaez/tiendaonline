@@ -124,12 +124,8 @@ class Carrito extends database{
     }
     public static function insertarPedido($db,$userMail,$pedidos,$idPurchase){
         try{
-            
-           // dd("HOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
-
             foreach($pedidos as $pedido){
                 $precioConjunto=$pedido['productprice']*$pedido['cantidad'];
-        
                 $stmt= $db->prepare("INSERT INTO cart (fkpurchase, fkproduct, amount, totalprice) VALUES (:idPurchase, :productID, :cantidad, :precioTotal)");
                 $stmt->bindParam(':idPurchase', $idPurchase);
                 $stmt->bindParam(':productID', $pedido['productid']);
