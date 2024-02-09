@@ -18,9 +18,12 @@ class UsuarioController{
         $usuario=Usuario::iniciarSesion($db,$_POST['correoUsuario'], $_POST['passUsuario']);
         if($usuario==true){
             echo '<meta http-equiv="refresh" content="0;url=index.php">';
+            ?><script src="js/productoConcreto.js"></script>
+            <script>comprobarLocalStorage()</script>
+            <?php
+
         }elseif($usuario==false){
-            echo"MAL";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Usuario&action=iniciarSesionAbrir">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }
     }
 

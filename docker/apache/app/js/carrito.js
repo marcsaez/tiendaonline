@@ -27,6 +27,31 @@ class Carrito {
                 }
             });
         }
+        insertarUnProducto(){
+            console.log(this.diccionario);
+            $.ajax({
+                url: 'indexAjax.php?Controller=Carrito&action=obtenerDatosProductosCarritoDos',
+                type: 'POST',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({ carrito: this.diccionario}),
+                success: function (data) {
+                    console.log(data);
+                    // Maneja la respuesta del servidor
+                    if (data.success) {
+                        console.log('Okay');
+                        // console.log(data);
+                    } else {
+                        console.error('Error en la solicitud:', data.message);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Maneja el error
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    console.error('Estado de la respuesta:', xhr.status);
+                    console.error('Respuesta del servidor:', xhr.responseText);
+                }
+            });
+        }
         guardarCarritoEnPHP() {
             // Obtén el contenido de sessionStorage
             var carrito = sessionStorage.getItem('carrito');

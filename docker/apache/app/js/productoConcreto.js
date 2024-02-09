@@ -1,9 +1,9 @@
 import Carrito from './carrito.js';
-
+const btnAnadirCarritoNoLog = document.getElementById('btnAnadirNoLog');
 const btnAnadirCarrito = document.getElementById('btnAnadir');
+let precioProducto = document.getElementById('precioProducto');
 let inputCantidad = document.getElementById('cantidad');
 let nombreProducto = document.getElementById('nombreProd');
-let precioProducto = document.getElementById('precioProducto');
 let productoID = document.getElementById('idDelProducto');
 let stockTotal = document.getElementById('stockMaximo');
 
@@ -74,17 +74,6 @@ imagenContainer.addEventListener('mouseleave', () => {
 });
 
 
-
-
-
-// function anadirCarrito() {
-//     let temp = document.getElementById('nombreProd');
-//     let nombreProducto =  temp.value;
-//     let cantidad = parseInt(inputCantidad.value);
-//     alert(`Añadir ${cantidad} ${nombreProducto}(s) al carrito`);
-//     // Aqui ira la parte de codigo encargada de mandar la info al carrito (AJAX)
-// }
-
 function mostrarOcultar(id) {
     var elemento = document.getElementById(id);
     if (elemento.style.display === 'none') {
@@ -108,31 +97,60 @@ plusMinusButtons.forEach(plusMinusButton => {
 
 let carrito = sessionStorage.getItem('carrito');
 carrito = carrito ? JSON.parse(carrito) : {};
-btnAnadirCarrito.addEventListener('click', function () {
-    // Obtener los valores de los elementos
-    let nombreProductoValue = nombreProducto.value;
-    let inputCantidadValue = parseInt(inputCantidad.value);
-    let productoIDValue = productoID.value;
-    // Obtener el carrito del sessionStorage
-    let carrito = sessionStorage.getItem('carrito');
-    carrito = carrito ? JSON.parse(carrito) : {};
-    // Verificar si ya existe el producto en el carrito
-    if(carrito.hasOwnProperty(nombreProductoValue)) {
-        // Si existe, agregar la cantidad
-        carrito[nombreProductoValue].cantidad += inputCantidadValue;
-    } else {
-        // Si no existe, agregar un nuevo producto al carrito
-        carrito[nombreProductoValue] = {
-            id: productoIDValue,
-            cantidad: inputCantidadValue
+if(btnAnadirCarrito != null){
+    btnAnadirCarrito.addEventListener('click', function () {
+        // Obtener los valores de los elementos
+        let nombreProductoValue = nombreProducto.value;
+        let inputCantidadValue = parseInt(inputCantidad.value);
+        let productoIDValue = productoID.value;
+        let diccionario = {
+            [nombreProductoValue]: {
+                id: productoIDValue,
+                cantidad: inputCantidadValue
+            }
         };
+        let diccionarioJSON = JSON.stringify(diccionario);
+        carrito = new Carrito(diccionarioJSON);
+        carrito.insertarUnProducto();
+        
+    });
+}
+if(btnAnadirCarritoNoLog != null){
+    btnAnadirCarritoNoLog.addEventListener('click', function () {
+         // Obtener los valores de los elementos
+        let nombreProductoValue = nombreProducto.value;
+        let inputCantidadValue = parseInt(inputCantidad.value);
+        let productoIDValue = productoID.value;
+        // Obtener el carrito del sessionStorage
+        let carrito = sessionStorage.getItem('carrito');
+        carrito = carrito ? JSON.parse(carrito) : {};
+        // Verificar si ya existe el producto en el carrito
+        if(carrito.hasOwnProperty(nombreProductoValue)) {
+            // Si existe, agregar la cantidad
+            carrito[nombreProductoValue].cantidad += inputCantidadValue;
+        } else {
+            // Si no existe, agregar un nuevo producto al carrito
+            carrito[nombreProductoValue] = {
+                id: productoIDValue,
+                cantidad: inputCantidadValue
+            };
+        }
+        // Almacenar el carrito en el sessionStorage
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        let obtenerCarrito = sessionStorage.getItem('carrito');
+        carrito = new Carrito(obtenerCarrito);
+        carrito.ajaxCosas();
+    });
+}
+
+function comprobarLocalStorage(){
+    if (sessionStorage.getItem('carrito')) {
+        let obtenerCarrito = sessionStorage.getItem('carrito');
+        carrito = new Carrito(obtenerCarrito);
+        carrito.ajaxCosas();
+        sessionStorage.removeItem('carrito');
     }
-    // Almacenar el carrito en el sessionStorage
-    sessionStorage.setItem('carrito', JSON.stringify(carrito));
-    let obtenerCarrito = sessionStorage.getItem('carrito');
-    carrito = new Carrito(obtenerCarrito);
-    carrito.ajaxCosas();
-});
+}
 document.addEventListener('DOMContentLoaded', function(){
     const buttonComprarYa = document.getElementById('comprarYa');
     if(buttonComprarYa != null){
