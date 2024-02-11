@@ -2,27 +2,57 @@
     <div></div>
     <section>
         <h1 class="page-title">Mis Pedidos</h1>
-        <table border="1" id="orders-table">
+        <table id="orders-table">
             <thead>
                 <tr>
-                    <th>Info</th>
+                    <th>ID Pedido</th>
                     <th>Fecha Pedido</th>
                     <th>Entrega Estimada</th>
-                    <th>Precio Compra</th>
                     <th>Estado</th>
+                    <th>Detalles</th>
+                    <th>Precio Compra</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                        </svg>
+                        001
                     </td>
                     <td>20/20/2000</td>
                     <td>21/20/2000</td>
-                    <td>100€</td>
                     <td>Pendiente</td>
+                    <td>Mas info</td>
+                    <td>100€</td>
+                </tr>
+                <tr>
+                    <td>
+                        001
+                    </td>
+                    <td>20/20/2000</td>
+                    <td>21/20/2000</td>
+                    <td>Enviado</td>
+                    <td>Mas info</td>
+                    <td>100€</td>
+                </tr>
+                <tr>
+                    <td>
+                        001
+                    </td>
+                    <td>20/20/2000</td>
+                    <td>21/20/2000</td>
+                    <td>Pendiente</td>
+                    <td>Mas info</td>
+                    <td>100€</td>
+                </tr>
+                <tr>
+                    <td>
+                        001
+                    </td>
+                    <td>20/20/2000</td>
+                    <td>21/20/2000</td>
+                    <td>Enviado</td>
+                    <td>Mas info</td>
+                    <td>100€</td>
                 </tr>
             </tbody>
         </table>

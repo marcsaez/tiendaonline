@@ -6,16 +6,33 @@
 
 #orders-table {
     width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    background-color: $header-bg;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+
+    thead {
+        border-bottom: 1px solid $border-color;
+        box-sizing: border-box;
+        th {
+            text-align: left;
+            padding: 0.5rem 1rem;
+        }
+    }
 
     tbody {
-       td {
-        &:first-child{
-            width: 20rem;
-            svg {
-                width: 1.5rem;
+
+        tr {
+            &:hover {
+                background-color: $border-thin-color;
+            }
+
+            td {
+                &:first-child { font-weight: 600; }
+                padding: 0.5rem 1rem;
             }
         }
-       } 
     }
 }
 

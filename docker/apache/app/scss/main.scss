@@ -109,23 +109,7 @@ main#index {
 
 
 
-#anadirCategoria {
-    position: absolute;
-    right: 0;
-    top: 5rem;
-    background-color: $dark2;
-    border-radius: 10px;
 
-    fieldset {
-        margin: 1rem;
-        form {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(5, auto);
-        }
-        
-    }
-}
 
 
 

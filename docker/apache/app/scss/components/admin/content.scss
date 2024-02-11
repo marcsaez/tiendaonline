@@ -119,3 +119,28 @@ form[name="editarCategoria"] {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
 }
+
+#anadirCategoria {
+    position: absolute;
+    right: 0;
+    top: 5rem;
+    background-color: $dark2;
+    border-radius: 10px;
+    z-index: 999;
+
+    fieldset {
+        margin: 1rem;
+        border: 1px solid $border-thin-color;
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5, auto);
+
+            input, select, button {
+                background-color: $dark3;
+            }
+
+        }
+        
+    }
+}

@@ -2,7 +2,7 @@
  <script src="js/ocultar.js"></script>
  <script src="js/buscadorCategoria.js"></script>
 <!-- <h2 onclick="mostrarOcultar('anadirCategoria')"><img src="img/mas.png" alt="Anadir Categoria"></h2> -->
-<div id="editarCategoria" style="display:none;">
+<!-- <div id="editarCategoria" style="display:none;">
     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=editarCategoria" method="POST" class = "">   
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required>
@@ -15,7 +15,7 @@
         
         <button type="submit">Editar Categoria</button>
     </form>
-</div>
+</div> -->
 
 <main class="dashboard listar" id="listar-categorias">
     <div class="admin-content">
@@ -47,7 +47,7 @@
                         echo '</select>';
                         ?>
                 
-                        <button type="submit" class="btn-submit">Añadir Categoria</button>
+                        <button type="submit">Añadir Categoria</button>
                     </form>
                 </fieldset>
             </div>

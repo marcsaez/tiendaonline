@@ -3,9 +3,10 @@
 <main class="page-grid">
     <div></div>
     <section>
-        <h1 class="page-title">Mi Carrito (<?php echo count($_SESSION['carrito']); ?>)</h1>
+        <h1 class="page-title">Mi Carrito (<?php //echo count($_SESSION['carrito']); ?>)</h1>
         <p>
             <?php
+                print_r($_SESSION);
             //La info debera venir de la bdd en lugar del SESSION, ya que puedes tener compras no terminadas
                 if (isset($_SESSION['carrito'])){
                     // Descomentar para ver el array completo

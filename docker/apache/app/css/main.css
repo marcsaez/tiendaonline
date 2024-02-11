@@ -1215,12 +1215,27 @@ form[name=registrarse] input[type=submit]:hover {
 
 #orders-table {
   width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  background-color: #F7F7F7;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-#orders-table tbody td:first-child {
-  width: 20rem;
+#orders-table thead {
+  border-bottom: 1px solid #CACACA;
+  box-sizing: border-box;
 }
-#orders-table tbody td:first-child svg {
-  width: 1.5rem;
+#orders-table thead th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+#orders-table tbody tr:hover {
+  background-color: #dddddd;
+}
+#orders-table tbody tr td {
+  padding: 0.5rem 1rem;
+}
+#orders-table tbody tr td:first-child {
+  font-weight: 600;
 }
 
 #resumen-compra {
@@ -1640,6 +1655,27 @@ form[name=editarCategoria] {
   grid-template-rows: 1fr 1fr;
 }
 
+#anadirCategoria {
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  background-color: #3F3F3F;
+  border-radius: 10px;
+  z-index: 999;
+}
+#anadirCategoria fieldset {
+  margin: 1rem;
+  border: 1px solid #dddddd;
+}
+#anadirCategoria fieldset form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
+}
+#anadirCategoria fieldset form input, #anadirCategoria fieldset form select, #anadirCategoria fieldset form button {
+  background-color: #575757;
+}
+
 #lienzo {
   width: 40rem;
   height: 20rem;
@@ -1763,22 +1799,6 @@ main#index div:nth-child(2) section:nth-child(2) > div a span {
 }
 main#index div:nth-child(2) section:nth-child(2) > div a:hover img {
   transform: scale(1.5);
-}
-
-#anadirCategoria {
-  position: absolute;
-  right: 0;
-  top: 5rem;
-  background-color: #3F3F3F;
-  border-radius: 10px;
-}
-#anadirCategoria fieldset {
-  margin: 1rem;
-}
-#anadirCategoria fieldset form {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, auto);
 }
 
 .btn-primary {

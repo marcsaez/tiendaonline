@@ -18,9 +18,21 @@ function mostrarMenu() {
 document.addEventListener('DOMContentLoaded', function(){
     const userBtn = document.getElementById('user-btn');
     const popUpContainer = document.getElementById('popup-container');
+    const desplegableUsuario = document.getElementById('desplegable-usuario');
+
+    desplegableUsuario.style.display = 'none';
     
     userBtn.addEventListener('click', function(){
-        popUpContainer.style.display = 'block';
+        if(!popUpContainer){
+            desplegableUsuario.style.display = 'block';
+        } else {
+            popUpContainer.style.display = 'block';
+        }
+
+    });
+
+    desplegableUsuario.addEventListener('mouseleave', () => {
+        desplegableUsuario.style.display = 'none';
     });
 
     popUpContainer.addEventListener('click', function(event){
