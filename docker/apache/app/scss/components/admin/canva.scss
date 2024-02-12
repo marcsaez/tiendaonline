@@ -52,9 +52,26 @@
 
 #canvas-container {
     display: flex;
+    flex-direction: row;
     margin-top: 3rem;
 }
 
 #chartContainer {
     background-color: $dark3;
+}
+
+@media (max-width: 1024px) {
+    #canvas-container {
+        flex-direction: column;
+
+        #canvas-btn-container {
+            margin-top: 1rem;
+            margin-left: 0rem;
+            flex-direction: row;
+
+            button {
+                margin-right: 1rem;
+            }
+        }
+    }
 }

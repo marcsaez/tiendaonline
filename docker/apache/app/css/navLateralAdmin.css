@@ -74,4 +74,40 @@ aside section > article span {
 #adminUser {
   color: white;
   border-bottom: 1px solid white;
+}
+
+@media (max-width: 1024px) {
+  aside {
+    width: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  aside section:first-child p {
+    display: none;
+  }
+  aside section:nth-child(2) span {
+    display: none;
+  }
+  aside section:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  aside section:last-child article:last-child span {
+    display: none;
+  }
+  aside section article {
+    margin: 1rem auto;
+    padding: 0rem;
+  }
+  aside section article svg {
+    width: 25px;
+    margin: 0rem;
+    margin-bottom: 1rem;
+  }
+  aside section article#adminUser p {
+    display: none;
+  }
 }/*# sourceMappingURL=navLateralAdmin.css.map */

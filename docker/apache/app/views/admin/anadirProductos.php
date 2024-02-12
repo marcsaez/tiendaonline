@@ -1,7 +1,7 @@
 <?php include "views/admin/navLateral.php"; ?>
 <main class="dashboard listar">
-    <div>
-        <section>
+    <div class="admin-content">
+        <section class="admin-headers">
             <h1>Productos</h1>
         </section>
         <fieldset>
