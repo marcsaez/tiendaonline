@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function(){
     const userBtn = document.getElementById('user-btn');
     const popUpContainer = document.getElementById('popup-container');
     const desplegableUsuario = document.getElementById('desplegable-usuario');
-
-    desplegableUsuario.style.display = 'none';
-    
+    if(desplegableUsuario!=null){
+        desplegableUsuario.style.display = 'none';
+    }
     userBtn.addEventListener('click', function(){
         if(!popUpContainer){
             desplegableUsuario.style.display = 'block';
@@ -31,15 +31,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
     });
 
-    desplegableUsuario.addEventListener('mouseleave', () => {
-        desplegableUsuario.style.display = 'none';
-    });
+    // desplegableUsuario.addEventListener('mouseleave', () => {
+    //     desplegableUsuario.style.display = 'none';
+    // });
 
-    popUpContainer.addEventListener('click', function(event){
-        if(event.target === popUpContainer){
-            popUpContainer.style.display = 'none';
-        }
-    });
+    // popUpContainer.addEventListener('click', function(event){
+    //     if(event.target === popUpContainer){
+    //         popUpContainer.style.display = 'none';
+    //     }
+    // });
 
     // Agregar evento de scroll
     window.addEventListener('scroll', function () {
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     
-    document.getElementById('usuarioPassword').addEventListener('keyup', validarPassword);
-    document.getElementById('usuarioPasswordRepeat').addEventListener('keyup', validarPassword);
+    //document.getElementById('usuarioPassword').addEventListener('keyup', validarPassword);
+    //document.getElementById('usuarioPasswordRepeat').addEventListener('keyup', validarPassword);
 
 });
 

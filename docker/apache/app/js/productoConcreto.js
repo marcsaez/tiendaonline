@@ -1,6 +1,8 @@
 import Carrito from './carrito.js';
 const btnAnadirCarritoNoLog = document.getElementById('btnAnadirNoLog');
 const btnAnadirCarrito = document.getElementById('btnAnadir');
+const btnAddOne = document.getElementById('btn-addOne');
+let productIdAddOne = document.getElementById('idAddOne');
 let precioProducto = document.getElementById('precioProducto');
 let inputCantidad = document.getElementById('cantidad');
 let nombreProducto = document.getElementById('nombreProd');
@@ -115,6 +117,25 @@ if(btnAnadirCarrito != null){
         
     });
 }
+
+btnAddOne.addEventListener('click', function () {
+    // Obtener los valores de los elementos
+    console.log("HOLA");
+    let nombreProductoValue = "AddOne";
+    let inputCantidadValue = 1;
+    let productoIDValue = productIdAddOne.value;
+    let diccionario = {
+        [nombreProductoValue]: {
+            id: productoIDValue,
+            cantidad: inputCantidadValue
+        }
+    };
+    let diccionarioJSON = JSON.stringify(diccionario);
+    carrito = new Carrito(diccionarioJSON);
+    carrito.insertarUnProducto();
+    
+});
+
 if(btnAnadirCarritoNoLog != null){
     btnAnadirCarritoNoLog.addEventListener('click', function () {
          // Obtener los valores de los elementos
@@ -143,14 +164,7 @@ if(btnAnadirCarritoNoLog != null){
     });
 }
 
-function comprobarLocalStorage(){
-    if (sessionStorage.getItem('carrito')) {
-        let obtenerCarrito = sessionStorage.getItem('carrito');
-        carrito = new Carrito(obtenerCarrito);
-        carrito.ajaxCosas();
-        sessionStorage.removeItem('carrito');
-    }
-}
+
 document.addEventListener('DOMContentLoaded', function(){
     const buttonComprarYa = document.getElementById('comprarYa');
     if(buttonComprarYa != null){

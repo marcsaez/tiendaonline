@@ -1,5 +1,5 @@
 <?php
-require_once "./models/usuario.php";
+require_once "models/usuario.php";
 class UsuarioController{
     public function registrarUsuario(){
         $usuario = new usuario ($_POST['usuarioEmail'],$_POST['usuarioTelefono'],$_POST['usuarioNombre'],$_POST['usuarioApellido'],$_POST['usuarioDireccion'],$_POST['usuarioPassword']);
@@ -17,11 +17,34 @@ class UsuarioController{
         $db = Usuario::staticConectar();
         $usuario=Usuario::iniciarSesion($db,$_POST['correoUsuario'], $_POST['passUsuario']);
         if($usuario==true){
-            echo '<meta http-equiv="refresh" content="0;url=index.php">';
-            ?><script src="js/productoConcreto.js"></script>
-            <script>comprobarLocalStorage()</script>
+            ?><script>
+                let diccionario = sessionStorage.getItem('carrito');
+                $.ajax({
+                url: 'indexAjax.php?Controller=Carrito&action=obtenerDatosProductosCarrito',
+                type: 'POST',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({ carrito: diccionario}),
+                success: function (data) {
+                    console.log(data);
+                    // Maneja la respuesta del servidor
+                    if (data.success) {
+                        console.log('Okay');
+                        // console.log(data);
+                    } else {
+                        console.error('Error en la solicitud:', data.message);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // Maneja el error
+                    console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+                    console.error('Estado de la respuesta:', xhr.status);
+                    console.error('Respuesta del servidor:', xhr.responseText);
+                }
+            });
+                sessionStorage.removeItem('carrito');
+            </script>
             <?php
-
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }elseif($usuario==false){
             echo '<meta http-equiv="refresh" content="0;url=index.php">';
         }

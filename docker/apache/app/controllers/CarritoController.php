@@ -9,9 +9,9 @@
             $db = Carrito::staticConectar();
             $_SESSION['carrito'] = Carrito::productosDelCarrito($db, $datos);
             $this->insertarPurchases();
-            // Carrito::insertarPedido($db, $_SESSION['userMail'], $_SESSION['carrito'], $idPurchase);
-            //  echo json_encode(['succes' => true, 'info' => $datos]);
-            //  exit;
+        }
+        public function abrirCarrito(){
+            require_once 'views/general/carrito.php';
         }
         public function obtenerDatosProductosCarritoDos(){ 
             ob_clean();
@@ -21,12 +21,6 @@
             $db = Carrito::staticConectar();
             $carrito = Carrito::productosDelCarrito($db, $datos);
             $this->insertarPurchases2($carrito);
-            // Carrito::insertarPedido($db, $_SESSION['userMail'], $_SESSION['carrito'], $idPurchase);
-            echo json_encode(['succes' => true, 'info' => $datos]);
-            //  exit;
-        }
-        public function abrirCarrito(){
-            require_once 'views/general/carrito.php';
         }
         public function insertarPurchases(){
             $db = Carrito::staticConectar();
