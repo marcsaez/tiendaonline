@@ -11,6 +11,9 @@
             $this->insertarPurchases();
         }
         public function abrirCarrito(){
+            $db = Carrito::staticConectar();
+            $datosCarrito = Carrito::obtenerDatosCarrito($db);
+
             require_once 'views/general/carrito.php';
         }
         public function obtenerDatosProductosCarritoDos(){ 

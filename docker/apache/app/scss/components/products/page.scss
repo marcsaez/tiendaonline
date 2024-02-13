@@ -128,7 +128,7 @@
     @include btn-primary;
 }
 
-#btnAnadir, .btn-comprar {
+#btnAnadir, .btn-comprar, #btnAnadirNoLog {
     @include btn-primary;
     width: 10rem;
     max-height: 2.5rem;

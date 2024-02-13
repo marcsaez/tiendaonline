@@ -60,6 +60,9 @@
 .top-card:hover {
   transform: translateY(-0.4rem);
 }
+.top-card div:nth-child(3) {
+  min-height: 8.213rem;
+}
 .top-card p {
   font-size: 0.7rem;
   text-align: justify;

@@ -99,24 +99,16 @@
                     <span class="plusminus"></span>
                 </div>
                 <div class="descripcionProd">
-                    <h3>Categoria: <span><?php echo $nombreCategoria?></span> </h3>
+                    <p>Categoria: <span><?php echo $nombreCategoria?></span></p>
                     
-                    <?php 
-                    if(isset($masProds)){
-                        echo"<h3>Genero: </h3>";
-                        echo $nombreCategoria;
-                    }
-                     
-                    ?>
                 </div>
             </article>
         </section>
         <section class="mas-productos-container">
             <h2>Mas <span><?php echo $nombreCategoria?></span></h2>
-            <div class="mas-productos">
-        
             <?php
                 if(isset($masProds) && is_array($masProds)){
+                    echo '<div class="mas-productos">';
                     foreach ($masProds as $producto){
                         if ($producto['productnoted'] == 1){
                             $tendencia = '
@@ -125,6 +117,8 @@
                           </svg>
                           Tendencia</span>
                         ';
+                        } else {
+                            $tendencia = "";
                         }
 
                         echo"<article class='grid-productos'>";
@@ -141,13 +135,19 @@
                             </div>
                             
                         ';
-                        // echo"<img src='".$producto['productimg']."' alt='producto relacionado'>"; 
-                        // echo"<p>".$producto['productname']."</p>";
-                        // echo"<p>".$producto['productprice']."</p>";
-                        // //Las lineas estan comentadas porque da error al recibir lo que recibe, cuando este bien implementado el crear producto deberia funcionar
-                        // echo"<button onclick='anadirCarrito()'><img src='../../img/carro.jpg' alt='Aqui va el carrito'>Añadir</button>";
                         echo"</article>";
                      }
+                     echo "</div>";
+                } else {
+                    echo '
+                        <div class="product-not-found">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#cacaca" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                            </svg>
+                    
+                            No se han encontrado productos.
+                        </div>
+                    ';
                 }
             ?>
             </div>

@@ -118,7 +118,7 @@
   margin-right: 0.2rem;
 }
 
-#btnAnadir, .btn-comprar {
+#btnAnadir, .btn-comprar, #btnAnadirNoLog {
   background-color: black;
   border-radius: 5px;
   border: none;
@@ -135,10 +135,10 @@
   max-height: 2.5rem;
   height: 2.5rem;
 }
-#btnAnadir:hover, .btn-comprar:hover {
+#btnAnadir:hover, .btn-comprar:hover, #btnAnadirNoLog:hover {
   background-color: #3F3F3F;
 }
-#btnAnadir svg, .btn-comprar svg {
+#btnAnadir svg, .btn-comprar svg, #btnAnadirNoLog svg {
   width: 1.2rem;
   margin-right: 0.2rem;
 }

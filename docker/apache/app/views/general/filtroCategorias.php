@@ -79,6 +79,8 @@
                           </svg>
                           Tendencia</span>
                         ';
+                    } else {
+                        $tendencia = "";
                     }
                     
                     echo '<article class="grid-productos">';

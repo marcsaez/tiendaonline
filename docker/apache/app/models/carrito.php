@@ -138,6 +138,27 @@ class Carrito extends database{
         }
 
     }
+
+    public static function obtenerDatosCarrito($db){
+        
+        $sql = "SELECT cart.*, products.* 
+                FROM cart 
+                JOIN products ON cart.fkproduct = products.productid 
+                WHERE cart.fkpurchase = (
+                    SELECT purchaseid 
+                    FROM purchases
+                    WHERE status = 0
+                    ORDER BY creationdate DESC
+                    LIMIT 1
+                )";
+        
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $datos_carrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $datos_carrito;
+    }
+    
     
 }
 ?>
