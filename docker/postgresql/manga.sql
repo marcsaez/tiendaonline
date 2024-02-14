@@ -56,3 +56,5 @@ CREATE TABLE sliderImages (
 	numImage INT,
 	ruteImage VARCHAR(255)
 );
+
+INSERT INTO admin (emailadmin, passwordadmin) VALUES ('admin@admin.com', 'password');
