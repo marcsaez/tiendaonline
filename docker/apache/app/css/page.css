@@ -63,12 +63,6 @@
   font-weight: 700;
   margin-top: 0.6rem;
 }
-.pagina-producto section:nth-child(3) section div:first-child p #si-stock {
-  color: #469E00;
-}
-.pagina-producto section:nth-child(3) section div:first-child p #no-stock {
-  color: #950000;
-}
 .pagina-producto section:nth-child(3) article {
   margin: 1.563rem 0;
 }
@@ -82,6 +76,14 @@
 }
 .pagina-producto section:nth-child(3) article #container-cantidad {
   display: flex;
+}
+
+#si-stock {
+  color: #469E00;
+}
+
+#no-stock {
+  color: #950000;
 }
 
 .mas-productos-container h2 {

@@ -135,10 +135,33 @@
 
 }
 
-// .resumen-carrito {
-//     table {
-//         tr {
+.resumen-carrito {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        tr {
 
-//         }
-//     }
-// }
+
+            &:nth-last-child(2) {
+                td {
+                    padding: 0.5rem;
+                    border-bottom: 1px solid black;
+                }
+            }
+
+            &:last-child {
+                button {
+                    width: 100%;
+                    height: 2.2rem;
+                    display: flex;
+                    align-items: center;
+                    margin: 0.5rem;
+                    @include btn-primary;
+                    svg {
+                        width: 1.2rem;
+                    }
+                } 
+            }
+        }
+    }
+}

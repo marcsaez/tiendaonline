@@ -147,7 +147,7 @@ class Carrito extends database{
                 WHERE cart.fkpurchase = (
                     SELECT purchaseid 
                     FROM purchases
-                    WHERE status = 0
+                    WHERE status = 0 AND customeremail LIKE :email
                     ORDER BY creationdate DESC
                     LIMIT 1
                 )";
