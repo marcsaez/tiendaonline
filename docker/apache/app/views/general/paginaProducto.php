@@ -15,6 +15,7 @@
             </ul>
         </section>
         <section class="imagen-container">
+            <input type="hidden" id="productIMG" value="<?php echo $productoConcreto[0]['productimg'];?>">
             <img src="<?php echo $productoConcreto[0]['productimg'];?>" alt="Foto del producto">
         </section>
         <section>
@@ -26,6 +27,7 @@
                 <h1><?php echo $productoConcreto[0]['productname'];?></h1>
                 <div>
                     <span><?php echo ($productoConcreto[0]['productprice']+3); ?>€</span>
+                    <input type="hidden" id="productPrice" value="<?php echo $productoConcreto[0]['productprice']; ?>">
                     <h1 id="precioProducto"><?php echo $productoConcreto[0]['productprice']; ?>€</h1>
                 </div>
             </div>

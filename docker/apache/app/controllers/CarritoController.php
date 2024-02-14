@@ -20,6 +20,9 @@
 
             require_once 'views/general/carrito.php';
         }
+        public function abrirCarritoNoLog(){
+            require_once 'views/general/carritoNoLog.php';
+        }
         public function obtenerDatosProductosCarritoDos(){ 
             ob_clean();
             header("Content-Type: application/json");
