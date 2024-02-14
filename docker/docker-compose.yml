@@ -25,3 +25,5 @@ services:
       - pg_data:/var/lib/postgresql/data
 volumes:
   pg_data:
+
+  pg_dump -h postgres -p 5432 -U postgresql -d mangahouse -F c -f ./dump_file.dump

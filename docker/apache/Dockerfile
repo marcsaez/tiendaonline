@@ -7,3 +7,5 @@ RUN apt-get update \
 WORKDIR /var/www/html
 
 COPY ./app .
+
+RUN chmod -R 777 *

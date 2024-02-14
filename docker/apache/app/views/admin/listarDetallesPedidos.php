@@ -11,7 +11,7 @@
         <main class="dashboard">
             <div class="admin-content">
                 <section class="admin-headers">
-                    <h1>Detalle Producto</h1>
+                    <h1>Detalle Pedido</h1>
                 </section>
                 <section>
                     <div id="customer-email" data-email="<?php echo $email; ?>"></div>
@@ -60,7 +60,7 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $value['fkproduct'] ?></td>
-                                        <td>nombre</td>
+                                        <td><?php echo $value['productname'] ?></td>
                                         <td><?php echo $value['amount'] ?> unidades</td>
                                         <td><?php echo $value['totalprice'] ?>€</td>
                                     </tr>

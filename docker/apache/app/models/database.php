@@ -1,7 +1,7 @@
 <?php
 class database{
     public function conectar(){
-        $host = 'localhost';
+        $host = 'postgres';
         $dbname = 'mangahouse';
         $user = 'postgres';
         $password = 'password';
@@ -13,7 +13,7 @@ class database{
     }
 
     public static function staticConectar(){
-        $host = 'localhost';
+        $host = 'postgres';
         $dbname = 'mangahouse';
         $user = 'postgres';
         $password = 'password';
