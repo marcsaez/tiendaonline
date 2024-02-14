@@ -3,7 +3,7 @@ class database{
     public function conectar(){
         $host = 'postgres';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
+        $user = 'postgres';
         $password = 'password';
 
 
@@ -15,7 +15,7 @@ class database{
     public static function staticConectar(){
         $host = 'postgres';
         $dbname = 'mangahouse';
-        $user = 'postgresql';
+        $user = 'postgres';
         $password = 'password';
 
 
