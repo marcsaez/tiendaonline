@@ -12,7 +12,11 @@
         }
         public function abrirCarrito(){
             $db = Carrito::staticConectar();
-            $datosCarrito = Carrito::obtenerDatosCarrito($db);
+            
+            if (isset($_SESSION['userMail'])) {
+                $email = $_SESSION['userMail'];
+                $datosCarrito = Carrito::obtenerDatosCarrito($db, $email);
+            }
 
             require_once 'views/general/carrito.php';
         }

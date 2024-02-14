@@ -50,6 +50,7 @@
             border: 1px solid $border-color;
             border-radius: 5px;
             width: 20rem;
+            height: fit-content;
             background-color: $header-bg;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             padding: 1rem;
@@ -66,9 +67,10 @@
     grid-template-rows: repeat(5, 1fr);
     width: 100%;
     max-height: 16rem;
-    column-gap: 10px;
+    column-gap: 15px;
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 0.5rem;
 
     $cuadricula: (
         (1, 1, 7, 2),
@@ -85,6 +87,12 @@
 
     div {
         position: relative;
+
+        .referencia {
+            color: #848484;
+            font-size: 1rem;
+            font-weight: 500;
+        }
 
         img {
             width: 100%;
@@ -126,3 +134,11 @@
 
 
 }
+
+// .resumen-carrito {
+//     table {
+//         tr {
+
+//         }
+//     }
+// }

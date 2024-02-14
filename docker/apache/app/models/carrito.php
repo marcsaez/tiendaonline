@@ -139,7 +139,7 @@ class Carrito extends database{
 
     }
 
-    public static function obtenerDatosCarrito($db){
+    public static function obtenerDatosCarrito($db, $email){
         
         $sql = "SELECT cart.*, products.* 
                 FROM cart 
@@ -153,6 +153,7 @@ class Carrito extends database{
                 )";
         
         $stmt = $db->prepare($sql);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
         $datos_carrito = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
