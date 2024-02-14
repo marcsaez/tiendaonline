@@ -73,12 +73,7 @@
                             font-weight: 700;
                             margin-top: 0.6rem;
 
-                            #si-stock {
-                                color: #469E00;
-                            }
-                            #no-stock {
-                                color: #950000;
-                            }
+                            
                             
                         }
                     }
@@ -106,6 +101,13 @@
             }
         }
     }
+}
+
+#si-stock {
+    color: #469E00;
+}
+#no-stock {
+    color: #950000;
 }
 
 .mas-productos-container {
