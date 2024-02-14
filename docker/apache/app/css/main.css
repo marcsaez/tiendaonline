@@ -465,12 +465,6 @@ aside section > article span {
   font-weight: 700;
   margin-top: 0.6rem;
 }
-.pagina-producto section:nth-child(3) section div:first-child p #si-stock {
-  color: #469E00;
-}
-.pagina-producto section:nth-child(3) section div:first-child p #no-stock {
-  color: #950000;
-}
 .pagina-producto section:nth-child(3) article {
   margin: 1.563rem 0;
 }
@@ -484,6 +478,14 @@ aside section > article span {
 }
 .pagina-producto section:nth-child(3) article #container-cantidad {
   display: flex;
+}
+
+#si-stock {
+  color: #469E00;
+}
+
+#no-stock {
+  color: #950000;
 }
 
 .mas-productos-container h2 {
@@ -1299,6 +1301,8 @@ form[name=registrarse] input[type=submit]:hover {
   border: 1px solid #CACACA;
   border-radius: 5px;
   width: 20rem;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: #F7F7F7;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 1rem;
@@ -1313,10 +1317,11 @@ form[name=registrarse] input[type=submit]:hover {
   grid-template-rows: repeat(5, 1fr);
   width: 100%;
   max-height: 16rem;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #CACACA;
+  margin-bottom: 0.5rem;
 }
 .item-carrito div:nth-child(1) {
   grid-area: 1/1/7/2;
@@ -1344,6 +1349,11 @@ form[name=registrarse] input[type=submit]:hover {
 }
 .item-carrito div {
   position: relative;
+}
+.item-carrito div .referencia {
+  color: #848484;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .item-carrito div img {
   width: 100%;
