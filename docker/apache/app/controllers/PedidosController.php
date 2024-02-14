@@ -17,6 +17,13 @@
                 $db = Pedido::staticConectar();
                 $result = Pedido::listarDetallesPedido($db,$id);
                 $productsInfo = Pedido::listarDetallesProductos($db, $result);
+                foreach ($result as $key => $value) {
+                    if (isset($productsInfo[$key][0]['productname'])) {
+                        $result[$key]['productname'] = $productsInfo[$key][0]['productname'];
+                    } else {
+                        $result[$key]['productname'] = 'Nombre producto no encontrado';
+                    }
+                }
                 $datosCustomer = Usuario::detallesUser($db, $email);
                 require_once "views/admin/listarDetallesPedidos.php";
 
