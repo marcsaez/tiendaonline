@@ -10,7 +10,7 @@
     - ```$password = 'password';```
     
 ## USO
-Ejecutamos ```docker compose build .``` estando en el mismo path que el docker-compose.yml
-Luego levantamos los contenedores con ```docker compose up -d```
-Para importar el archivo manga.sql tenemos que copiar el archivo con ```docker cp manga.sql ${ID_CONTENEDOR_PSQL}:.```
-Nos conectamos al contenedor con ```docker exec -it ${ID_CONTENEDOR_PSQL} bash```
+### Ejecutamos ```docker compose build .``` estando en el mismo path que el docker-compose.yml
+### Luego levantamos los contenedores con ```docker compose up -d```
+### Para importar el archivo manga.sql tenemos que copiar el archivo con ```docker cp manga.sql ${ID_CONTENEDOR_PSQL}:.```
+### Nos conectamos al contenedor con ```docker exec -it ${ID_CONTENEDOR_PSQL} bash```
