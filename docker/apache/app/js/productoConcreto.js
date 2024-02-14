@@ -1,13 +1,83 @@
 import Carrito from './carrito.js';
 const btnAnadirCarritoNoLog = document.getElementById('btnAnadirNoLog');
 const btnAnadirCarrito = document.getElementById('btnAnadir');
-const btnAddOne = document.getElementById('btn-addOne');
+const btnAddOne = document.querySelectorAll('.btn-addOne');
+const btnAddOneNoLog = document.querySelectorAll('.btn-addOneNoLog');
 let productIdAddOne = document.getElementById('idAddOne');
+let productNombreAddOne = document.getElementById('nombreAddOne');
 let precioProducto = document.getElementById('precioProducto');
 let inputCantidad = document.getElementById('cantidad');
 let nombreProducto = document.getElementById('nombreProd');
 let productoID = document.getElementById('idDelProducto');
 let stockTotal = document.getElementById('stockMaximo');
+
+function anadirUno() {
+    // Obtener los valores de los elementosyy
+    let nombreProductoValue = "AddOne";
+    let inputCantidadValue = 1;
+    let productoIDValue = productIdAddOne.value;
+    let diccionario = {
+        [nombreProductoValue]: {
+            id: productoIDValue,
+            cantidad: inputCantidadValue
+        }
+    };
+    let diccionarioJSON = JSON.stringify(diccionario);
+    let carrito = new Carrito(diccionarioJSON);
+    carrito.insertarUnProducto();
+};
+
+function anadirUnoNoLog(){
+    let nombreProductoValue = productNombreAddOne.value;
+    let inputCantidadValue = 1;
+    let productoIDValue = productIdAddOne.value;
+    // Obtener el carrito del sessionStorage
+    let carrito = sessionStorage.getItem('carrito');
+    carrito = carrito ? JSON.parse(carrito) : {};
+    // Verificar si ya existe el producto en el carrito
+    if(carrito.hasOwnProperty(nombreProductoValue)) {
+        // Si existe, agregar la cantidad
+        carrito[nombreProductoValue].cantidad += inputCantidadValue;
+    } else {
+        // Si no existe, agregar un nuevo producto al carrito
+        carrito[nombreProductoValue] = {
+            id: productoIDValue,
+            cantidad: inputCantidadValue
+        };
+    }
+    sessionStorage.setItem('carrito', JSON.stringify(carrito));
+};
+if(btnAddOne != null){
+    btnAddOne.forEach(function(boton) {
+        // Agrega un event listener para el evento de clic a cada botón
+        boton.addEventListener('click', anadirUno);
+    });
+}
+
+if (btnAddOneNoLog != null) {
+    btnAddOneNoLog.forEach(function(boton) {
+        boton.addEventListener('click', function(event) {
+            let clickedButton = event.target;
+            let parentDiv = clickedButton.closest('.top-card'); // Busca el div padre con la clase 'top-card'
+            let nombreProductoValue = parentDiv.querySelector('#nombreAddOne').value; // Obtiene el valor del input con id 'nombreAddOne' dentro del div padre
+            let productoIDValue = parentDiv.querySelector('#idAddOne').value; // Obtiene el valor del input con id 'idAddOne' dentro del div padre
+            let inputCantidadValue = 1;
+            let carrito = sessionStorage.getItem('carrito');
+            carrito = carrito ? JSON.parse(carrito) : {};
+
+            if (carrito.hasOwnProperty(nombreProductoValue)) {
+                carrito[nombreProductoValue].cantidad += inputCantidadValue;
+            } else {
+                carrito[nombreProductoValue] = {
+                    id: productoIDValue,
+                    cantidad: inputCantidadValue
+                };
+            }
+
+            sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        });
+    });
+}
 
 
 let intervalId; // Variable global para almacenar el ID del intervalo
@@ -118,23 +188,7 @@ if(btnAnadirCarrito != null){
     });
 }
 
-btnAddOne.addEventListener('click', function () {
-    // Obtener los valores de los elementos
-    console.log("HOLA");
-    let nombreProductoValue = "AddOne";
-    let inputCantidadValue = 1;
-    let productoIDValue = productIdAddOne.value;
-    let diccionario = {
-        [nombreProductoValue]: {
-            id: productoIDValue,
-            cantidad: inputCantidadValue
-        }
-    };
-    let diccionarioJSON = JSON.stringify(diccionario);
-    carrito = new Carrito(diccionarioJSON);
-    carrito.insertarUnProducto();
-    
-});
+
 
 if(btnAnadirCarritoNoLog != null){
     btnAnadirCarritoNoLog.addEventListener('click', function () {
@@ -156,11 +210,7 @@ if(btnAnadirCarritoNoLog != null){
                 cantidad: inputCantidadValue
             };
         }
-        // Almacenar el carrito en el sessionStorage
         sessionStorage.setItem('carrito', JSON.stringify(carrito));
-        // let obtenerCarrito = sessionStorage.getItem('carrito');
-        // carrito = new Carrito(obtenerCarrito);
-        // carrito.ajaxCosas();
     });
 }
 
