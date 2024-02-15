@@ -71,6 +71,10 @@
                                 <td colspan="3">Total</td>
                                 <td><?php echo $totalPriceSum ?>€</td>
                             </tr>
+                            <tr>
+                                <!-- COLOR LILA SIEMPRE Y EN EL CENTRO PORFAVOR !--> 
+                                <th colspan="4"><a href="index.php?Controller=Pedidos&action=detallePedido&idpedido= <?php echo "$id" ?>&email=<?php echo "$email" ?>&valor=pdf&totalcost=<?php echo "$totalpriceSum" ?>">Descargar PDF</a></th>
+                            </tr>
                         </table>
                     </div>      
                 </section>
