@@ -62,6 +62,21 @@ class Pedido extends database{
         }
         return $resultados;
     }
+    public static function listarPedidos($db, $email){
+        try{
+            $stmt = $db->prepare("SELECT * FROM purchases WHERE customeremail = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $resultados = null;
+            }
+        }catch (Exception $e){
+            $resultados = null;
+        }
+        return $resultados;
+    }
 
     public static function listarPedidosFinalizados($db){
         try{
