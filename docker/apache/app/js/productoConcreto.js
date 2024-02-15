@@ -29,6 +29,7 @@ function anadirUno() {
     let diccionarioJSON = JSON.stringify(diccionario);
     let carrito = new Carrito(diccionarioJSON);
     carrito.insertarUnProducto();
+    //TO DO: Aqui ya se ha guardado el producto en la bdd, popup de confirmacion a continuacion
 };
 
 function anadirUnoNoLog(){
@@ -57,6 +58,8 @@ function anadirUnoNoLog(){
         };
     }
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        //TO DO: Aqui ya se ha guardado el producto en el storage, popup de confirmacion a continuacion
+
 };
 if(btnAddOne != null){
     btnAddOne.forEach(function(boton) {
@@ -177,8 +180,8 @@ if(btnAnadirCarrito != null){
         let diccionarioJSON = JSON.stringify(diccionario);
         carrito = new Carrito(diccionarioJSON);
         carrito.insertarUnProducto();
-        
     });
+    //TO DO: Aqui ya se ha guardado el producto en la bdd, popup de confirmacion a continuacion
 }
 
 
@@ -209,6 +212,7 @@ if(btnAnadirCarritoNoLog != null){
             };
         }
         sessionStorage.setItem('carrito', JSON.stringify(carrito));
+        //TO DO: Ya guardado en el sesion storage, aqui va el popup de confirmacion
     });
 }
 
