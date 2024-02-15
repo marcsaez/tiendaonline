@@ -1421,7 +1421,6 @@ form[name=registrarse] input[type=submit]:hover {
   height: 2.2rem;
   display: flex;
   align-items: center;
-  margin: 0.5rem;
   background-color: black;
   border-radius: 5px;
   border: none;
@@ -1751,8 +1750,62 @@ table.admin-table tr th {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+table.admin-table tr th:nth-child(7) {
+  text-align: center;
+}
 table.admin-table tr:nth-child(even) {
   background-color: #575757;
+}
+
+.table-scroll {
+  max-height: 38rem;
+  overflow-y: scroll;
+}
+
+/* Barra de desplazamiento */
+.table-scroll::-webkit-scrollbar {
+  width: 10px; /* ancho de la barra de desplazamiento */
+}
+
+/* Trazo de la barra */
+.table-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color de fondo de la barra de desplazamiento */
+}
+
+/* Barra misma */
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #888; /* color de la barra de desplazamiento */
+}
+
+/* Esquina entre la barra de desplazamiento y el borde del elemento */
+.table-scroll::-webkit-scrollbar-corner {
+  background: transparent; /* color de fondo de la esquina */
+}
+
+/* Pseudo-clase para la barra de desplazamiento al pasar el ratón sobre ella */
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color de la barra de desplazamiento al pasar el ratón */
+}
+
+/* Barra de desplazamiento */
+.table-scroll {
+  scrollbar-width: thin; /* ancho de la barra de desplazamiento */
+  scrollbar-color: #888 #f1f1f1; /* color de la barra y del trazo */
+}
+
+/* Trazo de la barra */
+.table-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color de fondo de la barra de desplazamiento */
+}
+
+/* Barra misma */
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #888; /* color de la barra de desplazamiento */
+}
+
+/* Pseudo-clase para la barra de desplazamiento al pasar el ratón sobre ella */
+.table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555; /* color de la barra de desplazamiento al pasar el ratón */
 }
 
 form[name=editarCategoria] {
@@ -1824,6 +1877,10 @@ form[name=editarCategoria] {
   margin: 0.5rem;
   border-radius: 5px;
   color: #CACACA;
+}
+
+.destacado {
+  text-align: center;
 }
 
 @media (max-width: 1024px) {

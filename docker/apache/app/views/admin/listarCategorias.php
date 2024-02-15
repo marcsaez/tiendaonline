@@ -92,7 +92,7 @@
                 </svg>
             </form>
         </section>
-        <section>
+        <section class="table-scroll">
             <table id="resultadosDivAdmin" class="admin-table">
                 <thead>
                     <tr>
