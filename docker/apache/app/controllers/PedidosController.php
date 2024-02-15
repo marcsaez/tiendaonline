@@ -14,6 +14,7 @@
                 $id = $_GET['idpedido'];
                 $email = $_GET['email'];
                 $totalcost = $_GET['totalcost'];
+                $valor = $_GET['valor'];
                 $db = Pedido::staticConectar();
                 $result = Pedido::listarDetallesPedido($db,$id);
                 $productsInfo = Pedido::listarDetallesProductos($db, $result);
@@ -25,7 +26,12 @@
                     }
                 }
                 $datosCustomer = Usuario::detallesUser($db, $email);
-                require_once "views/admin/listarDetallesPedidos.php";
+                if($valor == "pdf"){
+                    require_once "views/admin/facturas.php";
+                }else{
+                    require_once "views/admin/listarDetallesPedidos.php";
+                }
+                
 
             }
 
