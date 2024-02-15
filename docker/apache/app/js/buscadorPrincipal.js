@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var html = '';
         
         for (var i = 0; i < resultados.length; i++) {
-            html += '<a href= "index.php?Controller=Productos&action=productoConcreto&productID='+ resultados[i].productid+'"><p>'+ resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + '</p></a>';
+            html += '<a href= "index.php?Controller=Productos&action=productoConcreto&productID='+ resultados[i].productid+'"><p>'+ resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productprice + ' - ' +  resultados[i].productid + ' - ' + resultados[i].productimg +'</p></a>';
+
+            
         }
         
         resultadosDiv.innerHTML = html;

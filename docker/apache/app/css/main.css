@@ -1406,6 +1406,12 @@ form[name=registrarse] input[type=submit]:hover {
   width: 100%;
   border-collapse: collapse;
 }
+.resumen-carrito table tr td {
+  padding: 0.5rem;
+}
+.resumen-carrito table tr td:nth-child(2) {
+  padding: 0.5rem 0rem;
+}
 .resumen-carrito table tr:nth-last-child(2) td {
   padding: 0.5rem;
   border-bottom: 1px solid black;
@@ -1415,6 +1421,7 @@ form[name=registrarse] input[type=submit]:hover {
   height: 2.2rem;
   display: flex;
   align-items: center;
+  margin: 0.5rem;
   background-color: black;
   border-radius: 5px;
   border: none;

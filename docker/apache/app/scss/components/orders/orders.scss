@@ -141,7 +141,14 @@
         border-collapse: collapse;
         tr {
 
+            td {
+                padding: 0.5rem;
 
+                &:nth-child(2) {
+                    padding: 0.5rem 0rem;
+                }
+            }
+            
             &:nth-last-child(2) {
                 td {
                     padding: 0.5rem;
