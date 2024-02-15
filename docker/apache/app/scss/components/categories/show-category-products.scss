@@ -44,8 +44,8 @@
 }
 
 .grid-productos {
-    max-width: 14rem;
-    min-width: 14rem;
+    max-width: 13rem;
+    min-width: 13rem;
     @include grid(auto, auto auto auto 2.4rem);
     margin: 1rem;
     box-sizing: border-box;
