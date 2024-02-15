@@ -35,5 +35,5 @@ $content .= '<h3>Administrator signature:</h3><br/>';
 $content .= '<img src="./img/firmas/imagen_canvas.png" alt="Administrator signature" style="width:200px;height:200px;">';
 $content .= '</page_footer></page>';
 $html2pdf->writeHTML($content);
-$html2pdf->output('purchase-details.pdf');
+$html2pdf->output('Detalle-Factura.pdf');
 }
