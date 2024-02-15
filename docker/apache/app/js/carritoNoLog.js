@@ -49,7 +49,7 @@ function generarContenidoCarrito(carrito) {
             var producto = carrito[nombreProducto];
             var precioTotal = parseFloat(producto.cantidad) * parseFloat(producto.precio);
             contenidoHTML += `
-                <article class="item-carrito">
+                <article class="item-carrito" id="${producto.id}">
                     <div>
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                     </div>
