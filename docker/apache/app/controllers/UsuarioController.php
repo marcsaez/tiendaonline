@@ -65,7 +65,11 @@ class UsuarioController{
     }
 
     public function mostrarPerfil(){
-        require "views/general/perfil.php";
+        require_once "models/pedidos.php";
+        $db = Usuario::staticConectar();
+        $email = $_SESSION['userMail'];
+        $resultado = Pedido::listarPedidos($db, $email);
+        require_once "views/general/perfil.php";
     }
 }
 
