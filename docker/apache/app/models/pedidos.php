@@ -112,12 +112,16 @@ class Pedido extends database{
 
     public static function listarDetallesProductos($db, $carts){
         try{
-            foreach ($carts as $value){
-                $product = $value['fkproduct'];
-                $stmt = $db->prepare("SELECT * FROM products WHERE productid = :productid");
-                $stmt->bindParam(':productid', $product, PDO::PARAM_INT);
-                $stmt->execute();
-                $productosInfo[] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if($carts != null){
+                foreach ($carts as $value){
+                    $product = $value['fkproduct'];
+                    $stmt = $db->prepare("SELECT * FROM products WHERE productid = :productid");
+                    $stmt->bindParam(':productid', $product, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $productosInfo[] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+            }else{
+                $productosInfo = [];
             }
         }catch (Exception $e){
             $productosInfo = null;

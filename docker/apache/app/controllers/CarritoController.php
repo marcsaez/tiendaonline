@@ -32,6 +32,9 @@
             $carrito = Carrito::productosDelCarrito($db, $datos);
             $this->insertarPurchases2($carrito);
         }
+        public function deletePurchase(){
+            
+        }
         public function insertarPurchases(){
             $db = Carrito::staticConectar();
             $idPurchase = Carrito::comprobarPurchasesCliente($db, $_SESSION['userMail']);         

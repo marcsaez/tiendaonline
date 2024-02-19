@@ -138,6 +138,26 @@ class Carrito extends database{
         }
 
     }
+    public static function deletePedido($db, $productID, $customermail){
+        try {
+            $query = "SELECT purchaseid FROM purchases WHERE status = 0 AND customermail = :customermail ORDER BY creationdate DESC LIMIT 1";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':customermail', $customermail);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $purchaseID = $result['purchaseid'];
+                $stmtDelete = $db->prepare("DELETE FROM cart WHERE fkproduct = :product AND fkpurchase = :purchaseID");
+                $stmtDelete->bindParam(':purchaseID', $purchaseID);
+                $stmt->bindParam(':fkproduct', $productID);
+                $stmtDelete->execute();
+            } else {
+                echo "No se encontró ningún pedido para el cliente con el correo electrónico proporcionado.";
+            }
+        } catch (PDOException $e) {
+            echo "Error en la eliminación del pedido: " . $e->getMessage();
+        }
+    }
 
     public static function obtenerDatosCarrito($db, $email){
         
