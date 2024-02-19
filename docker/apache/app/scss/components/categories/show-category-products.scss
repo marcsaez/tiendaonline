@@ -102,3 +102,18 @@
         width: 4rem;
     }
 }
+
+.subcategorias {
+    display: flex;
+    align-items: center;
+
+    ul.subcategorias{
+        list-style-type: none;
+        margin-left: 0.5rem;
+        a{ text-decoration: none ;}
+    }
+}
+
+@media (max-width: 1024px) {
+    .list-categories-products { justify-content: center; }
+}

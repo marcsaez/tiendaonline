@@ -14,7 +14,7 @@
                 </li>
             </ul>
             <h1><?php echo $nombre; ?></h1>
-            <span></span>
+            <div></div>
         </section>
         <section class="product-filters">
             <span>
@@ -33,31 +33,34 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg> -->
             </span>
+            
             <span>Mostrando <?php echo (isset($products) && is_array($products)) ? count($products) : '0'; ?>
              articulos</span>
         </section>
+        <section>
+        <span class="subcategorias">Subcategorias: 
             <?php
             
             // SUBCATEGORIAS si existen
             if (isset($subcat) && is_array($subcat)){
-                // echo '<select id="subcategorias" name="subcategorias">';
-                // echo '<option value="" disabled selected>Subcategorias</option>';
-                echo '<div class="subcategorias">';
+              
+                echo "<ul class='subcategorias'>";
                 foreach ($subcat as $sub) {
                     $subid = $sub['categoryid'];
                     $subname = $sub['categoryname'];
                     $subfather = $sub['fkfathercategory'];
-                    // echo '<option value="'.$subid.'">'.$subname.'</option>';
                     echo '
-                    <div id="'.$subname.'">
+                    <li id="'.$subname.'">
                         <a id="'.$subname.'" href="index.php?Controller=Categorias&action=filtrar&categoria='.$subid.'&nombre='.$subname.'">'.$subname.'</a>
-                    </div>
+                    </li>
                     ';
             
                 }
-                echo '</div>';
+                echo "</ul>";
+                
             } ?>
-
+            </span>
+        </section>
         <section class="list-categories-products">
             <?php
             // PRODUCTOS

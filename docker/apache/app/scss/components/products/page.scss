@@ -52,6 +52,7 @@
 
             section {
                 display: flex;
+                flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
                 margin-top: 0.7rem;
@@ -191,5 +192,13 @@
 @media (max-width: 1024px) {
     .reference-product {
         flex-direction: column;
+    }
+
+    .pagina-producto {
+        section {
+            &:nth-child(3){
+                margin-left: 1rem;
+            }
+        }
     }
 }

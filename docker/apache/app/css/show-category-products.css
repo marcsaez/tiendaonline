@@ -108,4 +108,22 @@
 }
 .product-not-found svg {
   width: 4rem;
+}
+
+.subcategorias {
+  display: flex;
+  align-items: center;
+}
+.subcategorias ul.subcategorias {
+  list-style-type: none;
+  margin-left: 0.5rem;
+}
+.subcategorias ul.subcategorias a {
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .list-categories-products {
+    justify-content: center;
+  }
 }/*# sourceMappingURL=show-category-products.css.map */
