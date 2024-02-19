@@ -49,7 +49,7 @@ function generarContenidoCarrito(carrito) {
             var producto = carrito[nombreProducto];
             var precioTotal = parseFloat(producto.cantidad) * parseFloat(producto.precio);
             contenidoHTML += `
-                <article class="item-carrito" id="${producto.id}">
+                <article class="item-carrito" id="${producto.nombre}">
                     <div>
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                     </div>
@@ -97,3 +97,38 @@ function generarContenidoCarrito(carrito) {
     // Insertar el contenido generado dentro del div con el id 'resumen-compra'
     document.getElementById('sectionFantasma').innerHTML = contenidoHTML;
 }
+// Función para eliminar un producto del carrito y actualizar la vista
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para eliminar un producto del carrito y actualizar la vista
+    function eliminarProducto(event) {
+        // Obtener el artículo que contiene la información del producto
+        var productoElemento = event.target.closest('.item-carrito');
+
+        // Obtener el nombre del producto a eliminar
+        var nombreProducto = productoElemento.id;
+
+        // Obtener el carrito desde el sessionStorage
+        var carrito = obtenerCarritoDesdeSessionStorage();
+
+        // Eliminar el producto del carrito usando su nombre
+        delete carrito[nombreProducto];
+
+        // Actualizar el sessionStorage con el carrito actualizado
+        sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+        // Eliminar el elemento HTML correspondiente al producto eliminado
+        productoElemento.remove();
+
+        // Actualizar el resumen del carrito
+        generarResumenCarrito(carrito);
+    }
+
+    // Delegación de eventos para manejar clics en los botones de eliminar
+    document.getElementById('sectionFantasma').addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('action-eliminar')) {
+            eliminarProducto(event);
+        }
+    });
+});
+
+
