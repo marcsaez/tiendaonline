@@ -64,8 +64,6 @@
                         <label for="nombre-editar">Nombre</label>
                         <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
                     </div>
-                    <!-- <label for="categoriaPadre">Categoria Padre:</label>
-                    <input type="text" name="categoriaPadre-editar" id="categoriaPadre-editar" class="input"> -->
                     <div>
                         <?php
                             echo '<label for="categoriaPadre-editar">ID de la Categoria padre</label>';
@@ -80,8 +78,10 @@
                         ?>
                     </div>
                     <div>
-                        <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
                         <input type="submit" class="btn-submit" value="Guardar">
+                    </div>
+                    <div>
+                        <button id="cancelar-edit-categoria" class="btn-cancelar">Cancelar</button>
                     </div>
                 </form>
             </fieldset>
