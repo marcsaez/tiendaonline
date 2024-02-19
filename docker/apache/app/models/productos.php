@@ -134,7 +134,7 @@ class Productos extends database{
     // Update Producte
     public function actualizarProducto() {
         try {
-            if($this->imagen == null){
+            if($this->imagen === null){
                 $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
                 if($this->destacado){
                     $destacado1 = 1;
