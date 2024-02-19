@@ -57,7 +57,6 @@
                     <textarea id="descripcion" name="descripcion" maxlength="255" class="input" required></textarea>
                 </div>
                 <div>
-                    <button class="btn-cancelar">Cancelar</button>
                     <button type="submit" class="btn-submit">Añadir Producto</button>
                 </div>
             </form>

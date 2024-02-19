@@ -1813,6 +1813,12 @@ form[name=editarCategoria] {
   grid-template-columns: 2.5rem auto 12rem repeat(2, 5rem);
   -moz-column-gap: 1rem;
        column-gap: 1rem;
+  align-items: center;
+}
+form[name=editarCategoria] label {
+  color: white;
+  font-weight: 600;
+  font-size: small;
 }
 
 #anadirCategoria {
@@ -1834,6 +1840,9 @@ form[name=editarCategoria] {
 }
 #anadirCategoria fieldset form input, #anadirCategoria fieldset form select, #anadirCategoria fieldset form button {
   background-color: #575757;
+}
+#anadirCategoria fieldset form button {
+  text-align: center;
 }
 
 #datos-usuario {
