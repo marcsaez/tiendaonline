@@ -1,3 +1,5 @@
+@import '../../mixin.scss';
+
 .input {
     width: 100%;
     background-color: #3F3F3F;
@@ -72,7 +74,11 @@ option {
 .btn-cancelar {
     border: none;
     background-color: transparent;
-    color: white;
     margin-right: 1rem;
+    
+    > a {
+        color: white;
+        text-decoration: none;
+    }
 }
 

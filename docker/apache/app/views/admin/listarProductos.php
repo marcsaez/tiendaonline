@@ -28,13 +28,13 @@
                     <th>ID</th>
                     <th>Foto</th>
                     <th>Nombre</th>
-                    <th>Categoria</th>
+                    <th class="hidden">Categoria</th>
                     <th>Stock</th>
                     <th>Precio</th>
                     <th class="destacado">Destacado</th>
                     <th>Estado</th>
                     <th>Editar</th>
-                    <th>Cambiar Estado</th>
+                    <th>Desactivar</th>
                 </tr>            
     <?php
     if (isset($allproducts) && is_array($allproducts)) {
@@ -53,7 +53,7 @@
                     echo"<td>$idproduct</td>";
                     echo"<td><img src='$imagen' alt='Imagen de $nombre'></td>";
                     echo"<td>$nombre</td>";
-                    echo"<td>$categoria</td>";
+                    echo"<td class='hidden'>$categoria</td>";
                     echo"<td>".$stock."u</td>";
                     echo"<td>".$precio."€</td>";
 
@@ -80,7 +80,7 @@
                     
                     $eliminar_html = '<td><a href="index.php?Controller=Productos&action=paginaEliminar&id=' . $idproduct . '&activo='. $isActive .'" class="eliminar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 0a1 1 0 0 1 1 1v5.3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1zM5.707 3.707a1 1 0 1 1 1.414-1.414l3.3 3.3a1 1 0 0 1 0 1.414l-3.3 3.3a1 1 0 1 1-1.414-1.414L8.586 7 5.707 4.121zM11 10a1 1 0 0 1 1 1h5.3a1 1 0 0 1 0-2H12a1 1 0 0 1-1 1zM15.293 13.707a1 1 0 0 1-1.414-1.414l3.3-3.3a1 1 0 0 1 1.414 1.414l-3.3 3.3a1 1 0 0 1-1.414 0zM10 15a1 1 0 0 1-1-1V8.7a1 1 0 0 1 2 0V14a1 1 0 0 1-1 1z" clip-rule="evenodd" />
-                  </svg>Modificar</a></td>';
+                  </svg>Desactivar</a></td>';
                     
                     echo $destacado_html . $activo_html . $editar_html . $eliminar_html;
                     

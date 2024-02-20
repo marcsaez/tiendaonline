@@ -1564,8 +1564,11 @@ option {
 .btn-cancelar {
   border: none;
   background-color: transparent;
-  color: white;
   margin-right: 1rem;
+}
+.btn-cancelar > a {
+  color: white;
+  text-decoration: none;
 }
 
 #loginAdmin {
@@ -1919,8 +1922,15 @@ form[name=editarCategoria] label {
   .admin-content {
     margin-left: 6.25rem;
   }
+  .admin-content fieldset {
+    margin: 1rem;
+    height: 31rem;
+  }
   table.admin-table {
     overflow-x: visible;
+  }
+  #descripcion {
+    height: 6rem;
   }
 }
 #lienzo {
