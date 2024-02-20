@@ -53,9 +53,32 @@
         public function editarProductos(){
             if(isset($_POST)){
                 require_once "models/productos.php";
+                if($_FILES['imagen']['size'] == 0){
+                    $imagen = null;
+                    $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $producto->conectar();
+                $allproducts = $producto->actualizarProducto();
+                if ($allproducts){
+                    ?>
+                    <script>
+                        alert("Producto editado correctamente");
+                    </script>
+                    <?php
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
+                    
+                } else{
+                    ?>
+                    <script>
+                        alert("Error en el editado de los datos");
+                    </script>
+                    <?php
+                    echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
+                }
+                } else{
                 $imagen_ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
                 $imagen_path = 'img/productos/' . $_POST['id'] .'.'. $imagen_ext;
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
+                
 
                 $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
@@ -75,6 +98,7 @@
                     </script>
                     <?php
                     echo "<meta http-equiv='refresh' content='0;url=index.php?Controller=Productos&action=listarProductos'>";
+                }
                 }
             }
         }
@@ -211,6 +235,19 @@
                 $datos[] = ['y' => $contadorProduct, 'label' => $nombreCategoria];
             }
             return $datos; // Devuelve los datos recopilados
+        }
+        public static function sumarProducts(){
+            require_once "models/productos.php";
+            require_once "models/categorias.php";
+            $db = Productos::staticConectar();
+            $categoriasActivas = Categoria::todasCategorias($db);
+            $datossuma = [];
+            foreach ($categoriasActivas as $categoria) {
+                $contadorProduct = Productos::sumarProductos($db, $categoria);
+                $nombreCategoria = Categoria::nombreCategorias($db,$categoria); // Asegúrate de usar el nombre de la clase con mayúscula inicial
+                $datossuma[] = ['y' => $contadorProduct, 'indexLabel' => $nombreCategoria];
+            }
+            return $datossuma; // Devuelve los datos recopilados
         }
         
        

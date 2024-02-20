@@ -322,5 +322,19 @@ class Productos extends database{
         return $count;
 
     }
+    public static function sumarProductos($db, $categoria){
+        try{
+            $stmt =$db->prepare("SELECT SUM(productstock) FROM products WHERE fkcategories = :categoria");
+            $stmt->bindParam(':categoria', $categoria, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $suma = $stmt->fetchColumn();
+            
+        } catch (Exception $e){
+            $suma = true;
+        }
+        return $suma;
+
+    }
 }
 ?>
