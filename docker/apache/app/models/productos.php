@@ -136,34 +136,25 @@ class Productos extends database{
         try {
             if($this->imagen === null){
                 $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
-                if($this->destacado){
-                    $destacado1 = 1;
-                }else{
-                    $destacado1 = 0;
-                }   
+                   
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindParam(':nombre', $this->nombre);
                 $stmt->bindParam(':descripcion', $this->descripcion);
                 $stmt->bindParam(':stock', $this->stock);
-                $stmt->bindParam(':destacado', $destacado1);
+                $stmt->bindParam(':destacado',$this->destacado);
                 $stmt->bindParam(':precio', $this->precio);
                 $stmt->bindParam(':categoria', $this->categoria);
                 $stmt->bindParam(':id', $this->idproducto);
                 $stmt->execute();
                 $retorno = true;
             }else{
-                    $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productImg = :imagen, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id";
-                if($this->destacado){
-                    $destacado1 = 1;
-                }else{
-                    $destacado1 = 0;
-                }   
+                    $sql = "UPDATE products SET productName = :nombre, productDescription = :descripcion, productImg = :imagen, productStock = :stock, productNoted = :destacado, productPrice = :precio, fkCategories = :categoria WHERE productid = :id"; 
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindParam(':nombre', $this->nombre);
                 $stmt->bindParam(':descripcion', $this->descripcion);
                 $stmt->bindParam(':imagen', $this->imagen);
                 $stmt->bindParam(':stock', $this->stock);
-                $stmt->bindParam(':destacado', $destacado1);
+                $stmt->bindParam(':destacado',$this->destacado);
                 $stmt->bindParam(':precio', $this->precio);
                 $stmt->bindParam(':categoria', $this->categoria);
                 $stmt->bindParam(':id', $this->idproducto);
