@@ -65,7 +65,9 @@
                                         <td><?php echo $value['totalprice'] ?>€</td>
                                     </tr>
                                     <?php
+                                    
                                 }
+                                $purchaseid = $_GET['idpedido'];
                             ?>
                             <tr>
                                 <td colspan="3">Total</td>
@@ -74,7 +76,16 @@
                             <tr>
                                 <!-- COLOR LILA SIEMPRE Y EN EL CENTRO PORFAVOR !--> 
                                 <th colspan="4"><a href="index.php?Controller=Pedidos&action=detallePedido&idpedido= <?php echo "$id" ?>&email=<?php echo "$email" ?>&valor=pdf&totalcost=<?php echo "$totalpriceSum" ?>">Descargar PDF</a></th>
+
                             </tr>
+                            
+                            <form enctype="multipart/form-data" action="index.php?Controller=Carrito&action=enviarPedido" method="post">
+                            <label for="destacado">Enviar pedido?</label>
+                            Si <input type="checkbox" id="opcional" name="opcional">
+            
+                            <input type="hidden" id="purchaseid" name="id" value="<?php echo $purchaseid; ?>">
+                            <br><button type="submit">Enviar</button>
+                            </form>
                         </table>
                     </div>      
                 </section>
