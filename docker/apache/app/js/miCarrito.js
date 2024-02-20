@@ -53,6 +53,7 @@ function actualizarResumenCompra() {
         });
         
         document.getElementById('precio-total-compra').textContent = totalCompra.toFixed(2) + '€';
+        document.getElementById('costoTotalCompra').value = totalCompra.toFixed(2);
     }
 
     // Función para actualizar las cantidades en el resumen
