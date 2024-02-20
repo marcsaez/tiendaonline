@@ -172,3 +172,14 @@
         }
     }
 }
+#finalizar_compra_noLog, .finalizar-compra{
+    width: 100%;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    
+    @include btn-primary;
+    svg {
+        width: 1.2rem;
+    }
+}

@@ -109,7 +109,7 @@
         <section class="mas-productos-container">
             <h2>Mas <span><?php echo $nombreCategoria?></span></h2>
             <?php
-                if(isset($masProds) && is_array($masProds)){
+                if(isset($masProds) && is_array($masProds) && !empty($masProds)){
                     echo '<div class="mas-productos">';
                     foreach ($masProds as $producto){
                         if ($producto['productnoted'] == 1){
