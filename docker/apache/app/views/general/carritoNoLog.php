@@ -5,7 +5,7 @@
 <main class="page-grid">
     <div></div>
     <section>
-        <h1 class="page-title">Mi Carrito (<span id="numero-entradas-carrito"></span>)</h1>
+        <h1 class="page-title">Mi Carrito</h1>
         <div id="resumen-compra">
             <section id="sectionFantasma">
             </section>
