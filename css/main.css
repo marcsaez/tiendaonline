@@ -1995,13 +1995,6 @@ form[name=editarCategoria] label {
   background-color: #575757;
 }
 
-.graficos-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
 @media (max-width: 1024px) {
   #canvas-container {
     flex-direction: column;

@@ -52,7 +52,7 @@
             animationEnabled: true,
             title: {
                 text: "Productos por categoría",
-                horizontalAlign: "left"
+                horizontalAlign: "center"
             },
             data: [{
                 type: "doughnut",
