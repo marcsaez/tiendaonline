@@ -14,9 +14,8 @@
     var datosJson = <?php echo json_encode($datos); ?>;
     var datosJson1 = <?php echo json_encode($datos1); ?>;
   </script>
-  <div id="Grafico1">
-    <script src="./js/canvasCirculo.js"></script>
-    <script src="./js/canvasStock.js"></script>
+  <div id= "chartContainer1">
   </div>
+  <script src="./js/canvasStock.js"></script>
 </main>
 
