@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Actualizar el resumen del carrito
         generarResumenCarrito(carrito);
+        generarContenidoCarrito(carrito);
     }
 
     // Delegación de eventos para manejar clics en los botones de eliminar

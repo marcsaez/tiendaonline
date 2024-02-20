@@ -12,12 +12,10 @@
         }
         public function abrirCarrito(){
             $db = Carrito::staticConectar();
-            
             if (isset($_SESSION['userMail'])) {
                 $email = $_SESSION['userMail'];
                 $datosCarrito = Carrito::obtenerDatosCarrito($db, $email);
             }
-
             require_once 'views/general/carrito.php';
         }
         public function abrirCarritoNoLog(){
@@ -33,7 +31,9 @@
             $this->insertarPurchases2($carrito);
         }
         public function deletePurchase(){
-            
+            $db = Carrito::staticConectar();
+            $delete = Carrito::deletearProductoPurchase($db, $_GET['productIDdelete'], $_GET['purchaseIDdelete']);
+            $this->abrirCarrito();
         }
         public function insertarPurchases(){
             $db = Carrito::staticConectar();

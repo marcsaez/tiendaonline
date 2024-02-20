@@ -8,7 +8,7 @@ function obtenerCarritoDesdeSessionStorage() {
 function generarResumenCarrito(carrito) {
     var contenidoHTML = '';
     var totalCompra = 0;
-    
+    console.log("Generando...")
     for (var nombreProducto in carrito) {
         if (carrito.hasOwnProperty(nombreProducto)) {
             var producto = carrito[nombreProducto];
@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('carrito', JSON.stringify(carrito));
         // Eliminar el elemento HTML correspondiente al producto eliminado
         productoElemento.remove();
-        productoElementoResumen.remove();
         // Actualizar el resumen del carrito
         generarContenidoCarrito(carrito);
         generarResumenCarrito(carrito);

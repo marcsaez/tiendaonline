@@ -138,6 +138,16 @@ class Carrito extends database{
         }
 
     }
+    public static function deletearProductoPurchase($db, $productID, $purchaseID){
+        try{
+            $stmt = $db->prepare("DELETE FROM cart WHERE fkpurchase = :purchaseid AND fkproduct = :productid; ");
+            $stmt->bindParam(':purchaseid', $purchaseID);
+            $stmt->bindParam(':productid', $productID);
+            $stmt->execute();
+        }catch(Exception $e){
+            echo "Error en la eliminacion del producto: $e";
+        }
+    }
     public static function deletePedido($db, $productID, $customermail){
         try {
             $query = "SELECT purchaseid FROM purchases WHERE status = 0 AND customermail = :customermail ORDER BY creationdate DESC LIMIT 1";
