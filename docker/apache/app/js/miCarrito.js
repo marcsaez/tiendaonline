@@ -1,41 +1,86 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var elementosPrecioTotalProducto = document.querySelectorAll('.precio-total-producto');
-    var totalCompra = 0;
-
-    elementosPrecioTotalProducto.forEach(function(elemento) {
-        var precioProducto = elemento.textContent.replace('€', '').trim();
-        totalCompra += parseFloat(precioProducto);
-    });
-
-    document.getElementById('precio-total-compra').textContent = totalCompra.toFixed(2) + '€';
-
-    let inputCantidad = document.getElementById('cantidad');
-    let stockTotal = document.getElementById('stockMaximo');
     
-    function ajustarCantidad(incremento) {
-        let cantidadActual = parseInt(inputCantidad.value);
-        let stockMax = parseInt(stockTotal.value);
+// Función para actualizar el resumen de la compra
+function actualizarResumenCompra() {
+    // Obtener todos los elementos de cantidad en el resumen
+    const cantidadesResumen = document.querySelectorAll('.cantidad-resumen');
+    // Obtener todos los elementos de precio total en el resumen
+    const precioTotalProducto = document.querySelectorAll('.precio-total-producto');
+    // Obtener todos los elementos de precio unitario en el resumen
+    const preciosUnitarios = document.querySelectorAll('.precio-unitario');
+
+    // Recorrer los productos en el resumen
+    cantidadesResumen.forEach((cantidadElement, index) => {
+        // Obtener la cantidad del producto
+        const cantidadText = cantidadElement.textContent;
+        console.log('Cantidad:', cantidadText); // Debugging
+        const cantidad = parseFloat(cantidadText);
     
-        if (incremento && cantidadActual < stockMax) {
-            inputCantidad.value = cantidadActual + 1;
-        } else if (!incremento && cantidadActual > 1) {
-            inputCantidad.value = cantidadActual - 1;
+        // Obtener el precio unitario del producto del artículo correspondiente
+        const precioUnitarioText = preciosUnitarios[index].textContent.replace('€', '').trim();
+        const precioUnitario = parseFloat(precioUnitarioText);
+        console.log('Precio unitario:', precioUnitarioText); // Debugging
+    
+        // Verificar si los valores son números válidos
+        console.log('Es cantidad un número válido:', !isNaN(cantidad));
+        console.log('Es precio unitario un número válido:', !isNaN(precioUnitario));
+    
+        // Calcular el precio total del producto si los valores son números válidos
+        if (!isNaN(cantidad) && !isNaN(precioUnitario)) {
+            const precioTotal = cantidad * precioUnitario;
+            console.log('Precio total:', precioTotal); // Debugging
+    
+            // Actualizar el precio total del producto en el resumen
+            precioTotalProducto[index].textContent = precioTotal.toFixed(2) + '€';
+        } else {
+            console.error('La cantidad o el precio unitario no son números válidos.');
         }
+    });
+
+    // Actualizar el total de la compra en el resumen
+    actualizarPrecioResumen();
+}
+
+
+    // Función para actualizar el precio total de la compra en el resumen
+    function actualizarPrecioResumen() {
+        var elementosPrecioTotalProducto = document.querySelectorAll('.precio-total-producto');
+        var totalCompra = 0;
+
+        elementosPrecioTotalProducto.forEach(function(elemento) {
+            var precioProducto = elemento.textContent.replace('€', '').trim();
+            totalCompra += parseFloat(precioProducto);
+        });
+        
+        document.getElementById('precio-total-compra').textContent = totalCompra.toFixed(2) + '€';
     }
-    
-    const restarCantidadBtn = document.getElementById('restar-cantidad');
-    const sumarCantidadBtn = document.getElementById('sumar-cantidad');
-    
-    restarCantidadBtn.addEventListener('click', () => ajustarCantidad(false));
-    sumarCantidadBtn.addEventListener('click', () => ajustarCantidad(true));
-    
-    restarCantidadBtn.addEventListener('mousedown', () => {
-        intervalId = setInterval(() => ajustarCantidad(false), 200); // Llama a ajustarCantidad(false) cada 200 ms
+
+    // Función para actualizar las cantidades en el resumen
+    function actualizarCantidadResumen() {
+        // Obtener todos los elementos de cantidad en el resumen
+        const cantidadesResumen = document.querySelectorAll('.cantidad-resumen');
+        // Obtener todos los inputs de cantidad en la página
+        const inputsCantidad = document.querySelectorAll('.cantidad');
+
+        // Recorrer los inputs de cantidad y actualizar los elementos en el resumen
+        inputsCantidad.forEach((input, index) => {
+            cantidadesResumen[index].textContent = input.value;
+        });
+    }
+
+    // Delegación de eventos para manejar cambios en la cantidad
+    document.getElementById('resumen-compra').addEventListener('input', function(event) {
+        if (event.target && event.target.classList.contains('cantidad')) {
+            // Actualizar el resumen del carrito
+            actualizarCantidadResumen();
+            actualizarResumenCompra();
+        }
     });
+
+    // Llamar a la función inicialmente para sincronizar las cantidades
+    actualizarCantidadResumen();
+    actualizarResumenCompra();
     
-    sumarCantidadBtn.addEventListener('mousedown', () => {
-        intervalId = setInterval(() => ajustarCantidad(true), 200); // Llama a ajustarCantidad(true) cada 200 ms
-    });
 
     // Función para eliminar un producto del carrito y actualizar la vista
     function eliminarProducto(event) {

@@ -33,24 +33,10 @@
                                     <p>Disponibilidad: '.$stock.'</p>
                                 </div>
                                 <div>
-                                    <p>Precio unitario: '.$product['productprice'].'€</p>
+                                    <p>Precio unitario: <span class="precio-unitario">'.$product['productprice'].'</span></p>
                                 </div>
                                 <div class="grid-area-cantidad">
-                                    
-                                    <div class="containerCantidad">
-                                        <button id="restar-cantidad">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                                            </svg>
-                                        </button>
-                                        <input type="text" id="cantidad" value="1" min="1">
-                                        <button id="sumar-cantidad">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    
+                                    <input type="number" class="cantidad" name="cantidad" id="cantidad" value='.$product['amount'].'>
                                 </div>
                                 <div>
                                     <p>Precio Total: '.$product['totalprice'].'€</p>
@@ -76,15 +62,17 @@
                 <table>
                     <form action="">
                     <?php 
-                        foreach ($datosCarrito as $product) {
-                            echo '
-                                <tr>
-                                    <td>'.$product['amount'].'</td>
-                                    <td>x</td>
-                                    <td>'.$product['productname'].'</td>
-                                    <td class="precio-total-producto">'.$product['totalprice'].'€</td>
-                                </tr>
-                            ';
+                        if(isset($datosCarrito) && is_array($datosCarrito)){
+                            foreach ($datosCarrito as $product) {
+                                echo '
+                                    <tr>
+                                        <td class="cantidad-resumen">'.$product['amount'].'</td>
+                                        <td>x</td>
+                                        <td>'.$product['productname'].'</td>
+                                        <td class="precio-total-producto">'.$product['totalprice'].'€</td>
+                                    </tr>
+                                ';
+                            }
                         }
                     ?>
                     <tr>
