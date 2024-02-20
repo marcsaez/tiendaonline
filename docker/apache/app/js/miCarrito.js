@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('precio-total-compra').textContent = totalCompra.toFixed(2) + '€';
-
+    document.getElementById('costoTotalCompra').setAttribute('value',totalCompra.toFixed(2));
     let inputCantidad = document.getElementById('cantidad');
     let stockTotal = document.getElementById('stockMaximo');
     

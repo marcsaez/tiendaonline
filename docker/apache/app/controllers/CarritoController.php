@@ -21,6 +21,14 @@
         public function abrirCarritoNoLog(){
             require_once 'views/general/carritoNoLog.php';
         }
+        public function procesarCompra(){
+            $db=Carrito::staticConectar();
+            $ejecutarCompra=Carrito::cambiarStatusCompra($db, $_POST['purchaseIDFK'], $_POST['costoTotalCompra']);
+            if($ejecutarCompra==true){
+                $idPurchase = Carrito::comprobarPurchasesCliente($db, $_SESSION['userMail']);         
+            }
+            echo'<meta http-equiv="refresh" content="0; url=index.php">';
+        }
         public function obtenerDatosProductosCarritoDos(){ 
             ob_clean();
             header("Content-Type: application/json");

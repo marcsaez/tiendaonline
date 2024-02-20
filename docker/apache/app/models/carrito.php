@@ -100,6 +100,7 @@ class Carrito extends database{
         return $productosEnCarrito;
     }
     public static function comprobarPurchasesCliente($db, $userMail){
+        $purchaseID=null;
         try {
             $stmt = $db->prepare("SELECT purchaseid FROM purchases WHERE customeremail = :mail AND status = 0");
             $stmt->bindParam(':mail', $userMail);
@@ -137,6 +138,21 @@ class Carrito extends database{
             echo "Error en la insercion del pedido: $e";
         }
 
+    }
+    public static function cambiarStatusCompra($db, $purchaseID, $costoTotal){
+        $return = false;
+        try{
+            $stmt=$db->prepare("UPDATE purchases SET status = :status, totalcost = :costoFinal WHERE purchaseid =:purchaseID");
+            $status=1;
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':costoFinal', $costoTotal);
+            $stmt->bindParam(':purchaseID', $purchaseID);
+            $stmt->execute();
+            $return=true;
+        }catch(Exception $e){
+            echo "Error en el cambio del  status del purchase: $e";
+        }
+        return $return;
     }
     public static function deletearProductoPurchase($db, $productID, $purchaseID){
         try{
