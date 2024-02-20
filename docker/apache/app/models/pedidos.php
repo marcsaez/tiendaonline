@@ -50,7 +50,7 @@ class Pedido extends database{
 
     public static function listarPedidosPendientes($db){
         try{
-            $stmt = $db->prepare("SELECT * FROM purchases WHERE status=0 ORDER BY purchaseid");
+            $stmt = $db->prepare("SELECT * FROM purchases ORDER BY purchaseid");
             $stmt->execute();
             if($stmt->rowCount() > 0){
                 $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
