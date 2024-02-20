@@ -68,7 +68,7 @@ function generarContenidoCarrito(carrito) {
                         <input type="number" class="cantidad" name="cantidad" id="cantidad" min="1" value='${producto.cantidad}'>
                     </div>
                     <div>
-                        <p>Precio Total: ${precioTotal.toFixed(2)}€</p>
+                        <p></p>
                     </div>
                     <div>
                         <button class="action-eliminar">

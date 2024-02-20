@@ -233,6 +233,59 @@ form[name=editarCategoria] label {
   color: #CACACA;
 }
 
+.pagado, .no-pagado {
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+  width: 6.6rem;
+}
+.pagado svg, .no-pagado svg {
+  margin-right: 5px;
+}
+
+.pagado {
+  background-color: #228b22;
+}
+
+.no-pagado {
+  background-color: #ee8f00;
+}
+
+#form-enviar {
+  display: flex;
+  align-items: center;
+}
+#form-enviar > label, #form-enviar input, #form-enviar button {
+  margin: 0rem 1rem;
+}
+
+#btn-enviar {
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: small;
+}
+#btn-enviar:hover {
+  background-color: #3F3F3F;
+}
+#btn-enviar svg {
+  width: 1.2rem;
+  margin-right: 0.2rem;
+}
+
 .destacado {
   text-align: center;
 }

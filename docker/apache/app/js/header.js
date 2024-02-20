@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     
-    //document.getElementById('usuarioPassword').addEventListener('keyup', validarPassword);
-    //document.getElementById('usuarioPasswordRepeat').addEventListener('keyup', validarPassword);
+    document.getElementById('usuarioPassword').addEventListener('keyup', validarPassword);
+    document.getElementById('usuarioPasswordRepeat').addEventListener('keyup', validarPassword);
 
 });
 

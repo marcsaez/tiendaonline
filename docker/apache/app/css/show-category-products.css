@@ -15,6 +15,7 @@
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
+  justify-content: end;
 }
 .product-filters svg {
   width: 1.5rem;
@@ -26,11 +27,6 @@
 }
 .product-filters span:first-child {
   margin-right: 1rem;
-}
-.product-filters span:nth-child(2) {
-  flex-grow: 1;
-}
-.product-filters span:last-child {
   color: gray;
   font-weight: normal;
 }

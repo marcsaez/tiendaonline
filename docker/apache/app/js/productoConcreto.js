@@ -29,8 +29,8 @@ function anadirUno() {
     let diccionarioJSON = JSON.stringify(diccionario);
     let carrito = new Carrito(diccionarioJSON);
     carrito.insertarUnProducto();
-    alert("Has añadido un producto al carrito!");
     //TO DO: Aqui ya se ha guardado el producto en la bdd, popup de confirmacion a continuacion
+    //alert("Has añadido un producto al carrito!");
 };
 
 function anadirUnoNoLog(){
@@ -59,8 +59,8 @@ function anadirUnoNoLog(){
         };
     }
     sessionStorage.setItem('carrito', JSON.stringify(carrito));
+    //TO DO: Aqui ya se ha guardado el producto en el storage, popup de confirmacion a continuacion
     alert("Has añadido un producto al carrito!");
-        //TO DO: Aqui ya se ha guardado el producto en el storage, popup de confirmacion a continuacion
 
 };
 if(btnAddOne != null){
@@ -182,8 +182,8 @@ if(btnAnadirCarrito != null){
         let diccionarioJSON = JSON.stringify(diccionario);
         carrito = new Carrito(diccionarioJSON);
         carrito.insertarUnProducto();
+        alert("Has añadido un producto al carrito!");
     });
-    alert("Has añadido un producto al carrito!");
     //TO DO: Aqui ya se ha guardado el producto en la bdd, popup de confirmacion a continuacion
 }
 

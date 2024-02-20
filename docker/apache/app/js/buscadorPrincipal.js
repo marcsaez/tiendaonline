@@ -52,13 +52,16 @@ document.addEventListener('DOMContentLoaded', function () {
         var html = '';
         
         for (var i = 0; i < resultados.length; i++) {
-            html += '<a href="index.php?Controller=Productos&action=productoConcreto&productID=' + resultados[i].productid + '"><p>' + resultados[i].productid + ' - ' + resultados[i].productname + ' - ' + resultados[i].productprice + '</p></a>';
-
-            // LO DE DEBAJO ES LA IMAGEN HAZ LO QUE SEA CONVENIENTE
-            html+= '<img src="' + resultados[i].productimg + '" alt="Imagen de ' + resultados[i].productname + '"></img>'
-
-            
+            html += '<div class="grid-busqueda">';
+            html += '<div><img class="img-busqueda" src="' + resultados[i].productimg + '" alt="Imagen de ' + resultados[i].productname + '"></img></div>';
+            html += '<div><a href="index.php?Controller=Productos&action=productoConcreto&productID=' + resultados[i].productid + '">';
+            //html += '<p>' + resultados[i].productid + '</p>';
+            html += '<p>' + resultados[i].productname + '</p>';
+            html += '</a></div>';
+            html += '<div><p>' + resultados[i].productprice + '€</p></div>';
+            html += '</div>';
         }
+        
         
         resultadosDiv.innerHTML = html;
     }

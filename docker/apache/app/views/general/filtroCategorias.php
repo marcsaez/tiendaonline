@@ -14,12 +14,11 @@
                 </li>
             </ul>
             <h1><?php echo $nombre; ?></h1>
-            <div></div>
+            <span></span>
         </section>
         <section class="product-filters">
-            
             <span>Mostrando <?php echo (isset($products) && is_array($products)) ? count($products) : '0'; ?>
-             articulos</span>
+            articulos</span>
         </section>
 
         <section class="list-categories-products">
