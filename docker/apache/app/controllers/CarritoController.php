@@ -119,6 +119,15 @@
                 }
             }
         }
+        public function enviarPedido(){
+            if (isset($_POST)){
+                require_once "models/compra.php";
+                $db = Carrito::staticConectar();
+                $id = $_POST['id'];
+                compra::enviarPedido($db, $id);
+                echo '<meta http-equiv="refresh" content="0;url=index.php?Controller=Pedidos&action=listarPedidos">';
+            }
+        }
         
     }
 ?>
