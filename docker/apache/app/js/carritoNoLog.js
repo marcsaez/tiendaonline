@@ -13,7 +13,7 @@ function generarResumenCarrito(carrito) {
         if (carrito.hasOwnProperty(nombreProducto)) {
             var producto = carrito[nombreProducto];
             contenidoHTML += `
-                <tr>
+                <tr id="${producto.nombre}">
                     <td>${producto.cantidad} x ${producto.nombre}</td>
                     <td></td>
                     <td class="precio-total-producto">${(parseFloat(producto.cantidad) * parseFloat(producto.precio)).toFixed(2)}€</td>
@@ -22,7 +22,6 @@ function generarResumenCarrito(carrito) {
             totalCompra += parseFloat(producto.cantidad) * parseFloat(producto.precio);
         }
     }
-
     contenidoHTML += `
         <tr>
             <td colspan="3">Total</td>
@@ -103,26 +102,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function eliminarProducto(event) {
         // Obtener el artículo que contiene la información del producto
         var productoElemento = event.target.closest('.item-carrito');
-
         // Obtener el nombre del producto a eliminar
         var nombreProducto = productoElemento.id;
-
         // Obtener el carrito desde el sessionStorage
         var carrito = obtenerCarritoDesdeSessionStorage();
-
         // Eliminar el producto del carrito usando su nombre
         delete carrito[nombreProducto];
-
         // Actualizar el sessionStorage con el carrito actualizado
         sessionStorage.setItem('carrito', JSON.stringify(carrito));
-
         // Eliminar el elemento HTML correspondiente al producto eliminado
         productoElemento.remove();
-
+        productoElementoResumen.remove();
         // Actualizar el resumen del carrito
+        generarContenidoCarrito(carrito);
         generarResumenCarrito(carrito);
     }
-
+    function elimnarProductoResumen(event){
+        
+    }
     // Delegación de eventos para manejar clics en los botones de eliminar
     document.getElementById('sectionFantasma').addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('action-eliminar')) {

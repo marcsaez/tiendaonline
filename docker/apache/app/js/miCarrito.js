@@ -37,10 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         intervalId = setInterval(() => ajustarCantidad(true), 200); // Llama a ajustarCantidad(true) cada 200 ms
     });
 
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
     // Función para eliminar un producto del carrito y actualizar la vista
     function eliminarProducto(event) {
         // Obtener el artículo que contiene la información del producto
@@ -60,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 function eliminarUnProducto(){
     console.log(this.diccionario);
     $.ajax({
