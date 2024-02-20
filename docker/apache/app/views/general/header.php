@@ -84,7 +84,7 @@
     <section>
         <nav id="nav-inferior">
             <ul>
-                <li><a href="#">NOVEDADES</a></li>
+                <li><a href="index.php">NOVEDADES</a></li>
                 <?php
                     foreach($totalCategorias as $categoria){
                         $categoriaNameUpperCase = strtoupper($categoria['categoryname']);

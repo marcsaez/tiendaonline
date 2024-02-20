@@ -81,9 +81,9 @@
             <div>
                 <a href=""><img src="././img/grid-one-piece-2.jpg" alt="novedades"><span>novedades</span> </a>
                 <a href="index.php?Controller=Categorias&action=filtrar&categoria=8&nombre=Manga"><img src="././img/DBPanel.webp" alt="manga"><span>manga</span></a>
-                <a href="#"><img src="././img/solo-leveling.png" alt="manhwa"><span>manhwa</span></a>
-                <a href="#"><img src="././img/grid-juego.png" alt="juegos-de-mesa"><span>juegos de mesa</span></a>
-                <a href="#"><img src="././img/grid-merch.png" alt="merchandising"><span>merchandising</span></a>
+                <a href="index.php?Controller=Categorias&action=filtrar&categoria=9&nombre=Manhwa"><img src="././img/solo-leveling.png" alt="manhwa"><span>manhwa</span></a>
+                <a href="index.php?Controller=Categorias&action=filtrar&categoria=10&nombre=Juegos de mesa"><img src="././img/grid-juego.png" alt="juegos-de-mesa"><span>juegos de mesa</span></a>
+                <a href="index.php?Controller=Categorias&action=filtrar&categoria=11&nombre=Merchandaising"><img src="././img/grid-merch.png" alt="merchandising"><span>merchandising</span></a>
             </div>
         </section>
     </div>
