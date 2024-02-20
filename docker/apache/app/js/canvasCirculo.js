@@ -1,10 +1,11 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Utilizar los datos para renderizar el primer gráfico
+    renderizarGrafico1(datosJson);
 
-    // Utilizar los datos para renderizar el gráfico
-    renderizarGrafico(datosJson);
-
-    // Función para renderizar el gráfico con los datos obtenidos
-    function renderizarGrafico(datos) {
+    // Función para renderizar el primer gráfico con los datos obtenidos
+    function renderizarGrafico1(datos) {
         var dataPoints = [];
+        console.log(datos);
         
         if (datos) {
             for (var i = 0; i < datos.length; i++) {
@@ -35,4 +36,4 @@
 
         chart.render();
     }
-
+});
