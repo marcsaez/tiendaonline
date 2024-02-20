@@ -53,9 +53,10 @@
         public function editarProductos(){
             if(isset($_POST)){
                 require_once "models/productos.php";
+                $destacado = isset($_POST['destacado']) ? 1 : 0;
                 if($_FILES['imagen']['size'] == 0){
                     $imagen = null;
-                    $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                    $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen, $_POST['stock'], $destacado , $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->actualizarProducto();
                 if ($allproducts){
@@ -80,7 +81,7 @@
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen_path);
                 
 
-                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], isset($_POST['destacado']), $_POST['precio'], $_POST['categoria']);
+                $producto = new productos($_POST['id'],$_POST['nombre'], $_POST['descripcion'], $imagen_path, $_POST['stock'], $destacado , $_POST['precio'], $_POST['categoria']);
                 $producto->conectar();
                 $allproducts = $producto->actualizarProducto();
                 if ($allproducts){
