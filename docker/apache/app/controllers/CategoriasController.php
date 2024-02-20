@@ -5,12 +5,13 @@
             $db = Categoria::staticConectar();
             $allcategories = Categoria::listarTodasCategorias($db);
             $padres = array();
-            foreach ($allcategories as $category) {
-                if ($category['fkfathercategory']== "Sin categoría") {
-                    $padres[] = $category;
+            if(is_array($allcategories)){
+                foreach ($allcategories as $category) {
+                    if ($category['fkfathercategory']== "Sin categoría") {
+                        $padres[] = $category;
+                    }
                 }
             }
-
             require_once "views/admin/listarCategorias.php";
         }
         public static function menuCategorias(){

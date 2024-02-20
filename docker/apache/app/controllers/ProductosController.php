@@ -152,7 +152,7 @@
         public function mostrarCategorias(){
             require_once "models/categorias.php"; 
             $db = categoria::staticConectar();
-            $desplegable = categoria::navCategorias($db);
+            $desplegable = categoria::navCategoriasAll($db);
             return $desplegable;
         }
 
