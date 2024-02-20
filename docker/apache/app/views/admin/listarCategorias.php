@@ -33,20 +33,7 @@
                     <legend>Añadir Categoria</legend>
                     <form enctype="multipart/form-data" action="index.php?Controller=Categorias&action=anadirCategoria" method="POST" >   
                         <label for="nombre">Nombre de la categoria:</label>
-                        <input type="text" id="nombre" name="nombre" class="input" required>
-                
-                        <?php
-                        echo '<label for="nombre">ID de la Categoria padre:</label>';
-                        echo '<select id="categoriaPadre" name="categoriaPadre" class="input">';
-                        echo '<option value="" selected>Sin categoria padre</option>';
-                        
-                        foreach ($padres as $category) {
-                            echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
-                        }
-                        
-                        echo '</select>';
-                        ?>
-                
+                        <input type="text" id="nombre" name="nombre" class="input" required>                
                         <button type="submit">Añadir Categoria</button>
                     </form>
                 </fieldset>
@@ -64,19 +51,7 @@
                         <label for="nombre-editar">Nombre</label>
                         <input type="text" name="nombre-editar" id="nombre-editar" class="input" required>
                     </div>
-                    <div>
-                        <?php
-                            echo '<label for="categoriaPadre-editar">ID de la Categoria padre</label>';
-                            echo '<select id="categoriaPadre-editar" name="categoriaPadre-editar" class="input">';
-                            echo '<option value="" selected>Sin categoria padre</option>';
-                            
-                            foreach ($padres as $category) {
-                                echo '<option value="' . $category['categoryid'] . '">' . $category['categoryname'] . '</option>';
-                            }
-                            
-                            echo '</select>';
-                        ?>
-                    </div>
+                   
                     <div>
                         <input type="submit" class="btn-submit" value="Guardar">
                     </div>
@@ -98,13 +73,13 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Categoría Padre</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
+                if(is_array($allcategories)){
                     foreach ($allcategories as $categoria) {
                         $idCategoria = $categoria['categoryid'];
                         $nombreCategoria = $categoria['categoryname'];
@@ -117,7 +92,7 @@
                             <tr>
                                 <td>'.$idCategoria.'</td>
                                 <td>'.$nombreCategoria.'</td>
-                                <td>'.$categoriaPadre.'</td>
+
                                 <td>
                                 <a class="editar btn-categoria-editar"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -129,6 +104,7 @@
                             
                         ';
                     }
+                }
                 ?>
                 </tbody>
             </table>

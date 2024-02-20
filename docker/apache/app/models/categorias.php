@@ -218,6 +218,20 @@ class Categoria extends database{
         }
         return $totalCategorias;
     }
+    public static function navCategoriasAll($db){
+        try{
+            $stmt = $db->prepare("SELECT categoryid , categoryname FROM categories WHERE active=1");
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+                $totalCategorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $totalCategorias = null;
+            }
+        }catch (Exception $e){
+            $totalCategorias = null;
+        }
+        return $totalCategorias;
+    }
     public static function nombreCategorias($db, $idcategoria){
         try{
             $stmt = $db->prepare("SELECT categoryname FROM categories WHERE categoryid = :idcategoria");

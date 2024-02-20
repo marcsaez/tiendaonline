@@ -21,30 +21,7 @@
             <span>Mostrando <?php echo (isset($products) && is_array($products)) ? count($products) : '0'; ?>
              articulos</span>
         </section>
-        <section>
-        <span class="subcategorias">Subcategorias: 
-            <?php
-            
-            // SUBCATEGORIAS si existen
-            if (isset($subcat) && is_array($subcat)){
-              
-                echo "<ul class='subcategorias'>";
-                foreach ($subcat as $sub) {
-                    $subid = $sub['categoryid'];
-                    $subname = $sub['categoryname'];
-                    $subfather = $sub['fkfathercategory'];
-                    echo '
-                    <li id="'.$subname.'">
-                        <a id="'.$subname.'" href="index.php?Controller=Categorias&action=filtrar&categoria='.$subid.'&nombre='.$subname.'">'.$subname.'</a>
-                    </li>
-                    ';
-            
-                }
-                echo "</ul>";
-                
-            } ?>
-            </span>
-        </section>
+
         <section class="list-categories-products">
             <?php
             // PRODUCTOS
