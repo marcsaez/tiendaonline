@@ -448,6 +448,7 @@ aside section > article span {
 }
 .pagina-producto section:nth-child(3) section {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-top: 0.7rem;
@@ -597,6 +598,9 @@ aside section > article span {
   .reference-product {
     flex-direction: column;
   }
+  .pagina-producto section:nth-child(3) {
+    margin-left: 1rem;
+  }
 }
 .tendencias {
   border: none;
@@ -726,6 +730,7 @@ aside section > article span {
 @media (max-width: 10234px) {
   .top-card {
     flex-grow: 1;
+    width: 18rem;
   }
   .warp {
     -moz-column-gap: 1rem;
@@ -985,6 +990,23 @@ input[id="5"]:checked ~ .pagination .pag-item[for="5"] {
   width: 4rem;
 }
 
+.subcategorias {
+  display: flex;
+  align-items: center;
+}
+.subcategorias ul.subcategorias {
+  list-style-type: none;
+  margin-left: 0.5rem;
+}
+.subcategorias ul.subcategorias a {
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .list-categories-products {
+    justify-content: center;
+  }
+}
 .breadcrumbs {
   list-style-type: none;
   display: flex;
@@ -1813,6 +1835,12 @@ form[name=editarCategoria] {
   grid-template-columns: 2.5rem auto 12rem repeat(2, 5rem);
   -moz-column-gap: 1rem;
        column-gap: 1rem;
+  align-items: center;
+}
+form[name=editarCategoria] label {
+  color: white;
+  font-weight: 600;
+  font-size: small;
 }
 
 #anadirCategoria {
@@ -1834,6 +1862,9 @@ form[name=editarCategoria] {
 }
 #anadirCategoria fieldset form input, #anadirCategoria fieldset form select, #anadirCategoria fieldset form button {
   background-color: #575757;
+}
+#anadirCategoria fieldset form button {
+  text-align: center;
 }
 
 #datos-usuario {

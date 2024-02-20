@@ -8,7 +8,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('precio-total-compra').textContent = totalCompra.toFixed(2) + '€';
+
+    let inputCantidad = document.getElementById('cantidad');
+    let stockTotal = document.getElementById('stockMaximo');
+    
+    function ajustarCantidad(incremento) {
+        let cantidadActual = parseInt(inputCantidad.value);
+        let stockMax = parseInt(stockTotal.value);
+    
+        if (incremento && cantidadActual < stockMax) {
+            inputCantidad.value = cantidadActual + 1;
+        } else if (!incremento && cantidadActual > 1) {
+            inputCantidad.value = cantidadActual - 1;
+        }
+    }
+    
+    const restarCantidadBtn = document.getElementById('restar-cantidad');
+    const sumarCantidadBtn = document.getElementById('sumar-cantidad');
+    
+    restarCantidadBtn.addEventListener('click', () => ajustarCantidad(false));
+    sumarCantidadBtn.addEventListener('click', () => ajustarCantidad(true));
+    
+    restarCantidadBtn.addEventListener('mousedown', () => {
+        intervalId = setInterval(() => ajustarCantidad(false), 200); // Llama a ajustarCantidad(false) cada 200 ms
+    });
+    
+    sumarCantidadBtn.addEventListener('mousedown', () => {
+        intervalId = setInterval(() => ajustarCantidad(true), 200); // Llama a ajustarCantidad(true) cada 200 ms
+    });
+
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Función para eliminar un producto del carrito y actualizar la vista
     function eliminarProducto(event) {
@@ -54,3 +85,4 @@ function eliminarUnProducto(){
         }
     });
 }
+

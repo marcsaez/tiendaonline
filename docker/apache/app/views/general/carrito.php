@@ -26,6 +26,7 @@
                                 </div>
                                 <div>
                                     <p class="referencia">Ref: '.$product['productid'].'</p>
+                                    <input type="hidden" id="stockMaximo" value='.$product['productstock'].'>
                                 </div>
                                 <div>
                                     <p>Disponibilidad: '.$stock.'</p>
@@ -34,6 +35,7 @@
                                     <p>Precio unitario: '.$product['productprice'].'€</p>
                                 </div>
                                 <div class="grid-area-cantidad">
+                                    
                                     <div class="containerCantidad">
                                         <button id="restar-cantidad">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black">

@@ -15,7 +15,7 @@
                 </svg>
             </form>
         </section>
-        <section>
+        <section class="table-scroll">
             <table id="resultadosDivAdmin" class="admin-table">
                 <tr>
                     <th>ID</th>
